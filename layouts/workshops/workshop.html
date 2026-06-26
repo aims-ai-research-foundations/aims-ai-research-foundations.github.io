@@ -1,0 +1,151 @@
+{{ define "main" }}
+{{- $p := hugo.Data.programme }}
+{{- $team := hugo.Data.team.members }}
+{{- $pw := .Params.prework }}
+{{- $onboard := .GetPage "onboarding" }}
+{{- $sched := .GetPage "schedule" }}
+
+<section class="workshop-hero" {{ with .Params.heroImage }}style="--hero-img:url('{{ . | relURL }}')"{{ end }}>
+  <div class="container">
+    {{ partial "status-pill.html" .Params.status }}
+    <h1>{{ .Title }}</h1>
+    <p class="workshop-hero-sub">{{ .Params.summary }}</p>
+    <div class="workshop-hero-meta">
+      <span>{{ partial "icon.html" "map-pin" }} {{ partial "flag.html" .Params.country }} {{ with .Params.venue }}{{ . }}, {{ end }}{{ if ne .Params.city "To be confirmed" }}{{ .Params.city }}, {{ end }}{{ .Params.country }}</span>
+      <span>{{ partial "icon.html" "users" }} Hosted by {{ .Params.host }}</span>
+    </div>
+    <div class="workshop-hero-cohorts">
+      {{- if or .Params.datesTBC (not .Params.cohorts) }}
+      <div class="cohort-chip"><span class="cohort-chip-label">Dates</span><span class="cohort-chip-date">To be confirmed</span></div>
+      {{- else }}
+      {{- range .Params.cohorts }}
+      <div class="cohort-chip">
+        <span class="cohort-chip-label">{{ .label }}</span>
+        <span class="cohort-chip-date">{{ partial "daterange.html" (dict "start" .start "end" .end) }}</span>
+      </div>
+      {{- end }}
+      {{- end }}
+    </div>
+    {{- with .Params.timingNote }}<p class="timing-note">{{ partial "icon.html" "calendar" }} {{ . }}</p>{{ end }}
+    <div class="workshop-hero-cta">
+      <a class="btn btn-gold" href="{{ $onboard.RelPermalink }}">Open the onboarding guide {{ partial "icon.html" "arrow-right" }}</a>
+      <a class="btn btn-ghost-light" href="{{ $sched.RelPermalink }}">View the schedule</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container narrow">
+    {{ partial "section-eyebrow.html" (dict "eyebrow" "Overview" "title" "About this workshop") }}
+    <div class="prose">{{ .Content }}</div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="container narrow">
+    {{ partial "section-eyebrow.html" (dict "eyebrow" "The programme" "title" "Part of something bigger") }}
+    <p class="prose-lead">{{ $p.programmeSummary }}</p>
+    <a class="btn btn-primary" href="{{ "programme/" | relURL }}">Read about the programme {{ partial "icon.html" "arrow-right" }}</a>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    {{ partial "section-eyebrow.html" (dict "eyebrow" "The workshop week" "title" "Four things you'll do") }}
+    {{ partial "threads.html" . }}
+  </div>
+</section>
+
+<section class="alt">
+  <div class="container">
+    {{ partial "section-eyebrow.html" (dict "eyebrow" "During the week" "title" "Workshop activities") }}
+    {{ partial "activities.html" . }}
+  </div>
+</section>
+
+<section class="prework-band">
+  <div class="container">
+    {{ partial "section-eyebrow.html" (dict "eyebrow" "Before the workshop" "title" "Pre-work starts before you arrive") }}
+    <div class="prework-summary">
+      <ul class="prework-points">
+        <li>{{ partial "icon.html" "lightbulb" }} Complete at least the first four courses (01 to 04) on Google Skills before the workshop.</li>
+        {{- with $pw.opens }}<li>{{ partial "icon.html" "calendar" }} Pre-work opens <strong>{{ (time.AsTime .).Format "2 January 2006" }}</strong>.</li>{{ else }}<li>{{ partial "icon.html" "calendar" }} Pre-work dates will be confirmed soon.</li>{{ end }}
+        <li>{{ partial "icon.html" "groups" }} Join the cohort community and the recurring Live Sessions during pre-work.</li>
+      </ul>
+      <a class="btn btn-gold" href="{{ $onboard.RelPermalink }}">Open the full onboarding guide {{ partial "icon.html" "arrow-right" }}</a>
+    </div>
+  </div>
+</section>
+
+<section class="grid-bg">
+  <div class="container">
+    {{ partial "section-eyebrow.html" (dict "eyebrow" "At a glance" "title" "Workshop details") }}
+    <div class="quick-info">
+      <div class="info-card">
+        <div class="info-icon-wrap">{{ partial "icon.html" "calendar" }}</div>
+        <div>
+          <div class="label">Dates</div>
+          <div class="value">
+            {{- if or .Params.datesTBC (not .Params.cohorts) }}To be confirmed
+            {{- else if eq (len .Params.cohorts) 1 }}{{ $c := index .Params.cohorts 0 }}{{ partial "daterange.html" (dict "start" $c.start "end" $c.end) }}
+            {{- else }}{{ range $c := .Params.cohorts }}<span class="vd-cohort">{{ with $c.label }}<span class="vd-cohort-label">{{ . }}</span>{{ end }}{{ partial "daterange.html" (dict "start" $c.start "end" $c.end) }}</span>{{ end }}{{ end }}
+          </div>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-icon-wrap">{{ partial "icon.html" "map-pin" }}</div>
+        <div>
+          <div class="label">Venue</div>
+          {{- $loc := .Params.address }}
+          {{- if and (not $loc) (ne .Params.city "To be confirmed") }}{{ $loc = .Params.city }}{{ end }}
+          <div class="value">{{ if .Params.venue }}{{ .Params.venue }}{{ with $loc }}<br>{{ . }}{{ end }}{{ else }}{{ with $loc }}{{ . }}{{ else }}To be confirmed{{ end }}{{ end }}</div>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-icon-wrap">{{ partial "icon.html" "users" }}</div>
+        <div>
+          <div class="label">Audience</div>
+          <div class="value">{{ .Params.audience }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="container">
+    {{ partial "section-eyebrow.html" (dict "eyebrow" "Your facilitators" "title" "The team supporting this workshop") }}
+    <div class="facilitator-strip">
+      {{- range .Params.facilitators }}
+      {{- $id := . }}
+      {{- range where $team "id" $id }}
+      <div class="facilitator">
+        {{ partial "avatar.html" .name }}
+        <span class="facilitator-name">{{ .name }}</span>
+        <span class="facilitator-role">{{ .role }}</span>
+      </div>
+      {{- end }}
+      {{- end }}
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container">
+    <h2>Questions about this workshop?</h2>
+    <p>The team is here to help you before, during, and after the week.</p>
+    <a class="btn btn-gold" href="mailto:{{ .Site.Params.contactEmail }}">{{ partial "icon.html" "mail" }} {{ .Site.Params.contactEmail }}</a>
+  </div>
+</section>
+
+{{- $faqs := $p.faqs }}
+{{- with .Params.faqs }}{{ $faqs = append $faqs . }}{{ end }}
+<section>
+  <div class="container narrow">
+    {{ partial "section-eyebrow.html" (dict "eyebrow" "Questions" "title" "Frequently asked") }}
+    {{ partial "faq.html" $faqs }}
+  </div>
+</section>
+
+{{ partial "partners.html" . }}
+{{ end }}

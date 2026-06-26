@@ -1,0 +1,10 @@
+<div class="threads">
+  {{- range hugo.Data.programme.threads }}
+  <div class="thread-card fade-in">
+    <span class="thread-ico">{{ partial "icon.html" .icon }}</span>
+    <span class="thread-num">{{ .num }}</span>
+    <h3>{{ .name }}</h3>
+    <p>{{ .body }}</p>
+  </div>
+  {{- end }}
+</div>

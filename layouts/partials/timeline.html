@@ -1,0 +1,11 @@
+{{- /* Input: dict "milestones" = slice of {date, label, sub?, highlight?} */ -}}
+<div class="timeline" role="list" aria-label="Programme timeline">
+  {{- range .milestones }}
+  <div class="timeline-item{{ if .highlight }} is-now{{ end }}" role="listitem">
+    {{- if .highlight }}<span class="timeline-now-tag">You are here</span>{{ end }}
+    <span class="timeline-date">{{ .date }}</span>
+    <span class="timeline-label">{{ .label }}</span>
+    {{- with .sub }}<span class="timeline-sub">{{ . }}</span>{{ end }}
+  </div>
+  {{- end }}
+</div>

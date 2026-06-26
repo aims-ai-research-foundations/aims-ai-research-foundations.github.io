@@ -1,0 +1,46 @@
+{{ define "main" }}
+{{- $r := hugo.Data.resources }}
+<section class="page-hero compact">
+  <div class="container">
+    <p class="hero-eyebrow">Resources</p>
+    <h1>Everything in one place</h1>
+    <p class="hero-sub">{{ $r.intro }}</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="res-wrap">
+      {{- range $g := $r.groups }}
+      <div class="resource-group">
+        <p class="resource-group-eyebrow">{{ partial "icon.html" $g.icon }} {{ $g.title }}</p>
+        <div class="resource-cards">
+          {{- range $g.links }}
+          {{- $ico := or .icon $g.icon }}
+          {{- if .url }}
+          <a class="resource-card" href="{{ .url }}"{{ if not (hasPrefix .url "mailto:") }} target="_blank" rel="noopener"{{ end }}>
+            <span class="resource-card-ico">{{ partial "icon.html" $ico }}</span>
+            <span class="resource-card-text">
+              <span class="resource-card-label">{{ .label }}</span>
+              {{ with .desc }}<span class="resource-card-desc">{{ . }}</span>{{ end }}
+            </span>
+            <span class="resource-card-ext">{{ partial "icon.html" "external-link" }}</span>
+          </a>
+          {{- else }}
+          <div class="resource-card is-disabled">
+            <span class="resource-card-ico">{{ partial "icon.html" $ico }}</span>
+            <span class="resource-card-text">
+              <span class="resource-card-label">{{ .label }}</span>
+              {{ with .desc }}<span class="resource-card-desc">{{ . }}</span>{{ end }}
+              {{ if .wip }}<span class="wip-badge">Work in progress</span>{{ else if .placeholder }}<span class="wip-badge">Coming soon</span>{{ end }}
+            </span>
+          </div>
+          {{- end }}
+          {{- end }}
+        </div>
+      </div>
+      {{- end }}
+    </div>
+  </div>
+</section>
+{{ end }}

@@ -1,0 +1,54 @@
+{{ define "main" }}
+{{- $w := .Parent }}
+{{- $days := $w.Params.schedule }}
+<section class="page-hero compact">
+  <div class="container">
+    <p class="hero-eyebrow"><a href="{{ $w.RelPermalink }}">{{ $w.Title }}</a> &nbsp;/&nbsp; Schedule</p>
+    <h1>Schedule</h1>
+    {{- with $w.Params.scheduleNote }}<p class="hero-sub">{{ . }}</p>{{ end }}
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    {{- if $days }}
+      {{- with $w.Params.scheduleLegend }}
+      <div class="legend">
+        {{- range . }}<span class="legend-item"><span class="legend-dot cat-{{ .cat }}"></span>{{ .label }}</span>{{ end }}
+      </div>
+      {{- end }}
+      <div class="schedule">
+        {{- range $days }}
+        <div class="sched-day">
+          <div class="sched-day-head">
+            <span class="sched-day-name">{{ .day }}</span>
+            <span class="sched-day-date">{{ .date }}</span>
+            <span class="sched-day-title">{{ .title }}</span>
+          </div>
+          <div class="table-scroll">
+            <table class="sched-table">
+              <tbody>
+                {{- range .sessions }}
+                <tr class="cat-{{ .cat }}">
+                  <td class="sched-time">{{ .start }}–{{ .end }}</td>
+                  <td class="sched-name">{{ .name }}</td>
+                </tr>
+                {{- end }}
+              </tbody>
+            </table>
+          </div>
+        </div>
+        {{- end }}
+      </div>
+      <p class="schedule-disclaimer">This schedule is indicative. Times and sessions may shift; the final timetable is confirmed closer to the workshop.</p>
+    {{- else }}
+      <div class="coming-soon">
+        <span class="cs-ico">{{ partial "icon.html" "calendar" }}</span>
+        <h2>Schedule coming soon</h2>
+        <p>The day-by-day schedule for this workshop is being finalised. Check back closer to the workshop, or open the onboarding guide to prepare in the meantime.</p>
+        <a class="btn btn-primary" href="{{ ($w.GetPage "onboarding").RelPermalink }}">Onboarding guide {{ partial "icon.html" "arrow-right" }}</a>
+      </div>
+    {{- end }}
+  </div>
+</section>
+{{ end }}

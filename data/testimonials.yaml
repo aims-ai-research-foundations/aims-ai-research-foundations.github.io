@@ -1,0 +1,45 @@
+# Real, consented testimonials from the AIMS Pilot Workshop (June 2026).
+# Each entry is tagged with a workshop slug so it appears on that
+# workshop page and in the matching tab on /testimonials.
+items:
+  - workshop: pilot-cape-town
+    quote: "The AI Research Foundations pilot workshop was both inspiring and highly informative. I gained a stronger understanding of key AI concepts such as language models and transformers, while also learning effective ways to explain these topics to others. One of the most valuable aspects was discovering how to make AI accessible to people with little or no prior knowledge of the field."
+    name: "Ezéckiel Sianou"
+    role: "Joint Postdoctoral Fellow in AI for Science, AIMS South Africa and Imperial College London"
+    placeholder: false
+
+  - workshop: pilot-cape-town
+    quote: "The AI Research Foundations pilot workshop was truly enlightening. The facilitators were approachable and knowledgeable, making the five-day course an incredibly rewarding experience from start to finish. Having completed the pre-course work beforehand made a real difference, laying a strong foundation. Over the week, my understanding of AI architecture, principles and fine-tuning, as well as ethics and responsible innovation in AI improved leaps and bounds. I would wholeheartedly recommend this course to anyone looking to deepen their understanding of AI, prepare to teach it, or explore how to meaningfully embed it across Africa."
+    name: "Prof. Regan Solomons"
+    role: "Executive Head of Paediatrics and Child Health, Tygerberg Hospital"
+    placeholder: false
+
+  - workshop: pilot-cape-town
+    quote: "The AI Research Foundations pilot workshop was a hands-on first introduction to key concepts used in the development of AI models. We learnt about tokenization, transformers, the values considered in developing these models, and how we can adapt them to our African context. It was really a one-week ride into the minds of developers and has left me inspired to further explore AI research and its future in Africa."
+    name: "Clinton Paye Quee"
+    role: "PhD Student (Mathematics), Stellenbosch University"
+    placeholder: false
+
+  - workshop: pilot-cape-town
+    quote: "The AI Research Foundations pilot workshop was an excellent learning experience that simplified complex AI concepts and connected them to real-world research challenges. The sessions were engaging, practical, and highly relevant to my work as a lecturer and researcher. The experience was truly rewarding."
+    name: "Issah Ngomane"
+    role: "Lecturer, University of Mpumalanga"
+    placeholder: false
+
+  - workshop: pilot-cape-town
+    quote: "Initially, I joined the AI Research Foundations programme simply to satisfy my curiosity and see what I could learn. As the programme unfolded, the experience far exceeded my expectations. Not only did I gain a mathematical understanding of the mechanisms behind transformer architecture, but I also mastered the art of transferring that knowledge to others. I am incredibly grateful for the well-structured courses and for the mentorship skills the programme gave us to share this expertise with others."
+    name: "James Naoussi"
+    role: "Google DeepMind Scholar, MSc Student (AI for Science), AIMS South Africa"
+    placeholder: false
+
+  - workshop: pilot-cape-town
+    quote: "The AI Research Foundations pilot workshop was a great experience. I particularly enjoyed the presentations, which were clear, engaging, and very insightful. The workshop gave me a better understanding of AI research and its growing importance in higher education across Africa."
+    name: "Mannondé Gbaguidi"
+    role: "MSc Student (Mathematical Sciences), AIMS South Africa"
+    placeholder: false
+
+  - workshop: pilot-cape-town
+    quote: "Advances in technology and AI are challenging us across all sectors. In African higher education, we are being called upon to rethink how we produce, assess, and communicate scientific knowledge, not only within the walls of classrooms and laboratories, but also with society at large in the age of AI. As an African mathematician, science communication practitioner, and advocate for gender equity in STEM, I found participating in the AI Research Foundations pilot workshop to be a valuable experience. It highlighted how urgently the higher education ecosystem must adapt to these changes if it is to lead and shape the future."
+    name: "Dr Rejoyce Gavhi-Molefe"
+    role: "Mathematics Researcher and Manager, AIMS House of Science"
+    placeholder: false

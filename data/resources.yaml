@@ -1,0 +1,46 @@
+intro: "Everything the programme team has built or curated, in one place. If a link is marked as a placeholder or work in progress, it is coming soon."
+
+groups:
+  - title: "Learn the curriculum"
+    icon: "lightbulb"
+    links:
+      - label: "Google Skills learning path"
+        url: "https://skills.google/paths/3135"
+        desc: "The full AI Research Foundations path: all eight courses, free."
+      - label: "Google DeepMind practical labs (GitHub)"
+        url: "https://github.com/google-deepmind/ai-foundations"
+        desc: "40+ Jupyter notebooks that accompany the curriculum."
+
+  - title: "Teach and adapt"
+    icon: "presentation"
+    links:
+      - label: "UCL Lecturer Toolkit"
+        wip: true
+        desc: "Blended-learning teaching toolkit from UCL, including the AIRF Educator Guide. In development, link coming soon."
+
+  - title: "Data and tools"
+    icon: "tune"
+    links:
+      - label: "Capstone Datasets"
+        url: "https://aims-ai-research-foundations.github.io/capstone-datasets-website/datasets/"
+        desc: "Curated, ready-to-use datasets for capstone projects."
+
+  - title: "Activities and games"
+    icon: "brain-circuit"
+    links:
+      - label: "Workshop Readiness Quiz"
+        url: "https://aims-ai-research-foundations.github.io/pilot-workshop/quiz/"
+        desc: "Twenty quick questions across the first four courses."
+      - label: "Accelerate Your Model Quiz"
+        url: "https://aims-ai-research-foundations.github.io/pilot-workshop/accelerate-your-model/"
+        desc: "A knowledge check on GPUs, FLOPS, and the memory budget."
+      - label: "Spot the Slop"
+        wip: true
+        desc: "An icebreaker game on telling real from AI-generated content. Coming soon."
+
+  - title: "Get in touch"
+    icon: "mail"
+    links:
+      - label: "Email the team"
+        url: "mailto:ai-research-foundations@aims.ac.za"
+        desc: "ai-research-foundations@aims.ac.za"

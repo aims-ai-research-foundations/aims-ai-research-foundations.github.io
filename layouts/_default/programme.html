@@ -1,0 +1,206 @@
+{{ define "main" }}
+{{- $p := hugo.Data.programme }}
+<section class="page-hero has-visual">
+  <div class="container hero-split">
+    <div class="hero-split-text">
+      <p class="hero-eyebrow">The programme</p>
+      <h1>An AI curriculum, taught by Africa's own lecturers</h1>
+      <p class="hero-sub">{{ $p.subline }}</p>
+      <div class="fact-row">
+        <span><strong>Funded by</strong> {{ $p.facts.funder }}</span>
+        <span><strong>Model</strong> {{ $p.facts.model }}</span>
+        <span><strong>Managed by</strong> {{ $p.facts.managedBy }}</span>
+        <span><strong>Curriculum by</strong> {{ $p.facts.curriculumBy }}</span>
+        <span><strong>Lecturer Toolkit by</strong> {{ $p.facts.toolkitBy }}</span>
+      </div>
+    </div>
+    <div class="hero-split-visual hero-map" aria-hidden="true">
+      {{ partial "africa-map.html" . }}
+    </div>
+  </div>
+</section>
+
+<section class="prog-about">
+  <div class="container">
+    <div class="about-section fade-in">
+      <div class="about-image">
+        <img src="{{ "img/others/ai-research-foundations-for-higher-education-programme.jpeg" | relURL }}" alt="AI Research Foundations curriculum by Google DeepMind, available on Google Skills">
+      </div>
+      <div class="about-text">
+        <p class="section-eyebrow">Overview</p>
+        <h2>About the programme</h2>
+        <p>The <strong>AI Research Foundations for Higher Education</strong> programme gives African universities full support to teach a semester-long Artificial Intelligence course: a world-class curriculum developed by <strong>Google DeepMind</strong>, a blended-learning teaching toolkit from <strong>University College London (UCL)</strong>, and workshops for lecturers and teaching assistants, supported by <strong>Google.org</strong>.</p>
+        <p>Through 2028, the programme will reach <strong>30 universities</strong> across Ghana (🇬🇭), Kenya (🇰🇪), Nigeria (🇳🇬), and South Africa (🇿🇦).</p>
+        <ul>
+          <li>A world-class AI curriculum with 40+ hands-on Jupyter notebooks, freely available on Google Skills.</li>
+          <li>Intensive training workshops for lecturers and teaching assistants across four countries.</li>
+          <li>Pilot cohort hosted by AIMS South Africa in Muizenberg, June 15 to 19 2026.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reach-section">
+  <div class="container">
+    {{ partial "section-eyebrow.html" (dict "eyebrow" "Eligible institutions" "title" "30 universities across four countries") }}
+    <div class="reach-countries">
+      {{- range $p.countries }}
+      <div class="reach-country fade-in">
+        <span class="reach-flag">{{ .flag }}</span>
+        <span class="reach-count">{{ .count }}</span>
+        <span class="reach-name">{{ .name }}</span>
+      </div>
+      {{- end }}
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="container">
+    {{ partial "section-eyebrow.html" (dict "eyebrow" "What universities gain" "title" "Lasting capacity, not a one-off course") }}
+    <div class="gains-grid">
+      {{- range $p.gains }}
+      <div class="gain-card fade-in">
+        <span class="gain-ico">{{ partial "icon.html" .icon }}</span>
+        <h3>{{ .title }}</h3>
+        <p>{{ .body }}</p>
+      </div>
+      {{- end }}
+    </div>
+
+    <div class="ba-compare">
+      <p class="ba-intro">The shift, at a glance</p>
+      <div class="ba-heads">
+        <span class="ba-head ba-head-before">Before</span>
+        <span class="ba-head ba-head-after">After</span>
+      </div>
+      {{- range $p.transformation }}
+      <div class="ba-row fade-in">
+        <div class="ba-card ba-before">
+          <span class="ba-ico">{{ partial "icon.html" .icon }}</span>
+          <span class="ba-label">{{ .before }}</span>
+        </div>
+        <span class="ba-arrow" aria-hidden="true">{{ partial "icon.html" "arrow-right" }}</span>
+        <div class="ba-card ba-after">
+          <span class="ba-ico">{{ partial "icon.html" .icon }}</span>
+          <span class="ba-label">{{ .after }}</span>
+        </div>
+      </div>
+      {{- end }}
+    </div>
+  </div>
+</section>
+
+<section class="curriculum">
+  <div class="container">
+    {{ partial "section-eyebrow.html" (dict "eyebrow" "Curriculum" "title" "Eight courses, built from the ground up") }}
+    <p class="prose-lead">The curriculum builds from the ground up. You start by building a small language model, then add the techniques that turn it into a modern AI system, and finish with a real-world capstone. Scroll to climb the stack.</p>
+    <div class="curriculum-stack">
+      {{- range $i, $c := $p.courses }}
+      {{- $url := $c.skillsURL | default site.Params.googleSkillsURL }}
+      <article class="course-layer{{ if eq $c.number "08" }} is-capstone{{ end }}" style="--i:{{ $i }}">
+        <button class="course-layer-inner" type="button" aria-haspopup="dialog" data-dialog="course-{{ $c.number }}">
+          <span class="course-layer-num">{{ $c.number }}</span>
+          <span class="course-layer-text">
+            <span class="course-layer-title">{{ $c.title }}</span>
+            <span class="course-layer-outcome">{{ $c.outcome }}</span>
+            <span class="course-layer-open">Learning objectives {{ partial "icon.html" "arrow-right" }}</span>
+          </span>
+        </button>
+        <a class="course-skills" href="{{ $url }}" target="_blank" rel="noopener" title="Open on Google Skills" aria-label="Open {{ $c.title }} on Google Skills">{{ partial "icon.html" "external-link" }}</a>
+      </article>
+      {{- end }}
+    </div>
+    <div class="curriculum-cta">
+      <a class="btn btn-primary btn-cta" href="{{ site.Params.googleSkillsURL }}" target="_blank" rel="noopener">Access the full curriculum on Google Skills {{ partial "icon.html" "external-link" }}</a>
+      <p class="curriculum-cta-note">{{ $p.curriculumNotes }} Free and open. Tap any course above to see its learning objectives, or open it directly on Google Skills.</p>
+    </div>
+  </div>
+
+  {{- range $c := $p.courses }}
+  <dialog class="course-modal" id="course-{{ $c.number }}" aria-labelledby="cm-{{ $c.number }}">
+    <div class="course-modal-head">
+      <span class="course-modal-num">{{ $c.number }}</span>
+      <div class="course-modal-heading">
+        <p class="course-modal-eyebrow">Course {{ $c.number }}{{ with $c.hours }} &middot; {{ . }}{{ end }}</p>
+        <h3 id="cm-{{ $c.number }}">{{ $c.title }}</h3>
+      </div>
+      <button class="course-modal-close" type="button" aria-label="Close" data-close>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <p class="course-modal-outcome">{{ $c.outcome }}</p>
+    <h4 class="course-modal-sub">By the end of this course, you will be able to:</h4>
+    <ol class="course-objectives">
+      {{- range $c.objectives }}<li>{{ . }}</li>{{ end }}
+    </ol>
+    <div class="course-modal-foot">
+      {{- $url := $c.skillsURL | default site.Params.googleSkillsURL }}
+      <a class="btn btn-primary" href="{{ $url }}" target="_blank" rel="noopener">Open on Google Skills {{ partial "icon.html" "external-link" }}</a>
+    </div>
+  </dialog>
+  {{- end }}
+</section>
+
+<section class="alt">
+  <div class="container narrow">
+    {{ partial "section-eyebrow.html" (dict "eyebrow" "Lecturer training" "title" "The workshop model") }}
+    <p class="prose-lead">Lecturers complete the online curriculum during a pre-work period, then attend an intensive, fully funded week in person. The workshop builds on that pre-work: technical lectures, pedagogy, contextualisation for Africa, and teaching practice with feedback, so lecturers return ready to teach the courses to their own students.</p>
+    <a class="btn btn-primary" href="{{ "workshops/" | relURL }}">See the workshops {{ partial "icon.html" "arrow-right" }}</a>
+  </div>
+</section>
+
+<section class="journey-section">
+  <div class="container">
+    {{ partial "section-eyebrow.html" (dict "eyebrow" "Roadmap" "title" "How a university joins, end to end") }}
+    <p class="prose-lead">From first interest to teaching students, here is the path a university takes. Reach us at <a href="mailto:{{ .Site.Params.contactEmail }}">{{ .Site.Params.contactEmail }}</a> to start.</p>
+    <ol class="journey">
+      {{- range $p.roadmap }}
+      <li class="journey-step fade-in">
+        <span class="journey-num">{{ .step }}</span>
+        <div class="journey-card">
+          <h3>{{ .title }}</h3>
+          <p>{{ .body }}</p>
+        </div>
+      </li>
+      {{- end }}
+      <li class="journey-step journey-end fade-in">
+        <span class="journey-num">{{ partial "icon.html" "school" }}</span>
+        <div class="journey-card">
+          <h3>Students gain real AI skills</h3>
+          <p>Year after year, your students learn to build and apply modern AI, taught by your own lecturers.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+{{- if $p.nominationsOpen }}
+<section class="cta-band">
+  <div class="container">
+    <h2>Bring this to your university</h2>
+    <p>Nominate your institution to join the programme and build in-house AI teaching capacity.</p>
+    <a class="btn btn-gold pulse" href="mailto:{{ .Site.Params.contactEmail }}?subject=Nominating%20our%20institution">Nominate your institution</a>
+  </div>
+</section>
+{{- else }}
+<section class="cta-band cta-closed">
+  <div class="container">
+    <span class="closed-pill">Nominations closed</span>
+    <h2>Nominations are closed</h2>
+    <p>{{ $p.nominationsNote }}</p>
+    <a class="btn btn-gold" href="mailto:{{ .Site.Params.contactEmail }}">Email the team {{ partial "icon.html" "arrow-right" }}</a>
+  </div>
+</section>
+{{- end }}
+
+<section class="alt">
+  <div class="container narrow">
+    {{ partial "section-eyebrow.html" (dict "eyebrow" "Questions" "title" "Frequently asked") }}
+    {{ partial "faq.html" $p.faqs }}
+  </div>
+</section>
+
+{{ partial "partners.html" . }}
+{{ end }}

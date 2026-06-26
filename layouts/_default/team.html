@@ -1,0 +1,34 @@
+{{ define "main" }}
+<section class="page-hero">
+  <div class="container">
+    <p class="hero-eyebrow">The team</p>
+    <h1>Meet the team</h1>
+    <p class="hero-sub">{{ hugo.Data.team.intro }}</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="team-photo-banner">
+      <img src="{{ "img/team/ai-research-foundations-team.jpg" | relURL }}" alt="The AI Research Foundations team at AIMS South Africa" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="container">
+    {{ partial "section-eyebrow.html" (dict "eyebrow" "The people" "title" "Leads and facilitators") }}
+    {{ partial "team-grid.html" . }}
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container">
+    <h2>Get in touch with the team</h2>
+    <p>Questions about the programme, the curriculum, or a workshop? We are happy to help.</p>
+    <a class="btn btn-gold" href="mailto:{{ .Site.Params.contactEmail }}">{{ partial "icon.html" "mail" }} {{ .Site.Params.contactEmail }}</a>
+  </div>
+</section>
+
+{{ partial "partners.html" . }}
+{{ end }}

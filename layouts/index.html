@@ -1,0 +1,151 @@
+{{ define "main" }}
+{{- $p := hugo.Data.programme }}
+{{- $tt := $p.trainTheTrainer }}
+<section class="home-hero">
+  <div class="container hero-cols">
+    <div class="hero-text">
+      <p class="hero-eyebrow">AI Research Foundations for Higher Education</p>
+      <h1 class="hero-title">{{ $p.tagline }}</h1>
+      <p class="hero-sub">{{ $p.subline }}</p>
+      <div class="hero-cta">
+        <a class="btn btn-gold" href="{{ "workshops/" | relURL }}">Explore the workshops</a>
+        <a class="btn btn-ghost-light" href="{{ "programme/" | relURL }}">About the programme</a>
+      </div>
+      <p class="hero-support">with support from <strong>Google.org</strong></p>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <span class="hero-blob"></span>
+      <div class="hero-img"><img src="{{ "img/landing/students-learning.jpeg" | relURL }}" alt="" loading="eager"></div>
+      <div class="hero-float">
+        <span class="hero-float-label">Across four countries</span>
+        <div class="hero-flags">
+          {{- range $p.countries }}<span title="{{ .name }}">{{ partial "flag.html" .name }}</span>{{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="stat-strip" role="list">
+      {{- range $p.stats }}
+      <div class="stat" role="listitem"><span class="stat-value" data-count="{{ .value }}">{{ .value }}</span><span class="stat-label">{{ .label }}</span></div>
+      {{- end }}
+    </div>
+  </div>
+</section>
+
+<section class="about">
+  <div class="container about-grid">
+    <div class="about-copy">
+      {{ partial "section-eyebrow.html" (dict "eyebrow" "About the programme" "title" $p.tagline) }}
+      <p class="prose-lead">{{ $p.programmeSummary }}</p>
+      <a class="btn btn-primary" href="{{ "programme/" | relURL }}">Read more {{ partial "icon.html" "arrow-right" }}</a>
+    </div>
+    <div class="about-visual fade-in">
+      <div class="africa-wrap">
+        {{ partial "africa-map.html" . }}
+      </div>
+      <p class="about-visual-caption"><span class="cap-dot"></span> <strong>30 universities</strong> across Nigeria (🇳🇬), Ghana (🇬🇭), Kenya (🇰🇪), and South Africa (🇿🇦). The highlighted countries host this round.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Vision / Mission / Approach: three numbered bands -->
+<div class="vma">
+  <div class="vma-band vma-vision">
+    <div class="container vma-vision-grid">
+      <div class="vma-copy">
+        <p class="vma-index"><span>01</span><span class="vma-rule"></span></p>
+        <p class="vma-kicker">Our vision</p>
+        <h2 class="vma-headline">{{ $p.visionHeadline }}</h2>
+        <p class="vma-text">{{ $p.vision }}</p>
+      </div>
+      <div class="vma-vision-visual" aria-hidden="true">
+        <span class="vma-dots"></span>
+        <div class="vma-photo"><img src="{{ "img/others/single-student-smiling.jpeg" | relURL }}" alt="" loading="lazy"></div>
+        <span class="vma-circle"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="vma-band vma-mission">
+    <div class="container vma-mission-grid">
+      <div class="vma-mission-visual" aria-hidden="true">
+        <span class="vma-mission-accent"></span>
+        <div class="vma-mission-photo"><img src="{{ "img/others/aims-sa-student-graduation.jpg" | relURL }}" alt="" loading="lazy"></div>
+      </div>
+      <div class="vma-mission-copy">
+        <p class="vma-index"><span>02</span><span class="vma-rule"></span></p>
+        <p class="vma-kicker">Our mission</p>
+        <p class="vma-mission-text">{{ $p.mission }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="vma-band vma-approach">
+    <div class="container">
+      <p class="vma-index"><span>03</span><span class="vma-rule"></span></p>
+      <p class="vma-kicker">Our approach</p>
+      <p class="vma-text vma-approach-lead">{{ $p.approach }}</p>
+      <div class="approach-cards">
+        {{- range $s := $p.approachSteps }}
+        <article class="approach-card fade-in">
+          <div class="approach-card-head">
+            <span class="approach-ico">{{ partial "icon.html" $s.icon }}</span>
+            <span class="approach-num">{{ $s.n }}</span>
+          </div>
+          <h3>{{ $s.label }}</h3>
+          <p>{{ $s.body }}</p>
+        </article>
+        {{- end }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="alt">
+  <div class="container">
+    {{ partial "section-eyebrow.html" (dict "eyebrow" "Why this matters" "title" "Built around what students and lecturers ask for") }}
+    <div class="two-cards">
+      {{- range $p.whyMatters }}
+      <div class="why-card fade-in">
+        <span class="why-ico">{{ partial "icon.html" .icon }}</span>
+        <h3>{{ .audience }}</h3>
+        <p>{{ .body }}</p>
+      </div>
+      {{- end }}
+    </div>
+  </div>
+</section>
+
+<section class="reach-section">
+  <div class="container">
+    {{ partial "section-eyebrow.html" (dict "eyebrow" "Our reach" "title" "30 universities across four countries") }}
+    <div class="reach-countries">
+      {{- range $p.countries }}
+      <div class="reach-country fade-in">
+        <span class="reach-flag">{{ partial "flag.html" .name }}</span>
+        <span class="reach-count">{{ .count }}</span>
+        <span class="reach-name">{{ .name }}</span>
+      </div>
+      {{- end }}
+    </div>
+  </div>
+</section>
+
+<section class="quote-banner">
+  <img class="quote-banner-img" src="{{ $p.quoteBanner.image | relURL }}" alt="" loading="lazy">
+  <div class="container quote-banner-inner">
+    <blockquote class="quote-banner-quote">&ldquo;{{ $p.quoteBanner.quote }}&rdquo;</blockquote>
+    <p class="quote-banner-body">{{ $p.quoteBanner.body }}</p>
+  </div>
+</section>
+
+<section class="section-team alt">
+  <div class="container">
+    {{ partial "section-eyebrow.html" (dict "eyebrow" "The team" "title" "Meet the team" "lead" hugo.Data.team.intro) }}
+    {{ partial "team-grid.html" . }}
+  </div>
+</section>
+
+{{ partial "partners.html" . }}
+{{ end }}

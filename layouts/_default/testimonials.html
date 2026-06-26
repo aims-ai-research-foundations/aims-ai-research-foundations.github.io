@@ -1,0 +1,48 @@
+{{ define "main" }}
+{{- $items := where hugo.Data.testimonials.items "workshop" "pilot-cape-town" }}
+<section class="testi-section" data-carousel data-autoplay="6000">
+  <div class="container">
+    <div class="testi-head">
+      <div class="testi-head-text">
+        <h1 class="testi-title">Participant Reflections</h1>
+        <p class="testi-subtitle">from the AIMS Pilot Workshop</p>
+      </div>
+      <span class="testi-bigquote" aria-hidden="true">&rdquo;</span>
+    </div>
+
+    <div class="testi-carousel">
+      <button class="testi-arrow testi-arrow-prev" type="button" data-prev aria-label="Previous reflection">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+
+      <div class="testi-viewport">
+        {{- range $i, $t := $items }}
+        <figure class="testi-slide{{ if eq $i 0 }} is-active{{ end }}" data-slide>
+          <div class="testi-avatar">{{ partial "avatar.html" $t.name }}</div>
+          <div class="testi-content">
+            <span class="testi-mark" aria-hidden="true">&ldquo;</span>
+            <blockquote>{{ $t.quote }}</blockquote>
+            <span class="testi-rule"></span>
+            <figcaption>
+              <span class="testi-name">{{ $t.name }}</span>
+              <span class="testi-role">{{ $t.role }}</span>
+            </figcaption>
+          </div>
+        </figure>
+        {{- end }}
+      </div>
+
+      <button class="testi-arrow testi-arrow-next" type="button" data-next aria-label="Next reflection">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+
+    <div class="testi-controls">
+      <div class="testi-dots" data-dots>
+        {{- range $i, $t := $items }}<button class="testi-dot{{ if eq $i 0 }} is-active{{ end }}" type="button" data-dot="{{ $i }}" aria-label="Go to reflection {{ add $i 1 }}"></button>{{ end }}
+      </div>
+      <p class="testi-counter"><strong data-current>01</strong> <span>/ {{ printf "%02d" (len $items) }}</span></p>
+    </div>
+  </div>
+</section>
+{{ end }}

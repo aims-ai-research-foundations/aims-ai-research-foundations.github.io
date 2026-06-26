@@ -1,0 +1,12 @@
+{{- /* Input: dict "start" "end" as ISO date strings. Outputs a human range. En dash for numeric ranges. */ -}}
+{{- $s := time.AsTime .start -}}
+{{- $e := time.AsTime .end -}}
+{{- $sameMonth := eq ($s.Format "2006-01") ($e.Format "2006-01") -}}
+{{- $sameYear := eq $s.Year $e.Year -}}
+{{- if $sameMonth -}}
+{{ $s.Day }}–{{ $e.Day }} {{ $e.Format "January 2006" }}
+{{- else if $sameYear -}}
+{{ $s.Format "2 January" }} – {{ $e.Format "2 January 2006" }}
+{{- else -}}
+{{ $s.Format "2 January 2006" }} – {{ $e.Format "2 January 2006" }}
+{{- end -}}

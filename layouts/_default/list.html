@@ -1,0 +1,17 @@
+{{ define "main" }}
+<section class="page-hero compact">
+  <div class="container">
+    <h1>{{ .Title }}</h1>
+  </div>
+</section>
+<section>
+  <div class="container">
+    <div class="prose">{{ .Content }}</div>
+    <ul class="plain-list">
+      {{- range .Pages }}
+      <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+      {{- end }}
+    </ul>
+  </div>
+</section>
+{{ end }}

@@ -1,0 +1,63 @@
+{{ define "main" }}
+<section class="page-hero has-visual">
+  <div class="container hero-split">
+    <div class="hero-split-text">
+      <p class="hero-eyebrow">Workshops</p>
+      <h1>An intensive week that turns lecturers into AI educators</h1>
+      <p class="hero-sub">Each workshop is a fully funded, in-person week for nominated lecturers and teaching assistants. It builds on the online pre-work and prepares participants to deliver the curriculum to their own students.</p>
+    </div>
+    <div class="hero-split-visual hero-photo" aria-hidden="true">
+      <img src="{{ "img/workshops/pilot-cape-town/gallery/02-presentation.jpg" | relURL }}" alt="" loading="eager">
+    </div>
+  </div>
+</section>
+
+<section class="grid-bg">
+  <div class="container">
+    {{ partial "section-eyebrow.html" (dict "eyebrow" "The workshop week" "title" "Four things you'll do") }}
+    {{ partial "threads.html" . }}
+  </div>
+</section>
+
+<section class="alt activities-section">
+  <div class="container">
+    <div class="ascroll">
+      <div class="ascroll-aside">
+        <p class="section-eyebrow">What happens during the week</p>
+        <h2 class="section-title with-accent">Workshop activities</h2>
+        <p class="section-lead">The week combines technical lectures, pedagogical design, contextualisation for Africa, hands-on and responsible innovation activities, teaching practice with structured feedback, and time to connect.</p>
+      </div>
+      {{ partial "activities.html" . }}
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    {{ partial "section-eyebrow.html" (dict "eyebrow" "Directory" "title" "Find your workshop") }}
+    {{- $all := .Sections.ByWeight }}
+    {{- $upcoming := where $all "Params.status" "upcoming" }}
+    {{- $completed := where $all "Params.status" "completed" }}
+    {{- with $upcoming }}
+    <h3 class="directory-group">Upcoming</h3>
+    <div class="workshop-grid">{{ range . }}{{ partial "workshop-card.html" . }}{{ end }}</div>
+    {{- end }}
+    {{- with $completed }}
+    <h3 class="directory-group">Completed</h3>
+    <div class="workshop-grid">{{ range . }}{{ partial "workshop-card.html" . }}{{ end }}</div>
+    {{- end }}
+  </div>
+</section>
+
+<section class="alt">
+  <div class="container narrow center">
+    <p class="section-eyebrow">From past participants</p>
+    <h2 class="section-title">See testimonials from our previous workshops</h2>
+    <p class="section-lead center-lead">Hear from the people who have been through the workshops, and see what the week looks like.</p>
+    <div class="teaser-btns">
+      <a class="btn btn-primary" href="{{ "testimonials/" | relURL }}">Read testimonials {{ partial "icon.html" "arrow-right" }}</a>
+      <a class="btn btn-ghost" href="{{ "gallery/" | relURL }}">View the gallery {{ partial "icon.html" "arrow-right" }}</a>
+    </div>
+  </div>
+</section>
+{{ end }}

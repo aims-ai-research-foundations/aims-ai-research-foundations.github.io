@@ -1,0 +1,81 @@
+baseURL = 'https://aims-ai-research-foundations.github.io/'
+title = 'AI Research Foundations for Higher Education'
+defaultContentLanguage = 'en'
+enableRobotsTXT = true
+disableKinds = ["taxonomy", "term"]
+
+[languages.en]
+  locale = 'en-gb'
+  weight = 1
+
+[params]
+  description = "AI Research Foundations for Higher Education is a Train-the-Trainer programme, funded by Google.org, that equips lecturers at 30 universities across Nigeria, Ghana, Kenya, and South Africa to teach a localised version of Google DeepMind's AI Research Foundations curriculum."
+  tagline = "Empowering Universities to Lead Africa's AI Future"
+  contactEmail = "ai-research-foundations@aims.ac.za"
+  repoURL = "https://github.com/aims-ai-research-foundations/pilot-workshop"
+  googleSkillsURL = "https://skills.google/paths/3135"
+  discordURL = "#"                         # PLACEHOLDER: Discord invite to confirm
+  pilotSiteURL = "https://aims-ai-research-foundations.github.io/pilot-workshop/"
+  codeOfConductURL = "https://aims-ai-research-foundations.github.io/pilot-workshop/code-of-conduct/"
+  aimsURL = "https://aims.ac.za"
+
+[[params.partners]]
+  name = "AIMS South Africa"
+  image = "img/logos/aims-south-africa.png"
+  url = "https://aims.ac.za"
+  group = "partner"
+
+[[params.partners]]
+  name = "University College London"
+  image = "img/logos/ucl.jpeg"
+  url = "https://www.ucl.ac.uk"
+  group = "partner"
+
+[[params.partners]]
+  name = "FATE Foundation"
+  image = "img/logos/fate-foundation.png"
+  url = "https://fatefoundation.org"
+  group = "partner"
+
+[[params.partners]]
+  name = "Google.org"
+  image = "img/logos/google-org.png"
+  url = "https://www.google.org"
+  group = "supporter"
+
+[[menu.main]]
+  name = "Home"
+  pageRef = "/"
+  weight = 10
+
+[[menu.main]]
+  name = "Programme"
+  pageRef = "/programme"
+  weight = 20
+
+[[menu.main]]
+  name = "Workshops"
+  pageRef = "/workshops"
+  weight = 30
+
+[[menu.main]]
+  name = "Gallery"
+  pageRef = "/gallery"
+  weight = 40
+
+[[menu.main]]
+  name = "Testimonials"
+  pageRef = "/testimonials"
+  weight = 50
+
+[[menu.main]]
+  name = "Resources"
+  pageRef = "/resources"
+  weight = 60
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[build]
+  [build.buildStats]
+    enable = true

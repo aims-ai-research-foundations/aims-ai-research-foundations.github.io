@@ -1,0 +1,12 @@
+{{- /* Input: a testimonial item dict */ -}}
+<figure class="testimonial-card">
+  {{- if .placeholder }}<span class="sample-badge">Sample</span>{{ end }}
+  <blockquote>{{ .quote }}</blockquote>
+  <figcaption>
+    {{ partial "avatar.html" .name }}
+    <span class="t-meta">
+      <span class="t-name">{{ .name }}</span>
+      <span class="t-role">{{ .role }}</span>
+    </span>
+  </figcaption>
+</figure>

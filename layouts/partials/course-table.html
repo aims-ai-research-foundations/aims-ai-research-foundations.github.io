@@ -1,0 +1,17 @@
+<div class="table-scroll">
+  <table class="course-table">
+    <thead>
+      <tr><th scope="col">#</th><th scope="col">Course</th><th scope="col">You will be able to</th></tr>
+    </thead>
+    <tbody>
+      {{- range hugo.Data.programme.courses }}
+      <tr>
+        <td class="course-num">{{ .number }}</td>
+        <td class="course-name">{{ .title }}</td>
+        <td class="course-outcome">{{ .outcome }}</td>
+      </tr>
+      {{- end }}
+    </tbody>
+  </table>
+</div>
+<p class="course-note">{{ hugo.Data.programme.curriculumNotes }}</p>

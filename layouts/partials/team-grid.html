@@ -1,0 +1,11 @@
+<div class="team-grid">
+  {{- range hugo.Data.team.members }}
+  <div class="team-card">
+    {{ partial "avatar.html" .name }}
+    <h3>{{ .name }}</h3>
+    <p class="team-role">{{ .role }}</p>
+    <p class="team-org">{{ .org }}</p>
+    <a class="team-email" href="mailto:{{ .email }}">{{ partial "icon.html" "mail" }} {{ .email }}</a>
+  </div>
+  {{- end }}
+</div>

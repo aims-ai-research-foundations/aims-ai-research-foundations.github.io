@@ -1,0 +1,19 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{{- $pageTitle := .Site.Title }}
+{{- if not .IsHome }}{{ $pageTitle = printf "%s · %s" .Title .Site.Title }}{{ end }}
+<title>{{ $pageTitle }}</title>
+<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+
+<meta property="og:title" content="{{ $pageTitle }}">
+<meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+<meta property="og:type" content="website">
+<meta property="og:image" content="{{ "img/others/ai-research-foundations-for-higher-education-programme.jpeg" | absURL }}">
+<link rel="icon" href="{{ "img/logos/logo.svg" | relURL }}" type="image/svg+xml">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap">
+
+{{- $css := resources.Get "css/main.css" | fingerprint }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}">

@@ -1,0 +1,11 @@
+<div class="ascroll-list">
+  {{- range $i, $a := hugo.Data.programme.activities }}
+  <article class="ascroll-card fade-in" style="--i:{{ $i }}">
+    <span class="ascroll-ico">{{ partial "icon.html" $a.icon }}</span>
+    <div class="ascroll-text">
+      <h3>{{ $a.title }}</h3>
+      <p>{{ $a.body }}</p>
+    </div>
+  </article>
+  {{- end }}
+</div>

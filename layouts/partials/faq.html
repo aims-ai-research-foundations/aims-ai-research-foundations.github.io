@@ -1,0 +1,12 @@
+{{- /* Input: a slice of dicts with .q and .a */ -}}
+<div class="faq">
+  {{- range . }}
+  <details class="faq-item">
+    <summary>
+      <span class="faq-q">{{ .q }}</span>
+      <span class="faq-marker" aria-hidden="true"></span>
+    </summary>
+    <div class="faq-answer"><p>{{ .a | safeHTML }}</p></div>
+  </details>
+  {{- end }}
+</div>

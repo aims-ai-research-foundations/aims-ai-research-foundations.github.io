@@ -1,0 +1,34 @@
+<header class="site-header">
+  <div class="inner">
+    <a class="brand" href="{{ .Site.Home.RelPermalink }}" aria-label="AI Research Foundations for Higher Education, home">
+      <img class="brand-logo" src="{{ "img/logos/logo-white.svg" | relURL }}" alt="AI Research Foundations for Higher Education" height="44">
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+    <nav class="nav" id="primary-nav" aria-label="Primary">
+      {{- $cur := . }}
+      {{- range .Site.Menus.main }}
+      {{- $active := or ($cur.IsMenuCurrent "main" .) ($cur.HasMenuCurrent "main" .) }}
+      {{- if and (eq .URL "/") $cur.IsHome }}{{ $active = true }}{{ end }}
+      {{- if eq .Name "Workshops" }}
+      <div class="nav-has-sub">
+        <a class="nav-top{{ if $active }} active{{ end }}" href="{{ .URL | relURL }}"{{ if $active }} aria-current="page"{{ end }} aria-haspopup="true">{{ .Name }}<svg class="nav-caret" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></a>
+        <div class="nav-sub" role="menu" aria-label="Workshops">
+          <a href="{{ "workshops/pilot-cape-town/" | relURL }}" role="menuitem">AIMS Pilot Workshop, Muizenberg</a>
+          <a href="{{ "workshops/nigeria-2026/" | relURL }}" role="menuitem">Lagos, Nigeria</a>
+          <a href="{{ "workshops/ghana-2026/" | relURL }}" role="menuitem">Ghana</a>
+          <a href="{{ "workshops/pretoria-2026/" | relURL }}" role="menuitem">Pretoria, South Africa</a>
+        </div>
+      </div>
+      {{- else }}
+      <a href="{{ .URL | relURL }}"{{ if $active }} class="active" aria-current="page"{{ end }}>{{ .Name }}</a>
+      {{- end }}
+      {{- end }}
+    </nav>
+  </div>
+</header>

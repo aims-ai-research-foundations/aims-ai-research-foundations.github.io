@@ -1,0 +1,22 @@
+{{- $w := . -}}
+<a class="workshop-card" href="{{ $w.RelPermalink }}">
+  <div class="workshop-card-thumb">
+    {{- with $w.Params.thumb }}<img src="{{ . | relURL }}" alt="{{ $w.Title }}" loading="lazy">{{ end }}
+    {{ partial "status-pill.html" $w.Params.status }}
+  </div>
+  <div class="workshop-card-body">
+    <span class="workshop-card-loc"><span class="loc-flag">{{ partial "flag.html" $w.Params.country }}</span> {{ with $w.Params.city }}{{ if ne . "To be confirmed" }}{{ . }}, {{ end }}{{ end }}{{ $w.Params.country }}</span>
+    <h3>{{ $w.Title }}</h3>
+    <p>{{ $w.Params.summary }}</p>
+    <div class="workshop-card-dates">
+      {{- if or $w.Params.datesTBC (not $w.Params.cohorts) }}
+      <span class="wc-date wc-tbc">Dates to be confirmed</span>
+      {{- else }}
+      {{- range $w.Params.cohorts }}
+      <span class="wc-date">{{ partial "daterange.html" (dict "start" .start "end" .end) }}</span>
+      {{- end }}
+      {{- end }}
+    </div>
+    <span class="workshop-card-cta">View workshop {{ partial "icon.html" "arrow-right" }}</span>
+  </div>
+</a>

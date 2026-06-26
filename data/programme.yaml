@@ -1,0 +1,286 @@
+tagline: "Empowering Universities to Lead Africa's AI Future"
+subline: "A Train-the-Trainer programme, funded by Google.org, that equips university lecturers across Africa to teach a localised version of Google DeepMind's AI Research Foundations curriculum."
+
+vision: "A future where universities across Africa have the expertise, curriculum, and confidence to educate the next generation of AI researchers, innovators, and leaders."
+mission: "Train university lecturers to teach an advanced, hands-on AI curriculum with confidence, so that thousands of students across Africa can build and apply modern AI."
+approach: "We use a Train-the-Trainer model. Instead of teaching students directly, we upskill the lecturers who already teach them. Each university nominates its AI Champions, who carry the skills back to their own classrooms."
+
+visionHeadline: "African universities leading the future of AI"
+
+missionFeatures:
+  - { icon: "people", label: "Lecturer empowerment" }
+  - { icon: "brain-circuit", label: "Advanced curriculum" }
+  - { icon: "groups", label: "Student impact" }
+  - { icon: "globe", label: "Africa-wide reach" }
+
+approachSteps:
+  - { n: "1", label: "Train", icon: "presentation", body: "We train lecturers with in-depth AI knowledge and teaching skills." }
+  - { n: "2", label: "Equip", icon: "tune", body: "We give them world-class resources, tools, and ongoing support." }
+  - { n: "3", label: "Empower", icon: "school", body: "Lecturers deliver engaging, practical AI learning at their universities." }
+  - { n: "4", label: "Impact", icon: "groups", body: "Thousands of students gain the skills to build and innovate with AI." }
+
+programmeSummary: "AI Research Foundations for Higher Education helps universities build lasting, in-house AI teaching capacity. Funded by Google.org and built on a curriculum from Google DeepMind, the programme trains lecturers at 30 universities across Nigeria, Ghana, Kenya, and South Africa to deliver eight hands-on AI courses, adapted for their own students and context."
+
+quoteBanner:
+  quote: "In Africa's youth lies the future of global innovation"
+  body: "By equipping our universities today, we ensure that the next generation of Artificial Intelligence is not just used in Africa, but defined, designed, and deployed by African minds."
+  image: "img/landing/see-you-in-muizenberg.jpg"
+
+stats:
+  - value: "30"
+    label: "Universities"
+  - value: "4"
+    label: "Countries"
+  - value: "8"
+    label: "Courses"
+  - value: "2026–2028"
+    label: "Programme period"
+
+facts:
+  funder: "Google.org"
+  model: "Train-the-Trainer"
+  managedBy: "FATE Foundation (Nigeria) and AIMS South Africa"
+  curriculumBy: "Google DeepMind"
+  toolkitBy: "UCL"
+  universities: "30 universities: Nigeria 10, South Africa 10, Kenya 6, Ghana 4."
+  grant: "Support grant of up to $57,300 per university ($11,460 per lecturer, up to five), covering upskilling time, teaching assistants, and overhead."
+  period: "2026 to 2028."
+
+nominationsOpen: false
+nominationsNote: "We are not taking new nominations right now. For any questions about the programme, email the team."
+
+countries:
+  - { flag: "🇳🇬", name: "Nigeria", count: 10 }
+  - { flag: "🇿🇦", name: "South Africa", count: 10 }
+  - { flag: "🇰🇪", name: "Kenya", count: 6 }
+  - { flag: "🇬🇭", name: "Ghana", count: 4 }
+
+trainTheTrainer:
+  eyebrow: "How it works"
+  title: "Train one lecturer. Reach hundreds of students."
+  intro: "We do not teach students directly. We train their lecturers. Each lecturer we train goes on to teach the courses to their own classes, year after year. That is how a small team reaches thousands of students across Africa."
+  steps:
+    - { icon: "people", count: "8", unit: "experts", label: "We train the lecturers", detail: "Lecturers complete the curriculum and an intensive in-person workshop, with support throughout." }
+    - { icon: "school", count: "150+", unit: "AI Champions", label: "They teach their students", detail: "Each lecturer delivers the courses to their own classes, adapted for local context." }
+    - { icon: "groups", count: "Thousands", unit: "of students", label: "The skills multiply", detail: "Across 30 universities and 4 countries, every new cohort of students builds on the last." }
+
+whyMatters:
+  - audience: "What students ask for"
+    icon: "lightbulb"
+    body: "Students want to work on real, modern AI: language models, neural networks, and transformers, with the maths and code behind them. They want skills that lead to research and jobs, taught by people who understand their context."
+  - audience: "What lecturers ask for"
+    icon: "school"
+    body: "Lecturers want to teach AI with confidence, using ready-made, high-quality materials they can adapt. They want hands-on experience, a community of peers, and the freedom to localise examples for their own students."
+
+gains:
+  - title: "Blended pedagogy experience"
+    icon: "presentation"
+    body: "Lecturers learn to combine online curriculum with in-person teaching, practising the techniques during the workshop before they use them in class."
+  - title: "In-house AI expertise"
+    icon: "brain-circuit"
+    body: "Each institution builds a core of lecturers fluent in modern AI, so the capability stays on campus long after the programme ends."
+  - title: "Advanced course delivery"
+    icon: "tune"
+    body: "Departments can offer advanced, current content: large language models, neural networks, transformers, and capstone projects, with materials and support provided."
+  - title: "Institutional advantage"
+    icon: "school"
+    body: "A sustainable AI talent pipeline strengthens research output, student outcomes, and the university's standing as a regional leader in AI."
+
+transformation:
+  - icon: "people"
+    before: "Few AI lecturers"
+    after: "In-house AI experts"
+  - icon: "presentation"
+    before: "No curriculum"
+    after: "Modern AI curriculum"
+  - icon: "network"
+    before: "Outside consultants"
+    after: "Internal capability"
+  - icon: "calendar"
+    before: "One-off workshops"
+    after: "Sustainable programme"
+
+courses:
+  - number: "01"
+    title: "Build Your Own Small Language Model"
+    skillsURL: "https://www.skills.google/paths/3135/course_templates/1341"
+    outcome: "Establish the foundational concepts required to implement a small language model from scratch."
+    hours: "5 hours online"
+    objectives:
+      - "Explain what an autoregressive generative language model is and why it is useful."
+      - "Give examples of language models and how they help in natural language processing."
+      - "Formulate the language modelling problem using n-grams, and explain why deep learning does it better."
+      - "List the steps in a machine learning pipeline: tokenization, loss, optimization, decoding, and evaluation."
+      - "Train a simple decoder-only Transformer small language model using Keras."
+      - "Recognise how researchers build, refine, and evaluate a large language model."
+      - "Consider the ethical implications of building language models and respond to them responsibly."
+      - "Formulate a problem statement for a challenge from your local context."
+  - number: "02"
+    title: "Represent Your Language Data"
+    skillsURL: "https://www.skills.google/paths/3135/course_templates/1452"
+    outcome: "Master the techniques for preparing text data, specifically focusing on tokenization, embeddings, and vector representation."
+    hours: "5 hours online"
+    objectives:
+      - "Explain the complexities of tokenizing language data, and relate token frequency to Zipf's law."
+      - "Discuss the trade-off between vocabulary size, model size, and computational efficiency."
+      - "Compare character, word, and subword tokenization and their effect on vocabulary and sequence length."
+      - "Explain the role of special tokens such as BOS, EOS, PAD, and UNK."
+      - "Describe the byte-pair encoding (BPE) algorithm and apply it to a dataset."
+      - "Recognise how embeddings capture meaning, and visualise relationships between tokens."
+      - "Prepare a dataset with a subword tokenizer and train a small language model on it."
+      - "Critically evaluate the ethics of dataset creation: privacy, consent, ownership, and representation."
+      - "Design and document an ethical dataset using the data cards process."
+  - number: "03"
+    title: "Design and Train Neural Networks"
+    skillsURL: "https://www.skills.google/paths/3135/course_templates/1450"
+    outcome: "Implement and evaluate neural networks like the multilayer perceptron while learning to diagnose and mitigate issues like overfitting."
+    hours: "5 hours online"
+    objectives:
+      - "Explain generalization and why good training performance does not guarantee real-world accuracy."
+      - "Explain overfitting and underfitting, and how train-test splits help."
+      - "Interpret loss curves and the bias-variance trade-off."
+      - "Design and evaluate multilayer perceptrons (MLPs) for classification tasks."
+      - "Explain how hyperparameter tuning affects training loss versus test performance."
+      - "Apply overfitting mitigation: regularization, dropout, early stopping, and capacity control."
+      - "Describe the role of a validation dataset, and why tuning happens on it rather than test data."
+      - "Summarise backpropagation and explain gradient-based optimization with stochastic gradient descent."
+      - "Train a neural network, and weigh the benefits and risks of AI models in your local region."
+  - number: "04"
+    title: "Discover the Transformer Architecture"
+    skillsURL: "https://www.skills.google/paths/3135/course_templates/1451"
+    outcome: "Investigate the core mechanisms of the transformer architecture, by implementing self-attention and multi-head attention."
+    hours: "5 hours online"
+    objectives:
+      - "Summarise the key components of the transformer: positional embeddings, attention, skip connections, layer norm, and MLP."
+      - "Explain and visualise self-attention and its extensions: masked and multi-head attention."
+      - "Translate the mathematical expression of an attention head into code."
+      - "Explain the capabilities and limits of transformers, including the fixed context window and quadratic scaling."
+      - "Implement multi-head masked attention."
+      - "Reflect on how human interactions create shared meaning, and what may be lost when they are automated."
+      - "Identify and map stakeholders, their values, and their influence across communities."
+      - "Design a mini-engagement plan so diverse perspectives shape an AI project."
+  - number: "05"
+    title: "Fine-tune Your Model"
+    skillsURL: "https://www.skills.google/paths/3135/course_templates/1556"
+    outcome: "Apply transfer learning techniques to adapt the pre-trained model for specific tasks using a smaller, targeted dataset."
+    hours: "5 hours online"
+    objectives:
+      - "Describe the progression from next-token prediction to instruction following."
+      - "Explain the difference between pre-training and fine-tuning, and the trade-offs of each."
+      - "Implement full-parameter fine-tuning."
+      - "Implement parameter-efficient fine-tuning using Low-Rank Adaptation (LoRA)."
+      - "List the limitations of supervised fine-tuning, especially getting high-quality data."
+      - "Use storytelling and foresight to explore how AI may shape different social futures."
+      - "Critically evaluate and design governance approaches, including enforcement and clear rules."
+  - number: "06"
+    title: "Align Your Model"
+    outcome: "Implement safety and alignment techniques (RLHF) to ensure the model outputs are helpful, harmless, and honest."
+    hours: "5 hours online"
+    objectives:
+      - "Identify the components of the reinforcement learning pipeline and how it differs from supervised learning."
+      - "Explain what a reward is in reinforcement learning."
+      - "Construct reward functions and identify the difficulties they raise for language responses."
+      - "Train your own reward model using human-annotated reward data."
+      - "Explain the difference between reward models and reward functions."
+      - "Explain how preferences address the difficulty of collecting reward data."
+      - "Apply each step of the RLHF pipeline to language data using JAX and Keras."
+      - "Describe how to build reward and preference datasets for alignment."
+  - number: "07"
+    title: "Accelerate Your Model"
+    skillsURL: "https://www.skills.google/paths/3135/course_templates/1555"
+    outcome: "Optimise the model's performance for faster inference and reduced latency using quantization techniques."
+    hours: "5 hours online"
+    objectives:
+      - "Explain how a GPU's processor, memory, and storage work together to perform matrix multiplication."
+      - "Explain what a FLOP is and compute the FLOPs needed to train a transformer."
+      - "Estimate a model's memory across parameters, optimizer states, gradients, and activations."
+      - "Apply mixed precision training to reduce memory use."
+      - "Explain the benefits of quantization when deploying a model."
+      - "Apply gradient accumulation to increase the effective batch size on a single GPU."
+      - "List advanced techniques: FlashAttention, multi-GPU training, gradient recomputation, and pre-fetching."
+      - "Analyse how AI consumes energy, water, and minerals, and the justice implications for African communities."
+      - "Apply strategies to reduce the environmental impact of AI through efficient, fair design."
+  - number: "08"
+    title: "Capstone Project"
+    outcome: "Develop your model for real-world impact: synthesise all learnt skills to deploy a fully functional model that solves a tangible real-world problem."
+    hours: "20+ hours online"
+    objectives:
+      - "Choose one of three project pathways: a dialogue system, text classification, or text summarization."
+      - "Investigate your own research question, using the supported datasets as starting points."
+      - "Synthesise every skill from the curriculum to build a working model."
+      - "Deploy a model that solves a tangible, real-world problem in your context."
+
+curriculumNotes: "40+ freely available Jupyter notebooks, 4 to 5 hours of online content per course, released under Apache 2.0 and CC BY 4.0 licences."
+
+roadmap:
+  - step: "1"
+    title: "Internal demand assessment"
+    body: "The university gauges interest and identifies the departments and lecturers who will take part."
+  - step: "2"
+    title: "Sign subgrant agreement"
+    body: "The institution signs a subgrant agreement with the FATE Foundation to formalise the partnership and funding."
+  - step: "3"
+    title: "Connect lecturers and TAs"
+    body: "The university nominates its AI Champions (lecturers) and teaching assistants who will deliver the curriculum."
+  - step: "4"
+    title: "Workshops for lecturers"
+    body: "Nominated lecturers complete the pre-work and attend an intensive, fully funded in-person workshop."
+  - step: "5"
+    title: "Course delivery and capstone supervision"
+    body: "Lecturers deliver the courses to their students and supervise capstone projects, with ongoing support from the team."
+  - step: "6"
+    title: "Post-course reporting"
+    body: "The university reports on delivery and outcomes, closing the loop and informing the next cohort."
+
+threads:
+  - num: "01"
+    name: "Learn"
+    icon: "lightbulb"
+    body: "Work through the technical content yourself, from language models to transformers, in lectures and hands-on labs."
+  - num: "02"
+    name: "Teach"
+    icon: "presentation"
+    body: "Practise teaching the material and get clear feedback, so you leave ready to deliver it with confidence."
+  - num: "03"
+    name: "Adapt"
+    icon: "globe"
+    body: "Make the courses fit your students, with local examples, datasets, and framing."
+  - num: "04"
+    name: "Connect"
+    icon: "network"
+    body: "Get to know other lecturers, the team, and partners, and build relationships that last beyond the week."
+
+activities:
+  - title: "Technical AI Lectures"
+    icon: "brain-circuit"
+    body: "Expert-led lectures that work through the core technical content of the curriculum, from neural networks to transformers and model acceleration."
+  - title: "Pedagogical Design"
+    icon: "presentation"
+    body: "Sessions on how to teach this material well: structuring a course, designing activities, and supporting students through difficult concepts."
+  - title: "Contextualisation for Africa"
+    icon: "globe"
+    body: "Workshops on adapting examples, datasets, and case studies so the curriculum speaks directly to African students and their contexts."
+  - title: "AI and Responsible Innovation Activities"
+    icon: "shield-check"
+    body: "Hands-on activities that build practical AI skills alongside responsible innovation: thinking through impact, fairness, and resource use."
+  - title: "Explain It Back"
+    icon: "message-circle"
+    body: "Short teaching practice where you explain a concept back to peers and receive structured feedback to sharpen your delivery."
+  - title: "Lecture It Back"
+    icon: "school"
+    body: "Longer teaching practice where you deliver a full lecture segment to the group, with structured feedback from facilitators and peers."
+  - title: "Social and Networking"
+    icon: "groups"
+    body: "Shared meals, social activities, and networking that turn a cohort of strangers into a lasting community of practice."
+
+faqs:
+  - q: "What technical background do participants need?"
+    a: "The curriculum starts from scratch, but a working knowledge of linear algebra, calculus, probability, and Python will help you grasp the material faster."
+  - q: "Who is the curriculum ideal for?"
+    a: "Penultimate and final-year STEM students. Lecturers learn to deliver it to exactly this audience."
+  - q: "What is the time commitment?"
+    a: "Complete the online curriculum during the pre-work period, then attend an intensive week in person. Afterwards, lecturers deliver the courses to their own students."
+  - q: "What does it cost?"
+    a: "Nothing. Training and workshops are fully sponsored, and universities receive grants to support delivery."
+  - q: "Who runs the programme?"
+    a: "It is managed by the FATE Foundation in Nigeria and AIMS South Africa, with a curriculum from Google DeepMind, a lecturer toolkit from UCL, and funding from Google.org."

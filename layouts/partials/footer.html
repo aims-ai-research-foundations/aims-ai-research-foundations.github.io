@@ -1,0 +1,48 @@
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="{{ "img/logos/logo-white.svg" | relURL }}" alt="AI Research Foundations for Higher Education" height="34">
+        <p>{{ .Site.Params.tagline }}</p>
+        <a class="footer-email" href="mailto:{{ .Site.Params.contactEmail }}">{{ partial "icon.html" "mail" }} {{ .Site.Params.contactEmail }}</a>
+      </div>
+      <nav class="footer-col" aria-label="Explore">
+        <h3>Explore</h3>
+        {{- range .Site.Menus.main }}
+        <a href="{{ .URL | relURL }}">{{ .Name }}</a>
+        {{- end }}
+        <a href="{{ "team/" | relURL }}">Team</a>
+      </nav>
+      <nav class="footer-col" aria-label="Workshops">
+        <h3>Workshops</h3>
+        <a href="{{ "workshops/pilot-cape-town/" | relURL }}">AIMS Pilot Workshop, Muizenberg</a>
+        <a href="{{ "workshops/nigeria-2026/" | relURL }}">Lagos, Nigeria</a>
+        <a href="{{ "workshops/ghana-2026/" | relURL }}">Ghana</a>
+        <a href="{{ "workshops/pretoria-2026/" | relURL }}">Pretoria, South Africa</a>
+        <span class="footer-soon">Kenya <em>coming soon</em></span>
+      </nav>
+    </div>
+
+    <div class="footer-partners">
+      <span class="footer-partners-label">In partnership with</span>
+      <div class="footer-logo-chips">
+        {{- range where .Site.Params.partners "group" "partner" }}
+        <a class="footer-logo-chip" href="{{ .url }}" target="_blank" rel="noopener" title="{{ .name }}"><img src="{{ .image | relURL }}" alt="{{ .name }}" loading="lazy"></a>
+        {{- end }}
+      </div>
+      <span class="footer-partners-label">with support from</span>
+      <div class="footer-logo-chips">
+        {{- range where .Site.Params.partners "group" "supporter" }}
+        <a class="footer-logo-chip" href="{{ .url }}" target="_blank" rel="noopener" title="{{ .name }}"><img src="{{ .image | relURL }}" alt="{{ .name }}" loading="lazy"></a>
+        {{- end }}
+      </div>
+    </div>
+
+    <div class="footer-utility">
+      <div class="footer-links">
+        <a href="{{ .Site.Params.repoURL }}/blob/main/LICENSE" target="_blank" rel="noopener">Licence (CC BY 4.0)</a>
+      </div>
+      <span class="footer-copy">© 2026 AIMS South Africa</span>
+    </div>
+  </div>
+</footer>

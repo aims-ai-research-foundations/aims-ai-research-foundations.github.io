@@ -1,0 +1,38 @@
+intro: "A team of AI researchers, educators, and programme managers from AIMS South Africa, UCL, and Google DeepMind, supporting every lecturer through the programme."
+
+members:
+  - id: ulrich
+    name: "Prof. Ulrich Paquet"
+    role: "Project Lead"
+    org: "AI Director, AIMS South Africa · Research Scientist, Google DeepMind"
+    email: "ulrich@aims.ac.za"
+  - id: michael
+    name: "Michael Alummoottil"
+    role: "Project Manager and NLP AI Expert"
+    org: "PhD Researcher, UCL"
+    email: "michael@aims.ac.za"
+  - id: yassir
+    name: "Yassir Aladdin"
+    role: "Technical Lead and NLP AI Expert"
+    org: "Google DeepMind Scholar"
+    email: "yassir@aims.ac.za"
+  - id: ayman
+    name: "Ayman Saeed"
+    role: "NLP AI Expert"
+    org: "Google DeepMind Scholar"
+    email: "ayman@aims.ac.za"
+  - id: maharavo
+    name: "Maharavo"
+    role: "NLP AI Expert"
+    org: "Google DeepMind Scholar"
+    email: "maharavo@aims.ac.za"
+  - id: similoluwa
+    name: "Similoluwa Okunowo"
+    role: "NLP AI Expert"
+    org: "Google DeepMind Scholar"
+    email: "similoluwa@aims.ac.za"
+  - id: toky
+    name: "Toky Rajaofera"
+    role: "NLP AI Expert"
+    org: "Google DeepMind Scholar"
+    email: "toky@aims.ac.za"
