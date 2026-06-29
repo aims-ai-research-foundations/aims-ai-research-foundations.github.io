@@ -67,7 +67,7 @@
   <div class="container">
     {{ partial "section-eyebrow.html" (dict "eyebrow" "Before the workshop" "title" "Pre-work starts before you arrive") }}
     {{- if ne .Params.status "completed" }}
-    <p class="notice notice-gate">{{ partial "icon.html" "shield-check" }} <span><strong>Completing Google Skills Courses 1–4 is required to attend the in-person workshop.</strong> Only AI Champions and Teaching Assistants who have completed Courses 1–4 will be confirmed for their country's workshop. Please complete them during the pre-work period, before your workshop.</span></p>
+    <p class="notice notice-gate">{{ partial "icon.html" "shield-check" }} <span>We encourage you to complete all 8 Google Skills courses before the workshop. <strong>Completing Courses 1–4 is a hard requirement to attend</strong> — only AI Champions and Teaching Assistants who have completed Courses 1–4 will be confirmed for their country's workshop. Please complete them during the pre-work period, before your workshop.</span></p>
     {{- end }}
     <div class="prework-summary">
       <ul class="prework-points">
