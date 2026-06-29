@@ -2181,6 +2181,9 @@ section.alt { background: var(--surface-1); }
 /* Notice */
 .notice { border-radius: 12px; padding: 0.9rem 1.2rem; font-weight: 700; margin-top: 1rem; }
 .notice-done { background: var(--surface-2); color: var(--indigo-soft); border: 1px solid var(--border); }
+.notice-gate { background: var(--gold-soft); color: var(--accent); border: 1px solid rgba(253, 214, 51, 0.5); border-left: 4px solid var(--gold); display: flex; align-items: flex-start; gap: 0.6rem; font-weight: 600; line-height: 1.5; }
+.notice-gate svg { flex: 0 0 auto; width: 1.25rem; height: 1.25rem; margin-top: 0.15rem; color: var(--accent); }
+.notice-gate strong { font-weight: 800; }
 
 /* Tabs */
 .tablist { display: flex; flex-wrap: wrap; gap: 0.5rem; border-bottom: 2px solid var(--border); margin-bottom: 2rem; }
