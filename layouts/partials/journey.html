@@ -1,0 +1,16 @@
+{{- /* Input: dict "milestones" = slice of {date, title, body, highlight?} */ -}}
+<ol class="ptl" aria-label="Programme timeline">
+  {{- range .milestones }}
+  <li class="ptl-item{{ if .highlight }} is-now{{ end }}">
+    <span class="ptl-node" aria-hidden="true"></span>
+    <div class="ptl-card fade-in">
+      <div class="ptl-head">
+        <span class="ptl-title">{{ .title }}</span>
+        {{- if .highlight }}<span class="ptl-now">You are here</span>{{ end }}
+      </div>
+      <span class="ptl-date">{{ .date }}</span>
+      {{- with .body }}<p class="ptl-body">{{ . }}</p>{{ end }}
+    </div>
+  </li>
+  {{- end }}
+</ol>

@@ -8,6 +8,26 @@
       if (!nav) return;
       var open = nav.classList.toggle("open");
       btn.setAttribute("aria-expanded", open ? "true" : "false");
+      /* Collapse any open submenu whenever the mobile menu closes. */
+      if (!open) {
+        nav.querySelectorAll(".nav-has-sub.is-open").forEach(function (s) {
+          s.classList.remove("is-open");
+          var t = s.querySelector(".nav-sub-toggle");
+          if (t) t.setAttribute("aria-expanded", "false");
+        });
+      }
+    });
+  });
+
+  /* ---------- Workshops submenu toggle (tap to open/close on mobile) ---------- */
+  document.querySelectorAll(".nav-sub-toggle").forEach(function (btn) {
+    btn.addEventListener("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var parent = btn.closest(".nav-has-sub");
+      if (!parent) return;
+      var open = parent.classList.toggle("is-open");
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
     });
   });
 

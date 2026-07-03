@@ -8,10 +8,11 @@ city: "Muizenberg, Cape Town"
 venue: "AIMS South Africa"
 host: "AIMS South Africa"
 audience: "PhD and Master's students, researchers, TAs, and lecturers"
-summary: "The pilot workshop that shaped the programme, held in June 2026 in Muizenberg, Cape Town."
+summary: "A dry run of the workshop, held in June 2026 in Muizenberg, Cape Town, to test and refine how the week runs."
 weight: 2
 heroImage: "img/workshops/pilot-cape-town/gallery/06-computer-lab.jpg"
 thumb: "img/workshops/pilot-cape-town/gallery/02-presentation.jpg"
+aboutImage: "img/workshops/pilot-cape-town/gallery/05-hands-on-lab.jpg"
 cohorts:
   - label: "Workshop week"
     start: "2026-06-15"
@@ -22,7 +23,7 @@ prework:
   liveSessions: "Completed"
   requiredCourses: ["01", "02", "03", "04"]
 links:
-  discord: "#"
+  discord: "https://discord.gg/PKdNzQPV7Z"
   googleSkills: "https://skills.google/paths/3135"
   pilotSite: "https://aims-ai-research-foundations.github.io/pilot-workshop/"
 facilitators: ["ulrich", "michael", "yassir", "ayman", "maharavo", "similoluwa", "toky"]
@@ -115,6 +116,6 @@ schedule:
       - { start: "16:30", end: "17:00", name: "Closing Remarks", cat: "social" }
 ---
 
-The AIMS Pilot Workshop was the first AI Research Foundations workshop, held over five days at AIMS South Africa in Muizenberg. It brought together lecturers, researchers, and teaching assistants to test and refine the workshop model now used across the programme.
+The AIMS Pilot Workshop was a dry run of the AI Research Foundations workshop, held over five days at AIMS South Africa in Muizenberg. It brought together lecturers, researchers, and teaching assistants so the team could test how the week ran and refine the workshop before the national cohorts.
 
-The week blended technical lectures, hands-on labs, peer teaching with structured feedback, and social activities, all woven through the four threads: learn, teach, adapt, and connect. The lessons from this pilot shaped the national workshops that follow.
+The week blended technical lectures, hands-on labs, peer teaching with structured feedback, and social activities, all woven through the four threads: learn, teach, adapt, and connect. What the team learned from running it helped fine-tune the workshop for the cohorts that followed.

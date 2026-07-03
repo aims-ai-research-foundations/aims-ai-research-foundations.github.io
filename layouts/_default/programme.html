@@ -144,7 +144,7 @@
 </section>
 
 <section class="alt">
-  <div class="container narrow">
+  <div class="container">
     {{ partial "section-eyebrow.html" (dict "eyebrow" "Lecturer training" "title" "The workshop model") }}
     <p class="prose-lead">Lecturers complete the online curriculum during a pre-work period, then attend an intensive, fully funded week in person. The workshop builds on that pre-work: technical lectures, pedagogy, contextualisation for Africa, and teaching practice with feedback, so lecturers return ready to teach the courses to their own students.</p>
     <a class="btn btn-primary" href="{{ "workshops/" | relURL }}">See the workshops {{ partial "icon.html" "arrow-right" }}</a>
@@ -196,7 +196,7 @@
 {{- end }}
 
 <section class="alt">
-  <div class="container narrow">
+  <div class="container">
     {{ partial "section-eyebrow.html" (dict "eyebrow" "Questions" "title" "Frequently asked") }}
     {{ partial "faq.html" $p.faqs }}
   </div>

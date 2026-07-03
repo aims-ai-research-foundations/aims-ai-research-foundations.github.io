@@ -9,7 +9,7 @@
   --gold: #FDD633;            /* AIMS brand yellow */
   --gold-soft: rgba(253, 214, 51, 0.16);
   --accent-soft: rgba(54, 26, 84, 0.08);
-  --border: rgba(54, 26, 84, 0.15);
+  --border: rgba(54, 26, 84, 0.28);
   --max-w: 1100px;
   --prose-w: 70ch;
   --radius: 14px;
@@ -639,8 +639,8 @@ section { padding: 3rem 0; }
 /* ---------- Prose (single page fallback) ---------- */
 .prose {
   max-width: var(--prose-w);
-  margin: 3rem auto;
-  padding: 0 1.5rem;
+  margin: 2rem 0 0;
+  padding: 0;
 }
 .prose h2 { margin-top: 2.5rem; }
 .prose ul, .prose ol { padding-left: 1.5em; }
@@ -2104,12 +2104,20 @@ section.alt { background: var(--surface-1); }
 .faq-answer p { margin: 0; color: var(--text-soft); }
 
 /* Onboarding sub-nav */
-.subnav { position: sticky; top: 64px; z-index: 30; background: #fff; border-bottom: 1px solid var(--border); box-shadow: 0 2px 10px rgba(54,26,84,0.06); }
-.subnav .container { display: flex; gap: 0.4rem; overflow-x: auto; padding-top: 0.5rem; padding-bottom: 0.5rem; }
+/* Sticky header height (logo 66px + 0.75rem*2 padding = 90px; logo is 54px
+   below 820px, so 78px). The subnav sticks flush beneath it via --header-h
+   so it is never hidden behind the header and never overlaps it. */
+:root { --header-h: 90px; }
+@media (max-width: 820px) { :root { --header-h: 78px; } }
+.subnav { position: sticky; top: calc(var(--header-h) + 8px); z-index: 40; background: #fff; border-bottom: 1px solid var(--border); box-shadow: 0 6px 14px rgba(54,26,84,0.09); }
+/* Solid guard fills the 8px gap above the pinned subnav so page content
+   can never bleed through between the header and the subnav. */
+.subnav::before { content: ""; position: absolute; left: 0; right: 0; top: -8px; height: 8px; background: var(--bg); }
+.subnav .container { display: flex; gap: 0.4rem; overflow-x: auto; padding-top: 0.65rem; padding-bottom: 0.65rem; -webkit-overflow-scrolling: touch; }
 .subnav a { white-space: nowrap; padding: 0.5rem 0.9rem; border-radius: 999px; font-size: 0.9rem; font-weight: 700; color: var(--text-soft); border-bottom: none; }
 .subnav a:hover { background: var(--surface-1); border-bottom: none; }
 .subnav a.active { background: var(--indigo); color: #fff; }
-.ob-section { scroll-margin-top: 130px; }
+.ob-section { scroll-margin-top: calc(var(--header-h) + 78px); }
 
 /* Timeline (horizontal milestones) */
 .timeline { display: flex; background: linear-gradient(135deg, var(--indigo-dark), var(--indigo-soft)); border-radius: 18px; padding: 0.5rem; overflow: hidden; }
@@ -2147,7 +2155,7 @@ section.alt { background: var(--surface-1); }
 /* Calendar milestones */
 .cal-milestones { display: grid; gap: 1rem; }
 .cal-milestone { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; background: #fff; border: 1px solid var(--border); border-left: 5px solid var(--indigo); border-radius: var(--radius); padding: 1.25rem 1.5rem; }
-.cal-info h3 { font-size: 1.05rem; margin-bottom: 0.2rem; }
+.cal-info h3 { font-size: 1.4rem; margin-bottom: 0.35rem; }
 .cal-info p { margin: 0; color: var(--text-soft); }
 .cal-btns { display: flex; flex-wrap: wrap; gap: 0.6rem; }
 .cal-btn { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; font-weight: 700; padding: 0.55rem 0.95rem; border-radius: 999px; background: var(--indigo); color: #fff; border-bottom: none; }
@@ -2995,9 +3003,13 @@ section { padding: 5.5rem 0; }
 
 /* ---------- Workshops dropdown nav ---------- */
 .nav-has-sub { position: relative; display: flex; align-items: center; }
+.nav-sub-head { display: inline-flex; align-items: center; gap: 0.1rem; }
 .nav-top { display: inline-flex; align-items: center; gap: 0.35rem; color: #fff; font-size: 1.2rem; font-weight: 600; padding: 0.25rem 0; border-bottom: 2px solid transparent; }
 .nav-top:hover, .nav-top.active { border-bottom-color: var(--gold); }
 .nav-caret { flex: 0 0 auto; transition: transform 0.2s ease; }
+/* Caret toggle button: hidden on desktop (hover handles the menu), a real
+   tap target on mobile so the submenu opens and stays open until tapped again. */
+.nav-sub-toggle { display: none; background: none; border: 0; color: #fff; cursor: pointer; padding: 0.35rem; line-height: 0; align-items: center; justify-content: center; }
 .nav-has-sub:hover .nav-caret, .nav-has-sub:focus-within .nav-caret { transform: rotate(180deg); }
 .nav-sub {
   position: absolute; top: calc(100% + 0.55rem); left: 50%; transform: translateX(-50%) translateY(6px);
@@ -3011,9 +3023,20 @@ section { padding: 5.5rem 0; }
 .nav-sub a:hover, .nav-sub a:focus-visible { background: var(--accent-soft); color: var(--indigo); border-bottom: none; }
 @media (max-width: 820px) {
   .nav-has-sub { flex-direction: column; align-items: stretch; width: 100%; }
+  .nav-sub-head { display: flex; align-items: center; justify-content: space-between; width: 100%; }
+  .nav-sub-head .nav-top { width: auto; flex: 1 1 auto; }
   .nav-top { padding: 0.85rem 0; font-size: 1.3rem; justify-content: flex-start; gap: 0.5rem; }
-  .nav-caret { display: none; }
-  .nav-sub { position: static; transform: none; opacity: 1; visibility: visible; box-shadow: none; background: transparent; padding: 0 0 0.6rem 0.85rem; min-width: 0; }
+  .nav-top .nav-caret { display: none; }
+  .nav-sub-toggle { display: inline-flex; padding: 0.85rem 0.25rem 0.85rem 0.9rem; margin-left: auto; }
+  .nav-caret-btn { width: 18px; height: 18px; }
+  .nav-has-sub.is-open .nav-caret-btn { transform: rotate(180deg); }
+  /* Accordion: collapsed by default, shown only when toggled open.
+     transform:none here overrides the desktop :focus-within translateX
+     rule (the toggle button holds focus), which would otherwise shove the
+     static submenu off-screen. */
+  .nav-sub { position: static; transform: none; opacity: 1; visibility: visible; box-shadow: none; background: transparent; padding: 0 0 0.6rem 0.85rem; min-width: 0; display: none; }
+  .nav-has-sub.is-open .nav-sub, .nav-has-sub:focus-within .nav-sub { transform: none; left: auto; }
+  .nav-has-sub.is-open .nav-sub { display: flex; }
   .nav-sub a { color: rgba(255,255,255,0.82); font-size: 1.05rem; padding: 0.5rem 0; white-space: normal; }
   .nav-sub a:hover, .nav-sub a:focus-visible { background: transparent; color: #fff; }
 }
@@ -3305,13 +3328,67 @@ a.resource-card:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgb
 .resource-card-label { display: block; }
 .resource-card-text .wip-badge { align-self: flex-start; margin: 0.5rem 0 0; }
 
-/* FAQ accordions: a slightly darker, visible border */
-.faq-item { border: 1px solid rgba(54,26,84,0.16); }
+/* FAQ accordions: match the "four things you'll do" (.tt-do-card) cards exactly.
+   Higher specificity + !important so no earlier .faq-item rule can override it. */
+.faq .faq-item { border: 1.5px solid rgba(54,26,84,0.55) !important; box-shadow: 0 3px 10px rgba(54,26,84,0.05) !important; }
+
+/* Team / facilitator headshots: fill the circular avatar (size/radius come from
+   .team-card .avatar and .facilitator .avatar) */
+.team-card .avatar-photo, .facilitator .avatar-photo { object-fit: cover; display: block; background: none; padding: 0; }
+
+/* Programme timeline (journey) — guide-style vertical timeline, responsive */
+.ptl { list-style: none; margin: 1.75rem 0 0; padding: 0; }
+.ptl-item { position: relative; padding: 0 0 1.6rem 3.25rem; }
+.ptl-item::before { content: ""; position: absolute; left: 13px; top: 10px; bottom: -8px; width: 2px; background: var(--border); }
+.ptl-item:last-child::before { display: none; }
+.ptl-node { position: absolute; left: 2px; top: 6px; width: 24px; height: 24px; border-radius: 50%; background: #fff; border: 4px solid var(--indigo); box-sizing: border-box; z-index: 1; }
+.ptl-item.is-now .ptl-node { background: var(--gold); border-color: var(--gold); box-shadow: 0 0 0 4px rgba(253,214,51,0.3); }
+.ptl-card { background: #fff; border: 1.5px solid rgba(54,26,84,0.14); border-radius: 14px; padding: 1rem 1.25rem; }
+.ptl-item.is-now .ptl-card { border-color: rgba(54,26,84,0.45); background: #FFFDF3; }
+.ptl-head { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
+.ptl-title { font-family: "Archivo Black", sans-serif; color: var(--indigo); font-size: 1.05rem; line-height: 1.2; }
+.ptl-now { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--indigo); background: var(--gold); border-radius: 999px; padding: 0.15rem 0.6rem; }
+.ptl-date { display: block; color: var(--indigo); font-weight: 700; font-size: 0.9rem; margin-top: 0.2rem; }
+.ptl-body { margin: 0.45rem 0 0; color: var(--text-soft); line-height: 1.55; }
+
+/* Emphasized workshop-requirement callout */
+.req-callout { display: flex; gap: 1rem; align-items: flex-start; background: #FFF7D6; border: 1.5px solid var(--gold); border-left: 6px solid var(--gold); border-radius: 12px; padding: 1rem 1.25rem; margin: 0 0 1.5rem; }
+.req-callout-badge { flex: 0 0 auto; width: 30px; height: 30px; border-radius: 50%; background: var(--gold); color: var(--indigo); font-family: "Archivo Black", sans-serif; display: grid; place-items: center; font-size: 1.05rem; }
+.req-callout-text strong { display: block; color: var(--indigo); text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.82rem; margin-bottom: 0.25rem; }
+.req-callout-text p { margin: 0; color: #2A1540; line-height: 1.5; }
+
+/* Every white-background card gets a visible border, not just a shadow.
+   (Cards already using var(--border) are covered by the token bump above;
+   these are the shadow-only cards that had no border.) */
+.tt-step, .mva-side, .reach-country, .journey-card, .approach-card, .ba-card,
+.testi-slide, .course-layer-inner, .hero-float, .footer-logo-chip { border: 1px solid var(--border); }
+.ptl-card { border-color: var(--border); }
+
+/* Workshop facilitators: show role + affiliation, matching the team page */
+.facilitator-org { display: block; color: var(--text-soft); font-size: 0.78rem; line-height: 1.35; margin-top: 0.25rem; }
+
+/* ============================================================
+   FINAL card borders. An earlier pass set `border: none !important`
+   on many cards; this restores a clear border on EVERY white card,
+   with !important so nothing overrides it. Accent edges re-asserted.
+   ============================================================ */
+.why-card, .gain-card, .activity-card, .vd-card, .support-card, .team-card,
+.tt-step, .mva-side, .mva-card, .reach-country, .testimonial-card,
+.req-courses li, .cal-milestone, .setup-step, .journey-card, .workshop-card,
+.resource-link, .resource-card, .approach-card, .ba-card, .testi-slide,
+.course-layer-inner, .info-card, .roadmap-step, .sched-day, .checklist,
+.grant-note, .ascroll-card, .ptl-card, .hero-float, .footer-logo-chip {
+  border: 1px solid var(--border) !important;
+}
+.why-card { border-left: 5px solid var(--gold) !important; }
+.mva-card { border-top: 5px solid var(--indigo) !important; }
+.cal-milestone { border-left: 5px solid var(--indigo) !important; }
+.testimonial-card { border-top: 5px solid var(--gold) !important; }
 
 /* Four things you'll do: clearly defined dark border + larger titles
    (cut the big soft shadow so the border actually reads) */
-.thread-card { border: 1.5px solid rgba(54,26,84,0.5); box-shadow: 0 3px 10px rgba(54,26,84,0.05); }
-.thread-card:hover { box-shadow: 0 10px 26px rgba(54,26,84,0.12); }
+.thread-card { border: 2px solid rgba(54,26,84,0.85); box-shadow: 0 3px 10px rgba(54,26,84,0.05); }
+.thread-card:hover { box-shadow: 0 10px 26px rgba(54,26,84,0.14); }
 .thread-card h3 { font-size: 1.5rem; }
 
 /* Workshop details: roomy cohort dates (label above date, gap between) */
@@ -3327,3 +3404,74 @@ a.resource-card:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgb
 
 /* Live Sessions status pill: own line beneath the description */
 .cal-info > .wip-badge { display: inline-block; margin: 0.55rem 0 0; }
+
+/* ============================================================
+   PASS v21: "Four things you'll do" rebuilt from scratch with
+   fresh class names (.tt-do-*) so no legacy rule can override.
+   Bold, fully-opaque dark border per request.
+   ============================================================ */
+.tt-do-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+.tt-do-card {
+  background: #fff;
+  border: 1.5px solid rgba(54,26,84,0.55);
+  border-radius: 18px;
+  padding: 1.9rem 1.6rem;
+  box-shadow: 0 3px 10px rgba(54,26,84,0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.tt-do-card:hover { transform: translateY(-5px); box-shadow: 0 12px 28px rgba(54,26,84,0.16); }
+.tt-do-ico { display: grid; place-items: center; width: 64px; height: 64px; border-radius: 50%; margin: 0 0 1.1rem; }
+.tt-do-ico svg { width: 1.85rem; height: 1.85rem; }
+.tt-do-card:nth-child(1) .tt-do-ico { background: #FCEFC2; color: #BE8A12; }
+.tt-do-card:nth-child(2) .tt-do-ico { background: #E8E1F4; color: #5C3D93; }
+.tt-do-card:nth-child(3) .tt-do-ico { background: #DAEEDF; color: #2E7D44; }
+.tt-do-card:nth-child(4) .tt-do-ico { background: #DCE8FB; color: #2F5BAE; }
+.tt-do-num { display: block; font-family: "Archivo Black", sans-serif; font-size: 2.4rem; line-height: 1; color: #D9CFE6; margin: 0 0 0.4rem; }
+.tt-do-title { display: block; font-family: "Archivo Black", sans-serif; font-size: 1.5rem; color: var(--indigo); margin: 0 0 0.5rem; }
+.tt-do-text { margin: 0; color: var(--text-soft); line-height: 1.6; }
+@media (max-width: 900px) { .tt-do-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .tt-do-grid { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   Virtual pre-work intro: text + two images, two columns.
+   minmax(0,..) + min-width:0 stop the images from blowing out
+   their track and squeezing the text. Everything vertically
+   centred; images kept small.
+   ============================================================ */
+.prework-intro { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.65fr); gap: 3rem; align-items: center; margin-top: 1.5rem; }
+.prework-intro-text { min-width: 0; }
+.prework-intro-text > p { margin: 0 0 1rem; color: #2A1540; line-height: 1.7; }
+.prework-intro-text > p:last-of-type { margin-bottom: 0; }
+.prework-do-title { font-weight: 700; color: var(--indigo); margin: 1.4rem 0 0.6rem !important; }
+.prework-do { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.55rem; }
+.prework-do li { position: relative; padding-left: 1.75rem; color: #2A1540; line-height: 1.5; }
+.prework-do li::before { content: ""; position: absolute; left: 0; top: 0.5em; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 3px rgba(253, 214, 51, 0.25); }
+.prework-intro-media { display: grid; gap: 1rem; align-content: center; justify-items: center; min-width: 0; }
+.prework-intro-media img { width: 100%; max-width: 300px; height: auto; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(54, 26, 84, 0.12); }
+@media (max-width: 820px) {
+  .prework-intro { grid-template-columns: 1fr; gap: 1.75rem; }
+  .prework-intro-media img { max-width: 420px; }
+}
+
+/* ============================================================
+   Workshop two-column splits (media + text). Fills idle space.
+   .ws-about     = prose left, photo right (photo crops to fit).
+   .ws-programme = poster left, text right (poster shown whole).
+   minmax(0,..) + min-width:0 prevent image-track blowout.
+   ============================================================ */
+.ws-split { display: grid; gap: 2.75rem; margin-top: 1.5rem; align-items: center; }
+.ws-about { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); }
+.ws-programme { grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); margin-top: 0; }
+.ws-split > * { min-width: 0; }
+.ws-about .prose { max-width: none; margin-top: 0; }
+.ws-split-body .section-eyebrow { margin-top: 0; }
+.ws-split-body > :last-child { margin-bottom: 0; }
+.ws-split-media img { width: 100%; height: auto; max-height: 360px; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 18px; border: 1px solid var(--border); box-shadow: 0 12px 32px rgba(54, 26, 84, 0.14); }
+/* Poster is a designed graphic: show it whole, never crop */
+.ws-split-media-poster { display: flex; justify-content: center; align-items: center; }
+.ws-split-media-poster img { width: auto; height: auto; max-width: 100%; max-height: 480px; aspect-ratio: auto; object-fit: contain; }
+@media (max-width: 820px) {
+  .ws-about, .ws-programme { grid-template-columns: 1fr; gap: 1.75rem; }
+  .ws-split-media img { max-height: 300px; }
+  .ws-split-media-poster img { max-height: 440px; }
+}

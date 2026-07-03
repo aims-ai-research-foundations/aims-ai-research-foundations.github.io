@@ -6,3 +6,8 @@ hugo_stats.json
 
 # macOS
 .DS_Store
+/.quarto/
+**/*.quarto_ipynb
+
+# Local-only working docs (content briefs, slide-deck specs, etc.)
+/other-docs/

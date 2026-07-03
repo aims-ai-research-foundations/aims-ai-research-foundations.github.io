@@ -14,7 +14,7 @@ disableKinds = ["taxonomy", "term"]
   contactEmail = "ai-research-foundations@aims.ac.za"
   repoURL = "https://github.com/aims-ai-research-foundations/pilot-workshop"
   googleSkillsURL = "https://skills.google/paths/3135"
-  discordURL = "#"                         # PLACEHOLDER: Discord invite to confirm
+  discordURL = "https://discord.gg/PKdNzQPV7Z"                         # PLACEHOLDER: Discord invite to confirm
   pilotSiteURL = "https://aims-ai-research-foundations.github.io/pilot-workshop/"
   codeOfConductURL = "https://aims-ai-research-foundations.github.io/pilot-workshop/code-of-conduct/"
   aimsURL = "https://aims.ac.za"
@@ -79,3 +79,11 @@ disableKinds = ["taxonomy", "term"]
 [build]
   [build.buildStats]
     enable = true
+
+# Dev server only (hugo server): disable browser caching so CSS/content changes
+# always show on refresh. Has no effect on the production build.
+[server]
+  [[server.headers]]
+    for = "/**"
+    [server.headers.values]
+      Cache-Control = "no-store, no-cache, must-revalidate, max-age=0"

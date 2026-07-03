@@ -1,7 +1,17 @@
+{{- /* Accepts a name string (renders initials) OR a dict {name, image} (renders a headshot). */ -}}
 {{- $name := . -}}
+{{- $image := "" -}}
+{{- if reflect.IsMap . -}}
+{{- $name = .name -}}
+{{- $image = .image -}}
+{{- end -}}
+{{- if $image -}}
+<img class="avatar avatar-photo" src="{{ $image | relURL }}" alt="{{ $name }}" loading="lazy">
+{{- else -}}
 {{- $parts := split $name " " -}}
 {{- $initials := "" -}}
 {{- range first 2 $parts -}}
 {{- $initials = printf "%s%s" $initials (substr . 0 1) -}}
 {{- end -}}
 <div class="avatar" aria-hidden="true">{{ $initials | upper }}</div>
+{{- end -}}

@@ -35,19 +35,54 @@
 </section>
 
 <section>
-  <div class="container narrow">
+  <div class="container">
     {{ partial "section-eyebrow.html" (dict "eyebrow" "Overview" "title" "About this workshop") }}
+    {{- $aboutImg := .Params.aboutImage | default .Params.thumb | default .Params.heroImage }}
+    {{- if $aboutImg }}
+    <div class="ws-split ws-about">
+      <div class="prose">{{ .Content }}</div>
+      <div class="ws-split-media"><img src="{{ $aboutImg | relURL }}" alt="{{ .Title }} in session" loading="lazy"></div>
+    </div>
+    {{- else }}
     <div class="prose">{{ .Content }}</div>
+    {{- end }}
   </div>
 </section>
 
 <section class="alt">
-  <div class="container narrow">
-    {{ partial "section-eyebrow.html" (dict "eyebrow" "The programme" "title" "Part of something bigger") }}
-    <p class="prose-lead">{{ $p.programmeSummary }}</p>
-    <a class="btn btn-primary" href="{{ "programme/" | relURL }}">Read about the programme {{ partial "icon.html" "arrow-right" }}</a>
+  <div class="container">
+    <div class="ws-split ws-programme">
+      <div class="ws-split-media ws-split-media-poster"><img src="{{ "img/others/ai-research-foundations-for-higher-education-programme.jpeg" | relURL }}" alt="AI Research Foundations, a Google DeepMind curriculum available on Google Skills" loading="lazy"></div>
+      <div class="ws-split-body">
+        {{ partial "section-eyebrow.html" (dict "eyebrow" "The programme" "title" "Part of something bigger") }}
+        <p class="prose-lead">{{ $p.programmeSummary }}</p>
+        <a class="btn btn-primary" href="{{ "programme/" | relURL }}">Read about the programme {{ partial "icon.html" "arrow-right" }}</a>
+      </div>
+    </div>
   </div>
 </section>
+
+{{- if ne .Params.status "completed" }}
+<section>
+  <div class="container">
+    {{ partial "section-eyebrow.html" (dict "eyebrow" "Your journey" "title" "The programme timeline") }}
+    <p class="section-lead">The programme begins with the virtual pre-work period, preparing you for the intensive workshop. It culminates in delivering the curriculum and supporting student projects at your university.</p>
+    {{- $preRange := "To be confirmed" }}
+    {{- if and $pw.opens $pw.deadline }}{{ $preRange = printf "%s to %s" ((time.AsTime $pw.opens).Format "2 January") ((time.AsTime $pw.deadline).Format "2 January 2006") }}{{ end }}
+    {{- $wkDate := "To be confirmed" }}
+    {{- if and (not .Params.datesTBC) .Params.cohorts }}{{ $c := index .Params.cohorts 0 }}{{ $wkDate = partial "daterange.html" (dict "start" $c.start "end" $c.end) }}{{ end }}
+    {{- $upcoming := ne .Params.status "completed" }}
+    {{- $ms := slice
+      (dict "title" "Virtual pre-work" "date" $preRange "body" "Complete courses 01 to 04 on Google Skills, join Discord, attend the live sessions, and prepare for the workshop week." "highlight" $upcoming)
+      (dict "title" "Workshop week" "date" $wkDate "body" "Learn, practise teaching, adapt teaching resources, collaborate, and connect with your cohort during the intensive workshop week.")
+      (dict "title" "Deliver the curriculum" "date" "Late 2026" "body" "Teach the AI Research Foundations curriculum at your university, adapting the UCL lecturer toolkit for your local context.")
+      (dict "title" "Supervise student capstone projects" "date" "2026 to 2027" "body" "Supervise and guide students through the implementation of their capstone projects.")
+      (dict "title" "Share your impact" "date" "Ongoing" "body" "Share feedback, outcomes, and lessons learned to strengthen the programme.")
+    }}
+    {{ partial "journey.html" (dict "milestones" $ms) }}
+  </div>
+</section>
+{{- end }}
 
 <section>
   <div class="container">
@@ -66,6 +101,13 @@
 <section class="prework-band">
   <div class="container">
     {{ partial "section-eyebrow.html" (dict "eyebrow" "Before the workshop" "title" "Pre-work starts before you arrive") }}
+    <div class="req-callout">
+      <span class="req-callout-badge" aria-hidden="true">!</span>
+      <div class="req-callout-text">
+        <strong>Workshop requirement</strong>
+        <p>To attend the in-person workshop, you must complete at least the first four AI Research Foundations courses (01 to 04) on Google Skills, and attend at least 50% of the live sessions during the pre-work period.</p>
+      </div>
+    </div>
     <div class="prework-summary">
       <ul class="prework-points">
         <li>{{ partial "icon.html" "lightbulb" }} Complete at least the first four courses (01 to 04) on Google Skills before the workshop.</li>
@@ -108,6 +150,15 @@
           <div class="value">{{ .Params.audience }}</div>
         </div>
       </div>
+      {{- with .Params.universities }}
+      <div class="info-card">
+        <div class="info-icon-wrap">{{ partial "icon.html" "school" }}</div>
+        <div>
+          <div class="label">Participating universities</div>
+          <div class="value">{{ delimit . ", " }}</div>
+        </div>
+      </div>
+      {{- end }}
     </div>
   </div>
 </section>
@@ -115,18 +166,7 @@
 <section class="alt">
   <div class="container">
     {{ partial "section-eyebrow.html" (dict "eyebrow" "Your facilitators" "title" "The team supporting this workshop") }}
-    <div class="facilitator-strip">
-      {{- range .Params.facilitators }}
-      {{- $id := . }}
-      {{- range where $team "id" $id }}
-      <div class="facilitator">
-        {{ partial "avatar.html" .name }}
-        <span class="facilitator-name">{{ .name }}</span>
-        <span class="facilitator-role">{{ .role }}</span>
-      </div>
-      {{- end }}
-      {{- end }}
-    </div>
+    {{ partial "team-grid.html" . }}
   </div>
 </section>
 
@@ -138,10 +178,10 @@
   </div>
 </section>
 
-{{- $faqs := $p.faqs }}
+{{- $faqs := $p.workshopFaqs }}
 {{- with .Params.faqs }}{{ $faqs = append $faqs . }}{{ end }}
 <section>
-  <div class="container narrow">
+  <div class="container">
     {{ partial "section-eyebrow.html" (dict "eyebrow" "Questions" "title" "Frequently asked") }}
     {{ partial "faq.html" $faqs }}
   </div>

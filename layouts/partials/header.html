@@ -17,12 +17,16 @@
       {{- if and (eq .URL "/") $cur.IsHome }}{{ $active = true }}{{ end }}
       {{- if eq .Name "Workshops" }}
       <div class="nav-has-sub">
-        <a class="nav-top{{ if $active }} active{{ end }}" href="{{ .URL | relURL }}"{{ if $active }} aria-current="page"{{ end }} aria-haspopup="true">{{ .Name }}<svg class="nav-caret" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></a>
-        <div class="nav-sub" role="menu" aria-label="Workshops">
-          <a href="{{ "workshops/pilot-cape-town/" | relURL }}" role="menuitem">AIMS Pilot Workshop, Muizenberg</a>
-          <a href="{{ "workshops/nigeria-2026/" | relURL }}" role="menuitem">Lagos, Nigeria</a>
+        <div class="nav-sub-head">
+          <a class="nav-top{{ if $active }} active{{ end }}" href="{{ .URL | relURL }}"{{ if $active }} aria-current="page"{{ end }}>{{ .Name }}<svg class="nav-caret" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></a>
+          <button type="button" class="nav-sub-toggle" aria-expanded="false" aria-controls="nav-sub-workshops" aria-haspopup="true" aria-label="Toggle {{ .Name }} menu"><svg class="nav-caret nav-caret-btn" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+        </div>
+        <div class="nav-sub" id="nav-sub-workshops" role="menu" aria-label="Workshops">
+          <a href="{{ "workshops/nigeria-cohort-1/" | relURL }}" role="menuitem">Nigeria Cohort 1 (Lagos)</a>
+          <a href="{{ "workshops/nigeria-cohort-2/" | relURL }}" role="menuitem">Nigeria Cohort 2 (Lagos)</a>
           <a href="{{ "workshops/ghana-2026/" | relURL }}" role="menuitem">Ghana</a>
-          <a href="{{ "workshops/pretoria-2026/" | relURL }}" role="menuitem">Pretoria, South Africa</a>
+          <a href="{{ "workshops/pretoria-2026/" | relURL }}" role="menuitem">South Africa 1 (Pretoria)</a>
+          <a href="{{ "workshops/pilot-cape-town/" | relURL }}" role="menuitem">AIMS Pilot Workshop (Cape Town)</a>
         </div>
       </div>
       {{- else }}

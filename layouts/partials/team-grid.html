@@ -1,7 +1,7 @@
 <div class="team-grid">
   {{- range hugo.Data.team.members }}
   <div class="team-card">
-    {{ partial "avatar.html" .name }}
+    {{ partial "avatar.html" (dict "name" .name "image" .image) }}
     <h3>{{ .name }}</h3>
     <p class="team-role">{{ .role }}</p>
     <p class="team-org">{{ .org }}</p>

@@ -23,14 +23,38 @@
 
 <nav class="subnav" aria-label="On this page">
   <div class="container">
+    <a href="#prework">Pre-work</a>
     <a href="#timeline">Timeline</a>
-    <a href="#setup">Get set up</a>
+    <a href="#setup">Checklist</a>
     <a href="#requirements">Requirements</a>
     <a href="#schedule">Dates and calendar</a>
-    <a href="#checklist">Checklist</a>
     <a href="#support">Support</a>
   </div>
 </nav>
+
+<section id="prework" class="ob-section">
+  <div class="container">
+    {{ partial "section-eyebrow.html" (dict "eyebrow" "The virtual pre-work period" "title" "What the pre-work involves") }}
+    <div class="prework-intro">
+      <div class="prework-intro-text">
+        <p>The virtual pre-work prepares you for a successful workshop. During this phase, you complete at least the first four AI Research Foundations courses on Google Skills.</p>
+        <p>By completing the pre-work online, everyone arrives at the in-person workshop with a shared technical foundation. This lets the week focus on deeper learning, teaching practice, and adapting the curriculum for your own students.</p>
+        <p class="prework-do-title">During the pre-work period, you will:</p>
+        <ul class="prework-do">
+          <li>Complete the AI Research Foundations courses 01 to 04 on Google Skills</li>
+          <li>Join the Discord community</li>
+          <li>Attend the weekly live sessions</li>
+          <li>Engage with your cohort and the programme facilitators</li>
+          <li>Arrive fully prepared for the workshop</li>
+        </ul>
+      </div>
+      <div class="prework-intro-media">
+        <img src="{{ "img/pre-work/person-working.png" | relURL }}" alt="An AI Champion working through the pre-work courses online" loading="lazy">
+        <img src="{{ "img/pre-work/google-skills-laptop.png" | relURL }}" alt="The AI Research Foundations courses on Google Skills" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
 
 <section id="timeline" class="ob-section">
   <div class="container">
@@ -54,7 +78,7 @@
 
 <section id="setup" class="ob-section alt">
   <div class="container">
-    {{ partial "section-eyebrow.html" (dict "eyebrow" "Get set up" "title" "Four steps to get started") }}
+    {{ partial "section-eyebrow.html" (dict "eyebrow" "Onboarding checklist" "title" "Three steps to get started") }}
     <ol class="setup-steps">
       <li class="setup-step fade-in">
         <span class="setup-num">1</span>
@@ -75,15 +99,8 @@
       <li class="setup-step fade-in">
         <span class="setup-num">3</span>
         <div>
-          <h3>Set your Skills profile to public</h3>
-          <p>A public profile lets the team see your progress and support you through the pre-work.</p>
-        </div>
-      </li>
-      <li class="setup-step fade-in">
-        <span class="setup-num">4</span>
-        <div>
-          <h3>Start the courses</h3>
-          <p>Begin working through the curriculum. Aim to complete at least the first four courses before the workshop.</p>
+          <h3>Start Course 01 on Google Skills</h3>
+          <p>Enrol on the AI Research Foundations path and complete at least the first four courses (01 to 04) before the workshop.</p>
         </div>
       </li>
     </ol>
@@ -94,9 +111,16 @@
 </section>
 
 <section id="requirements" class="ob-section">
-  <div class="container narrow">
-    {{ partial "section-eyebrow.html" (dict "eyebrow" "Requirements to attend" "title" "Complete at least the first four courses") }}
-    <p class="prose-lead">To attend the workshop, complete at least these four courses on Google Skills beforehand. The rest of the curriculum continues after the week.</p>
+  <div class="container">
+    {{ partial "section-eyebrow.html" (dict "eyebrow" "Requirements to attend" "title" "What you need to attend the workshop") }}
+    <div class="req-callout">
+      <span class="req-callout-badge" aria-hidden="true">!</span>
+      <div class="req-callout-text">
+        <strong>Workshop requirement</strong>
+        <p>Complete at least the first four courses (01 to 04) on Google Skills, and attend at least 50% of the live sessions during pre-work, to attend the in-person workshop.</p>
+      </div>
+    </div>
+    <p class="prose-lead">Complete at least these four courses on Google Skills beforehand. The rest of the curriculum continues after the week.</p>
     <ul class="req-courses">
       {{- range $pw.requiredCourses }}
       {{- $code := . }}
@@ -118,81 +142,36 @@
 <section id="schedule" class="ob-section alt">
   <div class="container">
     {{ partial "section-eyebrow.html" (dict "eyebrow" "Dates and calendar" "title" "Add the key dates to your calendar") }}
-    {{- if $w.Params.datesTBC }}
-    <div class="notice notice-info">{{ partial "icon.html" "calendar" }} Exact dates are still being confirmed. Calendar invites will appear here once they are set.</div>
-    {{- end }}
     <div class="cal-milestones">
-      {{- with $pw.opens }}
       <div class="cal-milestone fade-in">
         <div class="cal-info">
-          <h3>Pre-work opens</h3>
-          <p>{{ (time.AsTime .).Format "Monday, 2 January 2006" }}</p>
+          <h3>Onboarding session</h3>
+          <p>A live kickoff to get set up and oriented before the pre-work begins.</p>
         </div>
-        {{ partial "calendar-button.html" (dict "title" (printf "%s: Pre-work opens" $w.Title) "start" . "end" . "details" "Pre-work opens. Start the AI Research Foundations courses on Google Skills." "location" "Online" "uid" (printf "%s-prework-open" $w.Params.slug) "filename" "prework-opens") }}
+        <a class="btn btn-primary" href="https://www.google.com/calendar/event?eid=OTZhOXAyaGMwdmRsaDhobTI0Z2E5dThicGcgc2ltaWxvbHV3YUBhaW1zLmFjLnph" target="_blank" rel="noopener">{{ partial "icon.html" "calendar" }} Add to calendar</a>
       </div>
-      {{- end }}
-
-      {{- with $pw.deadline }}
-      <div class="cal-milestone fade-in">
-        <div class="cal-info">
-          <h3>Pre-work deadline {{ if $pw.deadlineEstimate }}<span class="wip-badge">Estimated date</span>{{ end }}</h3>
-          <p>Complete courses 01 to 04 by {{ (time.AsTime .).Format "Monday, 2 January 2006" }}</p>
-        </div>
-        {{ partial "calendar-button.html" (dict "title" (printf "%s: Pre-work deadline" $w.Title) "start" . "end" . "details" "Complete at least courses 01 to 04 on Google Skills before the workshop." "location" "Online" "uid" (printf "%s-prework-deadline" $w.Params.slug) "filename" "prework-deadline") }}
-      </div>
-      {{- end }}
 
       <div class="cal-milestone fade-in">
         <div class="cal-info">
           <h3>Live Sessions</h3>
-          <p>Recurring online sessions with the team during pre-work.{{ if ne (printf "%v" $pw.liveSessions) "TBC" }} {{ $pw.liveSessions }}{{ end }}</p>
-          {{ if eq (printf "%v" $pw.liveSessions) "TBC" }}<span class="wip-badge">Day and time to be confirmed</span>{{ end }}
+          <p>Recurring online sessions with the team during pre-work. Recordings are shared.</p>
+          <span class="wip-badge">Day and time to be confirmed</span>
         </div>
       </div>
 
-      {{- if $hasCohorts }}
-      {{- range $cohorts }}
-      <div class="cal-milestone fade-in">
-        <div class="cal-info">
-          <h3>{{ .label }}: Workshop week</h3>
-          <p>{{ partial "daterange.html" (dict "start" .start "end" .end) }} · {{ $w.Params.city }}</p>
-        </div>
-        {{ partial "calendar-button.html" (dict "title" (printf "%s: %s" $w.Title .label) "start" .start "end" .end "details" (printf "%s in-person workshop week." $w.Title) "location" (printf "%s, %s" $w.Params.venue $w.Params.city) "uid" (printf "%s-%s" $w.Params.slug (.label | urlize)) "filename" (printf "workshop-%s" (.label | urlize))) }}
-      </div>
-      {{- end }}
-      {{- else }}
       <div class="cal-milestone fade-in">
         <div class="cal-info">
           <h3>Workshop week</h3>
-          <p><span class="tbc">Dates to be confirmed</span> · {{ $w.Params.city }}, {{ $w.Params.country }}</p>
+          <p>The in-person workshop week{{ with $w.Params.city }}{{ if ne . "To be confirmed" }} in {{ . }}{{ end }}{{ end }}.</p>
+          <span class="wip-badge">Dates to be confirmed</span>
         </div>
       </div>
-      {{- end }}
-    </div>
-  </div>
-</section>
-
-<section id="checklist" class="ob-section">
-  <div class="container narrow">
-    {{ partial "section-eyebrow.html" (dict "eyebrow" "Checklist" "title" "Before you arrive") }}
-    <div class="checklist" data-checklist>
-      <div class="checklist-progress">
-        <div class="checklist-bar"><span data-progress-bar style="width:0%"></span></div>
-        <span class="checklist-count"><span data-progress-count>0</span> of <span data-progress-total>0</span> done</span>
-      </div>
-      <ul class="checklist-items">
-        <li><label><input type="checkbox"> Create a Google Skills account and enrol on the path</label></li>
-        <li><label><input type="checkbox"> Set your Skills profile to public</label></li>
-        <li><label><input type="checkbox"> Join the Discord community</label></li>
-        <li><label><input type="checkbox"> Complete at least the first four courses (01 to 04)</label></li>
-        <li><label><input type="checkbox"> Confirm your cohort, travel, and any needs with the team</label></li>
-      </ul>
     </div>
   </div>
 </section>
 
 <section id="support" class="ob-section alt">
-  <div class="container narrow">
+  <div class="container">
     {{ partial "section-eyebrow.html" (dict "eyebrow" "Support and contact" "title" "We are here to help") }}
     <div class="support-grid">
       <div class="support-card">

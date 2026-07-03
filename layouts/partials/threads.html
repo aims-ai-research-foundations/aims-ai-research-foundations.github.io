@@ -1,10 +1,10 @@
-<div class="threads">
+<div class="tt-do-grid">
   {{- range hugo.Data.programme.threads }}
-  <div class="thread-card fade-in">
-    <span class="thread-ico">{{ partial "icon.html" .icon }}</span>
-    <span class="thread-num">{{ .num }}</span>
-    <h3>{{ .name }}</h3>
-    <p>{{ .body }}</p>
+  <div class="tt-do-card fade-in">
+    <span class="tt-do-ico">{{ partial "icon.html" .icon }}</span>
+    <span class="tt-do-num">{{ .num }}</span>
+    <span class="tt-do-title">{{ .name }}</span>
+    <p class="tt-do-text">{{ .body }}</p>
   </div>
   {{- end }}
 </div>

@@ -1,5 +1,5 @@
 ---
-title: "Pretoria Lecturer Workshop"
+title: "South Africa Workshop 1 (Pretoria)"
 slug: pretoria-2026
 layout: "workshop"
 status: upcoming
@@ -25,7 +25,7 @@ prework:
   liveSessions: "TBC"
   requiredCourses: ["01", "02", "03", "04"]
 links:
-  discord: "#"
+  discord: "https://discord.gg/PKdNzQPV7Z"
   googleSkills: "https://skills.google/paths/3135"
   pilotSite: "https://aims-ai-research-foundations.github.io/pilot-workshop/"
 facilitators: ["ulrich", "michael", "yassir", "ayman", "maharavo", "similoluwa", "toky"]
