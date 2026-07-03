@@ -3010,7 +3010,10 @@ section { padding: 5.5rem 0; }
 /* Caret toggle button: hidden on desktop (hover handles the menu), a real
    tap target on mobile so the submenu opens and stays open until tapped again. */
 .nav-sub-toggle { display: none; background: none; border: 0; color: #fff; cursor: pointer; padding: 0.35rem; line-height: 0; align-items: center; justify-content: center; }
-.nav-has-sub:hover .nav-caret, .nav-has-sub:focus-within .nav-caret { transform: rotate(180deg); }
+/* Only the desktop link caret reacts to hover/focus. The mobile toggle
+   button's caret is driven purely by .is-open (below) so it never gets
+   stuck pointing up when the button keeps focus after closing. */
+.nav-has-sub:hover .nav-top .nav-caret, .nav-has-sub:focus-within .nav-top .nav-caret { transform: rotate(180deg); }
 .nav-sub {
   position: absolute; top: calc(100% + 0.55rem); left: 50%; transform: translateX(-50%) translateY(6px);
   min-width: 250px; background: #fff; border-radius: 14px; padding: 0.5rem;
@@ -3027,8 +3030,10 @@ section { padding: 5.5rem 0; }
   .nav-sub-head .nav-top { width: auto; flex: 1 1 auto; }
   .nav-top { padding: 0.85rem 0; font-size: 1.3rem; justify-content: flex-start; gap: 0.5rem; }
   .nav-top .nav-caret { display: none; }
-  .nav-sub-toggle { display: inline-flex; padding: 0.85rem 0.25rem 0.85rem 0.9rem; margin-left: auto; }
-  .nav-caret-btn { width: 18px; height: 18px; }
+  .nav-sub-toggle { display: inline-flex; align-items: center; justify-content: center; min-width: 46px; min-height: 46px; padding: 0.4rem; margin-left: auto; background: rgba(255,255,255,0.12); border-radius: 12px; }
+  .nav-sub-toggle:active { background: rgba(255,255,255,0.2); }
+  .nav-caret-btn { width: 28px; height: 28px; }
+  /* Caret points down when closed, up when open. Driven only by .is-open. */
   .nav-has-sub.is-open .nav-caret-btn { transform: rotate(180deg); }
   /* Accordion: collapsed by default, shown only when toggled open.
      transform:none here overrides the desktop :focus-within translateX
