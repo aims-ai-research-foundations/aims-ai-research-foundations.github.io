@@ -16,7 +16,10 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+/* Match the footer colour so iOS Safari's rubber-band overscroll below the
+   page shows the dark footer, not a white gap. (The white body covers this
+   during normal scrolling; html only shows past the top/bottom edges.) */
+html { scroll-behavior: smooth; background: #2A1342; }
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
