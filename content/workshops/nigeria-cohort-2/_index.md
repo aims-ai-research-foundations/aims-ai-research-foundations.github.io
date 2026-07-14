@@ -28,6 +28,7 @@ prework:
 links:
   discord: "https://discord.gg/PKdNzQPV7Z"
   googleSkills: "https://skills.google/paths/3135"
+  liveCalendar: "https://calendar.google.com/calendar/u/0?cid=Y19jZDVmZjM4OWM1YjA4MzAxMThhMWFlYjI3ZjdmYWM5ODIyMWFkYmVjOTE0NzdiNTgwYjE4ODYzYjllNjNiZDMyQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20"
   pilotSite: "https://aims-ai-research-foundations.github.io/pilot-workshop/"
 facilitators: ["ulrich", "michael", "yassir", "ayman", "maharavo", "similoluwa", "toky"]
 hasGallery: false

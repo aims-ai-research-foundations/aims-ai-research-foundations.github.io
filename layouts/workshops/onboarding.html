@@ -49,8 +49,8 @@
         </ul>
       </div>
       <div class="prework-intro-media">
-        <img src="{{ "img/pre-work/person-working.png" | relURL }}" alt="An AI Champion working through the pre-work courses online" loading="lazy">
-        <img src="{{ "img/pre-work/google-skills-laptop.png" | relURL }}" alt="The AI Research Foundations courses on Google Skills" loading="lazy">
+        <img src="{{ "img/pre-work/person-working.webp" | relURL }}" alt="An AI Champion working through the pre-work courses online" loading="lazy" decoding="async">
+        <img src="{{ "img/pre-work/google-skills-laptop.webp" | relURL }}" alt="The AI Research Foundations courses on Google Skills" loading="lazy" decoding="async">
       </div>
     </div>
   </div>
@@ -100,7 +100,7 @@
         <span class="setup-num">3</span>
         <div>
           <h3>Start Course 01 on Google Skills</h3>
-          <p>Enrol on the AI Research Foundations path and complete at least the first four courses (01 to 04) before the workshop.</p>
+          <p>Enrol on the AI Research Foundations path and complete at least the first four courses (01 to 04) and the first challenge lab before the workshop.</p>
         </div>
       </li>
     </ol>
@@ -117,10 +117,10 @@
       <span class="req-callout-badge" aria-hidden="true">!</span>
       <div class="req-callout-text">
         <strong>Workshop requirement</strong>
-        <p>Complete at least the first four courses (01 to 04) on Google Skills, and attend at least 50% of the live sessions during pre-work, to attend the in-person workshop.</p>
+        <p>To attend the in-person workshop, complete at least the first four courses (01 to 04) and the first challenge lab on Google Skills, and attend at least 50% of the live sessions during pre-work.</p>
       </div>
     </div>
-    <p class="prose-lead">Complete at least these four courses on Google Skills beforehand. The rest of the curriculum continues after the week.</p>
+    <p class="prose-lead">Complete at least these four courses on Google Skills, plus the first challenge lab, before the workshop. The rest of the curriculum continues after the week.</p>
     <ul class="req-courses">
       {{- range $pw.requiredCourses }}
       {{- $code := . }}
@@ -155,8 +155,9 @@
         <div class="cal-info">
           <h3>Live Sessions</h3>
           <p>Recurring online sessions with the team during pre-work. Recordings are shared.</p>
-          <span class="wip-badge">Day and time to be confirmed</span>
+          {{- if not $links.liveCalendar }}<span class="wip-badge">Day and time to be confirmed</span>{{ end }}
         </div>
+        {{- with $links.liveCalendar }}<a class="btn btn-primary" href="{{ . }}" target="_blank" rel="noopener">{{ partial "icon.html" "calendar" }} Add to calendar</a>{{ end }}
       </div>
 
       <div class="cal-milestone fade-in">

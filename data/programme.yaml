@@ -275,13 +275,13 @@ activities:
 
 faqs:
   - q: "What are the requirements to attend the workshop?"
-    a: "Complete at least the first four AI Research Foundations courses (courses 01 to 04) on Google Skills before the workshop. The courses are free and self-paced, and the remaining four continue after the in-person week."
+    a: "Complete at least the first four AI Research Foundations courses (courses 01 to 04) and the first challenge lab on Google Skills before the workshop, and attend at least 50% of the live sessions during pre-work. The courses are free and self-paced, and the remaining four continue after the in-person week."
   - q: "What technical background do participants need?"
     a: "The curriculum starts from scratch, but a working knowledge of linear algebra, calculus, probability, and Python will help you grasp the material faster."
   - q: "Who is the curriculum ideal for?"
     a: "Penultimate and final-year STEM students. Lecturers learn to deliver it to exactly this audience."
   - q: "What is the time commitment?"
-    a: "The AI Research Foundations courses on Google Skills are online and self-paced. The four required courses (01 to 04) are 4 to 6 hours each, about 18 hours in total, and completing them during the pre-work period is a requirement for attending the workshop. You then attend the intensive week in person, and afterwards deliver the courses to your own students."
+    a: "The AI Research Foundations courses on Google Skills are online and self-paced. The four required courses (01 to 04) are 4 to 6 hours each, about 18 hours in total, and completing them plus the first challenge lab during the pre-work period is a requirement for attending the workshop. You then attend the intensive week in person, and afterwards deliver the courses to your own students."
   - q: "What does it cost?"
     a: "Nothing. Training and workshops are fully sponsored, and universities receive grants to support delivery."
   - q: "Who runs the programme?"
@@ -290,7 +290,7 @@ faqs:
 # Shown on the workshop pages (see layouts/workshops/workshop.html)
 workshopFaqs:
   - q: "What are the requirements for attending the workshop?"
-    a: "You are expected to complete at least the first four AI Research Foundations courses on Google Skills before the workshop. You should also attend at least 50% of the live sessions during the virtual pre-work period."
+    a: "You are expected to complete at least the first four AI Research Foundations courses (01 to 04) and the first challenge lab on Google Skills before the workshop. You should also attend at least 50% of the live sessions during the virtual pre-work period."
   - q: "What technical background do participants need?"
     a: "The curriculum starts from the fundamentals, so no prior AI experience is required. However, a working knowledge of Python, linear algebra, calculus, and probability will help you get the most from the programme."
   - q: "Is the workshop fully funded?"
