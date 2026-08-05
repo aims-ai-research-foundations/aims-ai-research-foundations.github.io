@@ -3483,3 +3483,152 @@ a.resource-card:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgb
   .ws-split-media img { max-height: 300px; }
   .ws-split-media-poster img { max-height: 440px; }
 }
+
+/* ============================================================
+   VIRTUAL COMMUNITY COHORT landing page (/community/)
+   Standalone page, scoped .vc-* so it never touches other pages.
+   Brand blend: indigo #361A54 / #2A1342, gold #FDD633, Archivo Black.
+   ============================================================ */
+.vc-body { background: var(--bg); overflow-x: hidden; }
+.vc-section { padding: clamp(4rem, 8vw, 6.5rem) 0; scroll-margin-top: 104px; }
+.vc-alt { background: var(--bg-tint); }
+.vc-ico { display: inline-flex; align-items: center; }
+.vc-ico svg { width: 1.15em; height: 1.15em; }
+
+/* Centered section headers */
+.vc-head { margin: 0 0 2.75rem; max-width: 760px; }
+.vc-center { margin-left: auto; margin-right: auto; text-align: center; }
+.vc-center .section-eyebrow, .vc-center .section-title { text-align: center; }
+.vc-center .section-title.with-accent::after { margin-left: auto; margin-right: auto; }
+.vc-head .section-title { margin-bottom: 0; }
+
+/* ---------- Header ---------- */
+.vc-header { position: sticky; top: 0; z-index: 100; background: rgba(42, 19, 66, 0.92); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+.vc-header-inner { max-width: 1180px; margin: 0 auto; padding: 0.6rem 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.vc-brand { border-bottom: none; display: inline-flex; }
+.vc-brand img { height: 68px; width: auto; display: block; }
+.vc-nav { display: flex; align-items: center; gap: 1.75rem; }
+.vc-nav > a:not(.vc-cta) { color: rgba(255, 255, 255, 0.85); font-weight: 600; border-bottom: 2px solid transparent; padding: 0.25rem 0; }
+.vc-nav > a:not(.vc-cta):hover { color: #fff; border-bottom-color: var(--gold); }
+.vc-nav .btn { align-self: center; padding: 0.6rem 1.1rem; }
+.vc-nav-toggle { display: none; background: none; border: 0; color: #fff; cursor: pointer; padding: 0.4rem; }
+
+/* ---------- Hero ---------- */
+.vc-hero { position: relative; overflow: hidden; color: #fff; padding: 15px 0 20px;
+  background: radial-gradient(1100px 560px at 82% -12%, rgba(253, 214, 51, 0.16), transparent 60%), linear-gradient(158deg, #2A1342 0%, #361A54 55%, #4D2670 122%); }
+.vc-hero-inner { max-width: 1180px; margin: 0 auto; padding: 0 1.5rem; display: grid; grid-template-columns: 0.96fr 1.04fr; gap: 1.5rem; align-items: center; }
+.vc-hero-text { min-width: 0; }
+.vc-hero h1 { color: #fff; font-size: clamp(2.35rem, 5vw, 3.6rem); line-height: 1.08; margin: 0 0 1.2rem; }
+.vc-accent { color: var(--gold); }
+.vc-hero-sub { color: rgba(255, 255, 255, 0.82); font-size: 1.12rem; max-width: 46ch; margin: 0 0 2rem; }
+.vc-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.18); color: #fff; font-weight: 700; font-size: 0.78rem; letter-spacing: 0.05em; text-transform: uppercase; padding: 0.5rem 0.95rem; border-radius: 999px; margin: 0 0 1.5rem; }
+.vc-badge .vc-ico svg { color: var(--gold); }
+.vc-hero-cta { display: flex; flex-wrap: wrap; gap: 1rem; }
+.vc-hero-media { display: flex; justify-content: center; }
+.vc-hero-media { align-items: center; }
+.vc-hero-media img { width: 100%; max-width: 100%; height: auto; filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.35)); }
+.vc-btn-outline { background: transparent; color: #fff; border: 1px solid rgba(255, 255, 255, 0.42); }
+.vc-btn-outline:hover { background: rgba(255, 255, 255, 0.12); color: #fff; border-color: #fff; border-bottom-color: #fff; }
+
+/* ---------- About ---------- */
+.vc-about { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 3rem; align-items: center; }
+.vc-about-media { position: relative; display: flex; justify-content: center; align-items: center; }
+.vc-about-ring { position: absolute; width: min(360px, 78%); aspect-ratio: 1; background: var(--bg-tint); border-radius: 50%; }
+.vc-alt .vc-about-ring { background: #fff; }
+.vc-about-media img { position: relative; max-height: 430px; width: auto; }
+.vc-about-text p { color: var(--text-muted); font-size: 1.08rem; margin: 0; }
+
+/* ---------- Card grids ---------- */
+.vc-grid { display: grid; gap: 1.5rem; }
+.vc-grid-4 { grid-template-columns: repeat(4, 1fr); }
+.vc-card { background: #fff; border: 1px solid var(--border); border-radius: 18px; padding: 1.9rem 1.55rem; box-shadow: 0 3px 12px rgba(54, 26, 84, 0.05); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.vc-card:hover { transform: translateY(-5px); box-shadow: 0 14px 30px rgba(54, 26, 84, 0.14); }
+.vc-card h3 { font-size: 1.16rem; margin: 0 0 0.55rem; }
+.vc-card p { color: var(--text-muted); margin: 0; line-height: 1.6; }
+.vc-chip { display: grid; place-items: center; width: 60px; height: 60px; border-radius: 50%; margin: 0 0 1.2rem; }
+.vc-chip svg { width: 1.65rem; height: 1.65rem; }
+.vc-chip-indigo { background: #EAE3F6; color: #4D2670; }
+.vc-chip-gold { background: #FCEFC2; color: #B4870F; }
+.vc-chip-orange { background: #FBE3D0; color: #C15A1B; }
+.vc-chip-pink { background: #FBD9E1; color: #C13A63; }
+.vc-chip-purple { background: #ECE0F7; color: #7A3FB0; }
+.vc-do.vc-tint-gold { background: #FFF8E6; }
+.vc-do.vc-tint-orange { background: #FFF1E8; }
+.vc-do.vc-tint-pink { background: #FDEBF0; }
+.vc-do.vc-tint-purple { background: #F5EDFB; }
+
+/* ---------- Courses: banner + sticky-stack (reuses .curriculum-stack / .course-layer) ---------- */
+.vc-head-lead { color: var(--text-muted); font-size: 1.05rem; margin: 1rem auto 0; max-width: 60ch; }
+.vc-courses-split { display: grid; grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr); gap: 3rem; align-items: start; }
+/* Let grid children shrink below their content's intrinsic width (prevents
+   the big course-number cards from forcing horizontal overflow on phones). */
+.vc-hero-inner > *, .vc-about > *, .vc-onboard > *, .vc-courses-split > * { min-width: 0; }
+.vc-courses-media { position: sticky; top: 104px; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
+.vc-courses-stack .course-layer { top: calc(104px + var(--i) * 14px); }
+.vc-courses-poster { border-radius: 18px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 20px 48px rgba(54, 26, 84, 0.18); background: #fff; }
+.vc-courses-poster img { display: block; width: 100%; height: auto; }
+.vc-courses-cta { align-self: center; }
+.vc-courses-stack { padding-bottom: 0.5rem; }
+/* keep the reused course cards on-brand as links (neutralise global <a> underline) */
+.vc-courses-stack .course-layer-inner { border-bottom: none; text-decoration: none; }
+.vc-courses-stack .course-layer-inner:hover { border-bottom: none; }
+.vc-courses-stack .course-layer-title, .vc-courses-stack .course-layer-outcome, .vc-courses-stack .course-layer-open { border-bottom: none; }
+
+/* ---------- Get onboarded ---------- */
+.vc-onboard { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 3rem; align-items: center; }
+.vc-onboard-lead { color: var(--text-muted); margin-bottom: 1.75rem; }
+.vc-checklist { list-style: none; margin: 0 0 2rem; padding: 0; display: grid; gap: 0.65rem; }
+.vc-checklist li { display: flex; align-items: center; gap: 0.85rem; background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 0.8rem 1.1rem; font-weight: 600; color: var(--accent); }
+.vc-check { flex: 0 0 auto; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 8px; background: var(--gold-soft); color: #B4870F; }
+.vc-check svg { width: 15px; height: 15px; }
+.vc-onboard-media { display: flex; justify-content: center; }
+.vc-clipboard { width: min(330px, 88%); height: auto; }
+
+/* ---------- Help / Discord band ---------- */
+.vc-band-wrap { padding: clamp(4rem, 8vw, 6.5rem) 0 clamp(2rem, 4vw, 3rem); background: var(--bg); }
+.vc-body #faq { padding-top: clamp(3rem, 5vw, 4rem); }
+.vc-band { background: linear-gradient(150deg, #2A1342, #4D2670); border-radius: 24px; padding: clamp(2rem, 4vw, 3.25rem); display: grid; grid-template-columns: 1fr auto 1fr; gap: 2.5rem; align-items: center; color: #fff; box-shadow: 0 24px 60px rgba(42, 19, 66, 0.28); }
+.vc-band-col h3 { color: #fff; font-size: 1.35rem; margin: 0.9rem 0 0.5rem; }
+.vc-band-col p { color: rgba(255, 255, 255, 0.8); margin: 0 0 1.35rem; }
+.vc-band-ico { display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; background: rgba(255, 255, 255, 0.12); color: var(--gold); }
+.vc-band-ico svg { width: 1.6rem; height: 1.6rem; }
+.vc-band-rule { width: 1px; align-self: stretch; background: rgba(255, 255, 255, 0.16); }
+
+/* ---------- Footer ---------- */
+.vc-footer { background: var(--indigo-dark); color: rgba(255, 255, 255, 0.7); border-top: 5px solid var(--gold); padding: 3rem 0 1.75rem; }
+.vc-footer-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem 2rem; }
+.vc-footer-brand { border-bottom: none; display: inline-flex; }
+.vc-footer-nav { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+.vc-footer-nav a { color: rgba(255, 255, 255, 0.75); border-bottom: none; font-weight: 600; }
+.vc-footer-nav a:hover { color: #fff; }
+.vc-footer-social { display: flex; gap: 0.75rem; }
+.vc-footer-social a { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; background: rgba(255, 255, 255, 0.1); color: var(--gold); border-bottom: none; transition: background 0.15s ease; }
+.vc-footer-social a:hover { background: rgba(255, 255, 255, 0.22); }
+.vc-footer-social svg { width: 1.1rem; height: 1.1rem; }
+.vc-footer-copy { text-align: center; color: rgba(255, 255, 255, 0.5); font-size: 0.85rem; margin: 2rem auto 0; padding: 1.5rem 1.5rem 0; max-width: 1180px; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 960px) { .vc-grid-4 { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 860px) {
+  .vc-nav-toggle { display: inline-flex; }
+  .vc-nav { position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; padding: 0.5rem 1.5rem 1.25rem; background: #2A1342; box-shadow: 0 14px 26px rgba(0, 0, 0, 0.32); display: none; }
+  .vc-nav.open { display: flex; }
+  .vc-nav > a:not(.vc-cta) { padding: 0.85rem 0; font-size: 1.15rem; }
+  .vc-nav .btn { align-self: stretch; margin-top: 0.6rem; justify-content: center; }
+  .vc-hero-inner, .vc-about, .vc-onboard, .vc-courses-split { grid-template-columns: 1fr; gap: 2.25rem; }
+  .vc-about-media img { max-height: 360px; }
+  .vc-hero-media img { width: auto; max-width: 100%; max-height: 440px; }
+  .vc-courses-media { position: static; max-width: 420px; margin: 0 auto; }
+  .course-layer { position: static; }
+  .vc-band { grid-template-columns: 1fr; text-align: center; gap: 2rem; }
+  .vc-band-rule { width: auto; height: 1px; }
+  .vc-band-ico { margin: 0 auto; }
+  .vc-band-col .btn { align-self: center; }
+}
+@media (max-width: 560px) { .vc-grid-4 { grid-template-columns: 1fr; } .vc-footer-inner { flex-direction: column; align-items: flex-start; } }
+
+/* Community page: honour reduced-motion (disable hover lift/transitions) */
+@media (prefers-reduced-motion: reduce) {
+  .vc-card { transition: none; }
+  .vc-card:hover { transform: none; }
+}

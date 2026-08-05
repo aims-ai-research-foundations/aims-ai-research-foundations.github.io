@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang | default "en" }}">
+<head>
+  {{- partial "head.html" . }}
+</head>
+<body class="vc-body">
+  <a class="skip-link" href="#vc-main">Skip to content</a>
+
+  {{- $discord := .Site.Params.discordURL }}
+  {{- $email := .Site.Params.contactEmail }}
+  {{- $skills := .Site.Params.googleSkillsURL }}
+
+  {{/* ---- Reusable inline SVG icons (lucide-style, currentColor) ---- */}}
+  {{- $discordSvg := `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.6 12.6 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.01c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .079.009c.12.099.246.198.373.292a.077.077 0 0 1-.006.128c-.598.35-1.22.645-1.873.891a.076.076 0 0 0-.04.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.06.06 0 0 0-.031-.03ZM8.02 15.33c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.956 2.418-2.157 2.418Zm7.975 0c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.946 2.418-2.157 2.418Z"/></svg>` }}
+  {{- $mailSvg := `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>` }}
+
+  {{/* ---- Header ---- */}}
+  <header class="vc-header" id="vc-top">
+    <div class="vc-header-inner">
+      <a class="vc-brand" href="{{ .RelPermalink }}" aria-label="AI Research Foundations, home">
+        <img src="{{ "img/logos/logo-white.svg" | relURL }}" alt="AI Research Foundations" height="68">
+      </a>
+      <button class="vc-nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="vc-nav">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <nav class="vc-nav" id="vc-nav" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#courses">Courses</a>
+        <a href="#community">Community</a>
+        <a href="#faq">FAQ</a>
+        <a class="btn btn-gold vc-cta" href="{{ $discord }}" target="_blank" rel="noopener"><span class="vc-ico">{{ $discordSvg | safeHTML }}</span> Join Discord</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="vc-main">
+
+    {{/* ---- Hero ---- */}}
+    <section class="vc-hero">
+      <div class="vc-hero-inner">
+        <div class="vc-hero-text">
+          <span class="vc-badge"><span class="vc-ico">{{ partial "icon.html" "groups" }}</span> 600+ learners. One community.</span>
+          <h1>Build. Connect. Advance.<br><span class="vc-accent">The future of AI research.</span></h1>
+          <p class="vc-hero-sub">Join 600+ learners across Africa building the skills, connections, and research mindset to solve real-world problems with AI.</p>
+          <div class="vc-hero-cta">
+            <a class="btn btn-gold" href="{{ $discord }}" target="_blank" rel="noopener"><span class="vc-ico">{{ $discordSvg | safeHTML }}</span> Join Discord</a>
+            <a class="btn vc-btn-outline" href="mailto:{{ $email }}"><span class="vc-ico">{{ $mailSvg | safeHTML }}</span> Need help? Contact the team</a>
+          </div>
+        </div>
+        <div class="vc-hero-media">
+          <img src="{{ "img/virtual-community/hero-img.webp" | relURL }}" alt="Four learners collaborating around a laptop" width="835" height="1200" fetchpriority="high" decoding="async">
+        </div>
+      </div>
+    </section>
+
+    {{/* ---- About ---- */}}
+    <section id="about" class="vc-section">
+      <div class="container vc-about">
+        <div class="vc-about-media">
+          <span class="vc-about-ring"></span>
+          <img src="{{ "img/virtual-community/africa.webp" | relURL }}" alt="A network map of Africa" width="810" height="1200" loading="lazy" decoding="async">
+        </div>
+        <div class="vc-about-text">
+          <p class="section-eyebrow">About the virtual community cohort</p>
+          <h2 class="section-title with-accent">A pan-African community of learners building modern AI research skills.</h2>
+          <p>This virtual cohort brings together learners from across Africa who are passionate about AI research. Together, we learn from a world-class curriculum, support each other's growth, build real projects, and prepare to lead the next wave of AI innovation on the continent.</p>
+        </div>
+      </div>
+    </section>
+
+    {{/* ---- Courses: real 8-course curriculum, sticky-stack (as on the programme page) ---- */}}
+    {{- $p := hugo.Data.programme }}
+    <section id="courses" class="vc-section vc-alt">
+      <div class="container">
+        <header class="vc-head vc-center">
+          <p class="section-eyebrow">The courses</p>
+          <h2 class="section-title with-accent">Eight courses, built from the ground up</h2>
+          <p class="vc-head-lead">You start by building a small language model, then add the techniques that turn it into a modern AI system, and finish with a real-world capstone. Scroll to climb the stack.</p>
+        </header>
+        <div class="vc-courses-split">
+          <aside class="vc-courses-media">
+            <div class="vc-courses-poster">
+              <img src="{{ "img/others/ai-research-foundations-for-higher-education-programme.jpeg" | relURL }}" alt="AI Research Foundations, a Google DeepMind curriculum available on Google Skills" width="800" height="1000" loading="lazy" decoding="async">
+            </div>
+            <a class="btn btn-gold vc-courses-cta" href="{{ $skills }}" target="_blank" rel="noopener">Open the full curriculum on Google Skills <span class="vc-ico">{{ partial "icon.html" "external-link" }}</span></a>
+          </aside>
+          <div class="curriculum-stack vc-courses-stack">
+            {{- range $i, $c := $p.courses }}
+            {{- $url := $c.skillsURL | default $skills }}
+            <article class="course-layer{{ if eq $c.number "08" }} is-capstone{{ end }}" style="--i:{{ $i }}">
+              <a class="course-layer-inner" href="{{ $url }}" target="_blank" rel="noopener" aria-label="Open {{ $c.title }} on Google Skills">
+                <span class="course-layer-num">{{ $c.number }}</span>
+                <span class="course-layer-text">
+                  <span class="course-layer-title">{{ $c.title }}</span>
+                  <span class="course-layer-outcome">{{ $c.outcome }}</span>
+                  <span class="course-layer-open">View on Google Skills {{ partial "icon.html" "external-link" }}</span>
+                </span>
+              </a>
+            </article>
+            {{- end }}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {{/* ---- Get onboarded ---- */}}
+    {{- $steps := slice
+      "Create your account"
+      "Join the Discord community"
+      "Introduce yourself in #introductions"
+      "Complete the orientation module"
+      "Set your learning goals"
+      "Start the AI Research Foundations course"
+      "Engage, collaborate, and have fun" }}
+    <section id="onboard" class="vc-section">
+      <div class="container vc-onboard">
+        <div class="vc-onboard-text">
+          <p class="section-eyebrow">Get onboarded</p>
+          <h2 class="section-title with-accent">Your first week, step by step</h2>
+          <p class="vc-onboard-lead">A simple path to get set up, meet the community, and start learning with confidence.</p>
+          <ol class="vc-checklist">
+            {{- range $steps }}
+            <li><span class="vc-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>{{ . }}</li>
+            {{- end }}
+          </ol>
+          <a class="btn btn-gold" href="{{ $discord }}" target="_blank" rel="noopener"><span class="vc-ico">{{ $discordSvg | safeHTML }}</span> Get started on Discord</a>
+        </div>
+        <div class="vc-onboard-media" aria-hidden="true">
+          <svg class="vc-clipboard" viewBox="0 0 320 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- soft offset back panel for depth -->
+            <rect x="44" y="52" width="232" height="300" rx="26" fill="#EFE7FB"/>
+            <!-- board -->
+            <rect x="28" y="36" width="232" height="300" rx="26" fill="#fff" stroke="rgba(54,26,84,0.16)" stroke-width="2"/>
+            <!-- clip -->
+            <rect x="94" y="22" width="100" height="36" rx="12" fill="#361A54"/>
+            <rect x="119" y="12" width="50" height="20" rx="10" fill="#FDD633"/>
+            <!-- decorative sparkle + dots -->
+            <path d="M280 66l3.2 8.4 8.4 3.2-8.4 3.2L280 89.2l-3.2-8.4-8.4-3.2 8.4-3.2z" fill="#FDD633"/>
+            <circle cx="264" cy="44" r="4" fill="#C9B8EC"/>
+            <circle cx="292" cy="104" r="3" fill="#EAD48A"/>
+            <!-- rows: 3 complete, 1 up next -->
+            {{- range $r := slice (dict "y" 96 "t" 124 "s" 84 "done" true) (dict "y" 158 "t" 108 "s" 64 "done" true) (dict "y" 220 "t" 120 "s" 72 "done" true) (dict "y" 282 "t" 96 "s" 56 "done" false) }}
+            {{- $y := $r.y }}
+            {{- if $r.done }}
+            <rect x="56" y="{{ $y }}" width="34" height="34" rx="10" fill="#FDD633"/>
+            <polyline points="64 {{ add $y 18 }} 71 {{ add $y 25 }} 82 {{ add $y 10 }}" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            {{- else }}
+            <rect x="56" y="{{ $y }}" width="34" height="34" rx="10" fill="#FFFBEC" stroke="#FDD633" stroke-width="3"/>
+            {{- end }}
+            <rect x="104" y="{{ add $y 3 }}" width="{{ $r.t }}" height="11" rx="5.5" fill="{{ if $r.done }}#B7A4DE{{ else }}#D6CBEC{{ end }}"/>
+            <rect x="104" y="{{ add $y 22 }}" width="{{ $r.s }}" height="8" rx="4" fill="#E6DDF4"/>
+            {{- end }}
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    {{/* ---- What you will do ---- */}}
+    {{- $doItems := slice
+      (dict "title" "Learn" "tone" "gold" "body" "Complete the AI Research Foundations course and gain cutting-edge, research and industry-ready skills."
+        "svg" `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3Z"/></svg>`)
+      (dict "title" "Connect" "tone" "orange" "body" "Build relationships, collaborations, and a strong network of peers that inspire, challenge, and support you."
+        "svg" `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`)
+      (dict "title" "Build" "tone" "pink" "body" "Work on real-world research projects, hackathons, and challenges, with guidance from mentors who have walked the path."
+        "svg" `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91 0Z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.9 12.9 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2Z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>`)
+      (dict "title" "Contribute" "tone" "purple" "body" "Help grow and strengthen a thriving community of AI research learners across Africa."
+        "svg" `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></svg>`)
+    }}
+    <section id="community" class="vc-section vc-alt">
+      <div class="container">
+        <header class="vc-head vc-center">
+          <p class="section-eyebrow">What you will do</p>
+          <h2 class="section-title with-accent">More than a course. A movement.</h2>
+        </header>
+        <div class="vc-grid vc-grid-4">
+          {{- range $doItems }}
+          <article class="vc-card vc-do vc-tint-{{ .tone }}">
+            <span class="vc-chip vc-chip-{{ .tone }}">{{ .svg | safeHTML }}</span>
+            <h3>{{ .title }}</h3>
+            <p>{{ .body }}</p>
+          </article>
+          {{- end }}
+        </div>
+      </div>
+    </section>
+
+    {{/* ---- Help / Discord band ---- */}}
+    <section class="vc-band-wrap">
+      <div class="container">
+        <div class="vc-band">
+          <div class="vc-band-col">
+            <span class="vc-band-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14v-3a9 9 0 0 1 18 0v3"/><path d="M21 15v3a3 3 0 0 1-3 3h-3"/><rect x="1.5" y="14" width="5" height="7" rx="2"/><rect x="17.5" y="14" width="5" height="7" rx="2"/></svg></span>
+            <h3>Need help?</h3>
+            <p>Our team is here for you. Reach out any time.</p>
+            <a class="btn vc-btn-outline" href="mailto:{{ $email }}"><span class="vc-ico">{{ $mailSvg | safeHTML }}</span> Contact the team</a>
+          </div>
+          <span class="vc-band-rule" aria-hidden="true"></span>
+          <div class="vc-band-col">
+            <span class="vc-band-ico">{{ $discordSvg | safeHTML }}</span>
+            <h3>Join our Discord community</h3>
+            <p>Connect, collaborate, and grow. Be part of the conversation.</p>
+            <a class="btn btn-gold" href="{{ $discord }}" target="_blank" rel="noopener"><span class="vc-ico">{{ $discordSvg | safeHTML }}</span> Join Discord</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {{/* ---- FAQ ---- */}}
+    {{- $faqs := slice
+      (dict "q" "What is AI Research Foundations?" "a" "AI Research Foundations is a practical curriculum from Google DeepMind that teaches you how to build and understand modern AI systems, from small language models to transformers, through hands-on projects. The virtual community cohort is a supportive space where learners across Africa work through it together.")
+      (dict "q" "Who can join this community?" "a" "Anyone across Africa who is curious about AI research and willing to learn. Students, graduates, researchers, and professionals are all welcome. A basic comfort with programming helps, but the curriculum starts from the fundamentals.")
+      (dict "q" "Is there a cost to join?" "a" "No. The community and the AI Research Foundations curriculum on Google Skills are completely free. All you need is your time and commitment.")
+      (dict "q" "How do I get help if I am stuck?" "a" "Ask in the Discord community. Peers and the team are there to help, and the weekly conversations and study groups mean you are never learning alone. You can also reach the team by email any time.")
+      (dict "q" "What if I fall behind in the course?" "a" "That is completely fine. The curriculum is self-paced, so you can learn at a rhythm that fits your life. Jump back in whenever you are ready, and lean on the community to catch up.") }}
+    <section id="faq" class="vc-section">
+      <div class="container narrow">
+        <header class="vc-head vc-center">
+          <h2 class="section-title with-accent">Frequently Asked Questions</h2>
+          <p class="vc-head-lead">Everything you need to know about joining the community and learning with us. Still curious? Ask us any time on Discord.</p>
+        </header>
+        {{ partial "faq.html" $faqs }}
+      </div>
+    </section>
+
+  </main>
+
+  {{/* ---- Footer ---- */}}
+  <footer class="vc-footer">
+    <div class="container vc-footer-inner">
+      <a class="vc-footer-brand" href="{{ .RelPermalink }}" aria-label="AI Research Foundations, home">
+        <img src="{{ "img/logos/logo-white.svg" | relURL }}" alt="AI Research Foundations" height="34">
+      </a>
+      <nav class="vc-footer-nav" aria-label="Footer">
+        <a href="#courses">Courses</a>
+        <a href="#community">Community</a>
+        <a href="{{ "resources/" | relURL }}">Resources</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="vc-footer-social">
+        <a href="{{ $discord }}" target="_blank" rel="noopener" aria-label="Join our Discord"><span class="vc-ico">{{ $discordSvg | safeHTML }}</span></a>
+        <a href="mailto:{{ $email }}" aria-label="Email the team"><span class="vc-ico">{{ $mailSvg | safeHTML }}</span></a>
+      </div>
+    </div>
+    <div class="vc-footer-copy">© {{ now.Year }} AI Research Foundations. All rights reserved.</div>
+  </footer>
+
+  <script>
+    (function () {
+      var btn = document.querySelector(".vc-nav-toggle");
+      var nav = document.getElementById("vc-nav");
+      if (btn && nav) {
+        btn.addEventListener("click", function () {
+          var open = nav.classList.toggle("open");
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+        });
+        nav.querySelectorAll("a").forEach(function (a) {
+          a.addEventListener("click", function () {
+            nav.classList.remove("open");
+            btn.setAttribute("aria-expanded", "false");
+          });
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
