@@ -23,7 +23,7 @@ prework:
   liveSessions: "Completed"
   requiredCourses: ["01", "02", "03", "04"]
 links:
-  discord: "https://discord.gg/PKdNzQPV7Z"
+  discord: "https://discord.gg/awUQHVfRJD"
   googleSkills: "https://skills.google/paths/3135"
   pilotSite: "https://aims-ai-research-foundations.github.io/pilot-workshop/"
 facilitators: ["ulrich", "michael", "yassir", "ayman", "maharavo", "similoluwa", "toky"]
