@@ -27,7 +27,7 @@
         <a href="#courses">Courses</a>
         <a href="#community">Community</a>
         <a href="#faq">FAQ</a>
-        <button type="button" class="btn btn-gold vc-cta" data-discord-access><span class="vc-ico">{{ $discordSvg | safeHTML }}</span> Join Discord</button>
+        <a href="{{ .Site.Params.discordURL }}" target="_blank" rel="noopener" class="btn btn-gold vc-cta"><span class="vc-ico">{{ $discordSvg | safeHTML }}</span> Join Discord</a>
       </nav>
     </div>
   </header>
@@ -42,7 +42,7 @@
           <h1>Build. Connect. Advance.<br><span class="vc-accent">The future of AI research.</span></h1>
           <p class="vc-hero-sub">Join 600+ learners across Africa building the skills, connections, and research mindset to solve real-world problems with AI.</p>
           <div class="vc-hero-cta">
-            <button type="button" class="btn btn-gold" data-discord-access><span class="vc-ico">{{ $discordSvg | safeHTML }}</span> Join Discord</button>
+            <a href="{{ .Site.Params.discordURL }}" target="_blank" rel="noopener" class="btn btn-gold"><span class="vc-ico">{{ $discordSvg | safeHTML }}</span> Join Discord</a>
             <a class="btn vc-btn-outline" href="mailto:{{ $email }}"><span class="vc-ico">{{ $mailSvg | safeHTML }}</span> Need help? Contact the team</a>
           </div>
         </div>
@@ -122,7 +122,7 @@
             <li><span class="vc-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>{{ . }}</li>
             {{- end }}
           </ol>
-          <button type="button" class="btn btn-gold" data-discord-access><span class="vc-ico">{{ $discordSvg | safeHTML }}</span> Get started on Discord</button>
+          <a href="{{ .Site.Params.discordURL }}" target="_blank" rel="noopener" class="btn btn-gold"><span class="vc-ico">{{ $discordSvg | safeHTML }}</span> Get started on Discord</a>
         </div>
         <div class="vc-onboard-media" aria-hidden="true">
           <svg class="vc-clipboard" viewBox="0 0 320 380" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -198,7 +198,7 @@
             <span class="vc-band-ico">{{ $discordSvg | safeHTML }}</span>
             <h3>Join our Discord community</h3>
             <p>Connect, collaborate, and grow. Be part of the conversation.</p>
-            <button type="button" class="btn btn-gold" data-discord-access><span class="vc-ico">{{ $discordSvg | safeHTML }}</span> Join Discord</button>
+            <a href="{{ .Site.Params.discordURL }}" target="_blank" rel="noopener" class="btn btn-gold"><span class="vc-ico">{{ $discordSvg | safeHTML }}</span> Join Discord</a>
           </div>
         </div>
       </div>
@@ -236,7 +236,7 @@
         <a href="#faq">FAQ</a>
       </nav>
       <div class="vc-footer-social">
-        <button type="button" data-discord-access aria-label="Join our Discord"><span class="vc-ico">{{ $discordSvg | safeHTML }}</span></button>
+        <a href="{{ .Site.Params.discordURL }}" target="_blank" rel="noopener" aria-label="Join our Discord"><span class="vc-ico">{{ $discordSvg | safeHTML }}</span></a>
         <a href="mailto:{{ $email }}" aria-label="Email the team"><span class="vc-ico">{{ $mailSvg | safeHTML }}</span></a>
       </div>
     </div>
