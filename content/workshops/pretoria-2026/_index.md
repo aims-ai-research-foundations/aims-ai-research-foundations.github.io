@@ -8,7 +8,7 @@ city: "Pretoria"
 venue: "University of Pretoria"
 host: "University of Pretoria"
 audience: "Lecturers and teaching assistants"
-summary: "A South African Train-the-Trainer workshop hosted at the University of Pretoria, during the Semester 2 recess."
+summary: "A South African Train-the-Trainer workshop hosted at the University of Pretoria."
 weight: 4
 heroImage: "img/workshops/pilot-cape-town/gallery/06-computer-lab.jpg"
 thumb: "img/workshops/pilot-cape-town/gallery/02-presentation.jpg"
