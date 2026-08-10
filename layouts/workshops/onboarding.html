@@ -60,15 +60,23 @@
   <div class="container">
     {{ partial "section-eyebrow.html" (dict "eyebrow" "Programme timeline" "title" "Where pre-work sits in your journey") }}
     {{- $preDate := "Now" }}{{ with $pw.opens }}{{ $preDate = printf "From %s" ((time.AsTime .).Format "2 Jan") }}{{ end }}
+    {{- /* Highlight the current phase based on today's date: 0 = pre-work, 1 = workshop week, 2 = after. */}}
+    {{- $phase := 0 }}
+    {{- if and (not $w.Params.datesTBC) $w.Params.cohorts }}
+      {{- $wkStart := time.AsTime (index $w.Params.cohorts 0).start }}
+      {{- $wkEndDay := (time.AsTime (index $w.Params.cohorts (sub (len $w.Params.cohorts) 1)).end).AddDate 0 0 1 }}
+      {{- if ge now.Unix $wkStart.Unix }}{{ $phase = 1 }}{{ end }}
+      {{- if ge now.Unix $wkEndDay.Unix }}{{ $phase = 2 }}{{ end }}
+    {{- end }}
     {{- $ms := slice
-      (dict "date" $preDate "label" "Pre-work period" "sub" "Courses 01 to 04" "highlight" (not $completed))
-      (dict "date" $workshopDate "label" "Workshop week" "sub" $w.Params.city)
+      (dict "date" $preDate "label" "Pre-work period" "sub" "Courses 01 to 04" "highlight" (and (not $completed) (eq $phase 0)))
+      (dict "date" $workshopDate "label" "Workshop week" "sub" $w.Params.city "highlight" (and (not $completed) (eq $phase 1)))
     }}
     {{- if $completed }}
       {{- $ms = $ms | append (dict "date" "Post-workshop" "label" "Feedback & Iteration" "sub" "The team iterates the workshop design based on feedback collected.") }}
     {{- else }}
       {{- $ms = $ms | append
-        (dict "date" "Late 2026" "label" "Course delivery" "sub" "Teach your students")
+        (dict "date" "Late 2026" "label" "Course delivery" "sub" "Teach your students" "highlight" (eq $phase 2))
         (dict "date" "2026 to 2027" "label" "Capstone supervision" "sub" "Guide projects")
         (dict "date" "After delivery" "label" "Reporting" "sub" "Share outcomes") }}
     {{- end }}
@@ -85,7 +93,7 @@
         <div>
           <h3>Join the Discord community</h3>
           <p>Meet your cohort and the team, ask questions, and get announcements.</p>
-          <a class="step-link" href="{{ $links.discord }}">Join Discord</a>
+          <button type="button" class="step-link" data-discord-access>Join Discord</button>
         </div>
       </li>
       <li class="setup-step fade-in">

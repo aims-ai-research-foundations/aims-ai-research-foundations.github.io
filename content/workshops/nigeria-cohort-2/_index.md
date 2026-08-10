@@ -9,7 +9,7 @@ venue: "University of Lagos"
 address: "University Road, Akoka, Yaba, Lagos, Nigeria"
 host: "FATE Foundation"
 audience: "Lecturers and teaching assistants"
-summary: "The second Nigeria cohort, hosted at the University of Lagos in August 2026."
+summary: "The second Nigeria Train-the-Trainer workshop, hosted at the University of Lagos."
 weight: 2
 heroImage: "img/workshops/pilot-cape-town/gallery/06-computer-lab.jpg"
 thumb: "img/workshops/pilot-cape-town/gallery/02-presentation.jpg"

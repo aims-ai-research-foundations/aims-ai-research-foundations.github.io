@@ -8,7 +8,7 @@ city: "To be confirmed"
 venue: ""
 host: "FATE Foundation"
 audience: "Lecturers and teaching assistants"
-summary: "A national workshop for Ghanaian universities. Venue and dates are being finalised."
+summary: "A Train-the-Trainer workshop for Ghanaian universities. Venue and dates are being finalised."
 weight: 3
 heroImage: "img/workshops/pilot-cape-town/gallery/06-computer-lab.jpg"
 thumb: "img/workshops/pilot-cape-town/gallery/02-presentation.jpg"

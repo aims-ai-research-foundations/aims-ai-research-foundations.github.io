@@ -1,6 +1,8 @@
 {{ define "main" }}
 {{- $w := .Parent }}
 {{- $days := $w.Params.schedule }}
+{{- $slug := $w.Params.slug }}
+{{- $embed := $w.Params.calendarEmbed }}
 <section class="page-hero compact">
   <div class="container">
     <p class="hero-eyebrow"><a href="{{ $w.RelPermalink }}">{{ $w.Title }}</a> &nbsp;/&nbsp; Schedule</p>
@@ -9,26 +11,55 @@
   </div>
 </section>
 
+{{- with $embed }}
 <section>
   <div class="container">
+    {{ partial "section-eyebrow.html" (dict "eyebrow" "Live calendar" "title" "Everything in one calendar") }}
+    <p class="section-lead">Every session for the week, always up to date. Add it to your own Google Calendar so any changes sync automatically.</p>
+    {{- with $w.Params.calendarAdd }}
+    <p class="cal-embed-actions"><a class="btn btn-primary" href="{{ . }}" target="_blank" rel="noopener">{{ partial "icon.html" "calendar" }} Add to your Google Calendar</a></p>
+    {{- end }}
+    <div class="cal-embed">
+      <iframe src="{{ . }}" title="{{ $w.Title }} workshop calendar" loading="lazy" width="100%" height="620" frameborder="0" scrolling="no"></iframe>
+    </div>
+  </div>
+</section>
+{{- end }}
+
+<section{{ if $embed }} class="alt"{{ end }}>
+  <div class="container">
     {{- if $days }}
+      {{ partial "section-eyebrow.html" (dict "eyebrow" "Day by day" "title" "The week, hour by hour") }}
       {{- with $w.Params.scheduleLegend }}
       <div class="legend">
         {{- range . }}<span class="legend-item"><span class="legend-dot cat-{{ .cat }}"></span>{{ .label }}</span>{{ end }}
       </div>
       {{- end }}
-      <div class="schedule">
-        {{- range $days }}
-        <div class="sched-day">
-          <div class="sched-day-head">
-            <span class="sched-day-name">{{ .day }}</span>
-            <span class="sched-day-date">{{ .date }}</span>
-            <span class="sched-day-title">{{ .title }}</span>
-          </div>
+      {{- /* Open the tab for today's date (clamped to the workshop week). */}}
+      {{- $activeIdx := 0 }}
+      {{- if and (not $w.Params.datesTBC) $w.Params.cohorts }}
+        {{- $wkStart := time.AsTime (index $w.Params.cohorts 0).start }}
+        {{- $diff := int (math.Floor (div (sub now.Unix $wkStart.Unix) 86400)) }}
+        {{- if lt $diff 0 }}{{ $diff = 0 }}{{ end }}
+        {{- if ge $diff (len $days) }}{{ $diff = sub (len $days) 1 }}{{ end }}
+        {{- $activeIdx = $diff }}
+      {{- end }}
+      <div class="sched-tabs tabs" data-tabs>
+        <div class="tablist sched-tablist" role="tablist" aria-label="Choose a day">
+          {{- range $i, $d := $days }}
+          <button class="tab sched-tab" role="tab" id="tab-{{ $slug }}-{{ $i }}" aria-controls="panel-{{ $slug }}-{{ $i }}" aria-selected="{{ if eq $i $activeIdx }}true{{ else }}false{{ end }}" tabindex="{{ if eq $i $activeIdx }}0{{ else }}-1{{ end }}">
+            <span class="sched-tab-day">{{ .day }}</span>
+            {{- with .date }}<span class="sched-tab-date">{{ . }}</span>{{ end }}
+          </button>
+          {{- end }}
+        </div>
+        {{- range $i, $d := $days }}
+        <div class="tabpanel sched-panel" role="tabpanel" id="panel-{{ $slug }}-{{ $i }}" aria-labelledby="tab-{{ $slug }}-{{ $i }}"{{ if ne $i $activeIdx }} hidden{{ end }}>
+          {{- with $d.title }}<h3 class="sched-panel-title">{{ . }}</h3>{{ end }}
           <div class="table-scroll">
             <table class="sched-table">
               <tbody>
-                {{- range .sessions }}
+                {{- range $d.sessions }}
                 <tr class="cat-{{ .cat }}">
                   <td class="sched-time">{{ .start }}–{{ .end }}</td>
                   <td class="sched-name">{{ .name }}</td>
@@ -40,8 +71,8 @@
         </div>
         {{- end }}
       </div>
-      <p class="schedule-disclaimer">This schedule is indicative. Times and sessions may shift; the final timetable is confirmed closer to the workshop.</p>
-    {{- else }}
+      {{- if $embed }}<p class="schedule-disclaimer">The calendar above always shows the latest times.</p>{{ end }}
+    {{- else if not $embed }}
       <div class="coming-soon">
         <span class="cs-ico">{{ partial "icon.html" "calendar" }}</span>
         <h2>Schedule coming soon</h2>

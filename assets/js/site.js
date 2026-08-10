@@ -1,3 +1,14 @@
+/* ---------- Invite-only Discord access ---------- */
+(function () {
+  "use strict";
+  var message = "Access is invite-only. Check your onboarding email for the Discord server link.";
+  document.querySelectorAll("button[data-discord-access]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      window.alert(message);
+    });
+  });
+})();
+
 (function () {
   "use strict";
 

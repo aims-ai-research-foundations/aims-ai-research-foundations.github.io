@@ -8,7 +8,7 @@ city: "Muizenberg, Cape Town"
 venue: "AIMS South Africa"
 host: "AIMS South Africa"
 audience: "PhD and Master's students, researchers, TAs, and lecturers"
-summary: "A dry run of the workshop, held in June 2026 in Muizenberg, Cape Town, to test and refine how the week runs."
+summary: "A dry run of the Train-the-Trainer workshop, held in June 2026 in Muizenberg, Cape Town, to test and refine how the week runs."
 weight: 2
 heroImage: "img/workshops/pilot-cape-town/gallery/06-computer-lab.jpg"
 thumb: "img/workshops/pilot-cape-town/gallery/02-presentation.jpg"
