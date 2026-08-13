@@ -61,8 +61,8 @@ schedule:
     sessions:
       - { start: "09:00", end: "09:30", name: "Social - Africa Quiz", cat: "social" }
       - { start: "09:30", end: "11:00", name: "Course 3 Technical Lecture", cat: "lecture" }
-      - { start: "11:00", end: "12:00", name: "Toolkit Activity Walkthrough", cat: "hands" }
-      - { start: "12:00", end: "12:30", name: "Break", cat: "break" }
+      - { start: "11:00", end: "11:30", name: "Break", cat: "break" }
+      - { start: "11:30", end: "12:30", name: "Toolkit Activity Walkthrough", cat: "hands" }
       - { start: "12:30", end: "13:30", name: "Explain It Back", cat: "lecture" }
       - { start: "13:30", end: "14:30", name: "Lunch", cat: "break" }
       - { start: "14:30", end: "15:00", name: "Lecture it Back Planning", cat: "lecture" }
@@ -75,8 +75,8 @@ schedule:
     sessions:
       - { start: "09:00", end: "09:30", name: "Social - Spot the Slop", cat: "social" }
       - { start: "09:30", end: "11:00", name: "Course 4 Technical Lecture", cat: "lecture" }
-      - { start: "11:00", end: "12:00", name: "Toolkit Activity Walkthrough", cat: "hands" }
-      - { start: "12:00", end: "12:30", name: "Break", cat: "break" }
+      - { start: "11:00", end: "11:30", name: "Break", cat: "break" }
+      - { start: "11:30", end: "12:30", name: "Toolkit Activity Walkthrough", cat: "hands" }
       - { start: "12:30", end: "13:30", name: "Explain It Back", cat: "lecture" }
       - { start: "13:30", end: "14:30", name: "Lunch", cat: "break" }
       - { start: "14:30", end: "15:30", name: "Gen AI for Educators", cat: "hands" }
@@ -89,8 +89,8 @@ schedule:
     sessions:
       - { start: "09:00", end: "09:30", name: "Social - Conversation Cards", cat: "social" }
       - { start: "09:30", end: "11:00", name: "Course 5 Technical Lecture", cat: "lecture" }
-      - { start: "11:00", end: "12:00", name: "Toolkit Activity Walkthrough", cat: "hands" }
-      - { start: "12:00", end: "12:30", name: "Break", cat: "break" }
+      - { start: "11:00", end: "11:30", name: "Break", cat: "break" }
+      - { start: "11:30", end: "12:30", name: "Toolkit Activity Walkthrough", cat: "hands" }
       - { start: "12:30", end: "13:30", name: "Explain It Back", cat: "lecture" }
       - { start: "13:30", end: "14:30", name: "Lunch", cat: "break" }
       - { start: "14:30", end: "15:30", name: "Capstone hands-on", cat: "hands" }
@@ -102,8 +102,8 @@ schedule:
     sessions:
       - { start: "09:00", end: "09:30", name: "Social - What Would You Do?", cat: "social" }
       - { start: "09:30", end: "11:00", name: "Course 7 Technical Lecture", cat: "lecture" }
-      - { start: "11:00", end: "12:00", name: "Toolkit Activity Walkthrough", cat: "hands" }
-      - { start: "12:00", end: "12:30", name: "Break", cat: "break" }
+      - { start: "11:00", end: "11:30", name: "Break", cat: "break" }
+      - { start: "11:30", end: "12:30", name: "Toolkit Activity Walkthrough", cat: "hands" }
       - { start: "12:30", end: "13:30", name: "Explain It Back", cat: "lecture" }
       - { start: "13:30", end: "14:30", name: "Lunch", cat: "break" }
       - { start: "14:30", end: "15:30", name: "Course 7 lab", cat: "hands" }
