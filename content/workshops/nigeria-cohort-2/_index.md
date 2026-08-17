@@ -26,7 +26,6 @@ prework:
   liveSessions: "TBC"
   requiredCourses: ["01", "02", "03", "04"]
 links:
-  discord: "https://discord.gg/awUQHVfRJD"
   googleSkills: "https://skills.google/paths/3135"
   liveCalendar: "https://calendar.google.com/calendar/u/0?cid=Y19jZDVmZjM4OWM1YjA4MzAxMThhMWFlYjI3ZjdmYWM5ODIyMWFkYmVjOTE0NzdiNTgwYjE4ODYzYjllNjNiZDMyQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20"
   pilotSite: "https://aims-ai-research-foundations.github.io/pilot-workshop/"

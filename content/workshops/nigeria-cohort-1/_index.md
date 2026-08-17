@@ -11,8 +11,9 @@ host: "FATE Foundation"
 audience: "Lecturers and teaching assistants"
 summary: "The first Nigeria Train-the-Trainer workshop, hosted at the University of Lagos."
 weight: 1
-heroImage: "img/workshops/pilot-cape-town/gallery/06-computer-lab.jpg"
-thumb: "img/workshops/pilot-cape-town/gallery/02-presentation.jpg"
+heroImage: "img/workshops/nigeria-cohort-1/gallery/01.jpg"
+thumb: "img/workshops/nigeria-cohort-1/gallery/09.jpg"
+aboutImage: "img/workshops/nigeria-cohort-1/gallery/03.jpg"
 universities:
   - "Afe Babalola University"
   - "University of Lagos"
@@ -26,12 +27,11 @@ prework:
   liveSessions: "TBC"
   requiredCourses: ["01", "02", "03", "04"]
 links:
-  discord: "https://discord.gg/awUQHVfRJD"
   googleSkills: "https://skills.google/paths/3135"
   liveCalendar: "https://calendar.google.com/calendar/u/0?cid=Y19jZDVmZjM4OWM1YjA4MzAxMThhMWFlYjI3ZjdmYWM5ODIyMWFkYmVjOTE0NzdiNTgwYjE4ODYzYjllNjNiZDMyQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20"
   pilotSite: "https://aims-ai-research-foundations.github.io/pilot-workshop/"
 facilitators: ["ulrich", "michael", "yassir", "ayman", "maharavo", "similoluwa", "toky"]
-hasGallery: false
+hasGallery: true
 calendarEmbed: "https://calendar.google.com/calendar/embed?src=c_290cbd5283c526f8ae4b3f3c2020dcecbcac2bffa8eaf9b6a0d196e438a49705%40group.calendar.google.com&ctz=Africa%2FLagos"
 calendarAdd: "https://calendar.google.com/calendar/u/0/r?cid=c_290cbd5283c526f8ae4b3f3c2020dcecbcac2bffa8eaf9b6a0d196e438a49705%40group.calendar.google.com"
 scheduleLegend:

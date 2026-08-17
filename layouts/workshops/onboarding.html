@@ -155,8 +155,8 @@
         <div class="cal-info">
           <h3>Onboarding session</h3>
           <p>A live kickoff to get set up and oriented before the pre-work begins.</p>
+          {{- with $pw.onboardingSession }}<p class="cal-when">{{ (time.AsTime .).Format "Monday, 2 January 2006" }}</p>{{ else }}<span class="wip-badge">Date to be confirmed</span>{{ end }}
         </div>
-        <a class="btn btn-primary" href="https://www.google.com/calendar/event?eid=OTZhOXAyaGMwdmRsaDhobTI0Z2E5dThicGcgc2ltaWxvbHV3YUBhaW1zLmFjLnph" target="_blank" rel="noopener">{{ partial "icon.html" "calendar" }} Add to calendar</a>
       </div>
 
       <div class="cal-milestone fade-in">
@@ -172,7 +172,7 @@
         <div class="cal-info">
           <h3>Workshop week</h3>
           <p>The in-person workshop week{{ with $w.Params.city }}{{ if ne . "To be confirmed" }} in {{ . }}{{ end }}{{ end }}.</p>
-          <span class="wip-badge">Dates to be confirmed</span>
+          {{- if $hasCohorts }}<p class="cal-when">{{ $workshopDate }}</p>{{ else }}<span class="wip-badge">Dates to be confirmed</span>{{ end }}
         </div>
       </div>
     </div>

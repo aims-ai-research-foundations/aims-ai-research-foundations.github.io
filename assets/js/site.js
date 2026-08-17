@@ -1,7 +1,7 @@
 /* ---------- Invite-only Discord access ---------- */
 (function () {
   "use strict";
-  var message = "Access is invite-only. Check your onboarding email for the Discord server link.";
+  var message = "Discord Server is private. Check your email to get the link to join the server!";
   document.querySelectorAll("button[data-discord-access]").forEach(function (button) {
     button.addEventListener("click", function () {
       window.alert(message);

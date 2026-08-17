@@ -76,7 +76,7 @@ archetypes/workshop/        Scaffold for `hugo new workshops/<slug> --kind works
 
 These are flagged in the UI with a badge so they are easy to find:
 
-- **Discord invite link** (`discordURL` in `hugo.toml`, and `links.discord` per workshop).
+- **Discord access:** invitation links are sent privately by email and are intentionally not stored in the website.
 - **Pre-work deadline date** for Nigeria. The open date (6 July) and the two cohort weeks are confirmed; the deadline is an estimate (`prework.deadlineEstimate: true`).
 - **Live Sessions day and time** (`prework.liveSessions: "TBC"`).
 - **Real testimonials.** Current ones are samples (`placeholder: true` in `data/testimonials.yaml`).
