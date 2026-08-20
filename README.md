@@ -4,6 +4,8 @@ The official website for the **AI Research Foundations for Higher Education** pr
 
 It is one repository: a programme landing site plus a self-contained mini-site for each workshop. Built with [Hugo](https://gohugo.io/) (static output), deployed to GitHub Pages.
 
+**Live at <https://airf.aims.ac.za>** (AIMS subdomain, set August 2026; the github.io URL redirects).
+
 ## Run it locally
 
 ```bash
@@ -85,7 +87,7 @@ These are flagged in the UI with a badge so they are easy to find:
 
 ## Deploy
 
-Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds with Hugo extended and publishes to GitHub Pages. The repo is named `aims-ai-research-foundations.github.io`, so the site serves at the org root: <https://aims-ai-research-foundations.github.io/>.
+Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds with Hugo extended and publishes to GitHub Pages. The repo is named `aims-ai-research-foundations.github.io`, so the site serves at the org root — now behind the custom domain <https://airf.aims.ac.za/> (the Pages build takes its base URL from the repo's Pages settings via `actions/configure-pages`, so the custom domain must stay configured there; `static/CNAME` records it in-repo).
 
 The original Cape Town pilot site, the quizzes, and the Spot the Slop game remain hosted separately at <https://aims-ai-research-foundations.github.io/pilot-workshop/> and are linked from the Resources page.
 

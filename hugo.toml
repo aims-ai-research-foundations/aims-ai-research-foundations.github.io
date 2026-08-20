@@ -1,4 +1,4 @@
-baseURL = 'https://aims-ai-research-foundations.github.io/'
+baseURL = 'https://airf.aims.ac.za/'
 title = 'AI Research Foundations for Higher Education'
 defaultContentLanguage = 'en'
 enableRobotsTXT = true
