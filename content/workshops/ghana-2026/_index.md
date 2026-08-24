@@ -28,11 +28,12 @@ prework:
   requiredCourses: ["01", "02", "03", "04"]
 links:
   googleSkills: "https://skills.google/paths/3135"
-  liveCalendar: "https://calendar.google.com/calendar/u/0?cid=Y19jZDVmZjM4OWM1YjA4MzAxMThhMWFlYjI3ZjdmYWM5ODIyMWFkYmVjOTE0NzdiNTgwYjE4ODYzYjllNjNiZDMyQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20"
+  liveCalendar: "https://calendar.google.com/calendar/u/0?cid=Y19mMzUyMmI1ZTZhNzhjYzFkNmZkNTRjM2ZjZDc1YTcxNDFmYTc5NzI1Zjc5MGRjM2Q4NDJhMmE5NDJhMjIzZDlmQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20"
   pilotSite: "https://aims-ai-research-foundations.github.io/pilot-workshop/"
 facilitators: ["ulrich", "michael", "yassir", "ayman", "maharavo", "similoluwa", "toky"]
 hasGallery: false
-scheduleNote: "All times are in Greenwich Mean Time (GMT)."
+calendarEmbed: "https://calendar.google.com/calendar/embed?src=c_f3522b5e6a78cc1d6fd54c3fcd75a7141fa79725f790dc3d842a2a942a223d9f%40group.calendar.google.com&ctz=Africa%2FAccra"
+calendarAdd: "https://calendar.google.com/calendar/u/0/r?cid=c_f3522b5e6a78cc1d6fd54c3fcd75a7141fa79725f790dc3d842a2a942a223d9f@group.calendar.google.com"
 scheduleLegend:
   - { cat: "lecture", label: "Technical Content" }
   - { cat: "collab", label: "Pedagogy and Teaching" }
