@@ -61,55 +61,54 @@ schedule:
     sessions:
       - { start: "09:00", end: "09:30", name: "Social - Africa Quiz", cat: "social" }
       - { start: "09:30", end: "11:00", name: "Course 3 Technical Lecture", cat: "lecture" }
-      - { start: "11:00", end: "11:15", name: "Break", cat: "break" }
-      - { start: "11:15", end: "12:15", name: "Toolkit Activity Walkthrough", cat: "hands" }
-      - { start: "12:15", end: "13:15", name: "Explain It Back", cat: "lecture" }
-      - { start: "13:15", end: "13:45", name: "Lunch", cat: "break" }
-      - { start: "13:45", end: "14:15", name: "Lecture it Back Planning", cat: "lecture" }
-      - { start: "14:15", end: "14:45", name: "GCSB Onboarding", cat: "collab" }
-      - { start: "14:45", end: "15:00", name: "Break", cat: "break" }
-      - { start: "15:00", end: "16:00", name: "Contextualize for Africa", cat: "collab" }
-      - { start: "16:00", end: "17:00", name: "Course 3 lab", cat: "hands" }
+      - { start: "11:00", end: "11:30", name: "Break", cat: "break" }
+      - { start: "11:30", end: "12:30", name: "Toolkit Activity Walkthrough", cat: "hands" }
+      - { start: "12:30", end: "13:30", name: "Explain It Back", cat: "lecture" }
+      - { start: "13:30", end: "14:00", name: "Lunch", cat: "break" }
+      - { start: "14:00", end: "14:30", name: "Lecture it Back Planning", cat: "lecture" }
+      - { start: "14:30", end: "15:00", name: "GCSB Onboarding", cat: "collab" }
+      - { start: "15:00", end: "15:30", name: "Break", cat: "break" }
+      - { start: "15:30", end: "16:30", name: "Contextualize for Africa", cat: "collab" }
+      - { start: "16:30", end: "17:00", name: "Course 3 lab", cat: "hands" }
   - day: "Wednesday"
     date: "26 Aug"
     sessions:
       - { start: "08:30", end: "09:00", name: "Social - Spot the Slop", cat: "social" }
       - { start: "09:00", end: "10:30", name: "Course 4 Technical Lecture", cat: "lecture" }
-      - { start: "10:30", end: "10:45", name: "Break", cat: "break" }
-      - { start: "10:45", end: "11:45", name: "Toolkit Activity Walkthrough", cat: "hands" }
-      - { start: "11:45", end: "12:45", name: "Explain It Back", cat: "lecture" }
-      - { start: "12:45", end: "13:15", name: "Lunch", cat: "break" }
-      - { start: "13:15", end: "14:15", name: "Gen AI for Educators", cat: "hands" }
-      - { start: "14:15", end: "14:30", name: "Break", cat: "break" }
+      - { start: "10:30", end: "11:00", name: "Break", cat: "break" }
+      - { start: "11:00", end: "12:00", name: "Toolkit Activity Walkthrough", cat: "hands" }
+      - { start: "12:00", end: "13:00", name: "Explain It Back", cat: "lecture" }
+      - { start: "13:00", end: "13:30", name: "Lunch", cat: "break" }
+      - { start: "13:30", end: "14:30", name: "Gen AI for Educators", cat: "hands" }
       - { start: "14:30", end: "15:00", name: "Challenge Lab Walkthrough", cat: "hands" }
-      - { start: "15:00", end: "15:30", name: "Capstone Project", cat: "collab" }
-      - { start: "15:30", end: "16:30", name: "Course 4 lab", cat: "hands" }
+      - { start: "15:00", end: "15:30", name: "Break", cat: "break" }
+      - { start: "15:30", end: "16:30", name: "Capstone Project", cat: "collab" }
+      - { start: "16:30", end: "17:00", name: "Course 4 lab", cat: "hands" }
   - day: "Thursday"
     date: "27 Aug"
     sessions:
       - { start: "08:30", end: "09:00", name: "Social - Conversation Cards", cat: "social" }
       - { start: "09:00", end: "10:30", name: "Course 5 Technical Lecture", cat: "lecture" }
-      - { start: "10:30", end: "10:45", name: "Break", cat: "break" }
-      - { start: "10:45", end: "11:45", name: "Toolkit Activity Walkthrough", cat: "hands" }
-      - { start: "11:45", end: "12:45", name: "Explain It Back", cat: "lecture" }
-      - { start: "12:45", end: "13:15", name: "Lunch", cat: "break" }
-      - { start: "13:15", end: "14:15", name: "Capstone hands-on", cat: "hands" }
-      - { start: "14:15", end: "14:30", name: "Break", cat: "break" }
-      - { start: "14:30", end: "15:30", name: "Lecture it Back", cat: "lecture" }
-      - { start: "15:30", end: "16:30", name: "Course 5 lab", cat: "hands" }
+      - { start: "10:30", end: "11:00", name: "Break", cat: "break" }
+      - { start: "11:00", end: "12:00", name: "Toolkit Activity Walkthrough", cat: "hands" }
+      - { start: "12:00", end: "13:00", name: "Explain It Back", cat: "lecture" }
+      - { start: "13:00", end: "13:30", name: "Lunch", cat: "break" }
+      - { start: "13:30", end: "14:30", name: "Capstone hands-on", cat: "hands" }
+      - { start: "14:30", end: "15:00", name: "Break", cat: "break" }
+      - { start: "15:00", end: "16:00", name: "Lecture it Back", cat: "lecture" }
   - day: "Friday"
     date: "28 Aug"
     sessions:
       - { start: "08:30", end: "09:00", name: "Social - What Would You Do?", cat: "social" }
       - { start: "09:00", end: "10:30", name: "Course 7 Technical Lecture", cat: "lecture" }
-      - { start: "10:30", end: "10:45", name: "Break", cat: "break" }
-      - { start: "10:45", end: "11:45", name: "Toolkit Activity Walkthrough", cat: "hands" }
-      - { start: "11:45", end: "12:45", name: "Explain It Back", cat: "lecture" }
-      - { start: "12:45", end: "13:15", name: "Lunch", cat: "break" }
-      - { start: "13:15", end: "14:15", name: "Course 7 lab", cat: "hands" }
-      - { start: "14:15", end: "14:30", name: "Break", cat: "break" }
-      - { start: "14:30", end: "15:30", name: "Lecture it Back", cat: "lecture" }
-      - { start: "15:30", end: "16:00", name: "Closing remarks", cat: "social" }
+      - { start: "10:30", end: "11:00", name: "Break", cat: "break" }
+      - { start: "11:00", end: "12:00", name: "Toolkit Activity Walkthrough", cat: "hands" }
+      - { start: "12:00", end: "13:00", name: "Explain It Back", cat: "lecture" }
+      - { start: "13:00", end: "13:30", name: "Lunch", cat: "break" }
+      - { start: "13:30", end: "14:30", name: "Course 7 lab", cat: "hands" }
+      - { start: "14:30", end: "15:00", name: "Break", cat: "break" }
+      - { start: "15:00", end: "16:00", name: "Lecture it Back", cat: "lecture" }
+      - { start: "16:00", end: "16:30", name: "Closing remarks", cat: "social" }
 faqs: []
 ---
 
