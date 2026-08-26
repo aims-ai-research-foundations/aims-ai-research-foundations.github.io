@@ -3654,3 +3654,4 @@ a.resource-card:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgb
 }
 
 .cal-when { color: var(--indigo); font-weight: 700; margin: 0.4rem 0 0; }
+.cal-when-time { display: block; font-weight: 600; font-size: 0.9rem; opacity: 0.85; }

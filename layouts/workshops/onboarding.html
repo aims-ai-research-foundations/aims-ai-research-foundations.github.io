@@ -155,7 +155,7 @@
         <div class="cal-info">
           <h3>Onboarding session</h3>
           <p>A live kickoff to get set up and oriented before the pre-work begins.</p>
-          {{- with $pw.onboardingSession }}<p class="cal-when">{{ (time.AsTime .).Format "Monday, 2 January 2006" }}</p>{{ else }}<span class="wip-badge">Date to be confirmed</span>{{ end }}
+          {{- with $pw.onboardingSession }}<p class="cal-when">{{ (time.AsTime .).Format "Monday, 2 January 2006" }}{{ with $pw.onboardingSessionTime }}<span class="cal-when-time">{{ . }}</span>{{ end }}</p>{{ else }}<span class="wip-badge">Date to be confirmed</span>{{ end }}
         </div>
       </div>
 

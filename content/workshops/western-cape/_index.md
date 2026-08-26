@@ -9,7 +9,7 @@ venue: ""
 host: "AIMS South Africa"
 audience: "Lecturers and teaching assistants"
 summary: "A Train-the-Trainer workshop for universities in the Western Cape. Dates and venue are being finalised."
-weight: 5
+weight: 7
 heroImage: "img/workshops/nigeria-cohort-1/gallery/03.jpg"
 thumb: "img/workshops/nigeria-cohort-1/gallery/10.jpg"
 datesTBC: true
