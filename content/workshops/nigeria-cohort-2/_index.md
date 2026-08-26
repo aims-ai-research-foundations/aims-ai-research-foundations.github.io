@@ -33,6 +33,7 @@ facilitators: ["ulrich", "michael", "yassir", "ayman", "maharavo", "similoluwa",
 hasGallery: false
 calendarEmbed: "https://calendar.google.com/calendar/embed?src=c_ac140f4dca250a92ab08125e32d0ff8ba7fe1bd2623131a61b8132b2621efd34%40group.calendar.google.com&ctz=Africa%2FLagos"
 calendarAdd: "https://calendar.google.com/calendar/u/0/r?cid=c_ac140f4dca250a92ab08125e32d0ff8ba7fe1bd2623131a61b8132b2621efd34%40group.calendar.google.com"
+scheduleTimezone: "Africa/Lagos"
 scheduleLegend:
   - { cat: "lecture", label: "Technical Content" }
   - { cat: "collab", label: "Pedagogy and Teaching" }

@@ -29,6 +29,7 @@ facilitators: ["ulrich", "michael", "yassir", "ayman", "maharavo", "similoluwa",
 hasGallery: true
 faqs: []
 scheduleNote: "This schedule reflects the pilot week as it ran."
+scheduleTimezone: "Africa/Johannesburg"
 scheduleLegend:
   - { cat: "lecture", label: "Technical Content" }
   - { cat: "collab", label: "Pedagogy and Teaching" }

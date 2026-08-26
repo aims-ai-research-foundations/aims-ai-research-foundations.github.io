@@ -34,6 +34,7 @@ facilitators: ["ulrich", "michael", "yassir", "ayman", "maharavo", "similoluwa",
 hasGallery: false
 calendarEmbed: "https://calendar.google.com/calendar/embed?src=c_9745d0227922cd07b29f1addf893fa95c73b0e575b714556969dce984b6a7cf1%40group.calendar.google.com&ctz=Africa%2FAccra"
 calendarAdd: "https://calendar.google.com/calendar/u/0/r?cid=c_9745d0227922cd07b29f1addf893fa95c73b0e575b714556969dce984b6a7cf1@group.calendar.google.com"
+scheduleTimezone: "Africa/Accra"
 scheduleLegend:
   - { cat: "lecture", label: "Technical Content" }
   - { cat: "collab", label: "Pedagogy and Teaching" }

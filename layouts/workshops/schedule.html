@@ -35,19 +35,21 @@
         {{- range . }}<span class="legend-item"><span class="legend-dot cat-{{ .cat }}"></span>{{ .label }}</span>{{ end }}
       </div>
       {{- end }}
-      {{- /* Open the tab for today's date (clamped to the workshop week). */}}
+      {{- /* Open the tab for today's date (clamped to the workshop week). This is the
+             build-time default; site.js re-selects on load for the viewing day. */}}
       {{- $activeIdx := 0 }}
+      {{- $wkStart := "" }}
       {{- if and (not $w.Params.datesTBC) $w.Params.cohorts }}
-        {{- $wkStart := time.AsTime (index $w.Params.cohorts 0).start }}
+        {{- $wkStart = time.AsTime (index $w.Params.cohorts 0).start }}
         {{- $diff := int (math.Floor (div (sub now.Unix $wkStart.Unix) 86400)) }}
         {{- if lt $diff 0 }}{{ $diff = 0 }}{{ end }}
         {{- if ge $diff (len $days) }}{{ $diff = sub (len $days) 1 }}{{ end }}
         {{- $activeIdx = $diff }}
       {{- end }}
-      <div class="sched-tabs tabs" data-tabs>
+      <div class="sched-tabs tabs" data-tabs{{ with $wkStart }} data-autoselect-date{{ end }}{{ with $w.Params.scheduleTimezone }} data-tz="{{ . }}"{{ end }}>
         <div class="tablist sched-tablist" role="tablist" aria-label="Choose a day">
           {{- range $i, $d := $days }}
-          <button class="tab sched-tab" role="tab" id="tab-{{ $slug }}-{{ $i }}" aria-controls="panel-{{ $slug }}-{{ $i }}" aria-selected="{{ if eq $i $activeIdx }}true{{ else }}false{{ end }}" tabindex="{{ if eq $i $activeIdx }}0{{ else }}-1{{ end }}">
+          <button class="tab sched-tab" role="tab" id="tab-{{ $slug }}-{{ $i }}" aria-controls="panel-{{ $slug }}-{{ $i }}" aria-selected="{{ if eq $i $activeIdx }}true{{ else }}false{{ end }}" tabindex="{{ if eq $i $activeIdx }}0{{ else }}-1{{ end }}"{{ with $wkStart }} data-date="{{ (.AddDate 0 0 $i).Format "2006-01-02" }}"{{ end }}>
             <span class="sched-tab-day">{{ .day }}</span>
             {{- with .date }}<span class="sched-tab-date">{{ . }}</span>{{ end }}
           </button>

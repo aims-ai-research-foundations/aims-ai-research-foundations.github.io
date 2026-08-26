@@ -42,6 +42,26 @@
     });
   });
 
+  /* Today's date as YYYY-MM-DD, in `tz` when given, else the viewer's own zone. */
+  function isoDateIn(tz) {
+    var d = new Date();
+    if (tz) {
+      try {
+        var parts = new Intl.DateTimeFormat("en-CA", {
+          timeZone: tz, year: "numeric", month: "2-digit", day: "2-digit"
+        }).formatToParts(d).reduce(function (acc, part) {
+          acc[part.type] = part.value;
+          return acc;
+        }, {});
+        if (parts.year && parts.month && parts.day) {
+          return parts.year + "-" + parts.month + "-" + parts.day;
+        }
+      } catch (e) { /* unusable timezone - fall back to the viewer's own zone */ }
+    }
+    function pad(n) { return (n < 10 ? "0" : "") + n; }
+    return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate());
+  }
+
   /* ---------- Tabs (gallery, testimonials) ---------- */
   document.querySelectorAll("[data-tabs]").forEach(function (root) {
     var tabs = Array.prototype.slice.call(root.querySelectorAll('[role="tab"]'));
@@ -72,6 +92,23 @@
         }
       });
     });
+
+    /* Hugo renders a build-time default day, which goes stale as soon as the
+       build is more than a day old. Re-select here so the open tab matches the
+       day the page is actually viewed, in the workshop's own timezone. */
+    if (root.hasAttribute("data-autoselect-date")) {
+      var dates = tabs.map(function (t) { return t.getAttribute("data-date"); });
+      if (dates.length && dates.every(Boolean)) {
+        var today = isoDateIn(root.getAttribute("data-tz"));
+        var idx = dates.indexOf(today);
+        if (idx === -1) {
+          /* Before the week opens show day one; after it ends, the last day. */
+          if (today < dates[0]) idx = 0;
+          else if (today > dates[dates.length - 1]) idx = dates.length - 1;
+        }
+        if (idx !== -1) select(tabs[idx]);
+      }
+    }
   });
 
   /* ---------- Onboarding checklist (in-memory progress) ---------- */
