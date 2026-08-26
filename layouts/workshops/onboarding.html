@@ -76,8 +76,8 @@
       {{- $ms = $ms | append (dict "date" "Post-workshop" "label" "Feedback & Iteration" "sub" "The team iterates the workshop design based on feedback collected.") }}
     {{- else }}
       {{- $ms = $ms | append
-        (dict "date" "Late 2026" "label" "Course delivery" "sub" "Teach your students" "highlight" (eq $phase 2))
-        (dict "date" "2026 to 2027" "label" "Capstone supervision" "sub" "Guide projects")
+        (dict "date" "TBD" "label" "Course delivery" "sub" "Teach your students" "highlight" (eq $phase 2))
+        (dict "date" "TBD" "label" "Capstone supervision" "sub" "Guide projects")
         (dict "date" "After delivery" "label" "Reporting" "sub" "Share outcomes") }}
     {{- end }}
     {{ partial "timeline.html" (dict "milestones" $ms) }}
@@ -86,7 +86,7 @@
 
 <section id="setup" class="ob-section alt">
   <div class="container">
-    {{ partial "section-eyebrow.html" (dict "eyebrow" "Onboarding checklist" "title" "Three steps to get started") }}
+    {{ partial "section-eyebrow.html" (dict "eyebrow" "Onboarding checklist" "title" "Four steps to get started") }}
     <ol class="setup-steps">
       <li class="setup-step fade-in">
         <span class="setup-num">1</span>
@@ -99,16 +99,28 @@
       <li class="setup-step fade-in">
         <span class="setup-num">2</span>
         <div>
-          <h3>Create a Google Skills account and enrol</h3>
-          <p>Sign up on Google Skills and enrol on the AI Research Foundations path.</p>
-          <a class="step-link" href="{{ $links.googleSkills }}" target="_blank" rel="noopener">skills.google/paths/3135 {{ partial "icon.html" "external-link" }}</a>
+          <h3>Create your Google Skills account</h3>
+          <p><strong>No account yet?</strong> Create one on Google Skills using your university email address, the one we wrote to you on. Your invitation follows within 48 hours.</p>
+          <a class="step-link" href="https://www.skills.google/" target="_blank" rel="noopener">www.skills.google {{ partial "icon.html" "external-link" }}</a>
         </div>
       </li>
       <li class="setup-step fade-in">
         <span class="setup-num">3</span>
         <div>
-          <h3>Start Course 01 on Google Skills</h3>
-          <p>Enrol on the AI Research Foundations path and complete at least the first four courses (01 to 04) and the first challenge lab before the workshop.</p>
+          <h3>Accept your Google Skills invitation</h3>
+          <p><strong>Account created?</strong> An invitation from Google Skills is waiting for you. Accept it in one of two ways:</p>
+          <ul class="step-sub">
+            <li>Profile icon (top right) <span class="step-arrow" aria-hidden="true">&rarr;</span> <span class="step-path">Settings</span> <span class="step-arrow" aria-hidden="true">&rarr;</span> <span class="step-path">Programs</span> <span class="step-arrow" aria-hidden="true">&rarr;</span> <span class="step-path">Accept</span></li>
+            <li>Or click the link in the invitation email in your inbox</li>
+          </ul>
+        </div>
+      </li>
+      <li class="setup-step fade-in">
+        <span class="setup-num">4</span>
+        <div>
+          <h3>Enrol on the path and start Course 01</h3>
+          <p><strong>Invitation accepted?</strong> Enrol on the AI Research Foundations path and start Course 01. Complete at least the first four courses (01 to 04) and the first challenge lab before the workshop.</p>
+          <a class="step-link" href="{{ $links.googleSkills }}" target="_blank" rel="noopener">www.skills.google/paths/3135 {{ partial "icon.html" "external-link" }}</a>
         </div>
       </li>
     </ol>

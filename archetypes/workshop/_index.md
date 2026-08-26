@@ -6,7 +6,7 @@ status: upcoming            # upcoming | completed
 country: ""
 city: ""
 venue: ""
-host: ""
+host: "FATE Foundation"
 audience: "Lecturers and teaching assistants"
 summary: ""
 weight: 1

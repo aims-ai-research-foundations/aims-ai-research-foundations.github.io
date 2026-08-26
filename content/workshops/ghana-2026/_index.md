@@ -113,6 +113,6 @@ schedule:
 faqs: []
 ---
 
-The Ghana Workshop is a fully funded, week-long, in-person training for nominated lecturers and teaching assistants from Ghanaian universities: Kwame Nkrumah University of Science and Technology, the University of Education, Winneba, the University of Business and Integrated Development Studies, and Ghana Communication Technology University.
+The Ghana Workshop is a fully funded, week-long, in-person training for nominated lecturers and teaching assistants from Ghanaian universities: **Kwame Nkrumah University of Science and Technology**, the **University of Education, Winneba**, the **University of Business and Integrated Development Studies**, and **Ghana Communication Technology University**.
 
 The workshop runs from 24 to 28 August 2026; the venue will be confirmed soon. By the end of the week, participants are ready to adapt and confidently deliver the AI Research Foundations curriculum to their own students.

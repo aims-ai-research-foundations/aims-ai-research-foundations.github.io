@@ -6,7 +6,7 @@ status: upcoming
 country: "South Africa"
 city: "Pretoria"
 venue: "University of Pretoria"
-host: "University of Pretoria"
+host: "FATE Foundation"
 audience: "Lecturers and teaching assistants"
 summary: "A South African Train-the-Trainer workshop hosted at the University of Pretoria."
 weight: 4
@@ -34,6 +34,6 @@ schedule: []
 faqs: []
 ---
 
-The Pretoria Lecturer Workshop brings together lecturers and teaching assistants from the University of Pretoria, the University of Venda, and the University of Mpumalanga for an intensive, fully funded week hosted at the University of Pretoria.
+The Pretoria Lecturer Workshop brings together lecturers and teaching assistants from the **University of Pretoria**, the **University of Venda**, and the **University of Mpumalanga** for an intensive, fully funded week hosted at the University of Pretoria.
 
 By the end of the week, participants are ready to deliver the AI Research Foundations curriculum to their own students, adapted for their context.

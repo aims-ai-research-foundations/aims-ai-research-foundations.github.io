@@ -6,7 +6,7 @@ status: upcoming
 country: "South Africa"
 city: "To be confirmed"
 venue: ""
-host: "AIMS South Africa"
+host: "FATE Foundation"
 audience: "Lecturers and teaching assistants"
 summary: "A Train-the-Trainer workshop for universities in the Western Cape. Dates and venue are being finalised."
 weight: 7

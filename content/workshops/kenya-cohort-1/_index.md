@@ -6,7 +6,7 @@ status: upcoming
 country: "Kenya"
 city: "Nairobi"
 venue: "United States International University-Africa (USIU-Africa)"
-host: "United States International University-Africa"
+host: "FATE Foundation"
 audience: "Lecturers and teaching assistants"
 summary: "The first Kenya Train-the-Trainer workshop, hosted at USIU-Africa in Nairobi from 12 to 16 October 2026."
 weight: 5
@@ -43,6 +43,6 @@ schedule: []
 faqs: []
 ---
 
-Kenya Workshop 1 is a fully funded, week-long, in-person training for nominated lecturers and teaching assistants from Strathmore University, Kenyatta University, and the United States International University-Africa, hosted at USIU-Africa in Nairobi.
+Kenya Workshop 1 is a fully funded, week-long, in-person training for nominated lecturers and teaching assistants from **Strathmore University**, **Kenyatta University**, and the **United States International University-Africa**, hosted at USIU-Africa in Nairobi.
 
 It builds on the virtual pre-work period, which runs from 1 September to 9 October 2026 and opens with a live onboarding session on Monday 31 August 2026 shared with Kenya Workshop 2. The workshop week itself runs from 12 to 16 October 2026. By the end of the week, participants are ready to adapt and confidently deliver the AI Research Foundations curriculum to their own students.

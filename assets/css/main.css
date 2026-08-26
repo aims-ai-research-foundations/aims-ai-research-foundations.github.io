@@ -2146,6 +2146,10 @@ section.alt { background: var(--surface-1); }
 button.step-link { padding: 0; background: none; border: 0; border-bottom: 1px solid transparent; font: inherit; font-weight: 700; cursor: pointer; }
 .step-link:hover { border-bottom-color: var(--indigo); }
 .step-link svg { width: 0.9rem; height: 0.9rem; }
+.step-sub { list-style: none; padding: 0; margin: 0 0 0.6rem; display: grid; gap: 0.4rem; }
+.step-sub li { display: flex; align-items: center; flex-wrap: wrap; gap: 0.3rem; color: var(--text-soft); font-size: 0.95rem; }
+.step-path { font-weight: 700; color: var(--indigo); background: var(--gold-soft); border-radius: 6px; padding: 0.05rem 0.45rem; white-space: nowrap; }
+.step-arrow { color: var(--text-soft); }
 
 /* WIP / placeholder badges */
 .wip-badge { display: inline-block; margin-left: 0.5rem; background: var(--gold-soft); color: #7a5c00; border: 1px solid rgba(247,183,51,0.5); font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.1rem 0.5rem; border-radius: 999px; vertical-align: middle; }

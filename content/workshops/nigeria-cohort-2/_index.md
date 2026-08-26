@@ -113,6 +113,6 @@ schedule:
 faqs: []
 ---
 
-The Nigeria Cohort 2 Workshop is a fully funded, week-long, in-person training for nominated lecturers and teaching assistants from the Federal University of Technology, Akure and the University of Benin, hosted at the University of Lagos by the FATE Foundation.
+The Nigeria Cohort 2 Workshop is a fully funded, week-long, in-person training for nominated lecturers and teaching assistants from the **Federal University of Technology, Akure** and the **University of Benin**, hosted at the University of Lagos by the FATE Foundation.
 
 It builds on the virtual pre-work period. By the end of the week, participants are ready to adapt and confidently deliver the AI Research Foundations curriculum to their own students.
