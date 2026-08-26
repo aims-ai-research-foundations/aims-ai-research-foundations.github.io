@@ -4,7 +4,7 @@ slug: ghana-2026
 layout: "workshop"
 status: upcoming
 country: "Ghana"
-city: "To be confirmed"
+city: "Accra"
 venue: ""
 host: "FATE Foundation"
 audience: "Lecturers and teaching assistants"
