@@ -439,6 +439,9 @@ section { padding: 3rem 0; }
   font-size: 1.05rem;
   line-height: 1.3;
 }
+/* Participating universities: numbered so names containing commas stay legible. */
+.uni-list { line-height: 1.5; }
+.uni-n { font-weight: 800; margin-right: 0.12em; white-space: nowrap; }
 
 /* ---------- CTA banner ---------- */
 .cta-banner {

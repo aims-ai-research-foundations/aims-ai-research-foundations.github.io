@@ -164,7 +164,9 @@
         <div class="info-icon-wrap">{{ partial "icon.html" "school" }}</div>
         <div>
           <div class="label">Participating universities</div>
-          <div class="value">{{ delimit . ", " }}</div>
+          <div class="value uni-list">
+            {{- range $i, $u := . }}{{ if $i }}, {{ end }}<span class="uni-item"><span class="uni-n">({{ add $i 1 }})</span> {{ $u }}</span>{{ end }}
+          </div>
         </div>
       </div>
       {{- end }}
