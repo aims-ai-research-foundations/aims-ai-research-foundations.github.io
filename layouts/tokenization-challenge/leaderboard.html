@@ -1,0 +1,45 @@
+{{ define "main" }}
+{{- $repo := .Params.repoURL }}
+{{- $challenge := .Params.challengeURL | relURL }}
+
+<section class="leaderboard-hero" aria-labelledby="leaderboard-title">
+  <div class="wide-container leaderboard-hero-inner">
+    <a class="back-link" href="{{ $challenge }}"><i data-lucide="arrow-left" aria-hidden="true"></i> Back to the challenge</a>
+    <p class="eyebrow">Challenge rankings</p>
+    <h1 id="leaderboard-title">Leaderboard</h1>
+    <p class="leaderboard-lead">Rankings are ordered by score. If two teams have the same score, evaluation time is used as the tie-breaker.</p>
+  </div>
+</section>
+
+<section class="leaderboard-page-section">
+  <div class="wide-container">
+    <div class="leaderboard-page-heading">
+      <div>
+        <h2>Current standings</h2>
+        <p>Lower scores are better.</p>
+      </div>
+      <div class="mock-notice"><span></span> Preview data</div>
+    </div>
+    <div class="table-wrap leaderboard-table-wrap" tabindex="0" role="region" aria-label="Scrollable challenge leaderboard">
+      <table class="leaderboard-table">
+        <caption>Mock challenge leaderboard. Lower score is better.</caption>
+        <thead><tr><th>Rank</th><th>Team</th><th>Score ↓</th><th>Time <i data-lucide="clock-3" aria-hidden="true"></i></th><th>Fertility</th><th><code>&lt;UNK&gt;</code> rate</th><th>Submission</th></tr></thead>
+        <tbody>
+          {{- range hugo.Data.leaderboard.entries }}
+          <tr{{ if le .rank 3 }} class="top-rank rank-{{ .rank }}"{{ end }}>
+            <td data-label="Rank"><span class="rank-number">{{ .rank }}</span></td>
+            <td data-label="Team"><strong>{{ .team }}</strong></td>
+            <td data-label="Score"><strong class="score-value">{{ printf "%.3f" .score }}</strong></td>
+            <td data-label="Time"><time datetime="PT{{ .timeISO }}">{{ .time }}</time></td>
+            <td data-label="Fertility">{{ printf "%.3f" .fertility }}</td>
+            <td data-label="UNK rate">{{ .unkRate }}</td>
+            <td data-label="Submission"><a href="{{ $repo }}" target="_blank" rel="noopener">{{ .submission }} <i data-lucide="external-link" aria-hidden="true"></i></a></td>
+          </tr>
+          {{- end }}
+        </tbody>
+      </table>
+    </div>
+    <p class="leaderboard-source-note">The published leaderboard will be generated from validated submissions in the competition repository.</p>
+  </div>
+</section>
+{{ end }}

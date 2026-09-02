@@ -1,0 +1,15 @@
+<header class="site-header">
+  <div class="wide-container header-inner">
+    <a class="challenge-brand" href="{{ .Params.challengeURL | relURL }}" aria-label="AI Research Foundations Multilingual Tokenization Challenge, home">
+      <span>AI Research Foundations</span>
+      <strong>Tokenization Challenge</strong>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="primary-nav">
+      <i data-lucide="menu" aria-hidden="true"></i>
+    </button>
+    <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation">
+      <a href="{{ .Params.leaderboardURL | relURL }}"{{ if eq .Layout "leaderboard" }} aria-current="page"{{ end }}>Leaderboard</a>
+      <a class="github-link" href="{{ .Params.repoURL }}" target="_blank" rel="noopener"><i data-lucide="github" aria-hidden="true"></i> Fork on GitHub</a>
+    </nav>
+  </div>
+</header>

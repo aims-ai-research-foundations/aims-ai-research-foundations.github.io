@@ -1,0 +1,310 @@
+{{ define "main" }}
+{{- $repo := .Params.repoURL }}
+{{- $dataset := .Params.datasetURL }}
+{{- $notebook := .Params.notebookURL }}
+{{- $leaderboard := .Params.leaderboardURL | relURL }}
+
+<section class="challenge-hero" aria-labelledby="hero-title">
+  <div class="wide-container hero-layout">
+    <div class="hero-copy">
+      <p class="eyebrow">AI Research Foundations</p>
+      <h1 id="hero-title">Can you build a tokenizer that works <span class="marker-highlight">efficiently</span> for every language?</h1>
+      <p class="hero-lead">Build one tokenizer for six languages under a fixed vocabulary budget. Aim for consistently efficient representations and near-zero unknown tokens across every target language.</p>
+      <div class="button-row">
+        <a class="button button-primary" href="#overview">Get started <i data-lucide="arrow-down" aria-hidden="true"></i></a>
+        <a class="button button-secondary" href="{{ $leaderboard }}">View leaderboard</a>
+      </div>
+      <a class="hero-notebook-link" href="{{ $notebook }}" target="_blank" rel="noopener"><i data-lucide="notebook-tabs" aria-hidden="true"></i> Open the starter notebook</a>
+    </div>
+    <figure class="hero-art">
+      <img src="{{ "img/tokenization-challenge-hero.png" | relURL }}" alt="An illustrated globe centred on Africa with multilingual words broken into tokens under a 10,000-token vocabulary budget." width="1536" height="1024" fetchpriority="high">
+    </figure>
+  </div>
+</section>
+
+<nav class="section-nav" aria-label="On this page">
+  <div class="wide-container section-nav-scroll">
+    <a href="#overview" class="active" aria-current="true">Overview</a>
+    <a href="#skills">Skills you will gain</a>
+    <a href="#dataset">Dataset</a>
+    <a href="#baselines">Baselines</a>
+    <a href="#evaluation">Evaluation</a>
+    <a href="#submit">How to submit</a>
+    <a href="#faqs">FAQs</a>
+  </div>
+</nav>
+
+<article class="challenge-content">
+  <section id="overview" class="doc-section wide-container" data-spy-section>
+    <div class="section-heading">
+      <p class="section-number">01</p>
+      <div><p class="eyebrow">The challenge</p><h2>Overview</h2></div>
+    </div>
+    <div class="prose-column">
+      <p class="lede">Tokenization is the first step in how language models turn human language into something they can process. That makes tokenizer design a fundamental part of building a language model.</p>
+      <p>But not every tokenizer represents every language equally efficiently. In this challenge, you will build <strong>one tokenizer for six languages</strong> under a fixed vocabulary budget of <strong>10,000 tokens</strong>.</p>
+      <div class="takeaway">
+        <span class="takeaway-mark" aria-hidden="true"></span>
+        <div><p class="takeaway-label">Your goal is simple</p><p>Represent text using as few tokens as possible, while avoiding unknown tokens.</p></div>
+      </div>
+      <p>Any tokenizer design is welcome. This is an open-ended, beginner-friendly competition built for learning through experimentation.</p>
+      <div class="team-note">
+        <i data-lucide="users" aria-hidden="true"></i>
+        <div>
+          <h3>Team formation</h3>
+          <p>You may participate individually or form a team. If you enter as a team, it must include participants from at least two different nationalities.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="doc-section wide-container" data-spy-section>
+    <div class="section-heading">
+      <p class="section-number">02</p>
+      <div><p class="eyebrow">What you take away</p><h2>Skills you will gain</h2></div>
+    </div>
+    <div class="prose-column">
+      <p class="lede">This challenge is designed to help you gain in-demand practical skills that are necessary for meaningful AI research. You keep these whether or not you top the leaderboard.</p>
+      <ul class="skills-list">
+        <li>
+          <span class="skill-mark" aria-hidden="true"></span>
+          <div>
+            <h3>Tokenization</h3>
+            <p>Train, tune, and compare BPE, WordPiece, Unigram, and byte-level tokenizers.</p>
+          </div>
+        </li>
+        <li>
+          <span class="skill-mark" aria-hidden="true"></span>
+          <div>
+            <h3>Multilingual NLP</h3>
+            <p>Share one vocabulary across diacritics, rich morphology, and a non-Latin script.</p>
+          </div>
+        </li>
+        <li>
+          <span class="skill-mark" aria-hidden="true"></span>
+          <div>
+            <h3>Version control with GitHub</h3>
+            <p>Fork a repository, work on a branch, and open your first Pull Request.</p>
+          </div>
+        </li>
+        <li>
+          <span class="skill-mark" aria-hidden="true"></span>
+          <div>
+            <h3>Evaluation and metrics</h3>
+            <p>Interpret token fertility and unknown-token rate, and read what a single score hides.</p>
+          </div>
+        </li>
+      </ul>
+      <p>No prior competition experience is assumed. The starter notebook walks through each step, and the submission checker tells you what to fix before you open a Pull Request.</p>
+    </div>
+  </section>
+
+  <section id="dataset" class="doc-section wide-container" data-spy-section>
+    <div class="section-heading">
+      <p class="section-number">03</p>
+      <div><p class="eyebrow">The corpus</p><h2>Dataset</h2></div>
+    </div>
+    <div class="prose-column">
+      <p class="lede">The public corpus is balanced across six languages and contains the text you need to train and validate your tokenizer.</p>
+      <div class="table-wrap">
+        <table>
+          <caption>Supported languages</caption>
+          <thead><tr><th>Language</th><th>Code</th><th>Writing system</th></tr></thead>
+          <tbody>
+            <tr><td>English</td><td><code>en</code></td><td>Latin</td></tr>
+            <tr><td>French</td><td><code>fr</code></td><td>Latin</td></tr>
+            <tr><td>Hausa</td><td><code>ha</code></td><td>Latin</td></tr>
+            <tr><td>Swahili</td><td><code>sw</code></td><td>Latin</td></tr>
+            <tr><td>Yoruba</td><td><code>yo</code></td><td>Latin with diacritics</td></tr>
+            <tr><td>Amharic</td><td><code>am</code></td><td>Geʽez</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>How the splits work</h3>
+      <dl class="split-list">
+        <div><dt>Training set <span>240,000 rows</span></dt><dd>Used to build your tokenizer. There are 40,000 passages for each language.</dd></div>
+        <div><dt>Validation set <span>24,000 rows</span></dt><dd>Used to test ideas and improve your tokenizer. There are 4,000 passages for each language.</dd></div>
+        <div><dt>Test set <span>Hidden</span></dt><dd>Kept private and used by the official evaluation pipeline to calculate leaderboard results.</dd></div>
+      </dl>
+
+      <h3>A few examples</h3>
+      <div class="table-wrap">
+        <table>
+          <caption>Example passages</caption>
+          <thead><tr><th>Language</th><th>Text</th></tr></thead>
+          <tbody>
+            <tr><td>English</td><td>Artificial intelligence is changing the world.</td></tr>
+            <tr><td>Yoruba</td><td lang="yo">Ẹ̀kọ́ ṣe pàtàkì fún gbogbo ènìyàn.</td></tr>
+            <tr><td>Swahili</td><td lang="sw">Teknolojia inabadilisha dunia.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <a class="text-link" href="{{ $dataset }}" target="_blank" rel="noopener">Explore the dataset on Hugging Face <i data-lucide="external-link" aria-hidden="true"></i></a>
+    </div>
+  </section>
+
+  <section id="baselines" class="doc-section wide-container" data-spy-section>
+    <div class="section-heading">
+      <p class="section-number">04</p>
+      <div><p class="eyebrow">Starting points</p><h2>Baselines</h2></div>
+    </div>
+    <div class="prose-column">
+      <p class="lede">These two intentionally simple baselines show the central trade-off: shorter representations versus broader coverage.</p>
+      <div class="baseline-list">
+        <div>
+          <p class="baseline-index">Baseline 01</p><h3>Word-level tokenizer</h3>
+          <p>Each known word is represented by a single token. Words outside the vocabulary are represented using <code>&lt;UNK&gt;</code>.</p>
+          <p>This gives very short representations for known words, but it struggles when it encounters words it has never seen before.</p>
+        </div>
+        <div>
+          <p class="baseline-index">Baseline 02</p><h3>Character-level tokenizer</h3>
+          <p>Text is represented using individual characters.</p>
+          <p>This provides much better coverage, but often requires many more tokens to represent the same text.</p>
+        </div>
+      </div>
+      <p><strong>These baselines represent two different approaches to tokenization. Your job is to find something better.</strong></p>
+      <h3>What might you explore?</h3>
+      <ul class="tag-list" aria-label="Suggested approaches">
+        <li>BPE</li><li>WordPiece</li><li>Unigram</li><li>Byte-level</li><li>Vocabulary allocation</li><li>Normalization</li><li>Pre-tokenization</li><li>Hybrid approaches</li>
+      </ul>
+      <p>Try these, combine them, or develop your own idea. The challenge is intentionally open-ended.</p>
+    </div>
+  </section>
+
+  <section id="evaluation" class="doc-section wide-container" data-spy-section>
+    <div class="section-heading">
+      <p class="section-number">05</p>
+      <div><p class="eyebrow">How scoring works</p><h2>Evaluation</h2></div>
+    </div>
+    <div class="prose-column">
+      <p class="lede">Your tokenizer is evaluated on two things: how many tokens it needs to represent text, and how often it produces an unknown token.</p>
+
+      <div class="metric-block">
+        <p class="metric-kicker">Metric 01</p><h3>Token fertility</h3>
+        <div class="equation" role="img" aria-label="F sub l equals number of tokens produced divided by number of words">
+          <span class="math-variable">F<sub>l</sub></span><span>=</span><span class="fraction"><span>number of tokens produced</span><span>number of words</span></span>
+        </div>
+        <p>Token fertility tells us how many tokens your tokenizer needs, on average, to represent one word.</p>
+        <div class="worked-example"><span>150 tokens</span><span>÷</span><span>100 words</span><span>=</span><strong>1.5</strong></div>
+        <p class="metric-direction"><i data-lucide="trending-down" aria-hidden="true"></i> Lower fertility is better.</p>
+      </div>
+
+      <div class="metric-block">
+        <p class="metric-kicker">Metric 02</p><h3>Unknown token rate</h3>
+        <div class="equation" role="img" aria-label="U sub l equals number of unknown tokens divided by number of words">
+          <span class="math-variable">U<sub>l</sub></span><span>=</span><span class="fraction"><span>number of &lt;UNK&gt; tokens</span><span>number of words</span></span>
+        </div>
+        <p>A tokenizer should ideally represent text without falling back to <code>&lt;UNK&gt;</code>. Unknown tokens are therefore heavily penalized.</p>
+      </div>
+
+      <div class="metric-block metric-score">
+        <p class="metric-kicker">Per-language result</p><h3>Language score</h3>
+        <div class="annotated-equation" role="img" aria-label="Language score S sub l equals fertility F sub l plus one hundred times unknown token rate U sub l">
+          <span class="math-variable equation-result">S<sub>l</sub></span>
+          <span class="equation-operator">=</span>
+          <span class="annotated-term term-fertility"><small>fertility</small><strong>F<sub>l</sub></strong></span>
+          <span class="equation-operator">+</span>
+          <span class="annotated-term term-unknown"><small>unknown-token penalty</small><strong>100 U<sub>l</sub></strong></span>
+        </div>
+        <p>The multiplier of 100 makes unknown tokens expensive. Even a small unknown-token rate can noticeably increase your score.</p>
+        <div class="table-wrap table-compact">
+          <table>
+            <caption>Effect of the unknown-token penalty</caption>
+            <thead><tr><th><code>&lt;UNK&gt;</code> rate</th><th>Added penalty</th></tr></thead>
+            <tbody><tr><td>0%</td><td>+0.00</td></tr><tr><td>0.1%</td><td>+0.10</td></tr><tr><td>1%</td><td>+1.00</td></tr><tr><td>5%</td><td>+5.00</td></tr><tr><td>10%</td><td>+10.00</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="metric-block">
+        <p class="metric-kicker">Official result</p><h3>Final score</h3>
+        <p>The official score averages the language scores for Hausa, Swahili, Yoruba, and Amharic.</p>
+        <div class="equation equation-final" role="img" aria-label="Score equals the sum of the Hausa, Swahili, Yoruba, and Amharic language scores divided by four">
+          <span>Score</span><span>=</span><span class="fraction"><span>S<sub>ha</sub> + S<sub>sw</sub> + S<sub>yo</sub> + S<sub>am</sub></span><span>4</span></span>
+        </div>
+        <p>English and French are part of the multilingual training data and support requirements, but the leaderboard objective focuses on the four African languages.</p>
+        <p class="lower-better"><i data-lucide="arrow-down" aria-hidden="true"></i> Lower is better.</p>
+      </div>
+      <div class="takeaway">
+        <span class="takeaway-mark" aria-hidden="true"></span>
+        <div><p class="takeaway-label">Keep this in mind</p><p>Represent the text with as few tokens as possible, while avoiding unknown tokens.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="submit" class="doc-section wide-container" data-spy-section>
+    <div class="section-heading">
+      <p class="section-number">06</p>
+      <div><p class="eyebrow">From idea to entry</p><h2>How to submit</h2></div>
+    </div>
+    <div class="prose-column">
+      <p class="lede">The competition runs through GitHub. The process is designed to help you practise a real open-source workflow, even if this is your first Pull Request.</p>
+      <h3>Rules and constraints</h3>
+      <ul class="check-list">
+        <li>One tokenizer must support all six languages.</li>
+        <li>Maximum vocabulary size: <strong>10,000 tokens</strong>.</li>
+        <li>Train using only the provided competition training data.</li>
+        <li>Any tokenizer approach is allowed.</li>
+        <li>The tokenizer must work without participant-written code during evaluation.</li>
+        <li>Your submission must be compatible with the official evaluation script.</li>
+        <li>The hidden test set determines leaderboard performance.</li>
+      </ul>
+      <div class="starter-notebook">
+        <i data-lucide="notebook-tabs" aria-hidden="true"></i>
+        <div>
+          <p class="starter-notebook-label">Recommended starting point</p>
+          <h3>Starter notebook</h3>
+          <p>Use the guided Jupyter notebook to explore the dataset, build a first tokenizer, evaluate it on the validation set, and prepare your submission.</p>
+          <a class="text-link" href="{{ $notebook }}" target="_blank" rel="noopener">Open <code>starter.ipynb</code> on GitHub <i data-lucide="external-link" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <h3>Submission process</h3>
+      <ol class="submission-steps">
+        <li><span>1</span><div><strong>Fork the competition repository</strong><p>Create your own copy of the starter repository on GitHub.</p></div></li>
+        <li><span>2</span><div><strong>Open the starter notebook</strong><p>Use <a href="{{ $notebook }}" target="_blank" rel="noopener"><code>starter/starter.ipynb</code></a>, or follow the same workflow in your own environment.</p></div></li>
+        <li><span>3</span><div><strong>Build and evaluate</strong><p>Train your tokenizer and compare ideas on the validation split.</p></div></li>
+        <li><span>4</span><div><strong>Run the submission checker</strong><p>Confirm that your tokenizer loads, stays within the vocabulary limit, encodes all six languages, and uses the correct format.</p></div></li>
+        <li><span>5</span><div><strong>Export your tokenizer</strong><p>Save the complete tokenizer files in the format described by the starter kit.</p></div></li>
+        <li><span>6</span><div><strong>Add your team folder</strong><p>Place the exported files under <code>submissions/your-team-name/</code>.</p></div></li>
+        <li><span>7</span><div><strong>Open a Pull Request</strong><p>Submit your change back to the official competition repository.</p></div></li>
+      </ol>
+      <div class="automation-note">
+        <i data-lucide="git-pull-request" aria-hidden="true"></i>
+        <div><h3>What happens next?</h3><p>GitHub Actions will automatically validate eligible submissions and update the public leaderboard. If a check fails, the Pull Request will show what needs to be fixed.</p></div>
+      </div>
+      <a class="button button-primary" href="{{ $repo }}" target="_blank" rel="noopener"><i data-lucide="github" aria-hidden="true"></i> Open the competition repository</a>
+    </div>
+  </section>
+
+  <section id="faqs" class="doc-section wide-container" data-spy-section>
+    <div class="section-heading">
+      <p class="section-number">07</p>
+      <div><p class="eyebrow">Good to know</p><h2>Frequently asked questions</h2></div>
+    </div>
+    <div class="prose-column faq-list">
+      <details><summary>Do I need a GPU?</summary><p>No. Tokenizer training and evaluation should be possible on a normal laptop or a free Colab environment.</p></details>
+      <details><summary>Can I use any tokenizer algorithm?</summary><p>Yes. Word-level, character-level, BPE, WordPiece, Unigram, byte-level, hybrids, or your own approach are all allowed.</p></details>
+      <details><summary>Can I use more than 10,000 tokens?</summary><p>No. The maximum vocabulary size is 10,000 tokens.</p></details>
+      <details><summary>What happens if my tokenizer produces <code>&lt;UNK&gt;</code>?</summary><p>Your submission is still valid, but unknown tokens receive a large penalty in the evaluation score.</p></details>
+      <details><summary>Can I train on external datasets?</summary><p>No. Use only the provided competition training data.</p></details>
+      <details><summary>Do I need to train a language model?</summary><p>No. You are only building the tokenizer.</p></details>
+      <details><summary>What should I submit?</summary><p>Your exported tokenizer in the format required by the starter kit.</p></details>
+    </div>
+  </section>
+
+  <section class="learning-section wide-container" aria-labelledby="learning-title">
+    <div class="learning-layout">
+      <div>
+        <p class="eyebrow">Keep learning</p><h2 id="learning-title">Build the foundations first</h2>
+        <p>This challenge builds on concepts introduced in the AI Research Foundations learning path.</p>
+      </div>
+      <div class="course-list">
+        <div><span>Course 01</span><h3>Build Your Small Language Model</h3><p>Introduces the language model pipeline and where tokenization fits into building a language model.</p></div>
+        <div><span>Course 02</span><h3>Represent Your Language Data</h3><p>Explores how text is represented for language models, including tokenization and vocabulary construction.</p></div>
+      </div>
+    </div>
+    <a class="text-link text-link-light" href="{{ .Site.Params.googleSkillsURL }}" target="_blank" rel="noopener">Explore the learning path <i data-lucide="external-link" aria-hidden="true"></i></a>
+  </section>
+</article>
+{{ end }}

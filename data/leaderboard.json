@@ -1,0 +1,10 @@
+{
+  "entries": [
+    {"rank": 1, "team": "Kifaru Labs", "score": 1.184, "time": "00:41:26", "timeISO": "41M26S", "fertility": 1.174, "unkRate": "0.01%", "submission": "#042"},
+    {"rank": 2, "team": "Geʽez Compute", "score": 1.209, "time": "00:38:11", "timeISO": "38M11S", "fertility": 1.189, "unkRate": "0.02%", "submission": "#038"},
+    {"rank": 3, "team": "Sauti Systems", "score": 1.237, "time": "00:36:54", "timeISO": "36M54S", "fertility": 1.207, "unkRate": "0.03%", "submission": "#035"},
+    {"rank": 4, "team": "Ọ̀rọ̀ Collective", "score": 1.251, "time": "00:29:08", "timeISO": "29M8S", "fertility": 1.221, "unkRate": "0.03%", "submission": "#029"},
+    {"rank": 5, "team": "Mwangaza AI", "score": 1.286, "time": "00:27:43", "timeISO": "27M43S", "fertility": 1.246, "unkRate": "0.04%", "submission": "#024"},
+    {"rank": 6, "team": "Team Sankofa", "score": 1.314, "time": "00:22:17", "timeISO": "22M17S", "fertility": 1.264, "unkRate": "0.05%", "submission": "#019"}
+  ]
+}

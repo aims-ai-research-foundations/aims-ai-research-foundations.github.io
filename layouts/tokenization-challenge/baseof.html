@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang | default "en" }}">
+<head>
+  {{- partial "challenge-head.html" . }}
+</head>
+<body class="challenge-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  {{- partial "challenge-header.html" . }}
+  <main id="main">
+    {{- block "main" . }}{{- end }}
+  </main>
+  {{- partial "challenge-footer.html" . }}
+  {{- $js := resources.Get "js/challenge.js" | fingerprint }}
+  <script src="{{ $js.RelPermalink }}" defer></script>
+</body>
+</html>
