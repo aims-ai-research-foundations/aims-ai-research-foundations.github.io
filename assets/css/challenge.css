@@ -636,7 +636,7 @@ td:first-child { font-weight: 600; }
 }
 .leaderboard-page-heading h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); }
 .leaderboard-page-heading p { margin: 0.4rem 0 0; color: var(--muted); }
-.mock-notice {
+.feed-notice {
   width: fit-content;
   display: flex;
   align-items: center;
@@ -647,8 +647,9 @@ td:first-child { font-weight: 600; }
   font-weight: 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  white-space: nowrap;
 }
-.mock-notice span { width: 7px; height: 7px; border-radius: 50%; background: var(--yellow-deep); }
+.feed-notice span { width: 7px; height: 7px; border-radius: 50%; background: #2f8f5b; }
 .leaderboard-table-wrap { margin: 0.8rem 0 0; background: var(--white); }
 .leaderboard-table { min-width: 790px; }
 .leaderboard-table th svg { width: 13px; height: 13px; margin-left: 0.2rem; vertical-align: -2px; }
@@ -672,7 +673,37 @@ td:first-child { font-weight: 600; }
 .leaderboard-table .score-value { color: var(--purple); }
 .leaderboard-table a { display: inline-flex; align-items: center; gap: 0.3rem; font-weight: 650; }
 .leaderboard-table a svg { width: 13px; height: 13px; }
+.leaderboard-table .baseline-row { color: var(--muted); background: var(--purple-soft); }
+.leaderboard-table .baseline-row .score-value { color: var(--muted); }
+.baseline-tag {
+  display: inline-block;
+  margin-left: 0.4rem;
+  padding: 0.14rem 0.42rem;
+  border-radius: 999px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
 .leaderboard-source-note { margin: 1.25rem 0 0; color: var(--muted); font-size: 0.84rem; }
+.leaderboard-empty {
+  margin: 0.8rem 0 0;
+  padding: clamp(2.6rem, 6vw, 4.2rem) 1.5rem;
+  display: grid;
+  justify-items: center;
+  gap: 0.55rem;
+  text-align: center;
+  background: var(--white);
+  border: 1px dashed var(--line);
+  border-radius: 14px;
+}
+.leaderboard-empty svg { width: 30px; height: 30px; color: var(--purple-mid); }
+.leaderboard-empty h3 { margin: 0.35rem 0 0; font-size: 1.22rem; }
+.leaderboard-empty p { max-width: 46ch; margin: 0; color: var(--muted); }
+.leaderboard-empty .button { margin-top: 1rem; }
 
 /* Submission */
 .check-list { display: grid; gap: 0.55rem; margin: 1.2rem 0 3.6rem; list-style: none; }
