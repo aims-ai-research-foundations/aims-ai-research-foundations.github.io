@@ -40,7 +40,7 @@
     <div class="leaderboard-page-heading">
       <div>
         <h2>Current standings</h2>
-        <p>{{ $feed.metric }}</p>
+        <p>Check out how this is evaluated <a href="{{ $challenge }}#evaluation">here</a>.</p>
       </div>
       {{- if and $feedLive $feed.generated_at }}
       <p class="feed-notice"><span></span> Updated {{ (time.AsTime $feed.generated_at "UTC").Format "2 Jan 2006, 15:04" }} UTC</p>
