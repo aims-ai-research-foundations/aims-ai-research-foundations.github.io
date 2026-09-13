@@ -58,7 +58,7 @@
             <td data-label="Rank"><span class="rank-number">{{ printf "%.0f" .rank }}</span></td>
             <td data-label="Team"><strong>{{ .team }}</strong></td>
             <td data-label="Score"><strong class="score-value">{{ printf "%.4f" .score }}</strong></td>
-            <td data-label="Reconstruction"><span class="reconstruction{{ if lt .reconstruction 1.0 }} reconstruction-lossy{{ end }}">{{ printf "%.1f%%" (mul .reconstruction 100) }}</span></td>
+            <td data-label="Reconstruction">{{ with .reconstruction }}<span class="reconstruction{{ if lt . 1.0 }} reconstruction-lossy{{ end }}">{{ printf "%.1f%%" (mul . 100) }}</span>{{ else }}<span class="reconstruction">&mdash;</span>{{ end }}</td>
             <td data-label="Fertility">{{ printf "%.3f" .fertility }}</td>
             <td data-label="UNK rate">{{ printf "%.2f%%" (mul .unknown_rate 100) }}</td>
             <td data-label="Speed">{{ printf "%.2fM chars/s" (div .speed_chars_per_second 1000000.0) }}</td>
@@ -71,7 +71,7 @@
             <td data-label="Rank"><span class="rank-number">&mdash;</span></td>
             <td data-label="Team"><strong>{{ .team }}</strong> <span class="baseline-tag">Baseline</span></td>
             <td data-label="Score"><strong class="score-value">{{ printf "%.4f" .score }}</strong></td>
-            <td data-label="Reconstruction"><span class="reconstruction{{ if lt .reconstruction 1.0 }} reconstruction-lossy{{ end }}">{{ printf "%.1f%%" (mul .reconstruction 100) }}</span></td>
+            <td data-label="Reconstruction">{{ with .reconstruction }}<span class="reconstruction{{ if lt . 1.0 }} reconstruction-lossy{{ end }}">{{ printf "%.1f%%" (mul . 100) }}</span>{{ else }}<span class="reconstruction">&mdash;</span>{{ end }}</td>
             <td data-label="Fertility">{{ printf "%.3f" .fertility }}</td>
             <td data-label="UNK rate">{{ printf "%.2f%%" (mul .unknown_rate 100) }}</td>
             <td data-label="Speed">{{ printf "%.2fM chars/s" (div .speed_chars_per_second 1000000.0) }}</td>
