@@ -51,13 +51,14 @@
     <div class="table-wrap leaderboard-table-wrap" tabindex="0" role="region" aria-label="Scrollable challenge leaderboard">
       <table class="leaderboard-table">
         <caption>Standings from the latest nightly evaluation on the hidden test set. Lower score is better.</caption>
-        <thead><tr><th>Rank</th><th>Team</th><th>Score ↓</th><th>Fertility</th><th><code>&lt;UNK&gt;</code> rate</th><th>Speed <i data-lucide="gauge" aria-hidden="true"></i></th><th>Vocabulary</th><th>Submission</th></tr></thead>
+        <thead><tr><th>Rank</th><th>Team</th><th>Score ↓</th><th>Reconstruction</th><th>Fertility</th><th><code>&lt;UNK&gt;</code> rate</th><th>Speed <i data-lucide="gauge" aria-hidden="true"></i></th><th>Vocabulary</th><th>Submission</th></tr></thead>
         <tbody>
           {{- range $ranked }}
           <tr{{ if le .rank 3.0 }} class="top-rank rank-{{ printf "%.0f" .rank }}"{{ end }}>
             <td data-label="Rank"><span class="rank-number">{{ printf "%.0f" .rank }}</span></td>
             <td data-label="Team"><strong>{{ .team }}</strong></td>
             <td data-label="Score"><strong class="score-value">{{ printf "%.4f" .score }}</strong></td>
+            <td data-label="Reconstruction"><span class="reconstruction{{ if lt .reconstruction 1.0 }} reconstruction-lossy{{ end }}">{{ printf "%.1f%%" (mul .reconstruction 100) }}</span></td>
             <td data-label="Fertility">{{ printf "%.3f" .fertility }}</td>
             <td data-label="UNK rate">{{ printf "%.2f%%" (mul .unknown_rate 100) }}</td>
             <td data-label="Speed">{{ printf "%.2fM chars/s" (div .speed_chars_per_second 1000000.0) }}</td>
@@ -70,6 +71,7 @@
             <td data-label="Rank"><span class="rank-number">&mdash;</span></td>
             <td data-label="Team"><strong>{{ .team }}</strong> <span class="baseline-tag">Baseline</span></td>
             <td data-label="Score"><strong class="score-value">{{ printf "%.4f" .score }}</strong></td>
+            <td data-label="Reconstruction"><span class="reconstruction{{ if lt .reconstruction 1.0 }} reconstruction-lossy{{ end }}">{{ printf "%.1f%%" (mul .reconstruction 100) }}</span></td>
             <td data-label="Fertility">{{ printf "%.3f" .fertility }}</td>
             <td data-label="UNK rate">{{ printf "%.2f%%" (mul .unknown_rate 100) }}</td>
             <td data-label="Speed">{{ printf "%.2fM chars/s" (div .speed_chars_per_second 1000000.0) }}</td>
@@ -89,7 +91,7 @@
     </div>
     {{- end }}
 
-    <p class="leaderboard-source-note">Generated from validated submissions in the <a href="{{ $repo }}" target="_blank" rel="noopener">competition repository</a>. Nothing on this page is entered by hand.</p>
+    <p class="leaderboard-source-note"><strong>Reconstruction</strong> is the share of examples where <code>decode(encode(text))</code> exactly matches the original. Any failure is charged at 3 times the share lost, so a tokenizer that reconstructs every example receives no penalty. The penalty discourages approaches that artificially reduce token counts by modifying or deleting information from the input. Generated from validated submissions in the <a href="{{ $repo }}" target="_blank" rel="noopener">competition repository</a>. Nothing on this page is entered by hand.</p>
   </div>
 </section>
 {{ end }}
