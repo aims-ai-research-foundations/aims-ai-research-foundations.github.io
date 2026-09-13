@@ -105,7 +105,7 @@
       <div><p class="eyebrow">The corpus</p><h2>Dataset</h2></div>
     </div>
     <div class="prose-column">
-      <p class="lede">The public corpus is balanced across six languages and contains the text you need to train and validate your tokenizer.</p>
+      <p class="lede">The public corpus is balanced across six languages and contains the text you need to train and validate your tokenizer. It comes from a pinned Wikipedia snapshot, normalised to Unicode NFC and globally deduplicated (revision <code>v1.0.0</code>).</p>
       <div class="table-wrap">
         <table>
           <caption>Supported languages</caption>
@@ -163,7 +163,17 @@
           <p>This provides much better coverage, but often requires many more tokens to represent the same text.</p>
         </div>
       </div>
-      <p><strong>These baselines represent two different approaches to tokenization. Your job is to find something better.</strong></p>
+      <div class="table-wrap table-compact">
+        <table>
+          <caption>Baseline scores to beat</caption>
+          <thead><tr><th>Baseline</th><th>Score</th><th>Key trade-off</th></tr></thead>
+          <tbody>
+            <tr><td>Word-level</td><td>36.99</td><td>Very low fertility, but a high unknown-token rate</td></tr>
+            <tr><td>Character-level</td><td>5.68</td><td>Full coverage, but high fertility</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>A good subword tokenizer should beat both. Your job is to find something better.</strong></p>
       <h3>What might you explore?</h3>
       <ul class="tag-list" aria-label="Suggested approaches">
         <li>BPE</li><li>WordPiece</li><li>Unigram</li><li>Byte-level</li><li>Vocabulary allocation</li><li>Normalization</li><li>Pre-tokenization</li><li>Hybrid approaches</li>
@@ -178,7 +188,7 @@
       <div><p class="eyebrow">How scoring works</p><h2>Evaluation</h2></div>
     </div>
     <div class="prose-column">
-      <p class="lede">Your tokenizer is evaluated on two things: how many tokens it needs to represent text, and how often it produces an unknown token.</p>
+      <p class="lede">Your tokenizer is scored on how efficiently it represents the four target languages, kept honest by an English and French guardrail and a check that it reconstructs text exactly. Two per-language metrics do the core work: how many tokens it needs, and how often it produces an unknown token.</p>
 
       <div class="metric-block">
         <p class="metric-kicker">Metric 01</p><h3>Token fertility</h3>
@@ -218,12 +228,41 @@
       </div>
 
       <div class="metric-block">
-        <p class="metric-kicker">Official result</p><h3>Final score</h3>
-        <p>The official score averages the language scores for Hausa, Swahili, Yoruba, and Amharic.</p>
-        <div class="equation equation-final" role="img" aria-label="Score equals the sum of the Hausa, Swahili, Yoruba, and Amharic language scores divided by four">
-          <span>Score</span><span>=</span><span class="fraction"><span>S<sub>ha</sub> + S<sub>sw</sub> + S<sub>yo</sub> + S<sub>am</sub></span><span>4</span></span>
+        <p class="metric-kicker">Target languages</p><h3>Target score</h3>
+        <p>The core objective averages the language scores for the four target languages: Hausa, Swahili, Yoruba, and Amharic.</p>
+        <div class="equation equation-final" role="img" aria-label="Target score equals the sum of the Hausa, Swahili, Yoruba, and Amharic language scores divided by four">
+          <span class="math-variable">S<sub>target</sub></span><span>=</span><span class="fraction"><span>S<sub>ha</sub> + S<sub>sw</sub> + S<sub>yo</sub> + S<sub>am</sub></span><span>4</span></span>
         </div>
-        <p>English and French are part of the multilingual training data and support requirements, but the leaderboard objective focuses on the four African languages.</p>
+      </div>
+
+      <div class="metric-block">
+        <p class="metric-kicker">Guardrail</p><h3>English and French</h3>
+        <p>English and French are not scored directly, but they keep your tokenizer honest: you cannot optimise only for the four target languages and ignore the rest. Each is allowed a fertility of up to <strong>1.15×</strong> the average fertility of the target languages, and any excess is added to your score.</p>
+        <div class="equation" role="img" aria-label="English and French penalty equals the sum, over English and French, of how much each fertility exceeds 1.15 times the average target fertility">
+          <span class="math-variable">P<sub>en/fr</sub></span><span>=</span><span>&sum;<sub>en, fr</sub> max(0, F<sub>l</sub> &minus; 1.15 F&#772;)</span>
+        </div>
+      </div>
+
+      <div class="metric-block">
+        <p class="metric-kicker">Losslessness</p><h3>Reconstruction</h3>
+        <p>A tokenizer should preserve the text it encodes. We check whether <code>decode(encode(text))</code> exactly reconstructs the original text, and penalise any failures. This discourages approaches that shrink token counts by dropping or altering information.</p>
+        <div class="equation" role="img" aria-label="Reconstruction penalty equals three times one minus the reconstruction rate">
+          <span class="math-variable">P<sub>reconstruction</sub></span><span>=</span><span>3 (1 &minus; reconstruction)</span>
+        </div>
+        <p>A tokenizer that reconstructs every example exactly receives no penalty. Unicode NFC, special tokens, and leading or trailing whitespace are ignored.</p>
+      </div>
+
+      <div class="metric-block metric-score">
+        <p class="metric-kicker">Official result</p><h3>Complete score</h3>
+        <div class="annotated-equation" role="img" aria-label="Score equals target score plus English and French penalty plus reconstruction penalty">
+          <span class="math-variable equation-result">Score</span>
+          <span class="equation-operator">=</span>
+          <span class="annotated-term term-fertility"><small>target languages</small><strong>S<sub>target</sub></strong></span>
+          <span class="equation-operator">+</span>
+          <span class="annotated-term term-unknown"><small>en / fr guardrail</small><strong>P<sub>en/fr</sub></strong></span>
+          <span class="equation-operator">+</span>
+          <span class="annotated-term"><small>reconstruction</small><strong>P<sub>reconstruction</sub></strong></span>
+        </div>
         <p class="lower-better"><i data-lucide="arrow-down" aria-hidden="true"></i> Lower is better.</p>
       </div>
       <div class="takeaway">
@@ -245,9 +284,13 @@
         <li>One tokenizer must support all six languages.</li>
         <li>Maximum vocabulary size: <strong>10,000 tokens</strong>.</li>
         <li>Train using only the provided competition training data.</li>
+        <li>No pretrained tokenizer, external corpus, vocabulary, word list, embedding, or API — it must run offline.</li>
+        <li>Encoding must be lossless: <code>decode(encode(text))</code> must restore the original text.</li>
         <li>Any tokenizer approach is allowed.</li>
         <li>The tokenizer must work without participant-written code during evaluation.</li>
-        <li>Your submission must be compatible with the official evaluation script.</li>
+        <li>Evaluation must finish within <strong>5× the character-level baseline runtime</strong>.</li>
+        <li>Your submission must pass the official submission checker.</li>
+        <li>You must also submit the notebook used to build your tokenizer. Omitting it means disqualification.</li>
         <li>The hidden test set determines leaderboard performance.</li>
       </ul>
       <div class="starter-notebook">
@@ -261,17 +304,16 @@
       </div>
       <h3>Submission process</h3>
       <ol class="submission-steps">
-        <li><span>1</span><div><strong>Fork the competition repository</strong><p>Create your own copy of the starter repository on GitHub.</p></div></li>
-        <li><span>2</span><div><strong>Open the starter notebook</strong><p>Use <a href="{{ $notebook }}" target="_blank" rel="noopener"><code>starter/starter.ipynb</code></a>, or follow the same workflow in your own environment.</p></div></li>
-        <li><span>3</span><div><strong>Build and evaluate</strong><p>Train your tokenizer and compare ideas on the validation split.</p></div></li>
-        <li><span>4</span><div><strong>Run the submission checker</strong><p>Confirm that your tokenizer loads, stays within the vocabulary limit, encodes all six languages, and uses the correct format.</p></div></li>
-        <li><span>5</span><div><strong>Export your tokenizer</strong><p>Save the complete tokenizer files in the format described by the starter kit.</p></div></li>
-        <li><span>6</span><div><strong>Add your team folder</strong><p>Place the exported files under <code>submissions/your-team-name/</code>.</p></div></li>
-        <li><span>7</span><div><strong>Open a Pull Request</strong><p>Submit your change back to the official competition repository.</p></div></li>
+        <li><span>1</span><div><strong>Build and export your tokenizer</strong><p>Train it on the competition data and export it as <code>tokenizer.json</code>.</p></div></li>
+        <li><span>2</span><div><strong>Run the submission checker</strong><p>Confirm your tokenizer loads, stays within the 10,000-token limit, encodes all six languages, and reconstructs text.</p></div></li>
+        <li><span>3</span><div><strong>Fork the repository and branch</strong><p>Fork the competition repository and create a branch named <code>submission</code>.</p></div></li>
+        <li><span>4</span><div><strong>Add your team folder</strong><p>Place <code>tokenizer.json</code> and <code>metadata.yml</code> under <code>submissions/your-team-name/</code>.</p></div></li>
+        <li><span>5</span><div><strong>Open a Pull Request</strong><p>Push the <code>submission</code> branch and open a Pull Request to the official competition repository.</p></div></li>
+        <li><span>6</span><div><strong>Add your notebook</strong><p>Include the notebook that builds your tokenizer as <code>notebook.ipynb</code> before the deadline. This is required.</p></div></li>
       </ol>
       <div class="automation-note">
         <i data-lucide="git-pull-request" aria-hidden="true"></i>
-        <div><h3>What happens next?</h3><p>GitHub Actions will automatically validate eligible submissions and update the public leaderboard. If a check fails, the Pull Request will show what needs to be fixed.</p></div>
+        <div><h3>What happens next?</h3><p>GitHub Actions automatically validates eligible submissions and updates the public leaderboard. If a check fails, the Pull Request shows what to fix. Your latest tokenizer on the <code>submission</code> branch is the one that gets evaluated.</p></div>
       </div>
       <a class="button button-primary" href="{{ $repo }}" target="_blank" rel="noopener"><i data-lucide="github" aria-hidden="true"></i> Open the competition repository</a>
     </div>
@@ -287,9 +329,11 @@
       <details><summary>Can I use any tokenizer algorithm?</summary><p>Yes. Word-level, character-level, BPE, WordPiece, Unigram, byte-level, hybrids, or your own approach are all allowed.</p></details>
       <details><summary>Can I use more than 10,000 tokens?</summary><p>No. The maximum vocabulary size is 10,000 tokens.</p></details>
       <details><summary>What happens if my tokenizer produces <code>&lt;UNK&gt;</code>?</summary><p>Your submission is still valid, but unknown tokens receive a large penalty in the evaluation score.</p></details>
-      <details><summary>Can I train on external datasets?</summary><p>No. Use only the provided competition training data.</p></details>
+      <details><summary>Does my tokenizer have to reconstruct the text exactly?</summary><p>Yes. We check that <code>decode(encode(text))</code> returns the original text, and any reconstruction failures add a penalty. Unicode NFC, special tokens, and leading or trailing whitespace are ignored.</p></details>
+      <details><summary>Are English and French scored?</summary><p>Not directly. The leaderboard averages the four target languages, but English and French act as a guardrail: if either exceeds 1.15× the average target fertility, the excess is added to your score.</p></details>
+      <details><summary>Can I train on external datasets or use a pretrained tokenizer?</summary><p>No. Use only the provided competition training data, with no external corpus, pretrained tokenizer, word list, embedding, or API. Your tokenizer must run offline.</p></details>
       <details><summary>Do I need to train a language model?</summary><p>No. You are only building the tokenizer.</p></details>
-      <details><summary>What should I submit?</summary><p>Your exported tokenizer in the format required by the starter kit.</p></details>
+      <details><summary>What should I submit?</summary><p>Your exported <code>tokenizer.json</code> and a <code>metadata.yml</code> under <code>submissions/your-team-name/</code>, plus the <code>notebook.ipynb</code> used to build it. The notebook is required — omitting it results in disqualification.</p></details>
     </div>
   </section>
 
