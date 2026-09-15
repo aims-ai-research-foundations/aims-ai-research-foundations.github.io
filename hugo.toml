@@ -37,6 +37,12 @@ disableKinds = ["taxonomy", "term"]
   group = "partner"
 
 [[params.partners]]
+  name = "Google DeepMind"
+  image = "img/logos/google-deepmind.png"
+  url = "https://deepmind.google"
+  group = "supporter"
+
+[[params.partners]]
   name = "Google.org"
   image = "img/logos/google-org.png"
   url = "https://www.google.org"

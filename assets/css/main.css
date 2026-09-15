@@ -532,6 +532,10 @@ section { padding: 3rem 0; }
   grid-template-columns: 1fr;
   max-width: 300px;
 }
+.partners-row--pair {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 640px;
+}
 @media (max-width: 720px) {
   .partners-row { grid-template-columns: 1fr; max-width: 360px; }
 }
