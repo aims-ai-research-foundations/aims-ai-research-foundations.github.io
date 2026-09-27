@@ -11,3 +11,8 @@ hugo_stats.json
 
 # Local-only working docs (content briefs, slide-deck specs, etc.)
 /other-docs/
+
+private/
+
+# Full-size source photos (processed copies live in assets/gallery/)
+/gallery/

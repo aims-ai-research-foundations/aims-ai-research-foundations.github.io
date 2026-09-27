@@ -39,15 +39,31 @@
       <div class="vc-hero-inner">
         <div class="vc-hero-text">
           <span class="vc-badge"><span class="vc-ico">{{ partial "icon.html" "groups" }}</span> 600+ learners. One community.</span>
-          <h1>Build. Connect. Advance.<br><span class="vc-accent">The future of AI research.</span></h1>
-          <p class="vc-hero-sub">Join 600+ learners across Africa building the skills, connections, and research mindset to solve real-world problems with AI.</p>
+          <h1>A community of learners across Africa <span class="vc-accent">shaping the future of AI.</span></h1>
+          <p class="vc-hero-sub">Join 600+ learners across Africa building the skills, connections, and research mindset to solve real-world problems with AI using the Google DeepMind <a href="https://www.skills.google/paths/3135" target="_blank" rel="noopener">AI Research Foundations</a> curriculum.</p>
           <div class="vc-hero-cta">
             <button type="button" class="btn btn-gold" data-discord-access><span class="vc-ico">{{ $discordSvg | safeHTML }}</span> Join Discord</button>
             <a class="btn vc-btn-outline" href="mailto:{{ $email }}"><span class="vc-ico">{{ $mailSvg | safeHTML }}</span> Need help? Contact the team</a>
           </div>
         </div>
         <div class="vc-hero-media">
-          <img src="{{ "img/virtual-community/hero-img.webp" | relURL }}" alt="Four learners collaborating around a laptop" width="835" height="1200" fetchpriority="high" decoding="async">
+          <img src="{{ "img/virtual-community/hero-globe.webp" | relURL }}" alt="A globe centred on Africa with country flags, connected to learners from across the continent" width="1100" height="1059" fetchpriority="high" decoding="async">
+        </div>
+      </div>
+    </section>
+
+    {{/* ---- Motto: scrolling band below the hero ---- */}}
+    {{- $motto := slice "Learn" "Connect" "Build" "Make an impact" }}
+    <section class="vc-motto-band" aria-label="Learn, connect, build, make an impact">
+      <div class="vc-marquee">
+        <div class="vc-marquee-track">
+          {{- range $g := seq 2 }}
+          <div class="vc-marquee-group"{{ if eq $g 2 }} aria-hidden="true"{{ end }}>
+            {{- range seq 3 }}{{ range $motto }}
+            <span class="vc-marquee-word">{{ . }}</span><span class="vc-marquee-sep" aria-hidden="true">✦</span>
+            {{- end }}{{ end }}
+          </div>
+          {{- end }}
         </div>
       </div>
     </section>
@@ -107,7 +123,6 @@
       "Create your account"
       "Join the Discord community"
       "Introduce yourself in #introductions"
-      "Complete the orientation module"
       "Set your learning goals"
       "Start the AI Research Foundations course"
       "Engage, collaborate, and have fun" }}
@@ -115,7 +130,7 @@
       <div class="container vc-onboard">
         <div class="vc-onboard-text">
           <p class="section-eyebrow">Get onboarded</p>
-          <h2 class="section-title with-accent">Your first week, step by step</h2>
+          <h2 class="section-title with-accent">Getting started, step by step</h2>
           <p class="vc-onboard-lead">A simple path to get set up, meet the community, and start learning with confidence.</p>
           <ol class="vc-checklist">
             {{- range $steps }}
@@ -162,7 +177,7 @@
         "svg" `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`)
       (dict "title" "Build" "tone" "pink" "body" "Work on real-world research projects, hackathons, and challenges, with guidance from mentors who have walked the path."
         "svg" `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91 0Z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.9 12.9 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2Z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>`)
-      (dict "title" "Contribute" "tone" "purple" "body" "Help grow and strengthen a thriving community of AI research learners across Africa."
+      (dict "title" "Make an Impact" "tone" "purple" "body" "Help grow and strengthen a thriving community of AI research learners across Africa."
         "svg" `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></svg>`)
     }}
     <section id="community" class="vc-section vc-alt">

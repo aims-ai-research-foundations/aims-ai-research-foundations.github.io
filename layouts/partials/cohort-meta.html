@@ -1,0 +1,17 @@
+{{- /* Input: dict "cohort" (from data/cohorts.yaml) "count" (e.g. "7 stories").
+       Renders the count, venue/city and dates from the linked workshop page. */ -}}
+{{- $w := "" -}}
+{{- with .cohort.workshop }}{{ $w = site.GetPage (printf "/workshops/%s" .) }}{{ end -}}
+<p class="st-cohort-meta">
+  {{- with .count }}<span>{{ . }}</span>{{ end }}
+  {{- with $w }}
+    {{- $loc := delimit (slice .Params.city .Params.country) ", " }}
+    {{- if .Params.venue }}{{ $loc = printf "%s, %s" .Params.venue .Params.city }}{{ end }}
+  <span>{{ $loc }}</span>
+    {{- with .Params.cohorts }}{{ if not $w.Params.datesTBC }}
+      {{- $first := index . 0 }}{{ $last := index . (sub (len .) 1) }}
+  <span>{{ partial "daterange.html" (dict "start" $first.start "end" $last.end) }}</span>
+    {{- end }}{{ end }}
+  <a class="text-link" href="{{ .RelPermalink }}">About this workshop</a>
+  {{- end }}
+</p>

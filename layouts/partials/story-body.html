@@ -1,0 +1,10 @@
+{{- /* Input: a testimonial item. Renders the quote as paragraphs; long ones get a "Read the full story" toggle (wired in site.js). */ -}}
+{{- $long := gt (len .quote) 750 -}}
+<div class="st-body"{{ if $long }} data-clamp{{ end }}>
+  {{- range split .quote "\n\n" }}{{ with trim . " \n" }}
+  <p>{{ . }}</p>
+  {{- end }}{{ end }}
+</div>
+{{- if $long }}
+<button class="st-more" type="button" aria-expanded="false" hidden>Read the full story</button>
+{{- end -}}

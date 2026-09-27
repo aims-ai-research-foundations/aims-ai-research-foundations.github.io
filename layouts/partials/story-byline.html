@@ -1,0 +1,9 @@
+{{- /* Input: a testimonial item. Name (with title), institution, role. */ -}}
+<footer class="st-byline">
+  {{ partial "avatar.html" .name }}
+  <span class="st-byline-text">
+    <strong class="st-name">{{ .name }}</strong>
+    <span class="st-inst">{{ .institution }}</span>
+    {{- with .role }}<span class="st-role">{{ . }}</span>{{ end }}
+  </span>
+</footer>

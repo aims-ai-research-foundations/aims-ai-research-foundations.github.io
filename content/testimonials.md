@@ -1,5 +1,5 @@
 ---
 title: "Testimonials"
 layout: "testimonials"
-description: "What participants say about the AI Research Foundations workshops, one tab per workshop."
+description: "Stories from AI Champions and teaching assistants on the AI Research Foundations Train-the-Trainer workshops, grouped by cohort."
 ---

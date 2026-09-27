@@ -78,7 +78,12 @@
     }
 
     tabs.forEach(function (tab, i) {
-      tab.addEventListener("click", function () { select(tab); });
+      tab.addEventListener("click", function () {
+        select(tab);
+        // In a sideways-scrolling tab row (mobile), bring the tapped tab fully into view.
+        var row = tab.parentElement;
+        if (row.scrollWidth > row.clientWidth) row.scrollTo({ left: tab.offsetLeft - row.offsetLeft - 24, behavior: "smooth" });
+      });
       tab.addEventListener("keydown", function (e) {
         var idx = null;
         if (e.key === "ArrowRight" || e.key === "ArrowDown") idx = (i + 1) % tabs.length;
@@ -142,12 +147,34 @@
         if (entry.isIntersecting) {
           links.forEach(function (a) { a.classList.remove("active"); });
           var a = byId[entry.target.id];
-          if (a) a.classList.add("active");
+          if (a) {
+            a.classList.add("active");
+            // Keep the active chip visible when the sub-nav scrolls sideways (mobile).
+            var row = a.parentElement;
+            if (row.scrollWidth > row.clientWidth) {
+              row.scrollTo({ left: a.offsetLeft - row.offsetLeft - (row.clientWidth - a.offsetWidth) / 2, behavior: "smooth" });
+            }
+          }
         }
       });
     }, { rootMargin: "-45% 0px -50% 0px" });
-    document.querySelectorAll(".ob-section[id]").forEach(function (s) { obs.observe(s); });
+    document.querySelectorAll(".ob-section[id], .st-cohort[id]").forEach(function (s) { obs.observe(s); });
   }
+
+  /* ---------- Testimonials: collapse long stories behind "Read the full story" ---------- */
+  document.querySelectorAll(".st-story [data-clamp]").forEach(function (body) {
+    var btn = body.nextElementSibling;
+    if (!btn || !btn.classList.contains("st-more")) return;
+    body.classList.add("is-clamped");
+    if (body.scrollHeight <= body.clientHeight + 40) { body.classList.remove("is-clamped"); return; }
+    btn.hidden = false;
+    btn.addEventListener("click", function () {
+      var open = body.classList.toggle("is-clamped") === false;
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+      btn.textContent = open ? "Show less" : "Read the full story";
+      if (!open) body.closest(".st-story").scrollIntoView({ block: "nearest" });
+    });
+  });
 
   /* ---------- Fade-in on scroll ---------- */
   var faders = document.querySelectorAll(".fade-in, .fade-in-stagger");

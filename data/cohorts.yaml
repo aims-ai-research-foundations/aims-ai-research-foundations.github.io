@@ -1,0 +1,60 @@
+# The programme's cohorts, in display order. Shared by the Gallery and
+# Testimonials pages so names, flags and order always match.
+#
+#   id        used for page anchors, testimonials (data/testimonials.yaml)
+#             and the photo folder (assets/gallery/<id>/)
+#   name      display name, shown after the flag
+#   flag      country flag emoji
+#   workshop  slug of the matching workshop page (optional): venue, dates
+#             and the "About this workshop" link come from there
+#
+# To add photos for a cohort: scripts/add-photos.sh <id> <folder of photos>
+
+cohorts:
+  - id: nigeria-cohort-1
+    name: "Nigeria Cohort 1"
+    flag: "🇳🇬"
+    workshop: nigeria-cohort-1
+
+  - id: nigeria-cohort-2
+    name: "Nigeria Cohort 2"
+    flag: "🇳🇬"
+    workshop: nigeria-cohort-2
+
+  - id: ghana-cohort
+    name: "Ghana Cohort"
+    flag: "🇬🇭"
+    workshop: ghana-2026
+
+  - id: aims-pilot
+    name: "AIMS Pilot Workshop"
+    flag: "🇿🇦"
+    workshop: pilot-cape-town
+
+  - id: pretoria-cohort
+    name: "Pretoria Cohort"
+    flag: "🇿🇦"
+    workshop: pretoria-2026
+
+  - id: kenya-cohort-1
+    name: "Kenya Cohort 1"
+    flag: "🇰🇪"
+    workshop: kenya-cohort-1
+
+  - id: kenya-cohort-2
+    name: "Kenya Cohort 2"
+    flag: "🇰🇪"
+    workshop: kenya-cohort-2
+
+  - id: western-cape-cohort
+    name: "Western Cape Cohort"
+    flag: "🇿🇦"
+    workshop: western-cape
+
+  - id: nigeria-cohort-3
+    name: "Nigeria Cohort 3"
+    flag: "🇳🇬"
+
+  - id: nigeria-cohort-4
+    name: "Nigeria Cohort 4"
+    flag: "🇳🇬"

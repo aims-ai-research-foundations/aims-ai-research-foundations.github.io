@@ -1,48 +1,109 @@
 {{ define "main" }}
-{{- $items := where hugo.Data.testimonials.items "workshop" "pilot-cape-town" }}
-<section class="testi-section" data-carousel data-autoplay="6000">
+{{- $told := slice }}
+{{- $upcoming := slice }}
+{{- $stories := 0 }}
+{{- $flags := slice }}
+{{- range hugo.Data.cohorts.cohorts }}
+  {{- $items := index hugo.Data.testimonials .id }}
+  {{- if $items }}
+    {{- $told = $told | append (merge . (dict "items" $items)) }}
+    {{- $stories = add $stories (len $items) }}
+    {{- $flags = $flags | append .flag }}
+  {{- else }}
+    {{- $upcoming = $upcoming | append . }}
+  {{- end }}
+{{- end }}
+
+<section class="page-hero compact st-hero">
   <div class="container">
-    <div class="testi-head">
-      <div class="testi-head-text">
-        <h1 class="testi-title">Participant Reflections</h1>
-        <p class="testi-subtitle">from the AIMS Pilot Workshop</p>
-      </div>
-      <span class="testi-bigquote" aria-hidden="true">&rdquo;</span>
-    </div>
-
-    <div class="testi-carousel">
-      <button class="testi-arrow testi-arrow-prev" type="button" data-prev aria-label="Previous reflection">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
-      </button>
-
-      <div class="testi-viewport">
-        {{- range $i, $t := $items }}
-        <figure class="testi-slide{{ if eq $i 0 }} is-active{{ end }}" data-slide>
-          <div class="testi-avatar">{{ partial "avatar.html" $t.name }}</div>
-          <div class="testi-content">
-            <span class="testi-mark" aria-hidden="true">&ldquo;</span>
-            <blockquote>{{ $t.quote }}</blockquote>
-            <span class="testi-rule"></span>
-            <figcaption>
-              <span class="testi-name">{{ $t.name }}</span>
-              <span class="testi-role">{{ $t.role }}</span>
-            </figcaption>
-          </div>
-        </figure>
-        {{- end }}
-      </div>
-
-      <button class="testi-arrow testi-arrow-next" type="button" data-next aria-label="Next reflection">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-      </button>
-    </div>
-
-    <div class="testi-controls">
-      <div class="testi-dots" data-dots>
-        {{- range $i, $t := $items }}<button class="testi-dot{{ if eq $i 0 }} is-active{{ end }}" type="button" data-dot="{{ $i }}" aria-label="Go to reflection {{ add $i 1 }}"></button>{{ end }}
-      </div>
-      <p class="testi-counter"><strong data-current>01</strong> <span>/ {{ printf "%02d" (len $items) }}</span></p>
-    </div>
+    <p class="hero-eyebrow">Testimonials</p>
+    <h1>In their own words</h1>
+    <p class="hero-sub">Lecturers, teaching assistants and researchers share what the Train-the-Trainer week meant to them, and what they are taking back to their students. Stories are grouped by cohort.</p>
+    <ul class="st-hero-stats">
+      <li><strong>{{ $stories }}</strong> stories</li>
+      <li><strong>{{ len $told }}</strong> cohorts</li>
+      <li><strong>{{ len (uniq $flags) }}</strong> countries</li>
+    </ul>
   </div>
 </section>
+
+<nav class="subnav st-subnav" aria-label="Cohorts">
+  <div class="container">
+    {{- range $told }}
+    <a href="#{{ .id }}"><span class="st-flag" aria-hidden="true">{{ .flag }}</span> {{ .name }} <span class="st-count">{{ len .items }}</span></a>
+    {{- end }}
+    {{- if $upcoming }}
+    <a href="#coming-soon">Coming soon</a>
+    {{- end }}
+  </div>
+</nav>
+
+{{- range $i, $c := $told }}
+{{- $featured := where $c.items "featured" true }}
+{{- $rest := slice }}
+{{- range $c.items }}{{ if not .featured }}{{ $rest = $rest | append . }}{{ end }}{{ end }}
+<section id="{{ $c.id }}" class="st-cohort{{ if modBool $i 2 }}{{ else }} alt{{ end }}">
+  <div class="container">
+    <header class="st-cohort-head">
+      <h2 class="st-cohort-title"><span class="st-flag" aria-hidden="true">{{ $c.flag }}</span> {{ $c.name }}</h2>
+      {{ partial "cohort-meta.html" (dict "cohort" $c "count" (printf "%d %s" (len $c.items) (cond (eq (len $c.items) 1) "story" "stories"))) }}
+    </header>
+
+    {{- range $featured }}
+    <article class="st-feature">
+      <div class="st-feature-pull">
+        <span class="st-mark" aria-hidden="true">&ldquo;</span>
+        <p>{{ .pull | default .quote }}</p>
+      </div>
+      <div class="st-feature-body">
+        {{ partial "story-body.html" . }}
+        {{ partial "story-byline.html" . }}
+      </div>
+    </article>
+    {{- end }}
+
+    {{- with $rest }}
+    <div class="st-stories">
+      {{- range . }}
+      <article class="st-story">
+        <span class="st-mark" aria-hidden="true">&ldquo;</span>
+        {{ partial "story-body.html" . }}
+        {{ partial "story-byline.html" . }}
+      </article>
+      {{- end }}
+    </div>
+    {{- end }}
+
+  </div>
+</section>
+{{- end }}
+
+{{- with $upcoming }}
+<section id="coming-soon" class="st-cohort st-upcoming{{ if modBool (len $told) 2 }}{{ else }} alt{{ end }}">
+  <div class="container">
+    <header class="st-cohort-head">
+      <h2 class="st-cohort-title">Coming soon</h2>
+      <p class="st-cohort-lead">Stories from these cohorts will appear here after each workshop week.</p>
+    </header>
+    <ul class="st-upcoming-list">
+      {{- range . }}
+      {{- $w := "" }}
+      {{- with .workshop }}{{ $w = site.GetPage (printf "/workshops/%s" .) }}{{ end }}
+      <li>
+        <span class="st-flag" aria-hidden="true">{{ .flag }}</span>
+        <span class="st-upcoming-text">
+          <strong>{{ .name }}</strong>
+          {{- with $w }}{{ with .Params.cohorts }}{{ if not $w.Params.datesTBC }}
+            {{- $first := index . 0 }}{{ $last := index . (sub (len .) 1) }}
+          <span>{{ partial "daterange.html" (dict "start" $first.start "end" $last.end) }}</span>
+          {{- end }}{{ end }}{{ else }}
+          <span>Dates to be announced</span>
+          {{- end }}
+        </span>
+      </li>
+      {{- end }}
+    </ul>
+  </div>
+</section>
+{{- end }}
 {{ end }}

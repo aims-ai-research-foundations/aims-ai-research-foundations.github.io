@@ -1,20 +1,30 @@
 {{ define "main" }}
-{{- $workshops := (site.GetPage "/workshops").Sections.ByWeight }}
+{{- /* Cohorts come from data/cohorts.yaml, in that order; photos from
+       assets/gallery/<cohort-id>/ (added with scripts/add-photos.sh).
+       The first cohort that has photos is open by default. */ -}}
 {{- $ordered := slice }}
-{{- range $workshops }}{{ if .Params.hasGallery }}{{ $ordered = $ordered | append . }}{{ end }}{{ end }}
-{{- range $workshops }}{{ if not .Params.hasGallery }}{{ $ordered = $ordered | append . }}{{ end }}{{ end }}
+{{- $open := -1 }}
+{{- range $i, $c := hugo.Data.cohorts.cohorts }}
+  {{- $imgs := resources.Match (printf "gallery/%s/*" $c.id) }}
+  {{- if and $imgs (lt $open 0) }}{{ $open = $i }}{{ end }}
+  {{- $ordered = $ordered | append (merge $c (dict "imgs" $imgs)) }}
+{{- end }}
+{{- if lt $open 0 }}{{ $open = 0 }}{{ end }}
 <section class="page-hero has-visual">
   <div class="container hero-split">
     <div class="hero-split-text">
       <p class="hero-eyebrow">Gallery</p>
       <h1>Moments from the workshops</h1>
-      <p class="hero-sub">Photos from across the programme, one tab per workshop.</p>
+      <p class="hero-sub">Photos from across the programme, grouped by cohort.</p>
     </div>
     <div class="hero-split-visual hero-collage" aria-hidden="true">
-      <img src="{{ "img/workshops/pilot-cape-town/gallery/01-teaching.jpg" | relURL }}" alt="" loading="eager">
-      <img src="{{ "img/workshops/pilot-cape-town/gallery/03-group-discussion.jpg" | relURL }}" alt="" loading="eager">
-      <img src="{{ "img/workshops/pilot-cape-town/gallery/05-hands-on-lab.jpg" | relURL }}" alt="" loading="eager">
-      <img src="{{ "img/workshops/pilot-cape-town/gallery/08-group-photo.jpg" | relURL }}" alt="" loading="eager">
+      {{- /* Pilot instructor explaining to a group by the bookshelves, a Nigeria Cohort 1 group at work, a Pretoria group at a laptop, then the Pretoria group photo. */}}
+      {{- range slice "aims-pilot/05.webp" "nigeria-cohort-1/03.webp" "pretoria-cohort/19.webp" "pretoria-cohort/01.webp" }}
+      {{- with resources.Get (printf "gallery/%s" .) }}
+      {{- $sq := .Fill "560x560 Smart webp q78" }}
+      <img src="{{ $sq.RelPermalink }}" width="{{ $sq.Width }}" height="{{ $sq.Height }}" alt="" loading="eager" decoding="async">
+      {{- end }}
+      {{- end }}
     </div>
   </div>
 </section>
@@ -22,36 +32,33 @@
 <section>
   <div class="container">
     <div class="tabs" data-tabs>
-      <div class="tablist" role="tablist" aria-label="Workshops">
-        {{- range $i, $w := $ordered }}
-        <button class="tab" role="tab" id="tab-{{ $w.Params.slug }}" aria-controls="panel-{{ $w.Params.slug }}" aria-selected="{{ if eq $i 0 }}true{{ else }}false{{ end }}" tabindex="{{ if eq $i 0 }}0{{ else }}-1{{ end }}">{{ $w.Title }}</button>
+      <div class="tablist gal-tablist" role="tablist" aria-label="Cohorts">
+        {{- range $i, $c := $ordered }}
+        <button class="tab" role="tab" id="tab-{{ $c.id }}" aria-controls="panel-{{ $c.id }}" aria-selected="{{ if eq $i $open }}true{{ else }}false{{ end }}" tabindex="{{ if eq $i $open }}0{{ else }}-1{{ end }}"><span class="st-flag" aria-hidden="true">{{ $c.flag }}</span> {{ $c.name }}{{ with $c.imgs }} <span class="st-count">{{ len . }}</span>{{ end }}</button>
         {{- end }}
       </div>
-      {{- range $i, $w := $ordered }}
-      {{- $slug := $w.Params.slug }}
-      {{- $dir := printf "static/img/workshops/%s/gallery" $slug }}
-      {{- $imgs := slice }}
-      {{- if os.FileExists $dir }}
-        {{- range os.ReadDir $dir }}
-          {{- if in (slice ".jpg" ".jpeg" ".png" ".webp" ".gif") (lower (path.Ext .Name)) }}
-          {{- $imgs = $imgs | append (printf "img/workshops/%s/gallery/%s" $slug .Name) }}
-          {{- end }}
-        {{- end }}
-      {{- end }}
-      <div class="tabpanel" role="tabpanel" id="panel-{{ $slug }}" aria-labelledby="tab-{{ $slug }}" {{ if ne $i 0 }}hidden{{ end }}>
-        {{- if $imgs }}
-        <div class="gallery-grid">
-          {{- range $imgs }}
-          <a class="gallery-item" href="{{ . | relURL }}">
-            <img src="{{ . | relURL }}" alt="{{ $w.Title }} photo" loading="lazy">
+      {{- range $i, $c := $ordered }}
+      <div class="tabpanel" role="tabpanel" id="panel-{{ $c.id }}" aria-labelledby="tab-{{ $c.id }}" {{ if ne $i $open }}hidden{{ end }}>
+        {{- if $c.imgs }}
+        <div class="gal-head">
+          <h2 class="gal-title"><span class="st-flag" aria-hidden="true">{{ $c.flag }}</span> {{ $c.name }}</h2>
+          {{ partial "cohort-meta.html" (dict "cohort" $c "count" (printf "%d photos" (len $c.imgs))) }}
+        </div>
+        <div class="gallery-grid gal-grid">
+          {{- $n := len $c.imgs }}
+          {{- range $j, $img := $c.imgs }}
+          {{- $big := or (eq $j 0) (eq $j (sub $n 1)) }}
+          {{- $thumb := $img.Fill (cond $big "1200x900 Smart webp q78" "720x540 Smart webp q75") }}
+          <a class="gallery-item" href="{{ $img.RelPermalink }}">
+            <img src="{{ $thumb.RelPermalink }}" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}" alt="{{ $c.name }} workshop, photo {{ add $j 1 }} of {{ $n }}" loading="lazy" decoding="async">
           </a>
           {{- end }}
         </div>
         {{- else }}
         <div class="coming-soon">
           <span class="cs-ico">{{ partial "icon.html" "presentation" }}</span>
-          <h2>Photos coming soon</h2>
-          <p>Photos from {{ $w.Title }} will appear here after the workshop.</p>
+          <h2><span class="st-flag" aria-hidden="true">{{ $c.flag }}</span> {{ $c.name }}</h2>
+          <p>Photos from the {{ $c.name }} will appear here after the workshop.</p>
         </div>
         {{- end }}
       </div>

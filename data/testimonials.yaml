@@ -1,45 +1,312 @@
-# Real, consented testimonials from the AIMS Pilot Workshop (June 2026).
-# Each entry is tagged with a workshop slug so it appears on that
-# workshop page and in the matching tab on /testimonials.
-items:
-  - workshop: pilot-cape-town
-    quote: "The AI Research Foundations pilot workshop was both inspiring and highly informative. I gained a stronger understanding of key AI concepts such as language models and transformers, while also learning effective ways to explain these topics to others. One of the most valuable aspects was discovering how to make AI accessible to people with little or no prior knowledge of the field."
-    name: "Ezéckiel Sianou"
-    role: "Joint Postdoctoral Fellow in AI for Science, AIMS South Africa and Imperial College London"
-    placeholder: false
+# Participant testimonials, rendered on /testimonials/.
+#
+# Keyed by cohort id from data/cohorts.yaml (which holds the cohort's name,
+# flag, order and workshop link). A cohort with no entry here is listed on
+# the page as "coming soon".
+#
+# Only include testimonials where the participant consented to sharing
+# ("May we share your testimonial..." = Yes). Never add email addresses.
+# Quotes are lightly copy-edited (spelling, capitalisation, stray signatures)
+# without changing their meaning.
+#
+# Fields: name, role, institution, quote (paragraphs separated by blank lines)
+#   featured: true  -> shown first as the cohort's lead story
+#   pull            -> short line from the quote, shown large on the lead story
+#
+# Titles (Prof., Dr, Engr, Mr, Mrs, Miss) and roles follow the participant
+# roster in private/participant-details.md, not the testimonial form.
 
-  - workshop: pilot-cape-town
-    quote: "The AI Research Foundations pilot workshop was truly enlightening. The facilitators were approachable and knowledgeable, making the five-day course an incredibly rewarding experience from start to finish. Having completed the pre-course work beforehand made a real difference, laying a strong foundation. Over the week, my understanding of AI architecture, principles and fine-tuning, as well as ethics and responsible innovation in AI improved leaps and bounds. I would wholeheartedly recommend this course to anyone looking to deepen their understanding of AI, prepare to teach it, or explore how to meaningfully embed it across Africa."
-    name: "Prof. Regan Solomons"
-    role: "Executive Head of Paediatrics and Child Health, Tygerberg Hospital"
-    placeholder: false
+nigeria-cohort-1:
+  - name: "Prof. Chika Yinka-Banjo"
+    role: "AI Champion"
+    institution: "University of Lagos"
+    featured: true
+    pull: "Having completed my PhD before the AI boom, this programme brought me much closer to the classroom of today. It was genuinely transformational."
+    quote: |-
+      My testimony on the AI Research Foundations Train-the-Trainer Programme is one of genuine transformation. Yes, I am a lecturer, but having completed my PhD before the AI boom, I must say this experience has brought me much closer to the classroom of today.
 
-  - workshop: pilot-cape-town
-    quote: "The AI Research Foundations pilot workshop was a hands-on first introduction to key concepts used in the development of AI models. We learnt about tokenization, transformers, the values considered in developing these models, and how we can adapt them to our African context. It was really a one-week ride into the minds of developers and has left me inspired to further explore AI research and its future in Africa."
-    name: "Clinton Paye Quee"
-    role: "PhD Student (Mathematics), Stellenbosch University"
-    placeholder: false
+      The delivery was refreshingly unconventional: from listening to the tutors, to discussing in small groups with fellow participants, to explaining concepts back to the room for greater clarity, and finally to solving problems together in class. It was, indeed, an exceptional train-the-trainers programme.
 
-  - workshop: pilot-cape-town
-    quote: "The AI Research Foundations pilot workshop was an excellent learning experience that simplified complex AI concepts and connected them to real-world research challenges. The sessions were engaging, practical, and highly relevant to my work as a lecturer and researcher. The experience was truly rewarding."
-    name: "Issah Ngomane"
-    role: "Lecturer, University of Mpumalanga"
-    placeholder: false
+      The way the tutors simplified complex concepts deserves to be studied in its own right. I was especially thrilled that every AI concept was paired with a Responsible Innovation principle; for me, that was the highlight. Other standout moments included the prompt companion, the GPU class discussion and calculation, and the discussion on neural networks.
 
-  - workshop: pilot-cape-town
-    quote: "Initially, I joined the AI Research Foundations programme simply to satisfy my curiosity and see what I could learn. As the programme unfolded, the experience far exceeded my expectations. Not only did I gain a mathematical understanding of the mechanisms behind transformer architecture, but I also mastered the art of transferring that knowledge to others. I am incredibly grateful for the well-structured courses and for the mentorship skills the programme gave us to share this expertise with others."
-    name: "James Naoussi"
-    role: "Google DeepMind Scholar, MSc Student (AI for Science), AIMS South Africa"
-    placeholder: false
+      I am deeply grateful, not only for the lectures themselves, but for being equipped with new techniques to teach others. Special thanks to all the tutors.
 
-  - workshop: pilot-cape-town
-    quote: "The AI Research Foundations pilot workshop was a great experience. I particularly enjoyed the presentations, which were clear, engaging, and very insightful. The workshop gave me a better understanding of AI research and its growing importance in higher education across Africa."
-    name: "Mannondé Gbaguidi"
-    role: "MSc Student (Mathematical Sciences), AIMS South Africa"
-    placeholder: false
+  - name: "Dr Omolola Ogbolumani"
+    role: "AI Champion"
+    institution: "University of Lagos"
+    quote: |-
+      Before this training, I had already gone through an AI fellowship, so I thought I understood the concepts fairly well. This programme proved me wrong in the best way. The online self-paced modules gave me a solid, flexible foundation, but it was the 5-day intensive onsite sessions that truly transformed my understanding. Mathematical formulas that had always looked complex and intimidating suddenly came alive. The facilitators broke the formulas down with such clarity and practical application that everything just clicked.
 
-  - workshop: pilot-cape-town
-    quote: "Advances in technology and AI are challenging us across all sectors. In African higher education, we are being called upon to rethink how we produce, assess, and communicate scientific knowledge, not only within the walls of classrooms and laboratories, but also with society at large in the age of AI. As an African mathematician, science communication practitioner, and advocate for gender equity in STEM, I found participating in the AI Research Foundations pilot workshop to be a valuable experience. It highlighted how urgently the higher education ecosystem must adapt to these changes if it is to lead and shape the future."
-    name: "Dr Rejoyce Gavhi-Molefe"
+      My favourite part was the daily “Explain It Back” sessions, where I had to explain the day's technical topics myself and also listen to others’ explanations of the topic. This brought so much more clarity than just sitting in class and listening to the facilitators. The training was rigorous, hands-on, and deeply impactful. I will now teach and think about AI differently. Thank you so much for this incredible experience. I must say that every hour invested was absolutely worth it.
+
+  - name: "Dr Solomon Chiekezi Nwaneri"
+    role: "AI Champion"
+    institution: "University of Lagos"
+    quote: |-
+      The workshop provided me with a deeper understanding of various aspects of artificial intelligence (AI), including large language models (LLMs), transformer architectures, graphics processing units (GPUs), and neural networks. It also introduced me to the “Explain It Back” teaching method, which I intend to adopt in my classes to enhance students’ understanding and retention of concepts.
+
+  - name: "Mrs Yama Omokhoba Blessing"
+    role: "Teaching Assistant"
+    institution: "University of Lagos"
+    quote: |-
+      The workshop was truly a “learn, unlearn, and relearn” experience for me. In just one week, I gained valuable insights into LLMs, AI, and the technology behind them, while also developing a deeper appreciation of the possibilities and limitations of AI.
+
+      What stood out most was the intentionality with which the programme was delivered. The well-curated learning resources, hands-on exercises, group interactions, and practical sessions made the experience engaging and impactful.
+
+      I particularly appreciate the facilitators’ commitment to ensuring that everyone was carried along. Their guidance, openness to questions, and ability to simplify complex concepts made the learning process both inclusive and enjoyable.
+
+      Overall, it was an inspiring and enriching experience that not only expanded my knowledge of AI but also sparked a stronger desire to keep learning, exploring, and experimenting with LLMs.
+
+  - name: "Dr Edem Ekpenyong Edem"
+    role: "AI Champion"
+    institution: "Afe Babalola University"
+    quote: |-
+      I participated in the Africa AI Upskilling Programme – AI Research Foundations Nigeria Cohort 1 Workshop in August, and it was a transformative learning experience. Coming from a neuroscience and medical education background with limited coding experience, I initially approached the programme with curiosity but some uncertainty about navigating AI concepts. However, the excellent facilitators made complex topics accessible by breaking them down into understandable components.
+
+      Learning about language models, neural networks, transformer architectures, and model fine-tuning strengthened my confidence in engaging with AI. The collaborative sessions with course mates from computer science backgrounds, particularly the “Explain It Back” approach, were especially valuable. It reinforced the importance of clear communication and deep understanding, a method I have already begun incorporating into my teaching. The programme has reshaped my view of AI as a powerful tool that can complement neuroscience research, medical education, and scientific discovery.
+
+  - name: "Miss Chinyere Kelechi Favour"
+    role: "Teaching Assistant"
+    institution: "Afe Babalola University"
+    quote: |-
+      Participating in the Africa AI Upskilling Programme was a truly rewarding and transformative experience. Coming from a medical background with limited exposure to computer science and AI terminology, I initially found the technical concepts unfamiliar. However, the supportive and collaborative learning environment made even complex concepts approachable and engaging.
+
+      I particularly enjoyed the “Explain It Back” sessions, which challenged me to not only understand new concepts but also communicate them clearly. I gained valuable knowledge of tokenisation, fine-tuning, generalisation, bias and variance, key-query-value mechanisms, model validation, underfitting and overfitting, gradients, and other fundamental concepts underlying AI and large language models. The technical lectures, responsible innovation sessions, and “Learn It Yourself” activities were equally insightful and practical.
+
+      I am especially grateful to my team members for their patience and encouragement throughout the training. The experience broadened my perspective on how AI can be applied to biomedical research, neuroscience, education, and scientific communication.
+
+      More importantly, the programme gave me greater confidence to engage with AI and appreciate the possibilities that emerge when medicine, science, education, and technology intersect. I am grateful to the organisers, facilitators, mentors, and my team for making the experience so enriching and memorable.
+
+  - name: "Miss Ajibade Covenant"
+    role: "Teaching Assistant"
+    institution: "Afe Babalola University"
+    quote: |-
+      As a medical student, the aspect of the in-person seminar that stood out to me the most was the “Lecture It Back” sessions. They helped me break down complex topics, such as transformers, into much more digestible and relatable concepts.
+
+      For example, in our final class, we discussed GPUs, memory bottlenecks, and quantisation as a way of reducing the amount of data required. The concept was likened to watching a video in 140p, 360p, or 1080p depending on the amount of data available or the quality of your network. That analogy made the concept much easier to understand and remember.
+
+      I also really enjoyed the short quizzes and practical activities. They allowed us to apply the theoretical frameworks directly, which made the learning process more engaging and helped reinforce what we had learned.
+
+      The Responsible Innovation sessions were another highlight for me. They brought AI beyond the classroom and connected it to the consequences and decisions we encounter in everyday life. Concepts such as Ubuntu and “Can vs. Should” encouraged me to think more critically about not just what AI can do but what it should do.
+
+      Overall, the workshop was an insightful, engaging, and genuinely enjoyable learning experience. I especially appreciated how it combined technical knowledge with practical application and ethical reflection.
+
+  - name: "Dr Adesola A. Oniyide"
+    role: "AI Champion"
+    institution: "Afe Babalola University"
+    quote: |-
+      Participating in the Train-the-Trainer programme at the University of Lagos under the FATE Foundation Africa Higher Education Institutions AI Upskilling Programme has been a highly valuable experience.
+
+      As a health-science educator, researcher, and developer of Neurogauge, an AI-enabled neuroscience and cognitive assessment platform, the training has given me practical knowledge that will strengthen how I apply Artificial Intelligence to medical education, healthcare training, neuroscience research, cognitive assessment, and personalised learning.
+
+      The knowledge gained will help me train healthcare educators and students to use AI responsibly, improve learning outcomes, support research innovation, and explore new approaches to early cognitive and neurological assessment through technologies such as Neurogauge.
+
+      I am particularly excited about the opportunity to translate the knowledge from this programme into real-world solutions for African healthcare and education systems. I sincerely appreciate AIMS, FATE Foundation, Google DeepMind, the University of Lagos, and all partners for investing in AI capacity development across African higher education.
+
+  - name: "Prof. Abiola Oluwatoyin Bunmi"
+    role: "AI Champion"
+    institution: "Afe Babalola University"
+    quote: |-
+      The workshop was really an impactful and exciting one for me. Each module expanded my knowledge of AI and, more importantly, its applications to solving major African problems by building models that can solve language problems in Africa. Each session strengthened me for an AI-enabled future and equipped me with the knowledge, capacity and confidence to prepare the next generations for a world where AI will shape how we learn, work, innovate and solve problems.
+
+      Africa's AI future will not be built by technology alone; it will be built by people and institutions that are prepared to understand it, teach it and apply it. I am fully prepared and ready to prepare my students for an AI-powered future.
+
+  - name: "Dr Blessing Ariyo Obafemi"
+    role: "AI Champion"
+    institution: "Afe Babalola University"
+    quote: |-
+      The workshop was truly enlightening. The technical classes were well explained, and the “Explain It Back” sessions were awesome, as they helped us explain what we learnt in our own terms. The trainers did an excellent job teaching the topics and explaining areas that were not clear. Even the online classes were very good, and the tasks helped me understand the lectures better. All in all, the Train-the-Trainer workshop was super amazing. Thank you, FATE Foundation; thank you, AIMS.
+
+  - name: "Dr Ayodeji Olalekan Salau"
+    role: "AI Champion"
+    institution: "Afe Babalola University"
+    quote: |-
+      Participating in the Africa AI Upskilling Programme – AI Research Foundations Nigeria Cohort 1 Workshop was a highly enriching and impactful experience. The programme exposed us to effective AI teaching methodologies, instructional materials, practical resources, and innovative approaches for delivering AI education and research training. The hands-on sessions and collaborative learning environment provided valuable ideas that can be adapted to improve how AI concepts and research skills are taught. Overall, the workshop was a valuable experience that has strengthened my capacity to contribute more effectively to AI education, research, and capacity building in Nigeria.
+
+  - name: "Mr Adebajo-Akinpelu Victor"
+    role: "Teaching Assistant"
+    institution: "Afe Babalola University"
+    quote: |-
+      It was a really amazing experience. Although I already had a bit of a background in AI technology, I was surprised by the number of new perspectives shown in the course, especially the emphasis on responsible innovation and data sovereignty. I learned that it is truly important that the impact of AI is matched with a full-bodied insight into how it can affect people, either positively or negatively.
+
+  - name: "Mr Awonowo Olamide David"
+    role: "Teaching Assistant"
+    institution: "Afe Babalola University"
+    quote: "It was impactful. Capstone made easy."
+
+  - name: "Mr Oluwafemi Akindele Sanya"
+    role: "Teaching Assistant"
+    institution: "Afe Babalola University"
+    quote: "It was a great experience."
+
+nigeria-cohort-2:
+  - name: "Dr Iyanu Pelumi Adegun"
+    role: "AI Champion"
+    institution: "Federal University of Technology, Akure"
+    featured: true
+    pull: "It was an experience that challenged how I think about AI, innovation, and the people we build technology for."
+    quote: |-
+      The Africa AI Upskilling Workshop was more than a technical training for me; it was an experience that challenged how I think about AI, innovation, and the people we build technology for. Over the past week at UNILAG, I gained new knowledge, new perspectives, and a renewed excitement about the possibilities of AI in Africa.
+
+      I have modest experience in machine learning, deep learning, and applying AI to real-world problems, but the workshop exposed me to the exciting world of Natural Language Processing, particularly Large Language Models (LLMs) and transformer models.
+
+      What I loved most was the strong emphasis on Responsible Innovation (RI). Come to think of it, how do you build a solution for people without involving the very people you are building the solution for? Their culture, expectations, values, ethics, and lived experiences must matter.
+
+      I was inspired by the energy and intelligence of the facilitators, who gave their very best. I particularly loved the group presentations and the “Explain It Back” sessions, where we took turns teaching one another what we had learnt.
+
+      This is an experience I will never forget. I cannot wait to take this knowledge back to my university, pour it into my students, and continue the journey with my team at FUTA. I am truly grateful to the organisers and facilitators for an unforgettable experience.
+
+  - name: "Dr Osa Edosa"
+    role: "AI Champion"
+    institution: "University of Benin"
+    quote: |-
+      This has been a transformative experience. It was a marvellous blend of technical tutelage and ethics learning. I highly recommend the programme for African youths and anyone enthusiastic about Artificial Intelligence.
+
+  - name: "Prof. Obe Olumide Olayinka"
+    role: "AI Champion"
+    institution: "Federal University of Technology, Akure"
+    quote: |-
+      Participating in the AI Research Foundations Nigeria Cohort 2 workshop was an enriching and enjoyable experience. What stood out most for me was the balance between theory and practice. The hands-on exercises helped demystify many AI concepts and gave me the confidence to explore their application in research and higher education.
+
+      Beyond the technical skills, I appreciated the opportunity to learn alongside a diverse community of researchers and educators who shared similar interests and aspirations. The facilitators were knowledgeable, supportive, and genuinely committed to participants' growth.
+
+      I left the programme with new skills, fresh ideas, and a deeper appreciation of how AI can enhance teaching, research, innovation, and development without an adverse effect on society. I am grateful to the AIMS AI Research Foundations team for creating such a valuable learning experience and for investing in capacity building across Africa. I feel empowered to pass this knowledge to my colleagues and students so they too can grow and contribute more effectively to research and development.
+
+  - name: "Dr Odigie Benison Blessing"
+    role: "Teaching Assistant"
+    institution: "University of Benin"
+    quote: |-
+      Participating in the recent AI Research Foundations workshop was an incredibly enriching experience. The sessions were thoughtfully designed, seamlessly balancing high-level strategic insights with practical, actionable takeaways.
+
+      What stood out most was the dynamic environment: lab sessions, the collaborative energy among participants during the card sessions that created a fantastic atmosphere for meaningful dialogue, the AI and RI activities, the learning reflection through teach-back, network building, and real-time problem-solving. Every topic addressed felt directly relevant to contemporary industry challenges, providing clear tools and fresh perspectives that I can immediately apply in my work.
+
+      I want to commend the organisers for their flawless facilitation, meticulous planning, and clear dedication to fostering genuine professional growth. It was a thoroughly engaging, highly impactful programme, and I am grateful to have been a part of it. I highly recommend this initiative to anyone looking to sharpen their AI skills and drive real value in their field.
+
+  - name: "Mr Jotham Edoreh"
+    role: "Teaching Assistant"
+    institution: "University of Benin"
+    quote: |-
+      My experience at the workshop was nothing short of a mind explosion, as my mind raced through all the topics and how I am going to actually implement them in my institution and also involve my students in developing AI solutions for a lot of problems, locally and beyond. I learnt how to use so many types of activities to help my students explore the world of Artificial Intelligence in a way that lets them be in control of the technology. I have already started engaging with my students, and they are 100% excited to be onboarded into this exciting new journey.
+
+  - name: "Dr Akinlabi Ayokunle Ayoyemi"
+    role: "AI Champion"
+    institution: "Federal University of Technology, Akure"
+    quote: |-
+      My experience at the Google AI Upskilling workshop organised for Nigeria Cohort 2 at the AI Unipod, UNILAG, Lagos was fantastic. The AIMS team were top-notch; they delivered the Google DeepMind curriculum with great detail and simplicity. The technical sessions were deeply informative and eye-opening, and the course materials were exceptional. The opportunity to explain concepts back and also teach back what we had learned made the learning process both interesting and easy.
+
+      A huge shout-out to the FATE Foundation for organising this workshop and to your team for hosting us so wonderfully. Special greetings to the UNIBEN and FUTA cohorts. The workshop was truly a memorable experience that will stay with me for a long time.
+
+      Let Africa be ready, because our language models will shape the future of AI across the continent and the world at large. Thank you, Google; thank you, AIMS; thank you, FATE Foundation; and thank you, FUTA, for this opportunity.
+
+  - name: "Engr Solomon Ogiobadan"
+    role: "AI Champion"
+    institution: "University of Benin"
+    quote: |-
+      The training was a very interesting one. It was well organised by Google, FATE Foundation and AIMS, and it was very interactive, interesting and educative. I had never been to UNILAG; it was through this training that I got to visit for the first time, and it also gave me the opportunity to meet people from another university, which helped me connect and network with them. The instructors are an amazing, well-cultured set of people. Overall, it was a well-organised training.
+
+  - name: "Mr Sunday Oluwafemi David"
+    role: "Teaching Assistant"
+    institution: "Federal University of Technology, Akure"
+    quote: "This is the best workshop I have ever attended. The teachers put in their best."
+
+ghana-cohort:
+  - name: "Dr Isaac Osei Nyantakyi"
+    role: "AI Champion"
+    institution: "Ghana Communication Technology University"
+    featured: true
+    pull: "What stood out most was the emphasis on developing AI systems that are human-centred and sensitive to cultural and social contexts."
+    quote: |-
+      The Google DeepMind AI workshop was an insightful and highly practical learning experience. I gained a deeper understanding of how large language models are developed, evaluated, and responsibly applied to solve real-world problems. The hands-on activities helped me connect key concepts, such as model selection, fine-tuning, prompt design and responsible AI, to practical applications.
+
+      What stood out most was the emphasis on developing AI systems that are human-centred and sensitive to cultural and social contexts. This reinforced the importance of considering fairness, inclusion, community values, and potential unintended consequences throughout the AI development process.
+
+      Following the workshop, I feel better equipped to integrate practical and responsible AI principles into my teaching and research. I also intend to share the knowledge gained with my students and support them in developing innovative AI solutions that address challenges within Ghana and the wider African context.
+
+  - name: "Dr Dorcas Attuabea Addo"
+    role: "AI Champion"
+    institution: "University of Education, Winneba"
+    quote: |-
+      This workshop got me focused with every lecture and activity. Before the workshop, anytime I heard about AI, I thought it was just about prompts. It was interesting to learn that it is more than just that: building your own LLMs, the mathematics and, especially, responsible AI.
+
+  - name: "Mr Isaac Richmond Amoah"
+    role: "Teaching Assistant"
+    institution: "University of Education, Winneba"
+    quote: |-
+      The workshop was a very insightful and practical learning experience. I gained a deeper understanding of Large Language Models (LLMs) and the technologies that make them work, particularly neural networks, fine-tuning, GPUs, pre-training, and model development.
+
+      What stood out to me most was learning how neural networks learn from data and how fine-tuning can be used to adapt models for specific tasks. I also gained a better appreciation of the important role GPUs play in training and running AI models efficiently.
+
+      The hands-on activities made the concepts easier to understand and showed me how AI can be applied to education and other real-world problems, making good use of generative AI. The workshop has increased my confidence and interest in exploring AI and LLM development further, especially in the field of Mathematics Education.
+
+      After the workshop, I intend to apply what I have learned to develop innovative AI-powered educational tools that can help students learn, practise, and improve their understanding of Mathematics.
+
+  - name: "Mr Prince Arkoh Baidoo"
+    role: "Teaching Assistant"
+    institution: "Kwame Nkrumah University of Science and Technology"
+    quote: |-
+      The workshop was quite intensive, but in a very engaging way. We participated actively in the entire learning process through the debates, the presentations, the “Explain It Back” and the “Lecture It Back” sessions. That method actually exposed me to a new way of teaching and, in my opinion, the sessions were just enough to reinforce the concepts that we went through on the Google Skills platform.
+
+  - name: "Mr Godfred Asibu Franklyn"
+    role: "Teaching Assistant"
+    institution: "University of Education, Winneba"
+    quote: |-
+      Throughout the workshop, I learned valuable knowledge and skills in the area of Artificial Intelligence that have shaped my perspective on how to build, fine-tune and deploy large language models. The knowledge I acquired was in line with my personal projects, such as Sua Pa AI, where I built the first AI that uses shortcode. This experience will help me in my quest to build and deploy my own models.
+
+  - name: "Mr Dominic Kobina Aidoo"
+    role: "Teaching Assistant"
+    institution: "Ghana Communication Technology University"
+    quote: "I learnt how to train my own SLM to tackle pressing issues in Africa, so we can own our data and build AI that fits the African narrative."
+
+  - name: "Emmanuel Akwah Kyei"
+    role: "Teaching Assistant"
+    institution: "Ghana Communication Technology University"
+    quote: "Learning the details of fine-tuning was a key achievement for me in this training. Even though I knew about it, my knowledge was shallow."
+
+aims-pilot:
+  - name: "Prof. Regan Solomons"
+    role: "Executive Head of Paediatrics and Child Health"
+    institution: "Tygerberg Hospital"
+    featured: true
+    pull: "I would wholeheartedly recommend this course to anyone looking to deepen their understanding of AI, prepare to teach it, or explore how to meaningfully embed it across Africa."
+    quote: |-
+      The AI Research Foundations pilot workshop was truly enlightening. The facilitators were approachable and knowledgeable, making the five-day course an incredibly rewarding experience from start to finish. Having completed the pre-course work beforehand made a real difference, laying a strong foundation.
+
+      Over the week, my understanding of AI architecture, principles and fine-tuning, as well as ethics and responsible innovation in AI, improved leaps and bounds. I would wholeheartedly recommend this course to anyone looking to deepen their understanding of AI, prepare to teach it, or explore how to meaningfully embed it across Africa.
+
+  - name: "Ezéckiel Sianou"
+    role: "Joint Postdoctoral Fellow in AI for Science"
+    institution: "AIMS South Africa and Imperial College London"
+    quote: |-
+      The AI Research Foundations pilot workshop was both inspiring and highly informative. I gained a stronger understanding of key AI concepts such as language models and transformers, while also learning effective ways to explain these topics to others. One of the most valuable aspects was discovering how to make AI accessible to people with little or no prior knowledge of the field.
+
+  - name: "Dr Rejoyce Gavhi-Molefe"
     role: "Mathematics Researcher and Manager, AIMS House of Science"
-    placeholder: false
+    institution: "AIMS South Africa"
+    quote: |-
+      Advances in technology and AI are challenging us across all sectors. In African higher education, we are being called upon to rethink how we produce, assess, and communicate scientific knowledge, not only within the walls of classrooms and laboratories, but also with society at large in the age of AI.
+
+      As an African mathematician, science communication practitioner, and advocate for gender equity in STEM, I found participating in the AI Research Foundations pilot workshop to be a valuable experience. It highlighted how urgently the higher education ecosystem must adapt to these changes if it is to lead and shape the future.
+
+  - name: "James Naoussi"
+    role: "Google DeepMind Scholar, MSc Student (AI for Science)"
+    institution: "AIMS South Africa"
+    quote: |-
+      Initially, I joined the AI Research Foundations programme simply to satisfy my curiosity and see what I could learn. As the programme unfolded, the experience far exceeded my expectations. Not only did I gain a mathematical understanding of the mechanisms behind transformer architecture, but I also mastered the art of transferring that knowledge to others. I am incredibly grateful for the well-structured courses and for the mentorship skills the programme gave us to share this expertise with others.
+
+  - name: "Clinton Paye Quee"
+    role: "PhD Student (Mathematics)"
+    institution: "Stellenbosch University"
+    quote: |-
+      The AI Research Foundations pilot workshop was a hands-on first introduction to key concepts used in the development of AI models. We learnt about tokenization, transformers, the values considered in developing these models, and how we can adapt them to our African context. It was really a one-week ride into the minds of developers and has left me inspired to further explore AI research and its future in Africa.
+
+  - name: "Issah Ngomane"
+    role: "Lecturer"
+    institution: "University of Mpumalanga"
+    quote: |-
+      The AI Research Foundations pilot workshop was an excellent learning experience that simplified complex AI concepts and connected them to real-world research challenges. The sessions were engaging, practical, and highly relevant to my work as a lecturer and researcher. The experience was truly rewarding.
+
+  - name: "Mannondé Gbaguidi"
+    role: "MSc Student (Mathematical Sciences)"
+    institution: "AIMS South Africa"
+    quote: |-
+      The AI Research Foundations pilot workshop was a great experience. I particularly enjoyed the presentations, which were clear, engaging, and very insightful. The workshop gave me a better understanding of AI research and its growing importance in higher education across Africa.

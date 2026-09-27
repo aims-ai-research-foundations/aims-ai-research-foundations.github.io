@@ -8,7 +8,12 @@
 {{- if $image -}}
 <img class="avatar avatar-photo" src="{{ $image | relURL }}" alt="{{ $name }}" loading="lazy">
 {{- else -}}
-{{- $parts := split $name " " -}}
+{{- /* Skip honorifics so "Dr Osa Edosa" gives "OE", not "DO". */ -}}
+{{- $titles := slice "dr" "dr." "prof" "prof." "engr" "engr." "mr" "mr." "mrs" "mrs." "ms" "ms." "miss" -}}
+{{- $parts := slice -}}
+{{- range split $name " " -}}
+{{- if and . (not (in $titles (lower .))) -}}{{- $parts = $parts | append . -}}{{- end -}}
+{{- end -}}
 {{- $initials := "" -}}
 {{- range first 2 $parts -}}
 {{- $initials = printf "%s%s" $initials (substr . 0 1) -}}
