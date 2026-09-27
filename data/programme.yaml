@@ -16,7 +16,7 @@ missionFeatures:
 approachSteps:
   - { n: "1", label: "Train", icon: "presentation", body: "We train lecturers with in-depth AI knowledge and teaching skills." }
   - { n: "2", label: "Equip", icon: "tune", body: "We give them world-class resources, tools, and ongoing support." }
-  - { n: "3", label: "Empower", icon: "school", body: "Lecturers deliver engaging, practical AI learning at their universities." }
+  - { n: "3", label: "Deliver", icon: "school", body: "Lecturers deliver a localised version of the AI Research Foundations to students at their universities." }
   - { n: "4", label: "Impact", icon: "groups", body: "Thousands of students gain the skills to build and innovate with AI." }
 
 programmeSummary: "AI Research Foundations for Higher Education helps universities build lasting, in-house AI teaching capacity. Funded by Google.org and built on a curriculum from Google DeepMind, the programme trains lecturers at 30 universities across Nigeria, Ghana, Kenya, and South Africa to deliver eight hands-on AI courses, adapted for their own students and context."

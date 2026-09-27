@@ -33,8 +33,8 @@ members:
     image: "img/team/headshots/maharavo.jpg"
   - id: similoluwa
     name: "Similoluwa Okunowo"
-    role: "Facilitator"
-    org: "NLP AI Expert @ AIMS AI Research Foundations Team, Google DeepMind Scholar"
+    role: "Facilitator & Community Manager"
+    org: "Facilitator & Community Manager @ AIMS AI Research Foundations Team, Google DeepMind Scholar"
     email: "similoluwa@aims.ac.za"
     image: "img/team/headshots/similoluwa.jpg"
   - id: toky

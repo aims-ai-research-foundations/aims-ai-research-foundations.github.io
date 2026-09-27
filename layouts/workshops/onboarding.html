@@ -3,7 +3,7 @@
 {{- $pw := $w.Params.prework }}
 {{- $links := $w.Params.links }}
 {{- $cohorts := $w.Params.cohorts }}
-{{- $completed := eq $w.Params.status "completed" }}
+{{- $completed := eq (partial "workshop-status.html" $w) "completed" }}
 {{- $hasCohorts := and $cohorts (not $w.Params.datesTBC) }}
 {{- $workshopDate := "To be confirmed" }}
 {{- if $hasCohorts }}

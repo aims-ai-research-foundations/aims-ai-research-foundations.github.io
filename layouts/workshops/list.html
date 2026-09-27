@@ -36,8 +36,11 @@
   <div class="container">
     {{ partial "section-eyebrow.html" (dict "eyebrow" "Directory" "title" "Find your workshop") }}
     {{- $all := .Sections.ByWeight }}
-    {{- $upcoming := where $all "Params.status" "upcoming" }}
-    {{- $completed := where $all "Params.status" "completed" }}
+    {{- $upcoming := slice }}
+    {{- $completed := slice }}
+    {{- range $all }}
+      {{- if eq (partial "workshop-status.html" .) "completed" }}{{ $completed = $completed | append . }}{{ else }}{{ $upcoming = $upcoming | append . }}{{ end }}
+    {{- end }}
     {{- with $upcoming }}
     <h3 class="directory-group">Upcoming</h3>
     <div class="workshop-grid">{{ range . }}{{ partial "workshop-card.html" . }}{{ end }}</div>

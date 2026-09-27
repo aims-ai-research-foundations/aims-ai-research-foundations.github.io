@@ -1,2 +1,2 @@
 {{- $s := . -}}
-<span class="status-pill status-{{ $s }}">{{ if eq $s "upcoming" }}Upcoming{{ else if eq $s "completed" }}Completed{{ else }}{{ $s | title }}{{ end }}</span>
+<span class="status-pill status-{{ $s }}">{{ if eq $s "upcoming" }}Upcoming{{ else if eq $s "ongoing" }}Happening now{{ else if eq $s "completed" }}Completed{{ else }}{{ $s | title }}{{ end }}</span>

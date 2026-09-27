@@ -1,0 +1,14 @@
+{{- /* Input: a workshop page. Returns "upcoming", "ongoing" or "completed",
+       worked out from the workshop's dates at build time (the site rebuilds
+       nightly, so this stays current). Falls back to the front matter
+       `status` when dates are not set or still to be confirmed. */ -}}
+{{- $status := .Params.status | default "upcoming" -}}
+{{- $cohorts := .Params.cohorts -}}
+{{- if and $cohorts (not .Params.datesTBC) -}}
+  {{- $start := time.AsTime (index $cohorts 0).start -}}
+  {{- $end := (time.AsTime (index $cohorts (sub (len $cohorts) 1)).end).AddDate 0 0 1 -}}
+  {{- if ge now.Unix $end.Unix }}{{ $status = "completed" }}
+  {{- else if ge now.Unix $start.Unix }}{{ $status = "ongoing" }}
+  {{- else }}{{ $status = "upcoming" }}{{ end -}}
+{{- end -}}
+{{- return $status -}}

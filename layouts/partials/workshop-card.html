@@ -1,10 +1,7 @@
 {{- $w := . -}}
 <a class="workshop-card" href="{{ $w.RelPermalink }}">
-  <div class="workshop-card-thumb">
-    {{- with $w.Params.thumb }}<img src="{{ . | relURL }}" alt="{{ $w.Title }}" loading="lazy">{{ end }}
-    {{ partial "status-pill.html" $w.Params.status }}
-  </div>
   <div class="workshop-card-body">
+    <span class="workshop-card-status">{{ partial "status-pill.html" (partial "workshop-status.html" $w) }}</span>
     <span class="workshop-card-loc"><span class="loc-flag">{{ partial "flag.html" $w.Params.country }}</span> {{ with $w.Params.city }}{{ if ne . "To be confirmed" }}{{ . }}, {{ end }}{{ end }}{{ $w.Params.country }}</span>
     <h3>{{ $w.Title }}</h3>
     <p>{{ $w.Params.summary }}</p>

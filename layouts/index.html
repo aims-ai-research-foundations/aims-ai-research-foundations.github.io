@@ -61,7 +61,7 @@
       </div>
       <div class="vma-vision-visual" aria-hidden="true">
         <span class="vma-dots"></span>
-        <div class="vma-photo"><img src="{{ "img/others/single-student-smiling.jpeg" | relURL }}" alt="" loading="lazy"></div>
+        <div class="vma-photo">{{ with resources.Get "gallery/ghana-cohort/05.webp" }}{{ $i := .Fill "700x700 Center webp q80" }}<img src="{{ $i.RelPermalink }}" width="{{ $i.Width }}" height="{{ $i.Height }}" alt="" loading="lazy">{{ end }}</div>
         <span class="vma-circle"></span>
       </div>
     </div>
@@ -71,7 +71,7 @@
     <div class="container vma-mission-grid">
       <div class="vma-mission-visual" aria-hidden="true">
         <span class="vma-mission-accent"></span>
-        <div class="vma-mission-photo"><img src="{{ "img/others/aims-sa-student-graduation.jpg" | relURL }}" alt="" loading="lazy"></div>
+        <div class="vma-mission-photo">{{ with resources.Get "gallery/nigeria-cohort-1/08.webp" }}{{ $i := .Fill "1100x880 Center webp q80" }}<img src="{{ $i.RelPermalink }}" width="{{ $i.Width }}" height="{{ $i.Height }}" alt="" loading="lazy">{{ end }}</div>
       </div>
       <div class="vma-mission-copy">
         <p class="vma-index"><span>02</span><span class="vma-rule"></span></p>

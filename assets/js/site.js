@@ -182,7 +182,13 @@
     if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
-          if (entry.isIntersecting) { entry.target.classList.add("is-visible"); io.unobserve(entry.target); }
+          if (entry.isIntersecting) {
+            var el = entry.target;
+            el.classList.add("is-visible");
+            io.unobserve(el);
+            // Once the reveal has played, drop the stagger delays so hover effects respond instantly.
+            setTimeout(function () { el.classList.add("is-settled"); }, 1400);
+          }
         });
       }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
       faders.forEach(function (el) { io.observe(el); });

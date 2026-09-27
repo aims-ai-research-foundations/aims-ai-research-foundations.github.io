@@ -2041,7 +2041,7 @@ section.alt { background: var(--surface-1); }
 .workshop-card:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(54,26,84,0.16); border-bottom-color: var(--border); }
 .workshop-card-thumb { position: relative; aspect-ratio: 16 / 9; background: var(--surface-2); }
 .workshop-card-thumb img { width: 100%; height: 100%; object-fit: cover; }
-.workshop-card-thumb .status-pill { position: absolute; top: 0.85rem; left: 0.85rem; }
+.workshop-card-status { display: flex; margin-bottom: 0.15rem; }
 .workshop-card-body { padding: 1.4rem 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; flex: 1; }
 .workshop-card-loc { display: inline-flex; align-items: center; gap: 0.35rem; color: var(--indigo-soft); font-size: 0.85rem; font-weight: 700; }
 .workshop-card-loc svg { width: 0.95rem; height: 0.95rem; }
@@ -2057,6 +2057,7 @@ section.alt { background: var(--surface-1); }
 .status-pill { display: inline-flex; align-items: center; font-family: Arial; font-weight: 700; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.07em; padding: 0.3rem 0.7rem; border-radius: 999px; }
 .status-upcoming { background: var(--gold); color: var(--indigo-dark); }
 .status-completed { background: var(--surface-2); color: var(--indigo-soft); }
+.status-ongoing { background: var(--indigo); color: #fff; }
 
 .teaser-btns { display: flex; flex-wrap: wrap; gap: 0.9rem; justify-content: center; }
 .center-lead { margin-left: auto; margin-right: auto; }
@@ -3788,3 +3789,111 @@ a.resource-card:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgb
   /* Two columns after a full-width lead: an even count leaves the last photo alone, so it spans the row. */
   .gal-grid .gallery-item:last-child:nth-child(even):not(:first-child) { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
 }
+
+/* ---------- Community: get involved ---------- */
+/* Cards stack vertically; each is a wide row: details on the left, a tinted call-to-action panel on the right. */
+.vc-involve { display: flex; flex-direction: column; gap: 1.75rem; max-width: 1000px; margin: 0 auto; }
+.vc-involve-card { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); background: #fff; border: 1px solid var(--border); border-left: 6px solid var(--gold); border-radius: 22px; overflow: hidden; box-shadow: 0 12px 34px rgba(54, 26, 84, 0.08); }
+.vc-involve-purple { border-left-color: #7A3FB0; }
+.vc-involve-main { padding: 2.25rem 2.25rem 2.25rem 2rem; }
+.vc-involve-head { display: flex; align-items: center; gap: 1.1rem; }
+.vc-involve-head .vc-chip { margin: 0; flex: none; }
+.vc-involve-kicker { font-family: "Archivo Black", sans-serif; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.76rem; color: var(--indigo-soft); margin: 0 0 0.4rem; }
+.vc-involve-card h3 { font-size: 1.35rem; line-height: 1.3; color: var(--indigo); margin: 0; }
+.vc-involve-text { color: var(--text-muted); line-height: 1.7; margin: 1.35rem 0 0; }
+.vc-involve-cta { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 1rem; padding: 2.25rem 2rem; background: #FFF8E6; border-left: 1px solid rgba(180, 135, 15, 0.14); }
+.vc-involve-purple .vc-involve-cta { background: #F7F0FC; border-left-color: rgba(122, 63, 176, 0.14); }
+.vc-involve-ask { font-family: "Archivo Black", sans-serif; font-size: 1.05rem; line-height: 1.35; color: var(--indigo); margin: 0; }
+.vc-involve-note { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin: 0; }
+.vc-involve-note a { color: var(--indigo); font-weight: 700; border-bottom: 1px solid var(--gold); word-break: break-word; }
+.vc-involve-cta .btn { display: inline-flex; align-items: center; gap: 0.45rem; margin-top: 0.35rem; }
+.vc-involve-cta .btn svg { width: 1rem; height: 1rem; }
+.vc-involve-more { text-align: center; color: var(--text-muted); margin: 2.5rem auto 0; max-width: 60ch; line-height: 1.7; }
+.vc-involve-more a { display: inline-flex; align-items: center; gap: 0.3rem; color: var(--indigo); font-weight: 700; border-bottom: 2px solid var(--gold); white-space: nowrap; }
+.vc-involve-more a svg { width: 0.95rem; height: 0.95rem; }
+@media (max-width: 820px) {
+  .vc-involve-card { grid-template-columns: 1fr; border-left-width: 1px; border-top: 6px solid var(--gold); }
+  .vc-involve-purple { border-top-color: #7A3FB0; }
+  .vc-involve-main { padding: 1.75rem 1.4rem 1.6rem; }
+  .vc-involve-cta { padding: 1.6rem 1.4rem 1.75rem; border-left: 0; border-top: 1px solid rgba(180, 135, 15, 0.14); }
+  .vc-involve-purple .vc-involve-cta { border-top-color: rgba(122, 63, 176, 0.14); }
+  .vc-involve-head { align-items: flex-start; }
+  .vc-involve-head .vc-chip { width: 48px; height: 48px; }
+  .vc-involve-card h3 { font-size: 1.2rem; }
+  .vc-involve-cta .btn { align-self: stretch; justify-content: center; text-align: center; padding: 0.85rem 1rem; font-size: 0.95rem; }
+}
+
+/* Get involved sits right above the help band: close the double section padding. */
+#get-involved { padding-bottom: clamp(3rem, 6vw, 4.5rem); }
+/* The help band gets its own tinted section so it reads as separate from Get Involved. */
+#get-involved + .vc-band-wrap { background: var(--bg-tint); padding: clamp(3rem, 6vw, 4.5rem) 0; border-top: 1px solid rgba(54, 26, 84, 0.08); border-bottom: 1px solid rgba(54, 26, 84, 0.08); }
+.vc-involve-text a { color: var(--indigo); font-weight: 700; border-bottom: 2px solid var(--gold); }
+.vc-involve-text a:hover { color: var(--indigo-soft); }
+
+/* Guest lecture topic tags */
+.vc-topics-label { font-weight: 700; color: var(--indigo); font-size: 0.9rem; margin: 1.5rem 0 0.7rem; }
+.vc-topics { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.45rem; }
+.vc-topics li { background: #F5EDFB; color: #5C2E8A; border: 1px solid #E4D3F3; border-radius: 999px; padding: 0.32rem 0.75rem; font-size: 0.82rem; font-weight: 700; line-height: 1.3; transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease; }
+.vc-topics li:hover { background: #7A3FB0; color: #fff; transform: translateY(-2px); }
+.vc-topics .vc-topics-more { background: transparent; border-style: dashed; color: var(--text-muted); font-weight: 600; }
+.vc-topics .vc-topics-more:hover { background: transparent; color: var(--text-muted); transform: none; }
+
+/* ---------- Community page motion ---------- */
+@keyframes vc-rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@keyframes vc-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+@keyframes vc-pop { from { opacity: 0; transform: scale(0.85); } to { opacity: 1; transform: none; } }
+@keyframes vc-pulse { 0% { box-shadow: 0 0 0 0 rgba(253, 214, 51, 0.45); } 70% { box-shadow: 0 0 0 14px rgba(253, 214, 51, 0); } 100% { box-shadow: 0 0 0 0 rgba(253, 214, 51, 0); } }
+
+/* Hero: content rises in on load; the globe floats gently. */
+.vc-hero-text > * { animation: vc-rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.vc-hero-text > :nth-child(2) { animation-delay: 0.08s; }
+.vc-hero-text > :nth-child(3) { animation-delay: 0.16s; }
+.vc-hero-text > :nth-child(4) { animation-delay: 0.24s; }
+.vc-hero-media { animation: vc-rise 1s 0.15s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.vc-hero-media img { animation: vc-float 7s ease-in-out 1.2s infinite; }
+
+/* Section headings: the gold underline draws in when the heading reveals. */
+.vc-head.fade-in .section-title.with-accent::after { transform: scaleX(0); transition: transform 0.8s 0.25s cubic-bezier(0.22, 1, 0.36, 1); }
+.vc-head.fade-in.is-visible .section-title.with-accent::after { transform: scaleX(1); }
+
+/* Longer staggered groups (checklist, involve cards) */
+.fade-in-stagger.is-visible > *:nth-child(5) { transition-delay: 400ms; }
+.fade-in-stagger.is-visible > *:nth-child(6) { transition-delay: 500ms; }
+.fade-in-stagger.is-visible > *:nth-child(7) { transition-delay: 600ms; }
+
+/* Revealed cards: fade and rise in, then hover lifts respond without the stagger delay. */
+.fade-in-stagger > .vc-card, .fade-in-stagger > .vc-involve-card { transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease; }
+.fade-in-stagger.is-settled > .vc-card, .fade-in-stagger.is-settled > .vc-involve-card { transition: opacity 0.6s ease, transform 0.25s ease, box-shadow 0.25s ease; transition-delay: 0ms; }
+.fade-in-stagger.is-visible.is-settled > * { transition-delay: 0ms; }
+
+/* Card icons wiggle on hover; involve cards lift. */
+.vc-card .vc-chip, .vc-involve-card .vc-chip { transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1); }
+.vc-card:hover .vc-chip, .vc-involve-card:hover .vc-chip { transform: rotate(-8deg) scale(1.1); }
+.vc-involve-card:hover { transform: translateY(-6px); box-shadow: 0 22px 46px rgba(54, 26, 84, 0.15); }
+
+/* Topic tags pop in one after another once the cards are revealed. */
+.vc-involve.fade-in-stagger .vc-topics li { opacity: 0; }
+.vc-involve.fade-in-stagger.is-visible .vc-topics li { animation: vc-pop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+.vc-involve.is-visible .vc-topics li:nth-child(1) { animation-delay: 0.45s; }
+.vc-involve.is-visible .vc-topics li:nth-child(2) { animation-delay: 0.51s; }
+.vc-involve.is-visible .vc-topics li:nth-child(3) { animation-delay: 0.57s; }
+.vc-involve.is-visible .vc-topics li:nth-child(4) { animation-delay: 0.63s; }
+.vc-involve.is-visible .vc-topics li:nth-child(5) { animation-delay: 0.69s; }
+.vc-involve.is-visible .vc-topics li:nth-child(6) { animation-delay: 0.75s; }
+.vc-involve.is-visible .vc-topics li:nth-child(7) { animation-delay: 0.81s; }
+.vc-involve.is-visible .vc-topics li:nth-child(8) { animation-delay: 0.87s; }
+.vc-involve.is-visible .vc-topics li:nth-child(9) { animation-delay: 0.93s; }
+.vc-involve.is-visible .vc-topics li:nth-child(10) { animation-delay: 0.99s; }
+
+/* Help band icons pulse softly. */
+.vc-band.is-visible .vc-band-ico { animation: vc-pulse 2.8s ease-out 0.6s infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .vc-hero-text > *, .vc-hero-media, .vc-hero-media img, .vc-band-ico,
+  .vc-involve.fade-in-stagger.is-visible .vc-topics li { animation: none !important; }
+  .vc-involve.fade-in-stagger .vc-topics li { opacity: 1; }
+  .vc-head.fade-in .section-title.with-accent::after { transform: none; transition: none; }
+  .vc-card:hover .vc-chip, .vc-involve-card:hover .vc-chip, .vc-involve-card:hover, .vc-topics li:hover { transform: none; }
+}
+/* Keep the address on one line wherever it fits (only the narrowest phones let it wrap). */
+@media (min-width: 361px) { .vc-involve-note a { white-space: nowrap; } }

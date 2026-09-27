@@ -7,7 +7,7 @@
 
 <section class="workshop-hero" {{ with .Params.heroImage }}style="--hero-img:url('{{ . | relURL }}')"{{ end }}>
   <div class="container">
-    {{ partial "status-pill.html" .Params.status }}
+    {{ partial "status-pill.html" (partial "workshop-status.html" .) }}
     <h1>{{ .Title }}</h1>
     <p class="workshop-hero-sub">{{ .Params.summary }}</p>
     <div class="workshop-hero-meta">
@@ -62,7 +62,7 @@
   </div>
 </section>
 
-{{- if ne .Params.status "completed" }}
+{{- if ne (partial "workshop-status.html" .) "completed" }}
 <section>
   <div class="container">
     {{ partial "section-eyebrow.html" (dict "eyebrow" "Your journey" "title" "The programme timeline") }}

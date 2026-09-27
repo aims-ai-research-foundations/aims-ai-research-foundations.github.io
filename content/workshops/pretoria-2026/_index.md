@@ -2,7 +2,7 @@
 title: "South Africa Workshop 1 (Pretoria)"
 slug: pretoria-2026
 layout: "workshop"
-status: upcoming
+status: completed
 country: "South Africa"
 city: "Pretoria"
 venue: "University of Pretoria"

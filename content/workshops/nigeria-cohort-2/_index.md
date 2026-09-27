@@ -2,7 +2,7 @@
 title: "Nigeria Cohort 2 Workshop"
 slug: nigeria-cohort-2
 layout: "workshop"
-status: upcoming
+status: completed
 country: "Nigeria"
 city: "Lagos"
 venue: "University of Lagos"

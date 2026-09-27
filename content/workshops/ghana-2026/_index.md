@@ -2,7 +2,7 @@
 title: "Ghana Cohort Workshop"
 slug: ghana-2026
 layout: "workshop"
-status: upcoming
+status: completed
 country: "Ghana"
 city: "Accra"
 venue: ""
