@@ -11,7 +11,8 @@ audience: "Lecturers and teaching assistants"
 summary: "The first Kenya Train-the-Trainer workshop, hosted at USIU-Africa in Nairobi from 12 to 16 October 2026."
 weight: 5
 heroImage: "img/workshops/nigeria-cohort-1/gallery/04.jpg"
-thumb: "img/workshops/nigeria-cohort-1/gallery/07.jpg"
+thumb: "img/workshops/nigeria-cohort-1/gallery/09.jpg"
+aboutImage: "gallery/pretoria-cohort/14.webp"
 universities:
   - "Strathmore University"
   - "Kenyatta University"

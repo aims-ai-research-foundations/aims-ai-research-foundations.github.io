@@ -41,7 +41,10 @@
     {{- if $aboutImg }}
     <div class="ws-split ws-about">
       <div class="prose">{{ .Content }}</div>
-      <div class="ws-split-media"><img src="{{ $aboutImg | relURL }}" alt="{{ .Title }} in session" loading="lazy"></div>
+      {{- /* aboutImage can be a static path (img/...) or a processed gallery photo in assets (gallery/<cohort>/NN.webp). */}}
+      {{- $aboutSrc := $aboutImg | relURL }}
+      {{- with resources.Get $aboutImg }}{{ $aboutSrc = (.Fill "1200x800 Center webp q80").RelPermalink }}{{ end }}
+      <div class="ws-split-media"><img src="{{ $aboutSrc }}" alt="{{ .Title }} in session" loading="lazy"></div>
     </div>
     {{- else }}
     <div class="prose">{{ .Content }}</div>
