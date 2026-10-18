@@ -1,0 +1,294 @@
+{{ define "main" }}
+{{- $c := hugo.Data.capstone }}
+{{- $soon := `<span class="cap-soon">Link coming soon</span>` }}
+
+<section class="cap-hero">
+  <div class="container cap-hero-inner">
+    <div class="cap-hero-text">
+      <p class="hero-eyebrow">AI Research Foundations · Post-workshop period</p>
+      <h1>Capstone Project <span>Hackathon</span></h1>
+      <p class="hero-sub">{{ $c.subline }}</p>
+      <div class="cap-cta">
+        <a class="btn cap-btn-gold" href="#deadlines">See your deadlines {{ partial "icon.html" "arrow-right" }}</a>
+        <a class="btn cap-btn-outline" href="{{ $c.course08URL }}" target="_blank" rel="noopener">Open Course 08 {{ partial "icon.html" "external-link" }}</a>
+      </div>
+    </div>
+    <aside class="cap-dates" aria-label="Key dates">
+      <p class="cap-dates-title">{{ partial "icon.html" "calendar" }} Key dates</p>
+      {{- range $c.deadlines }}{{ if .codeISO }}
+      <div class="cap-date-row" data-proposal="{{ .proposalISO }}" data-code="{{ .codeISO }}">
+        <span class="cap-date-text">
+          <span class="cap-date-cohort"><span class="cap-flags">{{ .flags }}</span> {{ .cohort }}</span>
+          <span class="cap-date-next" data-next>Proposal {{ .proposal }} · Implementation {{ .code }}</span>
+        </span>
+        <span class="cap-days" data-days></span>
+      </div>
+      {{- end }}{{ end }}
+    </aside>
+  </div>
+</section>
+
+<nav class="subnav cap-tabs" aria-label="On this page">
+  <div class="container">{{ range $c.tabs }}<a href="#{{ .id }}">{{ .label }}</a>{{ end }}</div>
+</nav>
+
+<section id="overview" class="ob-section cap-sec">
+  <div class="container">
+    {{ partial "section-eyebrow.html" (dict "eyebrow" "Overview" "title" "Build your AI solution for real-world impact") }}
+    <p class="prose-lead fade-in">{{ $c.overview.lead }}</p>
+    <div class="cap-glance fade-in-stagger">
+      {{- range $c.overview.glance }}
+      <div class="cap-tile">
+        <span class="gain-ico">{{ partial "icon.html" .icon }}</span>
+        <div><h3>{{ .title }}</h3><p>{{ .body }}</p></div>
+      </div>
+      {{- end }}
+    </div>
+    <div class="cap-roadmap-feature fade-in">
+      <div class="cap-roadmap-text">
+        <p class="section-eyebrow">Course 08</p>
+        <h3>The Responsible Innovation Roadmap</h3>
+        <p>Every pair follows the same eight steps, from the problem you want to solve to a full plan you can share. Course 08 on Google Skills walks you through each one.</p>
+        <a class="btn btn-primary" href="{{ $c.course08URL }}" target="_blank" rel="noopener">Open Course 08 on Google Skills {{ partial "icon.html" "external-link" }}</a>
+      </div>
+      <figure class="cap-roadmap-figure">
+        <img src="{{ "img/capstone/roadmap.gif" | relURL }}" alt="The Responsible Innovation Roadmap: eight steps from defining your problem statement to reviewing your full plan" loading="lazy" decoding="async">
+      </figure>
+    </div>
+    <div class="callout callout-gold cap-prereq fade-in">
+      <h3>Your way into the Community of Practice</h3>
+      <p>Completing all the available courses and your capstone project during the post-workshop period is a prerequisite for joining the Community of Practice.</p>
+    </div>
+  </div>
+</section>
+
+<section id="roadmap" class="ob-section cap-sec alt">
+  <div class="container">
+    {{ partial "section-eyebrow.html" (dict "eyebrow" "Capstone Project Roadmap" "title" "Your capstone, step by step") }}
+    <ol class="cap-flow">
+      {{- range $i, $w := $c.workflow }}
+      <li class="cap-flow-step fade-in">
+        <span class="cap-flow-num">{{ add $i 1 }}</span>
+        <div class="cap-flow-body">
+          <h3>{{ $w.title }}</h3>
+          <p>{{ $w.body }}</p>
+          {{- with $w.tag }}<span class="cap-flow-tag">Deadline: {{ . }}</span>{{ end }}
+        </div>
+      </li>
+      {{- end }}
+    </ol>
+
+    <h3 class="cap-subhead fade-in">The eight roadmap steps</h3>
+    <div class="cap-steps8 fade-in-stagger">
+      {{- range $i, $r := $c.roadmap }}
+      <div class="cap-step8"><span>{{ add $i 1 }}</span><h4>{{ $r.title }}</h4><p>{{ $r.body }}</p></div>
+      {{- end }}
+    </div>
+
+    <div class="cap-submit fade-in">
+      <div class="cap-submit-card">
+        <h3>Submit your proposal</h3>
+        <p>Due no later than two weeks before your cohort's post-workshop period ends.</p>
+        {{- with $c.proposalURL }}<a class="btn btn-primary" href="{{ . }}" target="_blank" rel="noopener">Submit proposal {{ partial "icon.html" "external-link" }}</a>{{ else }}{{ $soon | safeHTML }}{{ end }}
+      </div>
+      <div class="cap-submit-card">
+        <h3>Submit your implementation</h3>
+        <p>Due by the end of your cohort's post-workshop period.</p>
+        {{- with $c.submissionURL }}<a class="btn btn-primary" href="{{ . }}" target="_blank" rel="noopener">Submit implementation {{ partial "icon.html" "external-link" }}</a>{{ else }}{{ $soon | safeHTML }}{{ end }}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="teams" class="ob-section cap-sec">
+  <div class="container">
+    {{ partial "section-eyebrow.html" (dict "eyebrow" "Team formation" "title" "Find your partner") }}
+    <div class="cap-cards3 fade-in-stagger">
+      {{- range $c.teams.rules }}
+      <div class="gain-card"><span class="gain-ico">{{ partial "icon.html" .icon }}</span><h3>{{ .title }}</h3><p>{{ .body }}</p></div>
+      {{- end }}
+    </div>
+    <div class="cap-team-split fade-in">
+      <div class="cap-tips">
+        <h3>Tips for a strong pair</h3>
+        <ul>{{ range $c.teams.tips }}<li>{{ . }}</li>{{ end }}</ul>
+      </div>
+      <div class="cap-register">
+        <h3>Register your pair</h3>
+        <p>Once you have a partner, register your pair so the team knows who is working together.</p>
+        {{- with $c.pairFormURL }}<a class="btn cap-btn-gold" href="{{ . }}" target="_blank" rel="noopener">Register your pair {{ partial "icon.html" "external-link" }}</a>{{ else }}{{ $soon | safeHTML }}{{ end }}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="judging" class="ob-section cap-sec alt">
+  <div class="container">
+    {{ partial "section-eyebrow.html" (dict "eyebrow" "Judging criteria" "title" "How projects are judged" "lead" "The AIMS South Africa team judges submitted projects and selects the top three in each cohort, considering:") }}
+    <ol class="cap-criteria fade-in-stagger">
+      {{- range $i, $j := $c.judging }}
+      <li class="cap-criterion">
+        <span class="cap-criterion-num">{{ printf "%02d" (add $i 1) }}</span>
+        <span class="gain-ico">{{ partial "icon.html" $j.icon }}</span>
+        <h3>{{ $j.title }}</h3>
+        <p>{{ $j.body }}</p>
+      </li>
+      {{- end }}
+    </ol>
+    <div class="cap-award fade-in">
+      <span class="cap-award-ico" aria-hidden="true">🏆</span>
+      <div><h3>Recognition</h3><p>The top three projects in each cohort will be recognised by FATE Foundation, and outstanding projects will be spotlighted in the Community of Practice.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="deadlines" class="ob-section cap-sec">
+  <div class="container">
+    {{ partial "section-eyebrow.html" (dict "eyebrow" "Deadlines" "title" "Submission deadlines by cohort" "lead" "Proposals are due two weeks before your post-workshop period ends; implementations are due on its last day.") }}
+    <div class="table-scroll fade-in">
+      <table class="course-table cap-table">
+        <thead><tr><th>Cohort</th><th>Post-workshop period</th><th>Capstone proposal</th><th>Implementation</th></tr></thead>
+        <tbody>
+          {{- range $c.deadlines }}
+          <tr><td class="course-name"><span class="cap-flags">{{ .flags }}</span> {{ .cohort }}</td><td data-label="Post-workshop period">{{ .period }}</td><td data-label="Capstone proposal" data-date="{{ .proposalISO }}">{{ .proposal }}</td><td data-label="Implementation" data-date="{{ .codeISO }}">{{ .code }}</td></tr>
+          {{- end }}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="ideas" class="ob-section cap-sec alt">
+  <div class="container">
+    {{ partial "section-eyebrow.html" (dict "eyebrow" "Project ideas" "title" "Choose your path") }}
+    {{- $paths := where $c.categories "example" "!=" "" }}
+    {{- $own := where $c.categories "example" "" }}
+    <div class="cap-paths fade-in-stagger">
+      {{- range $paths }}
+      <div class="cap-path">
+        <div class="cap-path-head">
+          <span class="gain-ico">{{ partial "icon.html" .icon }}</span>
+          <div><h3>{{ .title }}</h3><p>{{ .body }}</p></div>
+        </div>
+        <p class="cap-example"><span>Example</span> {{ .example }}</p>
+      </div>
+      {{- end }}
+    </div>
+    {{- range $own }}
+    <div class="cap-path-own fade-in">
+      <span class="gain-ico">{{ partial "icon.html" .icon }}</span>
+      <div><h3>{{ .title }}</h3><p>{{ .body }}</p></div>
+    </div>
+    {{- end }}
+    <h3 class="cap-subhead fade-in">More ideas to spark yours</h3>
+    <div class="cap-ideas fade-in-stagger">{{ range $c.moreIdeas }}<span>{{ . }}</span>{{ end }}</div>
+    <h3 class="cap-subhead fade-in">Start from a recipe</h3>
+    <p class="cap-note fade-in">Each recipe is a complete, working project you can run in Google Colab, then adapt to your own problem, language and data.</p>
+    <div class="cap-recipes fade-in-stagger">
+      {{- range $c.recipes }}
+      <a class="cap-recipe" href="{{ $c.recipesURL }}/tree/main/projects/{{ .path }}" target="_blank" rel="noopener">
+        <span class="cap-recipe-tag">{{ .tag }}</span>
+        <span class="cap-recipe-title">{{ .title }}</span>
+        <span class="cap-recipe-go">Open recipe {{ partial "icon.html" "external-link" }}</span>
+      </a>
+      {{- end }}
+    </div>
+  </div>
+</section>
+
+<section id="resources" class="ob-section cap-sec">
+  <div class="container">
+    {{ partial "section-eyebrow.html" (dict "eyebrow" "Resources" "title" "You don't have to start from scratch") }}
+    <div class="cap-cards4 fade-in-stagger">
+      {{- range $r := $c.resources }}
+      <div class="gain-card">
+        <span class="gain-ico">{{ partial "icon.html" $r.icon }}</span>
+        <h3>{{ $r.title }}</h3>
+        <p>{{ $r.body | safeHTML }}</p>
+        {{- with $r.link }}<a class="cap-link" href="{{ . }}" target="_blank" rel="noopener">{{ $r.linkText }} {{ partial "icon.html" "external-link" }}</a>{{ end }}
+      </div>
+      {{- end }}
+    </div>
+    <h3 class="cap-subhead fade-in">How to create your dataset?</h3>
+    {{- with $c.datasetGuide }}
+    <div class="cap-guide fade-in">
+      <span class="cap-guide-emoji" aria-hidden="true">{{ .emoji }}</span>
+      <div class="cap-guide-text">
+        <p class="cap-guide-kicker">{{ .subtitle }}</p>
+        <h3>{{ .title }}</h3>
+        <p>{{ .intro }}</p>
+      </div>
+      <button type="button" class="btn btn-primary cap-guide-btn" data-dialog-open="dataset-guide">View the {{ len .steps }} steps {{ partial "icon.html" "arrow-right" }}</button>
+    </div>
+    <dialog class="cap-modal" id="dataset-guide" aria-labelledby="dataset-guide-title">
+      <div class="cap-modal-box">
+        <header class="cap-modal-head">
+          <div>
+            <p class="cap-guide-kicker">{{ .subtitle }}</p>
+            <h2 id="dataset-guide-title"><span aria-hidden="true">{{ .emoji }}</span> {{ .title }}</h2>
+            <p>{{ .intro }}</p>
+          </div>
+          <button type="button" class="cap-modal-close" data-dialog-close aria-label="Close">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </header>
+        <ol class="cap-modal-steps">
+          {{- range $i, $st := .steps }}
+          <li>
+            <span class="cap-modal-emoji" aria-hidden="true">{{ $st.emoji }}</span>
+            <div><h3><span class="cap-modal-n">{{ add $i 1 }}.</span> {{ $st.title }}</h3><p>{{ $st.body }}</p></div>
+          </li>
+          {{- end }}
+        </ol>
+      </div>
+    </dialog>
+    {{- end }}
+  </div>
+</section>
+
+<section id="faq" class="ob-section cap-sec alt">
+  <div class="container">
+    {{ partial "section-eyebrow.html" (dict "eyebrow" "FAQ" "title" "Frequently asked questions") }}
+    {{ partial "faq.html" $c.faqs }}
+    <p class="cap-contact">Anything else? Email <a href="mailto:{{ site.Params.contactEmail }}">{{ site.Params.contactEmail }}</a>.</p>
+  </div>
+</section>
+
+<script>
+(function () {
+  var today = new Date(); today.setHours(0, 0, 0, 0);
+  var day = function (iso) { return iso ? new Date(iso + "T00:00:00") : null; };
+  var fmt = function (d) { return d.toLocaleDateString("en-GB", { day: "numeric", month: "short" }); };
+  var left = function (n) { return n === 0 ? "today" : n === 1 ? "tomorrow" : "in " + n + " days"; };
+  document.querySelectorAll(".cap-date-row").forEach(function (row) {
+    var out = row.querySelector("[data-next]");
+    var steps = [["Proposal", day(row.dataset.proposal)], ["Implementation", day(row.dataset.code)]];
+    for (var i = 0; i < steps.length; i++) {
+      var d = steps[i][1]; if (!d) continue;
+      var n = Math.round((d - today) / 864e5);
+      if (n >= 0) {
+        out.innerHTML = "<strong>" + steps[i][0] + "</strong> due " + fmt(d);
+        row.querySelector("[data-days]").textContent = left(n);
+        row.dataset.left = n;
+        return;
+      }
+    }
+    out.textContent = "Submissions closed"; row.classList.add("is-past");
+  });
+  var rows = Array.prototype.slice.call(document.querySelectorAll(".cap-date-row[data-left]"));
+  rows.sort(function (a, b) { return a.dataset.left - b.dataset.left; });
+  if (rows[0]) rows[0].classList.add("is-next");
+
+  // Dataset guide pop-up (native <dialog>: Esc closes it; clicking outside the box closes it too).
+  document.querySelectorAll("[data-dialog-open]").forEach(function (btn) {
+    var dlg = document.getElementById(btn.getAttribute("data-dialog-open"));
+    if (!dlg || typeof dlg.showModal !== "function") return;
+    btn.addEventListener("click", function () { dlg.showModal(); });
+    dlg.addEventListener("click", function (e) { if (e.target === dlg || e.target.closest("[data-dialog-close]")) dlg.close(); });
+  });
+  document.querySelectorAll(".cap-table td[data-date]").forEach(function (td) {
+    var d = day(td.dataset.date); if (d && d < today) td.classList.add("is-past");
+  });
+})();
+</script>
+{{ end }}

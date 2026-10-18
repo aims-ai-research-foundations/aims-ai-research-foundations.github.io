@@ -3897,3 +3897,215 @@ a.resource-card:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgb
 }
 /* Keep the address on one line wherever it fits (only the narrowest phones let it wrap). */
 @media (min-width: 361px) { .vc-involve-note a { white-space: nowrap; } }
+
+/* ---------- Capstone Project Hackathon page (layouts/_default/capstone.html) ---------- */
+/* Hero */
+/* Hero: solid brand purple (no gradient or pattern); key dates in a white card. */
+.cap-hero { background: #361A54; color: #fff; padding: 5rem 0 6rem; }
+.cap-hero-inner { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 3.5rem; align-items: center; }
+.cap-hero .hero-eyebrow { color: #FDD633; }
+.cap-hero h1 { color: #fff; font-size: clamp(2.3rem, 5vw, 3.6rem); line-height: 1.06; margin: 0 0 1rem; }
+.cap-hero h1 span { color: #FDD633; }
+.cap-hero .hero-sub { color: rgba(255, 255, 255, 0.85); font-size: 1.12rem; line-height: 1.65; max-width: 36rem; margin: 0; }
+.cap-cta { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
+.cap-cta .btn { display: inline-flex; align-items: center; gap: 0.45rem; }
+.cap-btn-gold { background: #FDD633; color: #361A54; border-color: #FDD633; }
+.cap-btn-gold:hover { background: #ffe06b; color: #361A54; transform: translateY(-2px); box-shadow: 0 12px 26px rgba(253,214,51,0.28); }
+.cap-btn-outline { background: transparent; color: #fff; border-color: rgba(255, 255, 255, 0.55); }
+.cap-btn-outline:hover { background: rgba(255, 255, 255, 0.1); color: #fff; border-color: #fff; }
+.cap-cta .btn svg, .cap-btn-gold svg, .cap-roadmap-text .btn svg, .cap-submit .btn svg, .cap-guide-btn svg { width: 1.05rem; height: 1.05rem; }
+.cap-dates { background: #fff; color: var(--text); border-radius: 20px; padding: 1.35rem 1.35rem 0.85rem; box-shadow: 0 24px 50px rgba(0, 0, 0, 0.28); }
+.cap-dates-title { display: flex; align-items: center; gap: 0.5rem; margin: 0 0 0.65rem; padding: 0 0.25rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.78rem; color: var(--indigo-soft); }
+.cap-dates-title svg { width: 1.1rem; height: 1.1rem; }
+.cap-date-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.8rem 0.85rem; border-radius: 12px; border: 1px solid transparent; }
+.cap-date-row + .cap-date-row { margin-top: 0.15rem; }
+.cap-date-row.is-next { background: #FFF8E6; border-color: rgba(253, 214, 51, 0.7); }
+.cap-date-text { display: flex; flex-direction: column; gap: 0.2rem; min-width: 0; }
+.cap-date-cohort { font-weight: 700; color: var(--indigo); font-size: 0.95rem; line-height: 1.3; }
+.cap-date-next { color: var(--text-soft); font-size: 0.88rem; }
+.cap-date-next strong { color: var(--text); }
+.cap-days { flex: none; background: #F3EEFB; color: var(--indigo); font-weight: 800; font-size: 0.75rem; border-radius: 999px; padding: 0.25rem 0.65rem; white-space: nowrap; }
+.cap-days:empty { display: none; }
+.cap-date-row.is-next .cap-days { background: #FDD633; color: #361A54; }
+.cap-date-row.is-past .cap-date-next { opacity: 0.7; }
+.cap-flags { letter-spacing: 0.1em; }
+
+/* Tabs (reuses the site's .subnav scroll-spy) */
+.cap-tabs .container { justify-content: flex-start; }
+.cap-tabs a { font-size: 0.92rem; }
+
+/* Sections */
+.cap-sec { padding: 5rem 0; }
+.cap-sec .prose-lead { max-width: 52rem; }
+.cap-sec .fade-in-stagger.is-visible > *:nth-child(5) { transition-delay: 400ms; }
+.cap-sec .fade-in-stagger.is-visible > *:nth-child(6) { transition-delay: 500ms; }
+.cap-sec .fade-in-stagger.is-visible > *:nth-child(7) { transition-delay: 600ms; }
+.cap-sec .fade-in-stagger.is-visible > *:nth-child(8) { transition-delay: 700ms; }
+.cap-subhead { font-size: 1.3rem; margin: 3rem 0 1.2rem; color: var(--indigo); }
+.cap-note { color: var(--text-soft); margin: -0.6rem 0 1.4rem; }
+
+/* Overview */
+.cap-glance { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; margin: 2.2rem 0 0; }
+.cap-tile { display: flex; gap: 1rem; align-items: center; background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 1.35rem 1.4rem; transition: transform 0.25s ease, box-shadow 0.25s ease; }
+.cap-tile:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(54,26,84,0.1); }
+.cap-tile .gain-ico { margin: 0; flex: none; }
+.cap-tile h3 { font-size: 1rem; margin: 0 0 0.25rem; }
+.cap-tile p { margin: 0; color: var(--text-soft); font-size: 0.95rem; }
+.cap-roadmap-feature { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 2.5rem; align-items: center; margin: 3.5rem 0 0; background: linear-gradient(180deg, var(--surface-1), #fff); border: 1px solid var(--border); border-radius: 22px; padding: 2.2rem; }
+.cap-roadmap-text h3 { font-size: 1.6rem; margin: 0 0 0.7rem; color: var(--indigo); }
+.cap-roadmap-text p { color: var(--text-soft); margin: 0 0 1.4rem; }
+.cap-roadmap-figure { margin: 0; }
+.cap-roadmap-figure img { display: block; width: 100%; height: auto; border-radius: 16px; background: #fff; border: 1px solid var(--border); box-shadow: 0 18px 40px rgba(54,26,84,0.12); }
+.cap-prereq { margin-top: 2.2rem; }
+
+/* Workflow */
+.cap-flow { list-style: none; margin: 2.4rem 0 0; padding: 0; position: relative; max-width: 52rem; }
+.cap-flow::before { content: ""; position: absolute; left: 1.45rem; top: 0.5rem; bottom: 0.5rem; width: 3px; border-radius: 3px; background: linear-gradient(180deg, #FDD633, #361A54); }
+.cap-flow-step { position: relative; display: flex; align-items: center; gap: 1.4rem; padding: 0 0 1.6rem; }
+.cap-flow-num { position: relative; z-index: 1; flex: none; width: 2.9rem; height: 2.9rem; border-radius: 50%; display: grid; place-items: center; background: #361A54; color: #FDD633; font-family: "Archivo Black", sans-serif; font-size: 1.05rem; box-shadow: 0 0 0 6px var(--surface-1); }
+.cap-flow-step:last-child .cap-flow-num { background: #FDD633; color: #361A54; }
+.cap-flow-body { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem 1.35rem; flex: 1; }
+.cap-flow-body h3 { margin: 0 0 0.3rem; font-size: 1.08rem; }
+.cap-flow-body p { margin: 0; color: var(--text-soft); }
+.cap-flow-tag { display: inline-block; margin-top: 0.7rem; background: #FDECEA; color: #B71C1C; font-weight: 800; font-size: 0.8rem; border-radius: 999px; padding: 0.25rem 0.75rem; }
+.cap-steps8 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+.cap-step8 { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem 1.15rem; }
+.cap-step8 span { display: inline-grid; place-items: center; width: 2rem; height: 2rem; border-radius: 50%; background: var(--gold-soft); color: var(--indigo); font-weight: 800; margin-bottom: 0.55rem; }
+.cap-step8 h4 { margin: 0 0 0.3rem; font-size: 0.98rem; color: var(--text-ink); }
+.cap-step8 p { margin: 0; color: var(--text-soft); font-size: 0.9rem; }
+.cap-submit { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; margin-top: 2.6rem; }
+.cap-submit-card { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; background: #361A54; color: #fff; border-radius: 18px; padding: 1.6rem; }
+.cap-submit-card h3 { color: #FDD633; margin: 0 0 0.4rem; font-size: 1.15rem; }
+.cap-submit-card p { color: rgba(255,255,255,0.85); margin: 0 0 1.1rem; }
+.cap-submit-card .btn-primary { background: #FDD633; color: #361A54; border-color: #FDD633; }
+.cap-soon { display: inline-block; border: 1px dashed currentColor; border-radius: 999px; padding: 0.35rem 0.9rem; font-weight: 700; font-size: 0.85rem; opacity: 0.8; }
+
+/* Team formation */
+.cap-cards3, .cap-cards4 { display: grid; gap: 1.25rem; margin-top: 2.2rem; }
+.cap-cards3 { grid-template-columns: repeat(3, 1fr); }
+.cap-cards4 { grid-template-columns: repeat(2, 1fr); }
+/* Card-style blocks centre their content vertically (rows are equal height). */
+.cap-sec .gain-card { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; }
+
+/* Judging: a numbered rubric, one criterion per row */
+.cap-criteria { list-style: none; margin: 2.2rem 0 0; padding: 0; display: flex; flex-direction: column; gap: 0.85rem; }
+.cap-criterion { display: grid; grid-template-columns: auto auto minmax(10rem, 15rem) 1fr; align-items: center; gap: 0 1.25rem; background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 1.15rem 1.5rem; transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; }
+.cap-criterion:hover { transform: translateY(-2px); border-color: rgba(54, 26, 84, 0.4); box-shadow: 0 14px 30px rgba(54, 26, 84, 0.09); }
+.cap-criterion-num { font-family: "Archivo Black", sans-serif; font-size: 1.35rem; color: #E9C21C; min-width: 2.2rem; }
+.cap-criterion .gain-ico { margin: 0; }
+.cap-criterion h3 { margin: 0; font-size: 1.08rem; color: var(--indigo); }
+.cap-criterion p { margin: 0; color: var(--text-soft); line-height: 1.6; }
+
+/* Project ideas: four categories in a 2 x 2 grid, then "Your own path" full width */
+.cap-paths { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; margin-top: 2.2rem; }
+.cap-path { display: flex; flex-direction: column; justify-content: center; gap: 1rem; background: #fff; border: 1px solid var(--border); border-radius: 18px; padding: 1.6rem 1.7rem; transition: transform 0.25s ease, box-shadow 0.25s ease; }
+.cap-path:hover { transform: translateY(-3px); box-shadow: 0 16px 34px rgba(54, 26, 84, 0.1); }
+.cap-path-head { display: flex; align-items: center; gap: 1.1rem; }
+.cap-path-head .gain-ico, .cap-path-own .gain-ico { margin: 0; flex: none; }
+.cap-path h3, .cap-path-own h3 { margin: 0 0 0.3rem; font-size: 1.12rem; color: var(--indigo); }
+.cap-path-head p, .cap-path-own p { margin: 0; color: var(--text-soft); line-height: 1.6; }
+.cap-path .cap-example { margin: 0; }
+.cap-path-own { display: flex; align-items: center; gap: 1.25rem; margin-top: 1.25rem; background: #361A54; border-radius: 18px; padding: 1.6rem 1.8rem; }
+.cap-path-own .gain-ico { background: #FDD633; }
+.cap-path-own h3 { color: #FDD633; }
+.cap-path-own p { color: rgba(255, 255, 255, 0.86); }
+
+/* Resources: dataset guide card and its pop-up */
+.cap-guide { display: flex; align-items: center; gap: 1.5rem; background: #fff; border: 1px solid var(--border); border-left: 6px solid #FDD633; border-radius: 18px; padding: 1.6rem 1.8rem; box-shadow: 0 12px 30px rgba(54, 26, 84, 0.07); }
+.cap-guide-emoji { flex: none; display: grid; place-items: center; width: 4rem; height: 4rem; border-radius: 16px; background: var(--gold-soft); font-size: 2rem; line-height: 1; }
+.cap-guide-text { flex: 1; min-width: 0; }
+.cap-guide-kicker { margin: 0 0 0.3rem; font-weight: 800; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--indigo-soft); }
+.cap-guide-text h3 { margin: 0 0 0.35rem; font-size: 1.2rem; color: var(--indigo); }
+.cap-guide-text p:last-child { margin: 0; color: var(--text-soft); }
+.cap-guide-btn { flex: none; display: inline-flex; align-items: center; gap: 0.45rem; }
+.cap-modal { width: min(720px, calc(100% - 2rem)); max-height: min(88vh, 900px); padding: 0; border: 0; border-radius: 22px; background: #fff; color: var(--text); box-shadow: 0 30px 80px rgba(20, 8, 36, 0.45); overflow: auto; }
+.cap-modal::backdrop { background: rgba(30, 12, 50, 0.6); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); }
+.cap-modal[open] { animation: cap-modal-in 0.25s cubic-bezier(0.22, 1, 0.36, 1); }
+@keyframes cap-modal-in { from { opacity: 0; transform: translateY(14px) scale(0.98); } to { opacity: 1; transform: none; } }
+html:has(.cap-modal[open]) { overflow: hidden; }
+.cap-modal-box { padding: 2rem 2.1rem 2.1rem; }
+.cap-modal-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; padding-bottom: 1.35rem; border-bottom: 1px solid var(--surface-2); }
+.cap-modal-head h2 { margin: 0 0 0.45rem; font-size: clamp(1.3rem, 3vw, 1.6rem); line-height: 1.25; color: var(--indigo); }
+.cap-modal-head p:last-child { margin: 0; color: var(--text-soft); line-height: 1.6; }
+.cap-modal-close { flex: none; display: grid; place-items: center; width: 2.5rem; height: 2.5rem; border-radius: 50%; border: 1px solid var(--border); background: #fff; color: var(--indigo); cursor: pointer; transition: background 0.2s ease; }
+.cap-modal-close:hover { background: var(--surface-1); }
+.cap-modal-close svg { width: 1.1rem; height: 1.1rem; }
+.cap-modal-steps { list-style: none; margin: 1.35rem 0 0; padding: 0; display: flex; flex-direction: column; gap: 0.7rem; }
+.cap-modal-steps li { display: flex; align-items: center; gap: 1rem; background: #FAF8FD; border: 1px solid var(--surface-2); border-radius: 14px; padding: 0.95rem 1.1rem; }
+.cap-modal-emoji { flex: none; display: grid; place-items: center; width: 2.75rem; height: 2.75rem; border-radius: 12px; background: #fff; border: 1px solid var(--surface-2); font-size: 1.35rem; line-height: 1; }
+.cap-modal-steps h3 { margin: 0 0 0.2rem; font-size: 1rem; color: var(--indigo); }
+.cap-modal-n { color: #C9A20F; }
+.cap-modal-steps p { margin: 0; color: var(--text-soft); font-size: 0.94rem; line-height: 1.55; }
+.cap-sec .gain-card { transition: transform 0.25s ease, box-shadow 0.25s ease; }
+.cap-sec .gain-card:hover { transform: translateY(-4px); box-shadow: 0 16px 34px rgba(54,26,84,0.1); }
+.cap-team-split { display: grid; grid-template-columns: 1.2fr 1fr; gap: 1.25rem; margin-top: 1.6rem; }
+.cap-tips { display: flex; flex-direction: column; justify-content: center; background: var(--surface-1); border-radius: 18px; padding: 1.6rem 1.8rem; }
+.cap-tips h3, .cap-register h3 { margin: 0 0 0.7rem; font-size: 1.15rem; }
+.cap-tips ul { margin: 0; padding-left: 1.15rem; }
+.cap-tips li { margin-bottom: 0.5rem; }
+.cap-register { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; background: #361A54; color: #fff; border-radius: 18px; padding: 1.6rem 1.8rem; }
+.cap-register h3 { color: #FDD633; }
+.cap-register p { color: rgba(255,255,255,0.86); margin: 0 0 1.1rem; }
+
+/* Judging */
+.cap-award { display: flex; gap: 1.2rem; align-items: center; margin-top: 2rem; background: #fff; border: 2px solid #FDD633; border-radius: 18px; padding: 1.4rem 1.6rem; box-shadow: 0 0 0 6px rgba(253,214,51,0.14); }
+.cap-award-ico { font-size: 2.4rem; line-height: 1; }
+.cap-award h3 { margin: 0 0 0.25rem; }
+.cap-award p { margin: 0; color: var(--text-soft); }
+
+/* Deadlines */
+.cap-table th { font-family: inherit; }
+.cap-table td:not(.course-name) { white-space: nowrap; font-weight: 600; }
+.cap-table td.is-past { color: var(--text-soft); text-decoration: line-through; font-weight: 400; }
+
+/* Ideas */
+.cap-example { margin: 0.9rem 0 0; font-size: 0.9rem; color: var(--text-ink); background: var(--gold-soft); border-radius: 10px; padding: 0.65rem 0.85rem; }
+.cap-example span { display: block; font-weight: 800; color: var(--indigo); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.15rem; }
+.cap-ideas { display: flex; flex-wrap: wrap; gap: 0.7rem; }
+.cap-ideas span { background: #fff; border: 1px solid var(--border); border-radius: 999px; padding: 0.6rem 1.05rem; font-weight: 600; color: var(--text-ink); }
+.cap-recipes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+.cap-recipe { display: flex; flex-direction: column; justify-content: center; gap: 0.55rem; background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.15rem; text-decoration: none; border-bottom: 1px solid var(--border); transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; }
+.cap-recipe:hover { transform: translateY(-4px); border-color: var(--indigo); box-shadow: 0 16px 34px rgba(54,26,84,0.12); }
+.cap-recipe-tag { align-self: flex-start; background: var(--gold-soft); color: var(--indigo); font-weight: 800; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; border-radius: 999px; padding: 0.2rem 0.6rem; }
+.cap-recipe-title { font-weight: 800; color: var(--text-ink); line-height: 1.3; }
+.cap-recipe-go { color: var(--indigo); font-weight: 700; font-size: 0.88rem; }
+.cap-recipe-go svg, .cap-link svg { width: 0.95rem; height: 0.95rem; vertical-align: -0.12rem; margin-left: 0.15rem; }
+
+/* Resources and FAQ */
+.cap-link { display: inline-block; font-weight: 700; margin-top: 0.6rem; }
+.cap-contact { margin-top: 1.5rem; color: var(--text-soft); }
+.nowrap { white-space: nowrap; }
+
+@media (max-width: 980px) {
+  .cap-hero-inner { grid-template-columns: 1fr; gap: 2.2rem; }
+  .cap-glance, .cap-cards3 { grid-template-columns: 1fr 1fr; }
+  .cap-steps8, .cap-recipes { grid-template-columns: 1fr 1fr; }
+  .cap-roadmap-feature, .cap-team-split { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .cap-hero { padding: 3.25rem 0 4rem; }
+  .cap-criterion { grid-template-columns: auto 1fr; gap: 0.6rem 1rem; padding: 1.1rem 1.2rem; }
+  .cap-criterion-num { display: none; }
+  .cap-criterion p { grid-column: 1 / -1; }
+  .cap-sec { padding: 3.5rem 0; }
+  .cap-glance, .cap-cards3, .cap-cards4, .cap-steps8, .cap-recipes, .cap-submit { grid-template-columns: 1fr; }
+  .cap-paths { grid-template-columns: 1fr; }
+  .cap-path-own { flex-direction: column; align-items: flex-start; }
+  .cap-guide { flex-direction: column; align-items: flex-start; }
+  .cap-guide-btn { align-self: stretch; justify-content: center; }
+  .cap-modal-box { padding: 1.4rem 1.2rem 1.5rem; }
+  .cap-modal-steps li { align-items: flex-start; }
+  .cap-roadmap-feature { padding: 1.4rem; }
+  .cap-sec .table-scroll { border: 0; overflow: visible; }
+  .cap-table { min-width: 0; background: transparent; }
+  .cap-table thead { display: none; }
+  .cap-table, .cap-table tbody, .cap-table tr, .cap-table td { display: block; width: 100%; }
+  .cap-table tr { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 0.85rem; padding: 0.4rem 0; }
+  .cap-table tr:nth-child(even) td { background: transparent; }
+  .cap-table td { border-top: 0; padding: 0.45rem 1.1rem; white-space: normal; }
+  .cap-table td.course-name { font-size: 1.02rem; padding-top: 0.75rem; border-bottom: 1px solid var(--border); margin-bottom: 0.3rem; }
+  .cap-table td[data-label]::before { content: attr(data-label); display: block; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-soft); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cap-tile, .cap-recipe, .cap-sec .gain-card { transition: none; }
+}

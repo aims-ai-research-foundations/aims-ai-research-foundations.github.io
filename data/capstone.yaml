@@ -1,0 +1,182 @@
+# Capstone Project Hackathon page (content/capstone-hackathon.md, layout "capstone").
+# Source of truth: the Community of Practice Google Doc, "Capstone Project Hackathon" tab.
+# Links left empty ("") show as "coming soon" on the page until they are filled in.
+
+title: "Capstone Project Hackathon"
+subline: "Work in pairs to build a machine learning solution to a real-world problem in your own context, following the Responsible Innovation Roadmap in Course 08."
+course08URL: "https://www.skills.google/paths/3135/course_templates/1557"
+pairFormURL: ""        # FATE Foundation's form for registering pairs
+proposalURL: ""        # where pairs submit their capstone project proposal
+submissionURL: ""      # where pairs submit their GitHub repository or Google Drive folder
+
+tabs:
+  - { id: "overview", label: "Overview" }
+  - { id: "roadmap", label: "Project roadmap" }
+  - { id: "teams", label: "Team formation" }
+  - { id: "judging", label: "Judging criteria" }
+  - { id: "deadlines", label: "Deadlines" }
+  - { id: "ideas", label: "Project ideas" }
+  - { id: "resources", label: "Resources" }
+  - { id: "faq", label: "FAQ" }
+
+overview:
+  lead: "During the post-workshop period, you and a partner from your cohort build a machine learning solution to a real-world problem in your own context. You apply responsible innovation practices from problem definition through to implementation, following the roadmap you walked through during the workshop."
+  glance:
+    - { icon: "users", title: "Who takes part", body: "All AI Champions and TAs in each cohort." }
+    - { icon: "groups", title: "Teams", body: "Pairs within the same cohort." }
+    - { icon: "focus", title: "Categories", body: "Classification, summarisation, conversational assistant, a combination of two, or your own path." }
+    - { icon: "presentation", title: "Deliverables", body: "A capstone project proposal, and a GitHub repository or Google Drive folder with your implementation." }
+    - { icon: "smile", title: "Recognition", body: "The top three projects in each cohort are recognised." }
+    - { icon: "lightbulb", title: "Support", body: "Contextualised datasets, code recipes, and technical support on Discord." }
+
+workflow:
+  - title: "Form your pair"
+    body: "Team up with another AI Champion or TA from your cohort and register your pair."
+    tag: ""
+  - title: "Choose your idea"
+    body: "Pick a project category and a real-world problem that matters in your context."
+    tag: ""
+  - title: "Follow the Responsible Innovation Roadmap"
+    body: "Work through the eight steps in Course 08, from your problem statement to your full plan."
+    tag: ""
+  - title: "Submit your capstone project proposal"
+    body: "A document covering your problem statement, data collection plan, impact statement, stakeholder analysis, governance blueprint, sustainability plan and a one-sentence elevator pitch."
+    tag: "Two weeks before your post-workshop period ends"
+  - title: "Build and submit your implementation"
+    body: "A GitHub repository or Google Drive folder with your code, Colab notebooks, data card, model card and any other documentation. GitHub is highly recommended, but Google Drive is also accepted."
+    tag: "The end of your post-workshop period"
+  - title: "Judging and recognition"
+    body: "The AIMS South Africa team judges the projects and selects the top three in each cohort. FATE Foundation organises the recognition."
+    tag: ""
+  - title: "Join the Community of Practice"
+    body: "Completing all the available courses and your capstone project unlocks your place in the Community of Practice."
+    tag: ""
+
+roadmap:
+  - { title: "Define your problem statement", body: "The problem, who it affects and why it matters in your context." }
+  - { title: "Create your data card", body: "Where your data comes from, what it contains and its limitations." }
+  - { title: "Develop your impact statement", body: "The change your solution should make and how you will measure it." }
+  - { title: "Conduct a stakeholder analysis", body: "Who is affected by or has influence over your solution." }
+  - { title: "Draft your governance blueprint", body: "How risks, privacy and accountability will be managed." }
+  - { title: "Build your sustainability plan", body: "How the solution can be maintained and grow after the hackathon." }
+  - { title: "Share your work", body: "Present your plan and solution to others." }
+  - { title: "Review your full plan", body: "Check that every part is complete and consistent before you submit." }
+
+teams:
+  rules:
+    - { icon: "groups", title: "Work in pairs", body: "Every capstone project is built by two people: AI Champions, TAs, or one of each." }
+    - { icon: "users", title: "Stay in your cohort", body: "Both partners come from the same cohort. Your partner can be from your own university or another university in your cohort." }
+    - { icon: "school", title: "Study buddies too", body: "Your partner is also your study buddy: keep each other on track to complete all the available courses before your deadline." }
+  tips:
+    - "Choose a partner whose skills complement yours, for example one stronger in coding and one in the problem domain."
+    - "Agree early on when and how you will meet, and share the eight roadmap steps between you."
+    - "Pick a problem you both care about and can find or create data for."
+
+judging:
+  - { icon: "globe", title: "Impact", body: "The potential impact of the proposed solution on its target users and their local context." }
+  - { icon: "shield-check", title: "Responsible innovation", body: "How well responsible innovation practices are applied to assess the risks, potential harms, fairness, privacy, stakeholders and sustainability of the solution." }
+  - { icon: "database", title: "Dataset", body: "Uses a relevant, well-sourced dataset (existing, collected or synthetic) and documents it in a data card." }
+  - { icon: "brain-circuit", title: "Model", body: "Uses a relevant model or machine learning technique, with a model card covering its architecture, intended use, training data, evaluation results, limitations and risks." }
+  - { icon: "code", title: "Clean coding practices", body: "Clear structure, comments and reproducible steps, whether in Google Colab or Python scripts." }
+
+deadlines:
+  - { cohort: "Nigeria Cohorts 1 and 2, Ghana Cohort", flags: "🇳🇬 🇬🇭", period: "19 Oct to 15 Nov 2026", proposal: "1 Nov 2026", proposalISO: "2026-11-01", code: "15 Nov 2026", codeISO: "2026-11-15" }
+  - { cohort: "Kenya Cohort 1, Pretoria Cohort", flags: "🇰🇪 🇿🇦", period: "19 Oct to 29 Nov 2026", proposal: "15 Nov 2026", proposalISO: "2026-11-15", code: "29 Nov 2026", codeISO: "2026-11-29" }
+  - { cohort: "Kenya Cohort 2", flags: "🇰🇪", period: "26 Oct to 6 Dec 2026", proposal: "22 Nov 2026", proposalISO: "2026-11-22", code: "6 Dec 2026", codeISO: "2026-12-06" }
+  - { cohort: "Western Cape Cohort", flags: "🇿🇦", period: "16 Nov to 27 Dec 2026", proposal: "13 Dec 2026", proposalISO: "2026-12-13", code: "27 Dec 2026", codeISO: "2026-12-27" }
+  - { cohort: "Nigeria Cohorts 3 and 4", flags: "🇳🇬", period: "To be confirmed", proposal: "To be confirmed", proposalISO: "", code: "To be confirmed", codeISO: "" }
+
+categories:
+  - icon: "focus"
+    title: "Classification"
+    body: "Develop a language model or machine learning model for classification."
+    example: "A maternal health SMS urgency classifier for community health workers in rural Kenya 🇰🇪"
+  - icon: "presentation"
+    title: "Summarisation"
+    body: "Develop a language model or machine learning model for summarisation."
+    example: "A news headline generator for Swahili news 🇰🇪"
+  - icon: "message-circle"
+    title: "Conversational assistant"
+    body: "Develop a chatbot or assistant that generates free-text responses to users' questions."
+    example: "A personalised tutor for WAEC exams with support for Nigerian and Ghanaian languages 🇳🇬 🇬🇭"
+  - icon: "network"
+    title: "Combine two paths"
+    body: "Bring two categories together in one solution."
+    example: "A customer support bot for ABSA 🇿🇦 that classifies the intent and urgency of a request in Zulu, then sends a solution"
+  - icon: "lightbulb"
+    title: "Your own path"
+    body: "Build any other project that solves a real-world problem in your context, using a machine learning model and responsible innovation practices."
+    example: ""
+
+moreIdeas:
+  - "A personalised AI tutor for Kenyan students who speak Swahili or Sheng 🇰🇪"
+  - "A multilingual chatbot for community health workers in rural Nigeria 🇳🇬"
+  - "A news summariser in Twi 🇬🇭"
+  - "A social media misinformation detection tool for Sesotho and Setswana 🇿🇦"
+
+recipesURL: "https://github.com/aims-ai-research-foundations/airf-capstone-projects-recipes"
+recipes:
+  - { title: "Build a Customer Support Intent Classifier", path: "customer-support-assistant", tag: "Classification" }
+  - { title: "Classify Healthcare SMS by Urgency", path: "healthcare-sms-urgency", tag: "Classification" }
+  - { title: "Build a News Headline Generator", path: "news-headline-generation", tag: "Summarisation" }
+  - { title: "Build a Customer Support Response Generator", path: "customer-support-response-generation", tag: "Conversational" }
+  - { title: "Build a Multilingual Health QA System", path: "multilingual-health-qa", tag: "Conversational" }
+  - { title: "Build Your Own Personalised AI Tutor", path: "personalised-ai-tutor", tag: "Conversational" }
+  - { title: "Build a Domain-Specific Agricultural Small Language Model", path: "domain-specific-agriculture", tag: "Fine-tuning" }
+  - { title: "Build a Synthetic Dataset for an African Language", path: "african-language-synthetic-data", tag: "Data" }
+
+resources:
+  - icon: "school"
+    title: "Course 08 on Google Skills"
+    body: "The capstone course: it walks you through every step of the Responsible Innovation Roadmap and how to develop each part of your proposal."
+    link: "https://www.skills.google/paths/3135/course_templates/1557"
+    linkText: "Open Course 08"
+  - icon: "code"
+    title: "Capstone code recipes"
+    body: "End-to-end recipes from the AIMS South Africa team. Each one runs in a single Google Colab notebook on a free GPU, with a completed run to compare against."
+    link: "https://github.com/aims-ai-research-foundations/airf-capstone-projects-recipes"
+    linkText: "Open the recipes on GitHub"
+  - icon: "database"
+    title: "Capstone datasets"
+    body: "Ready-to-use, contextualised datasets in English and African languages, so you don't have to start from scratch."
+    link: "https://capstone.aims.ac.za/"
+    linkText: "Browse the capstone datasets"
+  - icon: "message-circle"
+    title: "Technical support"
+    body: "A dedicated <span class=\"nowrap\">#capstone-project</span> channel will be created on each cohort's Discord server for your capstone questions. Report technical problems in <span class=\"nowrap\">#report-an-issue</span>, and ask about the course material in <span class=\"nowrap\">#help-desk</span>."
+    link: ""
+    linkText: ""
+
+faqs:
+  - q: "Can I work on my own?"
+    a: "No. Capstone projects are built in pairs, with both people from the same cohort. Your partner also doubles as a study buddy for the remaining courses."
+  - q: "Can my partner be from another university?"
+    a: "Yes, as long as you are both in the same cohort."
+  - q: "When are our deadlines?"
+    a: "Your proposal is due no later than two weeks before your cohort's post-workshop period ends, and your implementation by the end of it. See <a href=\"#deadlines\">Deadlines</a> for your cohort's dates."
+  - q: "Which dataset can we use?"
+    a: "You can use any relevant, well-sourced dataset. This could be an existing public dataset from platforms such as Zindi, Kaggle, or Hugging Face; a dataset you collect manually; or a synthetically generated dataset.</p><p>Make sure you document the dataset in a data card, including its source, purpose, contents, and any relevant limitations or considerations."
+  - q: "Do we have to use GitHub?"
+    a: "GitHub is highly recommended, as version control is a useful skill, but submissions through Google Drive are also accepted."
+  - q: "Who judges the projects?"
+    a: "The AIMS South Africa team judges the submitted projects and selects the top three in each cohort, using the judging criteria on this page."
+  - q: "What happens when we finish?"
+    a: "Completing all the available courses and your capstone project during the post-workshop period is a prerequisite for joining the Community of Practice, where outstanding projects will also be spotlighted."
+  - q: "Where can we get help?"
+    a: "A dedicated #capstone-project channel will be created on each cohort's Discord server for your capstone questions. Report technical problems in #report-an-issue, and ask questions about the course material in #help-desk."
+
+# "How to create your dataset?" guide (Resources section), shown in a pop-up.
+datasetGuide:
+  title: "How to Create a Dataset for Your AI Project"
+  emoji: "📊"
+  subtitle: "A practical, step-by-step guide for beginners"
+  intro: "Learn how to source, collect, generate, organise, validate, and document data for an AI project."
+  steps:
+    - { emoji: "🎯", title: "Define your problem", body: "Identify what your model needs to learn or predict, and what a single example in your dataset should look like." }
+    - { emoji: "🔍", title: "Choose how to obtain your data", body: "Explore public datasets from Zindi, Kaggle, Hugging Face and other reputable sources, manual data collection, and synthetic data generation." }
+    - { emoji: "📝", title: "Define your data format", body: "Decide on the columns, input features, target labels, and file format, such as CSV or JSON." }
+    - { emoji: "🏗️", title: "Collect or create your dataset", body: "Gather examples, generate synthetic samples, and annotate them where necessary." }
+    - { emoji: "🧹", title: "Clean and validate your data", body: "Check missing values, duplicates, incorrect labels, inconsistent formats, class imbalance, and data quality." }
+    - { emoji: "✂️", title: "Split your dataset", body: "Create training, validation, and test sets, avoiding data leakage." }
+    - { emoji: "📋", title: "Create a data card", body: "Document the dataset's source, purpose, collection process, contents, intended uses, limitations, and ethical considerations." }
+    - { emoji: "📦", title: "Save and share your dataset", body: "Organise the files, explain how to use them, and include reproducible instructions." }
