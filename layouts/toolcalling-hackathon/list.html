@@ -13,7 +13,7 @@
       <p class="hero-lead">Train a model with at most 4 billion parameters that reads a request, looks at the tools it has, and makes the right tool call. The development phase is open until 8 November 2026.</p>
       <div class="button-row">
         {{- with $codabench }}
-        <a class="button button-primary" href="{{ . }}" target="_blank" rel="noopener">Join on Codabench <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+        <a class="button button-primary" href="{{ . }}" target="_blank" rel="noopener">Make your first submission <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
         <a class="button button-secondary" href="#overview">Get started</a>
         {{- else }}
         <a class="button button-primary" href="#overview">Get started <i data-lucide="arrow-down" aria-hidden="true"></i></a>
@@ -312,7 +312,7 @@
       </div>
       <div class="button-row">
         {{- with $codabench }}
-        <a class="button button-primary" href="{{ . }}" target="_blank" rel="noopener">Join on Codabench <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+        <a class="button button-primary" href="{{ . }}" target="_blank" rel="noopener">Make your first submission <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
         {{- end }}
         <a class="button {{ if $codabench }}button-secondary{{ else }}button-primary{{ end }}" href="{{ $repo }}" target="_blank" rel="noopener"><i data-lucide="github" aria-hidden="true"></i> Open the hackathon repository</a>
       </div>
