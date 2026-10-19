@@ -7,6 +7,17 @@
     <div class="cap-hero-text">
       <p class="hero-eyebrow">AI Research Foundations · Post-workshop period</p>
       <h1>Capstone Project <span>Hackathon</span></h1>
+      {{- with $c.buildFor }}
+      {{- $names := slice }}{{ range . }}{{ $names = $names | append .name }}{{ end }}
+      <p class="cap-buildfor">
+        <span class="sr-only">Build for {{ delimit $names ", " " and " }}</span>
+        <span class="cap-buildfor-line" aria-hidden="true">Build for
+          <span class="cap-rotate" data-rotate>
+            {{- range $i, $b := . }}<span class="cap-rotate-item{{ if eq $i 0 }} is-active{{ end }}"><span class="cap-rotate-flag">{{ $b.flag }}</span> {{ $b.name }}</span>{{ end -}}
+          </span>
+        </span>
+      </p>
+      {{- end }}
       <p class="hero-sub">{{ $c.subline }}</p>
       <div class="cap-cta">
         <a class="btn cap-btn-gold" href="#deadlines">See your deadlines {{ partial "icon.html" "arrow-right" }}</a>
@@ -278,6 +289,29 @@
   var rows = Array.prototype.slice.call(document.querySelectorAll(".cap-date-row[data-left]"));
   rows.sort(function (a, b) { return a.dataset.left - b.dataset.left; });
   if (rows[0]) rows[0].classList.add("is-next");
+
+  // Hero "Build for ..." rotator. Each word slides up and the box eases to its new width.
+  document.querySelectorAll("[data-rotate]").forEach(function (box) {
+    var items = Array.prototype.slice.call(box.children);
+    if (items.length < 2) return;
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var show = function (from, to) {
+      box.style.width = items[from].offsetWidth + "px";
+      void box.offsetWidth; // lock in the current width so the change below animates
+      items[from].classList.remove("is-active");
+      if (!reduce) items[from].classList.add("is-leaving");
+      items[to].classList.add("is-active");
+      box.style.width = items[to].offsetWidth + "px";
+      setTimeout(function () { items[from].classList.remove("is-leaving"); }, 600);
+    };
+    if (reduce) { show(0, items.length - 1); return; }
+    var i = 0;
+    setInterval(function () {
+      if (document.hidden) return;
+      var next = (i + 1) % items.length;
+      show(i, next); i = next;
+    }, 2400);
+  });
 
   // Dataset guide pop-up (native <dialog>: Esc closes it; clicking outside the box closes it too).
   document.querySelectorAll("[data-dialog-open]").forEach(function (btn) {

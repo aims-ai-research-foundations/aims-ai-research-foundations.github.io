@@ -5,6 +5,14 @@
 title: "Capstone Project Hackathon"
 subline: "Work in pairs to build a machine learning solution to a real-world problem in your own context, following the Responsible Innovation Roadmap in Course 08."
 course08URL: "https://www.skills.google/paths/3135/course_templates/1557"
+# Hero line "Build for <flag> <place>", rotating through these. The last one is
+# also what people who turn off animations see.
+buildFor:
+  - { flag: "🇳🇬", name: "Nigeria" }
+  - { flag: "🇬🇭", name: "Ghana" }
+  - { flag: "🇰🇪", name: "Kenya" }
+  - { flag: "🇿🇦", name: "South Africa" }
+  - { flag: "🌍", name: "Africa" }
 pairFormURL: ""        # FATE Foundation's form for registering pairs
 proposalURL: ""        # where pairs submit their capstone project proposal
 submissionURL: ""      # where pairs submit their GitHub repository or Google Drive folder
