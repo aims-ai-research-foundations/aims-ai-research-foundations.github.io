@@ -1,0 +1,13 @@
+---
+title: "African Small Language Model Tool Calling Hackathon"
+description: "Train a small language model, with at most 4 billion parameters, that turns everyday requests from across Africa into the right tool calls."
+type: "toolcalling-hackathon"
+challengeName: "African SLM Tool Calling Hackathon"
+brandName: "Tool Calling Hackathon"
+repoLinkText: "View on GitHub"
+ogImage: "img/toolcalling-hackathon/hackathon-og.png"
+challengeURL: "/community/africa-slm-toolcalling-hackathon/"
+repoURL: "https://github.com/aims-ai-research-foundations/airf-slm-tool-calling-hackathon"
+notebookURL: "https://colab.research.google.com/github/aims-ai-research-foundations/airf-slm-tool-calling-hackathon/blob/main/starter_notebook.ipynb"
+datasetURL: "https://github.com/aims-ai-research-foundations/airf-slm-tool-calling-hackathon/tree/main/data"
+---

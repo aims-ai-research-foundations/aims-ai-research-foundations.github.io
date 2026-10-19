@@ -8,7 +8,7 @@
 <meta property="og:title" content="{{ $pageTitle }}">
 <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
 <meta property="og:type" content="website">
-<meta property="og:image" content="{{ "img/tokenization-challenge-hero.png" | absURL }}">
+<meta property="og:image" content="{{ .Params.ogImage | default "img/tokenization-challenge-hero.png" | absURL }}">
 <link rel="icon" href="{{ "img/logos/logo.svg" | relURL }}" type="image/svg+xml">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">

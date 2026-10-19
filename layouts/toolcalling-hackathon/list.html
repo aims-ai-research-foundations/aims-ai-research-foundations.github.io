@@ -1,0 +1,372 @@
+{{ define "main" }}
+{{- $repo := .Params.repoURL }}
+{{- $dataset := .Params.datasetURL }}
+{{- $notebook := .Params.notebookURL }}
+{{- $codabench := .Params.codabenchURL }}
+{{- $rules := printf "%s/blob/main/data/README.md" $repo }}
+
+<section class="challenge-hero" aria-labelledby="hero-title">
+  <div class="wide-container hero-layout hero-stacked">
+    <div class="hero-copy">
+      <p class="eyebrow">AI Research Foundations Hackathon</p>
+      <h1 id="hero-title">Can a small language model turn everyday requests from across Africa into the right <span class="marker-highlight">actions</span>?</h1>
+      <p class="hero-lead">Train a model with at most 4 billion parameters that reads a request, looks at the tools it has, and makes the right tool call. The development phase is open until 8 November 2026.</p>
+      <div class="button-row">
+        {{- with $codabench }}
+        <a class="button button-primary" href="{{ . }}" target="_blank" rel="noopener">Join on Codabench <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+        <a class="button button-secondary" href="#overview">Get started</a>
+        {{- else }}
+        <a class="button button-primary" href="#overview">Get started <i data-lucide="arrow-down" aria-hidden="true"></i></a>
+        <a class="button button-secondary" href="{{ $repo }}" target="_blank" rel="noopener">Get the data</a>
+        {{- end }}
+      </div>
+      <a class="hero-notebook-link" href="{{ $notebook }}" target="_blank" rel="noopener"><i data-lucide="notebook-tabs" aria-hidden="true"></i> Open the starter notebook in Colab</a>
+    </div>
+    <figure class="hero-banner">
+      <a href="{{ "img/toolcalling-hackathon/hackathon-banner-3200.webp" | relURL }}" target="_blank" rel="noopener">
+        <img src="{{ "img/toolcalling-hackathon/hackathon-banner.webp" | relURL }}" srcset="{{ "img/toolcalling-hackathon/hackathon-banner.webp" | relURL }} 1600w, {{ "img/toolcalling-hackathon/hackathon-banner-3200.webp" | relURL }} 3200w" sizes="(max-width: 1212px) calc(100vw - 32px), 1180px" alt="The request “Habari, help me send 2,000 TZS to my uncle Juma on Tigo Pesa.” and four available tools go into a small language model with at most 4B parameters, which returns the tool call send_money with recipient Juma, amount 2000, currency TZS and provider Tigo Pesa." width="1600" height="900" fetchpriority="high">
+      </a>
+    </figure>
+  </div>
+</section>
+
+<nav class="section-nav" aria-label="On this page">
+  <div class="wide-container section-nav-scroll">
+    <a href="#overview" class="active" aria-current="true">Overview</a>
+    <a href="#skills">Skills you will gain</a>
+    <a href="#dataset">Dataset</a>
+    <a href="#baselines">Baselines</a>
+    <a href="#evaluation">Evaluation</a>
+    <a href="#submit">How to submit</a>
+    <a href="#timeline">Timeline</a>
+    <a href="#faqs">FAQs</a>
+  </div>
+</nav>
+
+<article class="challenge-content">
+  <section id="overview" class="doc-section wide-container" data-spy-section>
+    <div class="section-heading">
+      <p class="section-number">01</p>
+      <div><p class="eyebrow">The challenge</p><h2>Overview</h2></div>
+    </div>
+    <div class="prose-column">
+      <p class="lede">AI assistants are moving beyond answering questions. Instead of telling you how to buy airtime, an assistant can buy the airtime for you. Instead of explaining how to send money, it can send the money.</p>
+      <p>To do this, an assistant needs to use <strong>tools</strong>. A tool is a function that lets an AI system take an action or look up information, such as <code>send_money(recipient, amount, currency, provider)</code>. The model has to work out which tool to use and what information to give it.</p>
+      <p>In this hackathon, you will train a <strong>small language model</strong> that takes an everyday request from across Africa, looks at the tools available to it, and produces the correct tool call.</p>
+
+      <div class="tool-example">
+        <p class="tool-example-label">Request</p>
+        <p class="tool-example-request">“Abeg send 5k naira to Tunde on MTN MoMo.”</p>
+        <p class="tool-example-label">Available tools</p>
+        <ul class="tool-chips" aria-label="Available tools">
+          <li class="is-answer"><code>send_money</code></li><li><code>check_balance</code></li><li><code>buy_airtime</code></li><li><code>convert_currency</code></li>
+        </ul>
+        <p class="tool-example-label">Correct tool call</p>
+<pre class="code-block"><code>{
+  "tool": "send_money",
+  "parameters": {
+    "recipient": "Tunde",
+    "amount": 5000,
+    "currency": "NGN",
+    "provider": "MTN MoMo"
+  }
+}</code></pre>
+      </div>
+
+      <div class="takeaway">
+        <span class="takeaway-mark" aria-hidden="true"></span>
+        <div><p class="takeaway-label">That's the entire challenge</p><p>Given a request and a set of tools, make the correct tool call.</p></div>
+      </div>
+
+      <h3>Why small language models?</h3>
+      <p>Large language models can be very capable at tool use, but they are expensive and difficult to run in resource-constrained environments. This hackathon asks a different question: <strong>how capable can a small language model become when we train it specifically for tool calling?</strong></p>
+      <p>You will work with open models of up to <strong>4 billion parameters</strong> and experiment with fine-tuning, synthetic data generation, prompting and inference strategies. The goal is not to build the biggest model. The goal is to build the most accurate small one.</p>
+      <div class="team-note">
+        <i data-lucide="users" aria-hidden="true"></i>
+        <div>
+          <h3>Individuals and teams</h3>
+          <p>You may take part on your own or as a team. Each participant or team submits through one Codabench account.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="doc-section wide-container" data-spy-section>
+    <div class="section-heading">
+      <p class="section-number">02</p>
+      <div><p class="eyebrow">What you take away</p><h2>Skills you will gain</h2></div>
+    </div>
+    <div class="prose-column">
+      <p class="lede">This hackathon is designed to help you gain practical skills for building and studying language models. You keep these whether or not you top the leaderboard.</p>
+      <ul class="skills-list">
+        <li>
+          <span class="skill-mark" aria-hidden="true"></span>
+          <div>
+            <h3>Tool calling</h3>
+            <p>Turn natural language into structured function calls, with the right tool and every parameter.</p>
+          </div>
+        </li>
+        <li>
+          <span class="skill-mark" aria-hidden="true"></span>
+          <div>
+            <h3>Fine-tuning small models</h3>
+            <p>Adapt open models of up to 4B parameters with LoRA, on a free GPU.</p>
+          </div>
+        </li>
+        <li>
+          <span class="skill-mark" aria-hidden="true"></span>
+          <div>
+            <h3>Data-centric AI</h3>
+            <p>Generate synthetic data, mine hard examples, and grow the training set where your model fails.</p>
+          </div>
+        </li>
+        <li>
+          <span class="skill-mark" aria-hidden="true"></span>
+          <div>
+            <h3>Evaluation and error analysis</h3>
+            <p>Find which tools, parameters and kinds of request break your model, and fix them.</p>
+          </div>
+        </li>
+      </ul>
+      <p>No prior competition experience is assumed. The starter notebook walks you through prompting and fine-tuning Gemma 3 270M, and writes a submission you can upload.</p>
+    </div>
+  </section>
+
+  <section id="dataset" class="doc-section wide-container" data-spy-section>
+    <div class="section-heading">
+      <p class="section-number">03</p>
+      <div><p class="eyebrow">The data</p><h2>Dataset</h2></div>
+    </div>
+    <div class="prose-column">
+      <p class="lede">The dataset maps English-language requests in African contexts to the right tool and its parameters. Each example has a request, 4 to 6 available tools (the relevant ones and some distractors), and the answer.</p>
+      <div class="table-wrap">
+        <table>
+          <caption>The 10 tools</caption>
+          <thead><tr><th>Tool</th><th>What it does</th><th>Parameters</th></tr></thead>
+          <tbody>
+            <tr><td><code>send_money</code></td><td>Send money to another person.</td><td>recipient, amount, currency, provider</td></tr>
+            <tr><td><code>buy_airtime</code></td><td>Buy mobile airtime.</td><td>phone, amount, network</td></tr>
+            <tr><td><code>buy_data</code></td><td>Buy a mobile data bundle.</td><td>phone, amount, network</td></tr>
+            <tr><td><code>check_balance</code></td><td>Check a mobile money account balance.</td><td>provider</td></tr>
+            <tr><td><code>buy_electricity_token</code></td><td>Purchase an electricity token.</td><td>meter_number, amount, currency</td></tr>
+            <tr><td><code>report_outage</code></td><td>Report an electricity outage.</td><td>location</td></tr>
+            <tr><td><code>get_crop_price</code></td><td>Get the current market price of a crop.</td><td>crop, location</td></tr>
+            <tr><td><code>get_weather</code></td><td>Get the weather forecast for a location.</td><td>location, date</td></tr>
+            <tr><td><code>convert_currency</code></td><td>Convert an amount from one currency to another.</td><td>amount, from_currency, to_currency</td></tr>
+            <tr><td><code>set_reminder</code></td><td>Set a reminder for the user.</td><td>task, date, time</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>How the splits work</h3>
+      <dl class="split-list">
+        <div><dt>Train <span>15,000 examples</span></dt><dd>Request, tools and answer. Use it to train and validate your model.</dd></div>
+        <div><dt>Dev <span>2,000 examples</span></dt><dd>Request and tools, with the answers hidden. Submit predictions to see your score on the development leaderboard.</dd></div>
+        <div><dt>Test <span>4,000 examples</span></dt><dd>Request and tools, with the answers hidden. Released when the final phase opens, and used for the final ranking.</dd></div>
+      </dl>
+      <p>The dev and test sets use different names, neighbourhoods, towns, markets and wording from the training data. The aim is to test whether your model has <strong>learned tool calling rather than memorised examples</strong>.</p>
+
+      <h3>Three kinds of request</h3>
+      <div class="table-wrap">
+        <table>
+          <caption>Request categories in the training data</caption>
+          <thead><tr><th>Category</th><th>Share</th><th>Example</th></tr></thead>
+          <tbody>
+            <tr><td>One tool call</td><td>60%</td><td>“What's the maize price around Nakuru today?”</td></tr>
+            <tr><td>Missing information</td><td>20%</td><td>“Send 2,000 naira to Tunde.” The provider is not given, so it is <code>null</code>.</td></tr>
+            <tr><td>Several tool calls</td><td>20%</td><td>“Check my M-Pesa balance, then send 500 bob from it to Otieno.” The calls come as a list, in order.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Where the requests come from</h3>
+      <p>The language is English, but the world in the data is African: local expressions and chat shorthand, names and titles, mobile money providers and networks, currencies, markets, dates and times.</p>
+      <ul class="tag-list" aria-label="Countries in the data">
+        <li>Nigeria</li><li>Ghana</li><li>Kenya</li><li>Uganda</li><li>Tanzania</li><li>Rwanda</li><li>South Africa</li><li>Zambia</li><li>Ethiopia</li>
+      </ul>
+      <p>All names, numbers and codes are made up. The full labelling rules and value formats (amounts as numbers, ISO currency codes, phone numbers as digits, dates such as <code>15 March</code>, times such as <code>19:00</code>) are in the dataset README.</p>
+      <p class="link-row">
+        <a class="text-link" href="{{ $dataset }}" target="_blank" rel="noopener">Get the data on GitHub <i data-lucide="external-link" aria-hidden="true"></i></a>
+        <a class="text-link" href="{{ $rules }}" target="_blank" rel="noopener">Read the labelling rules <i data-lucide="external-link" aria-hidden="true"></i></a>
+      </p>
+    </div>
+  </section>
+
+  <section id="baselines" class="doc-section wide-container" data-spy-section>
+    <div class="section-heading">
+      <p class="section-number">04</p>
+      <div><p class="eyebrow">Starting points</p><h2>Baselines</h2></div>
+    </div>
+    <div class="prose-column">
+      <p class="lede">Out of the box, small models are poor at this task. Without training, Gemma 3 270M gets almost no requests right, and even Gemma 3 4B gets about a third (34% on a 300-request sample of dev). Fine-tuning changes that.</p>
+      <div class="table-wrap table-compact">
+        <table>
+          <caption>Baseline scores to beat (exact-match accuracy on dev)</caption>
+          <thead><tr><th>Baseline</th><th>Dev score</th></tr></thead>
+          <tbody>
+            <tr><td>Hand-written rules, no model</td><td>49.05%</td></tr>
+            <tr><td>Gemma 3 270M, fine-tuned on 3,000 examples</td><td>64.55%</td></tr>
+            <tr><td>FunctionGemma 270M, fine-tuned on 3,000 examples</td><td>77.00%</td></tr>
+            <tr><td>Gemma 3 270M, fine-tuned on all 15,000 examples</td><td>88.35%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>Even the smallest Gemma model goes from almost nothing to 88% with fine-tuning. How close to 100% can you get?</strong></p>
+      <h3>What might you explore?</h3>
+      <ul class="tag-list" aria-label="Suggested approaches">
+        <li>FunctionGemma 270M</li><li>Larger models, up to 4B</li><li>LoRA / QLoRA</li><li>Synthetic data</li><li>Hard-example mining</li><li>Data curation</li><li>Knowledge distillation</li><li>Few-shot prompting</li><li>Self-consistency</li><li>Test-time scaling</li><li>Ensembling</li>
+      </ul>
+      <p>Try these, combine them, or develop your own idea. <strong>Try, evaluate, improve, repeat.</strong></p>
+    </div>
+  </section>
+
+  <section id="evaluation" class="doc-section wide-container" data-spy-section>
+    <div class="section-heading">
+      <p class="section-number">05</p>
+      <div><p class="eyebrow">How scoring works</p><h2>Evaluation</h2></div>
+    </div>
+    <div class="prose-column">
+      <p class="lede">There is one metric. A prediction is correct only when the selected tool and <strong>all of its parameters</strong> match the answer. When a request needs several calls, every call must be correct and in the correct order.</p>
+
+      <div class="metric-block metric-score">
+        <p class="metric-kicker">The metric</p><h3>Exact-match accuracy</h3>
+        <div class="equation equation-final" role="img" aria-label="Exact-match accuracy equals completely correct predictions divided by total predictions">
+          <span class="math-variable">Accuracy</span><span>=</span><span class="fraction"><span>completely correct predictions</span><span>total predictions</span></span>
+        </div>
+        <div class="worked-example"><span>3,400 correct</span><span>÷</span><span>4,000 requests</span><span>=</span><strong>85%</strong></div>
+        <p class="metric-direction"><i data-lucide="trending-up" aria-hidden="true"></i> Higher is better.</p>
+      </div>
+
+      <h3>What counts as wrong</h3>
+      <p>If the answer is <code>send_money</code> to Tunde for 5000 NGN on MTN MoMo, then each of these predictions is wrong:</p>
+      <ul class="cross-list">
+        <li>The right tool, but <code>amount: 500</code>.</li>
+        <li>The right tool and amount, but the wrong provider.</li>
+        <li>A value that is not in the request, such as a provider the user never mentioned.</li>
+      </ul>
+
+      <h3>How answers are compared</h3>
+      <ul class="check-list">
+        <li>Text ignores case, punctuation and extra spaces, so <code>"m-pesa"</code> matches <code>"M-Pesa"</code>.</li>
+        <li>Numbers are compared as numbers: <code>5000</code> matches <code>5000.0</code>, but the text <code>"5000"</code> does not.</li>
+        <li>A parameter left out counts as <code>null</code>.</li>
+        <li>A list containing one call is the same as that call.</li>
+      </ul>
+      <div class="takeaway">
+        <span class="takeaway-mark" aria-hidden="true"></span>
+        <div><p class="takeaway-label">Keep this in mind</p><p>A model should never invent information that is not in the request. If a value is missing, it is <code>null</code>.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="submit" class="doc-section wide-container" data-spy-section>
+    <div class="section-heading">
+      <p class="section-number">06</p>
+      <div><p class="eyebrow">From idea to entry</p><h2>How to submit</h2></div>
+    </div>
+    <div class="prose-column">
+      <p class="lede">The hackathon runs on Codabench. You upload a ZIP file with your predictions, and your score appears on the leaderboard once it has been scored.</p>
+      <h3>Rules</h3>
+      <ul class="check-list">
+        <li>Use any open-weight model with <strong>at most 4B parameters</strong>. Gemma 3 270M, 1B and 4B, and FunctionGemma 270M are recommended.</li>
+        <li>No API calls or larger models may be used when generating predictions.</li>
+        <li>Any training technique is allowed, including fine-tuning, synthetic data generation, prompting and decoding strategies.</li>
+        <li>You may augment the training data.</li>
+        <li>You may not manually label development or test examples.</li>
+      </ul>
+      <div class="starter-notebook">
+        <i data-lucide="notebook-tabs" aria-hidden="true"></i>
+        <div>
+          <p class="starter-notebook-label">Recommended starting point</p>
+          <h3>Starter notebook</h3>
+          <p>Explore the data, prompt Gemma 3 270M, fine-tune it, see what more training data does, and write a <code>submission.zip</code> for the dev leaderboard. It runs on a free Google Colab GPU.</p>
+          <a class="text-link" href="{{ $notebook }}" target="_blank" rel="noopener">Open the starter notebook in Colab <i data-lucide="external-link" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <h3>Submission process</h3>
+      <ol class="submission-steps">
+        <li><span>1</span><div><strong>Join the competition</strong><p>Create a Codabench account and register for the hackathon.</p></div></li>
+        <li><span>2</span><div><strong>Train your model</strong><p>Start from <code>train.jsonl</code> and use any technique within the rules.</p></div></li>
+        <li><span>3</span><div><strong>Predict every request</strong><p>Make one prediction for every id in <code>dev.jsonl</code> (in the final phase, <code>test.jsonl</code>).</p></div></li>
+        <li><span>4</span><div><strong>Write <code>predictions.json</code></strong><p>Map each id to its tool call, or to a list of calls when the request needs several actions.</p></div></li>
+        <li><span>5</span><div><strong>Zip it</strong><p>Place <code>predictions.json</code> at the top level of a ZIP file.</p></div></li>
+        <li><span>6</span><div><strong>Upload</strong><p>Upload the ZIP under “My Submissions” on the Codabench competition page.</p></div></li>
+      </ol>
+<pre class="code-block" aria-label="Example predictions.json"><code>{
+  "dev-01234": {
+    "tool": "send_money",
+    "parameters": {"recipient": "Aisha", "amount": 2500,
+                   "currency": "NGN", "provider": "Airtel Money"}
+  },
+  "dev-01235": [
+    {"tool": "check_balance",
+     "parameters": {"provider": "M-Pesa"}},
+    {"tool": "send_money",
+     "parameters": {"recipient": "Otieno", "amount": 500,
+                    "currency": "KES", "provider": "M-Pesa"}}
+  ]
+}</code></pre>
+      <div class="automation-note">
+        <i data-lucide="trophy" aria-hidden="true"></i>
+        <div><h3>What happens next?</h3><p>Codabench scores your submission and the leaderboard shows your best score. In the development phase you can submit up to 5 times a day (100 in total). In the final phase, up to 2 times a day (5 in total).</p></div>
+      </div>
+      <div class="button-row">
+        {{- with $codabench }}
+        <a class="button button-primary" href="{{ . }}" target="_blank" rel="noopener">Join on Codabench <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+        {{- end }}
+        <a class="button {{ if $codabench }}button-secondary{{ else }}button-primary{{ end }}" href="{{ $repo }}" target="_blank" rel="noopener"><i data-lucide="github" aria-hidden="true"></i> Open the hackathon repository</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="timeline" class="doc-section wide-container" data-spy-section>
+    <div class="section-heading">
+      <p class="section-number">07</p>
+      <div><p class="eyebrow">Key dates</p><h2>Timeline</h2></div>
+    </div>
+    <div class="prose-column">
+      <p class="lede">The hackathon has two phases. All times are in UTC.</p>
+      <dl class="split-list">
+        <div><dt>Development phase <span>10 Oct – 8 Nov 2026</span></dt><dd>Train your model, predict <code>dev.jsonl</code>, and climb the development leaderboard.</dd></div>
+        <div><dt>Final phase <span>9 – 11 Nov 2026</span></dt><dd><code>test.jsonl</code> is released. Submit your predictions for it. The final ranking uses exact-match accuracy on the test set.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="faqs" class="doc-section wide-container" data-spy-section>
+    <div class="section-heading">
+      <p class="section-number">08</p>
+      <div><p class="eyebrow">Good to know</p><h2>Frequently asked questions</h2></div>
+    </div>
+    <div class="prose-column faq-list">
+      <details><summary>Do I need my own GPU?</summary><p>No. The starter notebook fine-tunes Gemma 3 270M on a free Google Colab GPU.</p></details>
+      <details><summary>Which models can I use?</summary><p>Any open-weight model with at most 4 billion parameters. Gemma 3 270M, 1B and 4B, and FunctionGemma 270M are recommended.</p></details>
+      <details><summary>Can I use ChatGPT, Gemini or another large model?</summary><p>Not to make your predictions: no API calls or larger models may be used when generating predictions. Any training technique is allowed, including synthetic data generation.</p></details>
+      <details><summary>Can I add my own training data?</summary><p>Yes. You may augment the training data, for example with synthetic examples. You may not label development or test examples by hand. The <code>meta</code> field in <code>train.jsonl</code> describes each example (category, country, style and more) to help you generate data of your own.</p></details>
+      <details><summary>What language are the requests in?</summary><p>English, set in everyday life across Africa, with local expressions and chat shorthand such as “Abeg” or “500 bob”.</p></details>
+      <details><summary>What if a request does not give a value the tool needs?</summary><p>That value is <code>null</code>. For example, “Send 2,000 naira to Tunde.” does not name a provider, so <code>provider</code> is <code>null</code>. A model should never invent information that is not in the request.</p></details>
+      <details><summary>What if a request needs several actions?</summary><p>Return a list of tool calls, in the order the request asks for them. Every call must be correct for the prediction to count.</p></details>
+      <details><summary>Why is my dev score lower than my validation score?</summary><p>The dev and test sets use names, places and wording that are not in the training data. A validation split taken from <code>train.jsonl</code> shares them, so it is more optimistic. The dev leaderboard is the better guide to your test score.</p></details>
+      <details><summary>What should my submission look like?</summary><p>A ZIP file with <code>predictions.json</code> at its top level. The file maps every request id to its tool call, or to a list of calls. Ids that are missing count as wrong.</p></details>
+      <details><summary>My submission failed. What should I check?</summary><p>Check that <code>predictions.json</code> is valid JSON, that it is a single object keyed by request id, and that it is inside the ZIP you uploaded. The error message on your Codabench submission says what went wrong.</p></details>
+      <details><summary>How many times can I submit?</summary><p>Up to 5 times a day (100 in total) in the development phase, and up to 2 times a day (5 in total) in the final phase. The leaderboard shows your best score.</p></details>
+      <details><summary>Which score decides the winner?</summary><p>Exact-match accuracy on the test set, in the final phase. The development leaderboard is for testing your ideas.</p></details>
+      <details><summary>Where can I ask questions?</summary><p>Post on the forum of the Codabench competition, or email <a href="mailto:{{ .Site.Params.contactEmail }}">{{ .Site.Params.contactEmail }}</a>.</p></details>
+    </div>
+  </section>
+
+  <section class="learning-section wide-container" aria-labelledby="learning-title">
+    <div class="learning-layout">
+      <div>
+        <p class="eyebrow">Keep learning</p><h2 id="learning-title">Build the foundations first</h2>
+        <p>This hackathon builds on concepts introduced in the AI Research Foundations learning path.</p>
+      </div>
+      <div class="course-list">
+        <div><span>Course 01</span><h3>Build Your Own Small Language Model</h3><p>Establish the foundational concepts required to implement a small language model from scratch.</p></div>
+        <div><span>Course 05</span><h3>Fine-tune Your Model</h3><p>Apply transfer learning techniques to adapt the pre-trained model for specific tasks using a smaller, targeted dataset.</p></div>
+      </div>
+    </div>
+    <a class="text-link text-link-light" href="{{ .Site.Params.googleSkillsURL }}" target="_blank" rel="noopener">Explore the learning path <i data-lucide="external-link" aria-hidden="true"></i></a>
+  </section>
+</article>
+{{ end }}

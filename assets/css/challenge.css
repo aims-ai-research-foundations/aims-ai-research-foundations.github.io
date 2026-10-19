@@ -853,6 +853,90 @@ td:first-child { font-weight: 600; }
 .container { width: min(100% - 48px, var(--max-width)); margin-inline: auto; }
 .prose { max-width: var(--content-width); margin: 4rem auto; }
 
+/* Tool calling hackathon: stacked hero banner, tool-call example and code blocks */
+.hero-layout.hero-stacked { grid-template-columns: minmax(0, 1fr); gap: clamp(2.5rem, 5vw, 3.75rem); }
+.hero-stacked .hero-copy h1 { max-width: 960px; }
+.hero-stacked .hero-lead { max-width: 720px; }
+.hero-banner { min-width: 0; margin: 0; }
+.hero-banner a { display: block; }
+.hero-banner img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 22px 60px rgba(54, 26, 84, 0.12);
+}
+
+.tool-example {
+  margin: 2.2rem 0;
+  padding: 1.5rem 1.5rem 0.4rem;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--purple);
+}
+.tool-example .tool-example-label {
+  margin: 0 0 0.55rem;
+  color: var(--purple-mid);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+.tool-example-request {
+  margin: 0 0 1.5rem;
+  color: var(--purple-deep);
+  font-size: 1.15rem;
+  font-weight: 650;
+}
+.tool-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0 0 1.5rem;
+  padding: 0 !important;
+  list-style: none;
+}
+.tool-chips code {
+  display: inline-block;
+  padding: 0.35rem 0.65rem;
+  color: var(--muted);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+}
+.tool-chips .is-answer code {
+  color: var(--purple);
+  background: var(--yellow-soft);
+  border-color: var(--yellow);
+  font-weight: 700;
+}
+.code-block {
+  margin: 0 0 2.2rem;
+  padding: 1.15rem 1.3rem;
+  overflow-x: auto;
+  color: #f4f0f7;
+  background: var(--purple-deep);
+  border-radius: 6px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.84rem;
+  line-height: 1.6;
+}
+.tool-example .code-block { margin-bottom: 1.1rem; }
+.code-block code { padding: 0; color: inherit; background: none; font-size: inherit; }
+
+.cross-list { display: grid; gap: 0.55rem; margin: 1.2rem 0 2.4rem; list-style: none; }
+.cross-list li { position: relative; padding-left: 1.4rem; }
+.cross-list li::before {
+  content: "\00d7";
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #b3261e;
+  font-weight: 800;
+}
+.link-row { display: flex; flex-wrap: wrap; gap: 0.6rem 1.6rem; }
+
 @media (max-width: 960px) {
   .hero-layout { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; }
   .doc-section { grid-template-columns: minmax(150px, 195px) minmax(0, 1fr); gap: 3rem; }
