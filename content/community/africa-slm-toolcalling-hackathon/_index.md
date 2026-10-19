@@ -10,4 +10,6 @@ challengeURL: "/community/africa-slm-toolcalling-hackathon/"
 repoURL: "https://github.com/aims-ai-research-foundations/airf-slm-tool-calling-hackathon"
 notebookURL: "https://colab.research.google.com/github/aims-ai-research-foundations/airf-slm-tool-calling-hackathon/blob/main/starter_notebook.ipynb"
 datasetURL: "https://github.com/aims-ai-research-foundations/airf-slm-tool-calling-hackathon/tree/main/data"
+codabenchURL: "https://www.codabench.org/competitions/18354/#/participate-tab"
+leaderboardURL: "https://www.codabench.org/competitions/18354/#/results-tab"
 ---
