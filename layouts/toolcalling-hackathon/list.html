@@ -10,7 +10,7 @@
     <div class="hero-copy">
       <p class="eyebrow">AI Research Foundations Hackathon</p>
       <h1 id="hero-title">Can a small language model turn everyday requests from across Africa into the right <span class="marker-highlight">actions</span>?</h1>
-      <p class="hero-lead">Train a model with at most 4 billion parameters that reads a request, looks at the tools it has, and makes the right tool call. The development phase is open until 8 November 2026.</p>
+      <p class="hero-lead">Train a model with at most 4 billion parameters that reads a request, looks at the tools it has, and makes the right tool call. The development phase is open now and closes at 00:00 UTC on 8 November 2026.</p>
       <div class="button-row">
         {{- with $codabench }}
         <a class="button button-primary" href="{{ . }}" target="_blank" rel="noopener">Make your first submission <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
@@ -327,8 +327,8 @@
     <div class="prose-column">
       <p class="lede">The hackathon has two phases. All times are in UTC.</p>
       <dl class="split-list">
-        <div><dt>Development phase <span>10 Oct – 8 Nov 2026</span></dt><dd>Train your model, predict <code>dev.jsonl</code>, and climb the development leaderboard.</dd></div>
-        <div><dt>Final phase <span>9 – 11 Nov 2026</span></dt><dd><code>test.jsonl</code> is released. Submit your predictions for it. The final ranking uses exact-match accuracy on the test set.</dd></div>
+        <div><dt>Development phase <span>10 Oct – 7 Nov 2026</span></dt><dd>Train your model, predict <code>dev.jsonl</code>, and climb the development leaderboard. Closes at 00:00 UTC on 8 November.</dd></div>
+        <div><dt>Final phase <span>9 – 10 Nov 2026</span></dt><dd><code>test.jsonl</code> is released. Submit your predictions for it; the final ranking uses exact-match accuracy on the test set. Opens at 00:00 UTC on 9 November and closes at 00:00 UTC on 11 November.</dd></div>
       </dl>
     </div>
   </section>
@@ -351,7 +351,7 @@
       <details><summary>My submission failed. What should I check?</summary><p>Check that <code>predictions.json</code> is valid JSON, that it is a single object keyed by request id, and that it is inside the ZIP you uploaded. The error message on your Codabench submission says what went wrong.</p></details>
       <details><summary>How many times can I submit?</summary><p>Up to 5 times a day (100 in total) in the development phase, and up to 2 times a day (5 in total) in the final phase. The leaderboard shows your best score.</p></details>
       <details><summary>Which score decides the winner?</summary><p>Exact-match accuracy on the test set, in the final phase. The development leaderboard is for testing your ideas.</p></details>
-      <details><summary>Where can I ask questions?</summary><p>Post on the forum of the Codabench competition, or email <a href="mailto:{{ .Site.Params.contactEmail }}">{{ .Site.Params.contactEmail }}</a>.</p></details>
+      <details><summary>Where can I ask questions?</summary><p>Post on the <a href="https://www.codabench.org/forums/18043/" target="_blank" rel="noopener">competition forum</a> on Codabench, or email <a href="mailto:{{ .Site.Params.contactEmail }}">{{ .Site.Params.contactEmail }}</a>.</p></details>
     </div>
   </section>
 
