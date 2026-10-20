@@ -35,8 +35,8 @@ groups:
         url: "https://aims-ai-research-foundations.github.io/pilot-workshop/accelerate-your-model/"
         desc: "A knowledge check on GPUs, FLOPS, and the memory budget."
       - label: "Spot the Slop"
-        wip: true
-        desc: "An icebreaker game on telling real from AI-generated content. Coming soon."
+        url: "/games/spot-the-slop/"
+        desc: "A live icebreaker game: can you tell real from AI-generated images and text? Play solo or in groups."
 
   - title: "Get in touch"
     icon: "mail"
