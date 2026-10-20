@@ -1,24 +1,24 @@
 {
   "title": "How to play",
-  "duration": 33.77,
+  "duration": 33.97,
   "chapters": [
     {
-      "start": 1.66,
+      "start": 1.65,
       "title": "Join a game",
       "text": "Scan the QR code on the big screen, or enter the code. No name needed."
     },
     {
-      "start": 4.87,
+      "start": 4.96,
       "title": "Play as an individual or group",
       "text": "One person taps Create a new group and answers for the team. Teammates tap Join your group."
     },
     {
-      "start": 9.95,
+      "start": 10.06,
       "title": "Start the game",
       "text": "Tap Zoom for details, discuss, then pick Real or AI generated."
     },
     {
-      "start": 22.5,
+      "start": 22.66,
       "title": "Results & leaderboard",
       "text": "Answers are revealed one by one on the big screen. Then your phone shows your score and rank."
     }
