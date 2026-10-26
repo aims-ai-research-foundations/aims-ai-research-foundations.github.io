@@ -50,6 +50,7 @@ workflow:
   - title: "Submit your capstone project proposal"
     body: "A document covering your problem statement, data collection plan, impact statement, stakeholder analysis, governance blueprint, sustainability plan and a one-sentence elevator pitch."
     tag: "Two weeks before your post-workshop period ends"
+    proposalLink: true   # shows a "Create your proposal" link to the proposal form
   - title: "Build and submit your implementation"
     body: "A GitHub repository or Google Drive folder with your code, Colab notebooks, data card, model card and any other documentation. GitHub is highly recommended, but Google Drive is also accepted."
     tag: "The end of your post-workshop period"

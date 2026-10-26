@@ -19,10 +19,13 @@
       </p>
       {{- end }}
       <p class="hero-sub">{{ $c.subline }}</p>
+      {{- $proposal := "" }}{{ with $c.proposalURL }}{{ $proposal = cond (hasPrefix . "http") . (. | relURL) }}{{ end }}
       <div class="cap-cta">
-        <a class="btn cap-btn-gold" href="#deadlines">See your deadlines {{ partial "icon.html" "arrow-right" }}</a>
+        {{- with $proposal }}<a class="btn cap-btn-gold" href="{{ . }}">Create your proposal {{ partial "icon.html" "arrow-right" }}</a>{{ end }}
+        <a class="btn {{ if $proposal }}cap-btn-outline{{ else }}cap-btn-gold{{ end }}" href="#deadlines">See your deadlines {{ partial "icon.html" "arrow-right" }}</a>
         <a class="btn cap-btn-outline" href="{{ $c.course08URL }}" target="_blank" rel="noopener">Open Course 08 {{ partial "icon.html" "external-link" }}</a>
       </div>
+      {{- with $proposal }}<p class="cap-cta-note">The proposal form takes about 10 to 15 minutes, and you can download your proposal as a Word document.</p>{{ end }}
     </div>
     <aside class="cap-dates" aria-label="Key dates">
       <p class="cap-dates-title">{{ partial "icon.html" "calendar" }} Key dates</p>
@@ -83,7 +86,12 @@
         <div class="cap-flow-body">
           <h3>{{ $w.title }}</h3>
           <p>{{ $w.body }}</p>
-          {{- with $w.tag }}<span class="cap-flow-tag">Deadline: {{ . }}</span>{{ end }}
+          {{- if or $w.tag (and $w.proposalLink $c.proposalURL) }}
+          <div class="cap-flow-foot">
+            {{- with $w.tag }}<span class="cap-flow-tag">Deadline: {{ . }}</span>{{ end }}
+            {{- if and $w.proposalLink $c.proposalURL }}<a class="cap-flow-link" href="{{ if hasPrefix $c.proposalURL "http" }}{{ $c.proposalURL }}{{ else }}{{ $c.proposalURL | relURL }}{{ end }}">Create your proposal {{ partial "icon.html" "arrow-right" }}</a>{{ end }}
+          </div>
+          {{- end }}
         </div>
       </li>
       {{- end }}
@@ -100,7 +108,7 @@
       <div class="cap-submit-card">
         <h3>Submit your proposal</h3>
         <p>Due no later than two weeks before your cohort's post-workshop period ends. Planning it takes 10 to 15 minutes.</p>
-        {{- with $c.proposalURL }}{{ if hasPrefix . "http" }}<a class="btn btn-primary" href="{{ . }}" target="_blank" rel="noopener">Submit proposal {{ partial "icon.html" "external-link" }}</a>{{ else }}<a class="btn btn-primary" href="{{ . | relURL }}">Plan &amp; submit your proposal {{ partial "icon.html" "arrow-right" }}</a>{{ end }}{{ else }}{{ $soon | safeHTML }}{{ end }}
+        {{- with $c.proposalURL }}{{ if hasPrefix . "http" }}<a class="btn btn-primary" href="{{ . }}" target="_blank" rel="noopener">Submit proposal {{ partial "icon.html" "external-link" }}</a>{{ else }}<a class="btn btn-primary" href="{{ . | relURL }}">Create your proposal {{ partial "icon.html" "arrow-right" }}</a>{{ end }}{{ else }}{{ $soon | safeHTML }}{{ end }}
       </div>
       <div class="cap-submit-card">
         <h3>Submit your implementation</h3>
@@ -304,8 +312,17 @@
       box.style.width = items[to].offsetWidth + "px";
       setTimeout(function () { items[from].classList.remove("is-leaving"); }, 600);
     };
-    if (reduce) { show(0, items.length - 1); return; }
+    if (reduce) {
+      // No animation: show the last place and let the box size itself.
+      items[0].classList.remove("is-active");
+      items[items.length - 1].classList.add("is-active");
+      return;
+    }
     var i = 0;
+    // Re-measure once the heading font has loaded, so the box never clips the word.
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () {
+      if (box.style.width) box.style.width = items[i].offsetWidth + "px";
+    });
     setInterval(function () {
       if (document.hidden) return;
       var next = (i + 1) % items.length;
