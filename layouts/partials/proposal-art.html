@@ -1,0 +1,178 @@
+{{- /* Flat brand illustrations for the proposal form. Input: a scene name. Decorative only. */ -}}
+{{- $n := . -}}
+{{- $P := "#361A54" }}{{ $P2 := "#4D2670" }}{{ $L := "#E9E0F5" }}{{ $G := "#FDD633" }}{{ $G2 := "#E9B90F" }}
+{{- $C := "#F28C6A" }}{{ $T := "#3BB3A8" }}{{ $s1 := "#8D5524" }}{{ $s2 := "#A0663A" }}{{ $s3 := "#6B4226" }}{{ $H := "#22140D" -}}
+<svg class="pa pa-{{ $n }}" viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+  <path class="pa-blob" d="M60 40 C110 0 220 10 270 50 C320 95 305 180 250 210 C190 245 95 235 50 195 C5 155 15 75 60 40 Z" fill="#fff" opacity="0.8"/>
+  {{- $star := "M0 -9 L2.4 -2.4 L9 0 L2.4 2.4 L0 9 L-2.4 2.4 L-9 0 L-2.4 -2.4 Z" }}
+
+  {{- if eq $n "welcome" }}
+  <ellipse cx="160" cy="200" rx="120" ry="10" fill="{{ $L }}"/>
+  {{ partial "proposal-person.html" (dict "x" 68 "y" 112 "skin" $s1 "shirt" $T "hair" $H "style" "afro") }}
+  {{ partial "proposal-person.html" (dict "x" 252 "y" 108 "skin" $s2 "shirt" $C "hair" $H "style" "wrap") }}
+  <rect x="34" y="176" width="252" height="10" rx="5" fill="{{ $P2 }}"/>
+  <g class="pa-bob">
+    <rect x="108" y="92" width="104" height="74" rx="7" fill="{{ $P }}"/>
+    <rect x="114" y="98" width="92" height="62" rx="3" fill="#fff"/>
+    <rect x="122" y="108" width="44" height="6" rx="3" fill="{{ $G }}"/>
+    <rect x="122" y="120" width="70" height="4" rx="2" fill="{{ $L }}"/>
+    <rect x="122" y="129" width="58" height="4" rx="2" fill="{{ $L }}"/>
+    <rect x="122" y="144" width="30" height="9" rx="4.5" fill="{{ $P2 }}"/>
+    <circle cx="190" cy="146" r="8" fill="{{ $T }}"/>
+    <path d="M186 146 l3 3 l5 -6" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M98 166 H222 L214 176 H106 Z" fill="{{ $P2 }}"/>
+  </g>
+  <g class="pa-bob pa-d2"><g transform="translate(232 70)">
+    <circle r="17" fill="{{ $G }}"/><circle r="12" fill="#fff"/>
+    <path d="M0 -7 V0 L5 3" stroke="{{ $P }}" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+  </g></g>
+  <g class="pa-twinkle"><path transform="translate(56 54)" d="{{ $star }}" fill="{{ $G }}"/></g>
+  <g class="pa-twinkle pa-d2"><path transform="translate(150 44) scale(0.7)" d="{{ $star }}" fill="{{ $C }}"/></g>
+  <g class="pa-twinkle pa-d3"><path transform="translate(284 150) scale(0.6)" d="{{ $star }}" fill="{{ $T }}"/></g>
+
+  {{- else if eq $n "team" }}
+  <ellipse cx="160" cy="204" rx="110" ry="10" fill="{{ $L }}"/>
+  {{ partial "proposal-person.html" (dict "x" 112 "y" 116 "skin" $s3 "shirt" $P2 "hair" $H "style" "bun" "s" 1.12) }}
+  {{ partial "proposal-person.html" (dict "x" 208 "y" 116 "skin" $s1 "shirt" $T "hair" $H "style" "short" "s" 1.12) }}
+  <g class="pa-bob">
+    <rect x="44" y="34" width="72" height="36" rx="12" fill="#fff" stroke="{{ $L }}" stroke-width="2"/>
+    <path d="M86 70 L96 80 L98 70 Z" fill="#fff"/>
+    <circle cx="66" cy="52" r="4" fill="{{ $P2 }}"/><circle cx="80" cy="52" r="4" fill="{{ $P2 }}"/><circle cx="94" cy="52" r="4" fill="{{ $P2 }}"/>
+  </g>
+  <g class="pa-bob pa-d2">
+    <rect x="204" y="28" width="76" height="38" rx="12" fill="{{ $G }}"/>
+    <path d="M222 66 L218 78 L232 66 Z" fill="{{ $G }}"/>
+    <rect x="216" y="40" width="50" height="5" rx="2.5" fill="{{ $P }}"/>
+    <rect x="216" y="50" width="34" height="5" rx="2.5" fill="{{ $P }}" opacity="0.6"/>
+  </g>
+  <g class="pa-pulse"><g transform="translate(160 150)">
+    <circle r="15" fill="{{ $G }}"/>
+    <path d="M-6 0 H6 M0 -6 V6" stroke="{{ $P }}" stroke-width="3" stroke-linecap="round"/>
+  </g></g>
+
+  {{- else if eq $n "problem" }}
+  <ellipse cx="150" cy="196" rx="120" ry="9" fill="{{ $L }}"/>
+  <g>
+    <rect x="50" y="146" width="40" height="44" rx="3" fill="#fff" stroke="{{ $L }}" stroke-width="2"/><path d="M44 148 L70 124 L96 148 Z" fill="{{ $C }}"/><rect x="64" y="166" width="12" height="24" rx="2" fill="{{ $P2 }}"/>
+    <rect x="104" y="138" width="46" height="52" rx="3" fill="#fff" stroke="{{ $L }}" stroke-width="2"/><path d="M98 140 L127 112 L156 140 Z" fill="{{ $T }}"/><rect x="113" y="152" width="11" height="11" rx="2" fill="{{ $G }}"/><rect x="130" y="152" width="11" height="11" rx="2" fill="{{ $G }}"/>
+    <rect x="164" y="152" width="36" height="38" rx="3" fill="#fff" stroke="{{ $L }}" stroke-width="2"/><path d="M158 154 L182 132 L206 154 Z" fill="{{ $P2 }}"/>
+  </g>
+  <g class="pa-bob">
+    <path d="M127 70 C113 70 104 80 104 92 C104 108 127 128 127 128 C127 128 150 108 150 92 C150 80 141 70 127 70 Z" fill="{{ $C }}"/>
+    <circle cx="127" cy="92" r="8" fill="#fff"/>
+  </g>
+  <g class="pa-float-slow">
+    <circle cx="150" cy="140" r="46" fill="#fff" fill-opacity="0.35" stroke="{{ $P }}" stroke-width="9"/>
+    <path d="M183 173 L222 212" stroke="{{ $P2 }}" stroke-width="14" stroke-linecap="round"/>
+  </g>
+  {{ partial "proposal-person.html" (dict "x" 262 "y" 118 "skin" $s2 "shirt" $G "hair" $H "style" "afro" "s" 0.95) }}
+  <g class="pa-bob pa-d3"><g transform="translate(268 48)">
+    <circle r="16" fill="{{ $P }}"/>
+    <text x="0" y="6" text-anchor="middle" font-family="Archivo Black, Arial, sans-serif" font-size="18" fill="{{ $G }}">?</text>
+  </g></g>
+
+  {{- else if eq $n "path" }}
+  <path d="M160 240 V150 M160 150 C160 110 90 100 72 58 M160 150 V44 M160 150 C160 110 230 100 248 58" stroke="#fff" stroke-width="22" fill="none" stroke-linecap="round"/>
+  <path d="M160 240 V150 M160 150 C160 110 90 100 72 58 M160 150 V44 M160 150 C160 110 230 100 248 58" stroke="{{ $G }}" stroke-width="3" stroke-dasharray="8 9" fill="none" stroke-linecap="round"/>
+  <path d="M160 168 C210 168 250 160 286 132" stroke="{{ $P2 }}" stroke-width="4" stroke-dasharray="3 8" fill="none" stroke-linecap="round" opacity="0.6"/>
+  <g class="pa-bob"><circle cx="72" cy="52" r="17" fill="{{ $G }}"/><path d="M64 52 h16 M72 44 v16" stroke="{{ $P }}" stroke-width="3" stroke-linecap="round"/></g>
+  <g class="pa-bob pa-d2"><circle cx="160" cy="38" r="17" fill="{{ $C }}"/><rect x="151" y="31" width="18" height="4" rx="2" fill="#fff"/><rect x="151" y="38" width="12" height="4" rx="2" fill="#fff"/></g>
+  <g class="pa-bob pa-d3"><circle cx="248" cy="52" r="17" fill="{{ $T }}"/><path d="M240 46 h16 a3 3 0 0 1 3 3 v6 a3 3 0 0 1 -3 3 h-9 l-5 4 v-4 a3 3 0 0 1 -2 -3 v-6 a3 3 0 0 1 3 -3 z" fill="#fff"/></g>
+  <g class="pa-pulse"><g transform="translate(290 128)"><circle r="15" fill="{{ $P }}"/><path d="M0 -7 a5 5 0 0 1 3 9 v2 h-6 v-2 a5 5 0 0 1 3 -9 z M-3 6 h6" stroke="{{ $G }}" stroke-width="2" fill="none" stroke-linecap="round"/></g></g>
+  {{ partial "proposal-person.html" (dict "x" 160 "y" 156 "skin" $s1 "shirt" $P2 "hair" $H "style" "wrap" "s" 0.85) }}
+
+  {{- else if eq $n "data" }}
+  <path d="M96 72 L130 104 M226 72 L192 104 M92 172 L124 150 M230 172 L196 150" stroke="{{ $P2 }}" stroke-width="2" stroke-dasharray="4 5" opacity="0.5"/>
+  <g>
+    <rect x="122" y="92" width="76" height="70" fill="{{ $P }}"/>
+    <ellipse cx="160" cy="162" rx="38" ry="12" fill="{{ $P }}"/>
+    <path d="M122 116 C122 124 198 124 198 116 M122 139 C122 147 198 147 198 139" stroke="{{ $G }}" stroke-width="3" fill="none"/>
+    <ellipse cx="160" cy="92" rx="38" ry="12" fill="{{ $P2 }}"/>
+  </g>
+  <g class="pa-bob"><rect x="46" y="40" width="58" height="44" rx="7" fill="#fff" stroke="{{ $L }}" stroke-width="2"/><rect x="55" y="51" width="36" height="5" rx="2.5" fill="{{ $P2 }}"/><rect x="55" y="61" width="40" height="4" rx="2" fill="{{ $L }}"/><rect x="55" y="70" width="28" height="4" rx="2" fill="{{ $L }}"/></g>
+  <g class="pa-bob pa-d2"><rect x="218" y="40" width="58" height="44" rx="7" fill="#fff" stroke="{{ $L }}" stroke-width="2"/>{{ range $i, $h := slice 8 18 26 14 22 10 }}<rect x="{{ add 228 (mul $i 7) }}" y="{{ sub 62 (div $h 2) }}" width="4" height="{{ $h }}" rx="2" fill="{{ $T }}"/>{{ end }}</g>
+  <g class="pa-bob pa-d3"><rect x="40" y="156" width="58" height="44" rx="7" fill="#fff" stroke="{{ $L }}" stroke-width="2"/><circle cx="82" cy="168" r="5" fill="{{ $G }}"/><path d="M47 194 L63 174 L74 186 L82 178 L93 194 Z" fill="{{ $C }}"/></g>
+  <g class="pa-bob"><rect x="222" y="156" width="58" height="44" rx="7" fill="#fff" stroke="{{ $L }}" stroke-width="2"/><rect x="230" y="164" width="42" height="8" rx="2" fill="{{ $P2 }}"/>{{ range $r := slice 176 184 192 }}{{ range $c := slice 230 245 260 }}<rect x="{{ $c }}" y="{{ $r }}" width="12" height="5" rx="1.5" fill="{{ $L }}"/>{{ end }}{{ end }}</g>
+
+  {{- else if eq $n "model" }}
+  {{- $l1 := slice 80 120 160 }}{{ $l2 := slice 60 100 140 180 }}{{ $l3 := slice 100 140 }}
+  <g stroke="{{ $P2 }}" stroke-width="1.6" opacity="0.35">
+    {{- range $a := $l1 }}{{ range $b := $l2 }}<line x1="92" y1="{{ $a }}" x2="160" y2="{{ $b }}"/>{{ end }}{{ end }}
+    {{- range $a := $l2 }}{{ range $b := $l3 }}<line x1="160" y1="{{ $a }}" x2="228" y2="{{ $b }}"/>{{ end }}{{ end }}
+  </g>
+  {{- range $i, $y := $l1 }}<circle class="pa-pulse pa-d{{ add $i 1 }}" cx="92" cy="{{ $y }}" r="11" fill="{{ $T }}"/>{{ end }}
+  {{- range $y := $l2 }}<circle cx="160" cy="{{ $y }}" r="12" fill="{{ $P }}"/>{{ end }}
+  {{- range $i, $y := $l3 }}<circle class="pa-pulse pa-d{{ add $i 2 }}" cx="228" cy="{{ $y }}" r="11" fill="{{ $G }}"/>{{ end }}
+  <g transform="translate(270 56)"><g class="pa-spin">
+    <path d="M-4 -18 h8 l1 6 l5 2 l5 -4 l6 6 l-4 5 l2 5 l6 1 v8 l-6 1 l-2 5 l4 5 l-6 6 l-5 -4 l-5 2 l-1 6 h-8 l-1 -6 l-5 -2 l-5 4 l-6 -6 l4 -5 l-2 -5 l-6 -1 v-8 l6 -1 l2 -5 l-4 -5 l6 -6 l5 4 l5 -2 z" fill="{{ $G }}"/>
+    <circle r="6" fill="#fff"/></g></g>
+  <g class="pa-bob pa-d2"><rect x="40" y="176" width="40" height="34" rx="6" fill="{{ $P2 }}"/><rect x="48" y="184" width="24" height="18" rx="3" fill="{{ $G }}"/>{{ range $x := slice 46 56 66 }}<rect x="{{ $x }}" y="170" width="4" height="6" rx="1" fill="{{ $P2 }}"/><rect x="{{ $x }}" y="210" width="4" height="6" rx="1" fill="{{ $P2 }}"/>{{ end }}</g>
+
+  {{- else if eq $n "evaluation" }}
+  <rect x="62" y="52" width="160" height="124" rx="12" fill="#fff" stroke="{{ $L }}" stroke-width="2"/>
+  <path d="M80 70 V156 H206" stroke="{{ $P2 }}" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  {{- range $i, $h := slice 26 40 54 70 }}<rect class="pa-grow pa-d{{ add $i 1 }}" x="{{ add 94 (mul $i 28) }}" y="{{ sub 154 $h }}" width="18" height="{{ $h }}" rx="4" fill="{{ cond (eq $i 3) $G $P2 }}"/>{{ end }}
+  <path d="M100 118 L130 104 L158 92 L188 70" stroke="{{ $C }}" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="5 6"/>
+  <g class="pa-bob"><g transform="translate(222 54)"><circle r="17" fill="{{ $T }}"/><path d="M-7 0 l5 5 l9 -10" stroke="#fff" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g></g>
+  <g transform="translate(252 170)"><circle r="30" fill="{{ $C }}"/><circle r="21" fill="#fff"/><circle r="12" fill="{{ $C }}"/><circle r="4" fill="#fff"/></g>
+  <g class="pa-bob pa-d2"><path d="M290 132 L256 168" stroke="{{ $P }}" stroke-width="4" stroke-linecap="round"/><path d="M292 124 l6 -2 l-2 8 l-6 4 l2 -8 z M286 128 l-8 -2 l4 -6 l8 2 z" fill="{{ $G }}"/></g>
+
+  {{- else if eq $n "impact" }}
+  <path class="pa-pulse" d="M160 186 C120 158 72 132 72 92 C72 66 92 50 114 50 C134 50 150 62 160 78 C170 62 186 50 206 50 C228 50 248 66 248 92 C248 132 200 158 160 186 Z" fill="#FDE9A6"/>
+  <ellipse cx="160" cy="206" rx="118" ry="9" fill="{{ $L }}"/>
+  {{ partial "proposal-person.html" (dict "x" 106 "y" 132 "skin" $s2 "shirt" $C "hair" $H "style" "afro" "s" 0.92) }}
+  {{ partial "proposal-person.html" (dict "x" 214 "y" 132 "skin" $s1 "shirt" $T "hair" $H "style" "short" "s" 0.92) }}
+  {{ partial "proposal-person.html" (dict "x" 160 "y" 124 "skin" $s3 "shirt" $P2 "hair" $H "style" "wrap" "s" 1.02) }}
+  <g class="pa-bob"><g transform="translate(268 56)"><path d="M0 -20 L16 -14 V0 C16 10 8 17 0 21 C-8 17 -16 10 -16 0 V-14 Z" fill="{{ $P }}"/><path d="M-6 0 l4 4 l8 -9" stroke="{{ $G }}" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g></g>
+  <g class="pa-bob pa-d2"><g transform="translate(54 60) rotate(-20)"><path d="M0 -20 C16 -14 18 8 0 20 C-18 8 -16 -14 0 -20 Z" fill="{{ $T }}"/><path d="M0 -14 V16" stroke="#fff" stroke-width="2" stroke-linecap="round"/></g></g>
+
+  {{- else if eq $n "governance" }}
+  <ellipse cx="160" cy="208" rx="96" ry="9" fill="{{ $L }}"/>
+  <rect x="155" y="66" width="10" height="128" rx="4" fill="{{ $P2 }}"/>
+  <path d="M122 206 C122 192 136 186 160 186 C184 186 198 192 198 206 Z" fill="{{ $P }}"/>
+  <g class="pa-tilt">
+    <rect x="76" y="62" width="168" height="8" rx="4" fill="{{ $P }}"/>
+    <path d="M90 70 L68 132 M90 70 L112 132 M230 70 L208 132 M230 70 L252 132" stroke="{{ $P2 }}" stroke-width="2" opacity="0.7"/>
+    <path d="M60 132 H120 C120 150 106 160 90 160 C74 160 60 150 60 132 Z" fill="{{ $G }}"/>
+    <path d="M200 132 H260 C260 150 246 160 230 160 C214 160 200 150 200 132 Z" fill="{{ $G }}"/>
+    <rect x="75" y="96" width="30" height="36" rx="3" fill="#fff" stroke="{{ $L }}" stroke-width="2"/>
+    <rect x="81" y="104" width="18" height="3" rx="1.5" fill="{{ $P2 }}"/><rect x="81" y="111" width="14" height="3" rx="1.5" fill="{{ $L }}"/><rect x="81" y="118" width="16" height="3" rx="1.5" fill="{{ $L }}"/>
+    <path d="M230 98 L246 104 V116 C246 125 239 130 230 133 C221 130 214 125 214 116 V104 Z" fill="{{ $T }}"/>
+    <path d="M224 115 l4 4 l8 -9" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <circle cx="160" cy="58" r="11" fill="{{ $G }}"/><circle cx="160" cy="58" r="5" fill="{{ $P }}"/>
+  <g class="pa-twinkle"><path transform="translate(54 58)" d="{{ $star }}" fill="{{ $G }}"/></g>
+  <g class="pa-twinkle pa-d2"><path transform="translate(270 168) scale(0.7)" d="{{ $star }}" fill="{{ $C }}"/></g>
+  <g class="pa-bob pa-d3"><g transform="translate(268 48)"><circle r="14" fill="{{ $P }}"/><path d="M-5 -1 v-3 a5 5 0 0 1 10 0 v3 M-7 -1 h14 v9 h-14 z" stroke="{{ $G }}" stroke-width="2" fill="none" stroke-linejoin="round"/></g></g>
+
+  {{- else if eq $n "review" }}
+  <rect x="102" y="38" width="116" height="160" rx="12" fill="{{ $P }}"/>
+  <rect x="113" y="56" width="94" height="132" rx="5" fill="#fff"/>
+  <rect x="138" y="30" width="44" height="18" rx="6" fill="{{ $G }}"/>
+  {{- range $i, $y := slice 78 104 130 }}
+  <circle class="pa-pop pa-d{{ add $i 1 }}" cx="128" cy="{{ $y }}" r="7" fill="{{ $T }}"/>
+  <path class="pa-pop pa-d{{ add $i 1 }}" d="M124.5 {{ $y }} l2.5 2.5 l4.5 -5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="142" y="{{ sub $y 3 }}" width="{{ index (slice 52 44 48) $i }}" height="6" rx="3" fill="{{ $L }}"/>
+  {{- end }}
+  <circle cx="128" cy="156" r="7" fill="none" stroke="{{ $G }}" stroke-width="2.4"/>
+  <rect x="142" y="153" width="40" height="6" rx="3" fill="{{ $L }}"/>
+  <g class="pa-bob"><g transform="translate(246 150) rotate(35)"><rect x="-7" y="-42" width="14" height="66" rx="3" fill="{{ $G }}"/><rect x="-7" y="-48" width="14" height="8" rx="3" fill="{{ $C }}"/><path d="M-7 24 L0 38 L7 24 Z" fill="#F6D9B5"/><path d="M-2.5 33 L0 38 L2.5 33 Z" fill="{{ $P }}"/></g></g>
+  <g class="pa-twinkle"><path transform="translate(70 70)" d="{{ $star }}" fill="{{ $G }}"/></g>
+  <g class="pa-twinkle pa-d2"><path transform="translate(262 62) scale(0.7)" d="{{ $star }}" fill="{{ $C }}"/></g>
+
+  {{- else if eq $n "success" }}
+  <ellipse cx="160" cy="210" rx="90" ry="9" fill="{{ $L }}"/>
+  <g class="pa-rise">
+    <path d="M118 52 H202 V92 C202 120 184 138 160 138 C136 138 118 120 118 92 Z" fill="{{ $G }}"/>
+    <path d="M118 62 H98 C98 90 108 102 122 104 M202 62 H222 C222 90 212 102 198 104" stroke="{{ $G2 }}" stroke-width="8" fill="none" stroke-linecap="round"/>
+    <rect x="150" y="136" width="20" height="30" fill="{{ $G2 }}"/>
+    <rect x="124" y="166" width="72" height="16" rx="5" fill="{{ $P2 }}"/>
+    <rect x="112" y="182" width="96" height="20" rx="6" fill="{{ $P }}"/>
+    <path transform="translate(160 92) scale(2.1)" d="{{ $star }}" fill="#fff"/>
+  </g>
+  <g class="pa-twinkle"><path transform="translate(70 62)" d="{{ $star }}" fill="{{ $G }}"/></g>
+  <g class="pa-twinkle pa-d2"><path transform="translate(252 50) scale(0.9)" d="{{ $star }}" fill="{{ $C }}"/></g>
+  <g class="pa-twinkle pa-d3"><path transform="translate(262 150) scale(0.7)" d="{{ $star }}" fill="{{ $T }}"/></g>
+  <g class="pa-twinkle pa-d1"><path transform="translate(58 154) scale(0.6)" d="{{ $star }}" fill="{{ $P2 }}"/></g>
+  {{- end }}
+</svg>

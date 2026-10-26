@@ -1,0 +1,119 @@
+{{ define "main" }}
+{{- $f := hugo.Data.proposal }}
+{{- $cap := hugo.Data.capstone }}
+{{- /* Cohorts for the dropdown, each with its country and proposal deadline. */}}
+{{- $cohorts := slice }}
+{{- range hugo.Data.cohorts.cohorts }}
+  {{- if ne .id "aims-pilot" }}
+    {{- $c := . }}
+    {{- $deadline := "" }}{{ $label := "" }}
+    {{- range $cap.deadlines }}{{ if in .ids $c.id }}{{ $deadline = .proposalISO }}{{ $label = .proposal }}{{ end }}{{ end }}
+    {{- $country := "" }}
+    {{- range $cap.buildFor }}{{ if eq .flag $c.flag }}{{ $country = .name }}{{ end }}{{ end }}
+    {{- $cohorts = $cohorts | append (dict "id" .id "name" .name "flag" .flag "country" $country "deadline" $deadline "deadlineLabel" $label) }}
+  {{- end }}
+{{- end }}
+{{- $steps := $f.steps }}
+
+<section class="pp-hero">
+  <div class="container">
+    <p class="hero-eyebrow"><a href="{{ "capstone-hackathon/" | relURL }}">Capstone Project Hackathon</a> · Proposal</p>
+    <h1>{{ $f.title }}</h1>
+    <p class="hero-sub">{{ $f.subtitle }}</p>
+  </div>
+</section>
+
+<section class="pp-wrap">
+  <div class="container">
+    <div class="pp-app" data-proposal data-endpoint="{{ $f.endpoint }}" data-require="{{ if $f.requireAnswers }}true{{ else }}false{{ end }}" data-edit-base="{{ $f.editLinkBase }}"
+      data-docx="https://cdn.jsdelivr.net/npm/docx@9.14.0/dist/index.iife.min.js">
+
+      {{/* ---------- Welcome ---------- */}}
+      <div class="pp-screen pp-welcome" data-screen="welcome">
+        <div class="pp-welcome-text">
+          <p class="pp-kicker">{{ partial "icon.html" "calendar" }} About {{ $f.minutes }} minutes</p>
+          <h2>{{ $f.intro.title }}</h2>
+          {{- $course := printf `<a href="%s" target="_blank" rel="noopener">Course 08</a>` $cap.course08URL }}
+          {{- range $f.intro.body }}
+          <p>{{ replace (htmlEscape .) "[Course 08]" $course | safeHTML }}</p>
+          {{- end }}
+          {{- with $f.intro.notes }}
+          <ul class="pp-notes">
+            {{- range . }}<li class="pp-note">{{ partial "icon.html" .icon }} <span>{{ .text }}</span></li>{{ end }}
+          </ul>
+          {{- end }}
+          <ol class="pp-welcome-steps" aria-label="The {{ len $steps }} steps">
+            {{- range $i, $s := $steps }}<li><span>{{ add $i 1 }}</span>{{ $s.title }}</li>{{ end }}
+          </ol>
+          <div class="pp-welcome-cta">
+            <button type="button" class="btn btn-primary" data-start>Start your proposal {{ partial "icon.html" "arrow-right" }}</button>
+            <button type="button" class="btn btn-ghost" data-resume hidden>Continue where you left off</button>
+          </div>
+          <p class="pp-small" data-resume-note hidden></p>
+        </div>
+      </div>
+
+      {{/* ---------- The form ---------- */}}
+      <form class="pp-form" data-screen="form" hidden novalidate>
+        <div class="pp-notice" data-notice hidden></div>
+        <div class="pp-top">
+          <ol class="pp-rail">
+            {{- range $i, $s := $steps }}
+            <li><button type="button" class="pp-rail-btn" data-goto="{{ $i }}" disabled><span class="pp-rail-n">{{ add $i 1 }}</span><span class="pp-rail-t">{{ $s.title }}</span></button></li>
+            {{- end }}
+          </ol>
+          <div class="pp-progress" aria-hidden="true"><span data-bar></span></div>
+          <p class="pp-left" data-left aria-live="polite"></p>
+        </div>
+
+        {{- range $i, $s := $steps }}
+        <fieldset class="pp-step" data-step="{{ $i }}" data-title="{{ $s.title }}"{{ if $i }} hidden{{ end }}>
+          <legend class="pp-hide">Step {{ add $i 1 }}: {{ $s.title }}</legend>
+          <div class="pp-step-grid">
+            <aside class="pp-aside">
+              <div class="pp-art">{{ partial "proposal-art.html" $s.art }}</div>
+              <p class="pp-step-n">Step {{ add $i 1 }} of {{ len $steps }}</p>
+              <h2 class="pp-step-t">{{ $s.title }}</h2>
+              <p class="pp-step-lead">{{ $s.lead }}</p>
+            </aside>
+            <div class="pp-fields">
+              {{- range $s.fields }}{{ partial "proposal-field.html" (dict "f" . "cohorts" $cohorts) }}{{ end }}
+              {{- if eq $s.id "review" }}
+              <div class="pp-review" data-review></div>
+              {{- end }}
+            </div>
+          </div>
+        </fieldset>
+        {{- end }}
+
+        <div class="pp-nav">
+          <button type="button" class="btn btn-ghost" data-back>{{ partial "icon.html" "arrow-right" }} Back</button>
+          <span class="pp-saved" data-saved aria-live="polite"></span>
+          <button type="button" class="btn btn-primary" data-next>Next {{ partial "icon.html" "arrow-right" }}</button>
+          <button type="submit" class="btn cap-btn-gold" data-submit hidden>Submit proposal {{ partial "icon.html" "arrow-right" }}</button>
+        </div>
+      </form>
+
+      {{/* ---------- Done ---------- */}}
+      <div class="pp-screen pp-done" data-screen="done" hidden>
+        <canvas class="pp-confetti" data-confetti aria-hidden="true"></canvas>
+        <div class="pp-done-art">{{ partial "proposal-art.html" "success" }}</div>
+        <svg class="pp-check-anim" viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="24"/><path d="M15 27 l7 7 l15 -16"/></svg>
+        <h2 tabindex="-1" data-done-title>Proposal submitted</h2>
+        <p class="pp-build"><span>Build for</span> <span class="pp-build-place" data-build></span></p>
+        <p class="pp-done-project" data-done-project></p>
+        <p class="pp-done-note" data-done-note></p>
+        <div class="pp-done-cta">
+          <button type="button" class="btn cap-btn-gold" data-download>Download your proposal (.docx)</button>
+          <button type="button" class="btn btn-primary" data-copy hidden>Copy your edit link</button>
+          <button type="button" class="btn btn-ghost" data-edit>Keep editing</button>
+        </div>
+        <p class="pp-small" data-link-out></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{- $js := resources.Get "js/proposal.js" | minify | fingerprint }}
+<script src="{{ $js.RelPermalink }}" defer></script>
+{{ end }}

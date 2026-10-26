@@ -99,8 +99,8 @@
     <div class="cap-submit fade-in">
       <div class="cap-submit-card">
         <h3>Submit your proposal</h3>
-        <p>Due no later than two weeks before your cohort's post-workshop period ends.</p>
-        {{- with $c.proposalURL }}<a class="btn btn-primary" href="{{ . }}" target="_blank" rel="noopener">Submit proposal {{ partial "icon.html" "external-link" }}</a>{{ else }}{{ $soon | safeHTML }}{{ end }}
+        <p>Due no later than two weeks before your cohort's post-workshop period ends. Planning it takes 10 to 15 minutes.</p>
+        {{- with $c.proposalURL }}{{ if hasPrefix . "http" }}<a class="btn btn-primary" href="{{ . }}" target="_blank" rel="noopener">Submit proposal {{ partial "icon.html" "external-link" }}</a>{{ else }}<a class="btn btn-primary" href="{{ . | relURL }}">Plan &amp; submit your proposal {{ partial "icon.html" "arrow-right" }}</a>{{ end }}{{ else }}{{ $soon | safeHTML }}{{ end }}
       </div>
       <div class="cap-submit-card">
         <h3>Submit your implementation</h3>

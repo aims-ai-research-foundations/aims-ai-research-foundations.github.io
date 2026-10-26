@@ -14,7 +14,7 @@ buildFor:
   - { flag: "🇿🇦", name: "South Africa" }
   - { flag: "🌍", name: "Africa" }
 pairFormURL: ""        # FATE Foundation's form for registering pairs
-proposalURL: ""        # where pairs submit their capstone project proposal
+proposalURL: "capstone-hackathon/proposal/"   # the proposal planner on this site (or a full https:// link)
 submissionURL: ""      # where pairs submit their GitHub repository or Google Drive folder
 
 tabs:
@@ -87,12 +87,13 @@ judging:
   - { icon: "brain-circuit", title: "Model", body: "Uses a relevant model or machine learning technique, with a model card covering its architecture, intended use, training data, evaluation results, limitations and risks." }
   - { icon: "code", title: "Clean coding practices", body: "Clear structure, comments and reproducible steps, whether in Google Colab or Python scripts." }
 
+# ids: cohort ids from data/cohorts.yaml (used by the proposal form to lock editing after the proposal deadline)
 deadlines:
-  - { cohort: "Nigeria Cohorts 1 and 2, Ghana Cohort", flags: "🇳🇬 🇬🇭", period: "19 Oct to 15 Nov 2026", proposal: "1 Nov 2026", proposalISO: "2026-11-01", code: "15 Nov 2026", codeISO: "2026-11-15" }
-  - { cohort: "Kenya Cohort 1, Pretoria Cohort", flags: "🇰🇪 🇿🇦", period: "19 Oct to 29 Nov 2026", proposal: "15 Nov 2026", proposalISO: "2026-11-15", code: "29 Nov 2026", codeISO: "2026-11-29" }
-  - { cohort: "Kenya Cohort 2", flags: "🇰🇪", period: "26 Oct to 6 Dec 2026", proposal: "22 Nov 2026", proposalISO: "2026-11-22", code: "6 Dec 2026", codeISO: "2026-12-06" }
-  - { cohort: "Western Cape Cohort", flags: "🇿🇦", period: "16 Nov to 27 Dec 2026", proposal: "13 Dec 2026", proposalISO: "2026-12-13", code: "27 Dec 2026", codeISO: "2026-12-27" }
-  - { cohort: "Nigeria Cohorts 3 and 4", flags: "🇳🇬", period: "To be confirmed", proposal: "To be confirmed", proposalISO: "", code: "To be confirmed", codeISO: "" }
+  - { ids: [nigeria-cohort-1, nigeria-cohort-2, ghana-cohort], cohort: "Nigeria Cohorts 1 and 2, Ghana Cohort", flags: "🇳🇬 🇬🇭", period: "19 Oct to 15 Nov 2026", proposal: "1 Nov 2026", proposalISO: "2026-11-01", code: "15 Nov 2026", codeISO: "2026-11-15" }
+  - { ids: [kenya-cohort-1, pretoria-cohort], cohort: "Kenya Cohort 1, Pretoria Cohort", flags: "🇰🇪 🇿🇦", period: "19 Oct to 29 Nov 2026", proposal: "15 Nov 2026", proposalISO: "2026-11-15", code: "29 Nov 2026", codeISO: "2026-11-29" }
+  - { ids: [kenya-cohort-2], cohort: "Kenya Cohort 2", flags: "🇰🇪", period: "26 Oct to 6 Dec 2026", proposal: "22 Nov 2026", proposalISO: "2026-11-22", code: "6 Dec 2026", codeISO: "2026-12-06" }
+  - { ids: [western-cape-cohort], cohort: "Western Cape Cohort", flags: "🇿🇦", period: "16 Nov to 27 Dec 2026", proposal: "13 Dec 2026", proposalISO: "2026-12-13", code: "27 Dec 2026", codeISO: "2026-12-27" }
+  - { ids: [nigeria-cohort-3, nigeria-cohort-4], cohort: "Nigeria Cohorts 3 and 4", flags: "🇳🇬", period: "To be confirmed", proposal: "To be confirmed", proposalISO: "", code: "To be confirmed", codeISO: "" }
 
 categories:
   - icon: "focus"

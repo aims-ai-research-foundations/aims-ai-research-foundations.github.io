@@ -1,0 +1,136 @@
+{{- /* One question in the proposal form. Input: dict "f" (field from data/proposal.yaml), "cohorts" (prepared list). */ -}}
+{{- $f := .f -}}
+{{- $id := $f.id -}}
+{{- $lab := printf "pp-%s-label" $id -}}
+<div class="pp-field pp-t-{{ $f.type }}" data-field="{{ $id }}" data-type="{{ $f.type }}"
+  {{- if $f.required }} data-required{{ end }}
+  {{- with $f.words }} data-words="{{ . }}"{{ end }}
+  {{- with $f.showIf }} data-show-field="{{ .field }}" data-show-values="{{ delimit .values "," }}" hidden{{ end }}>
+
+  {{- $opt := cond (not $f.required) `<span class="pp-opt">Optional</span>` "" }}
+  {{- if in (slice "text" "email" "textarea" "number" "cohort") $f.type }}
+  <label class="pp-label" for="pp-{{ $id }}">{{ $f.label }} {{ $opt | safeHTML }}</label>
+  {{- else if ne $f.type "check" }}
+  <p class="pp-label" id="{{ $lab }}">{{ $f.label }} {{ $opt | safeHTML }}</p>
+  {{- end }}
+  {{- with $f.hint }}<p class="pp-hint">{{ . | markdownify | replaceRE "<a href=" "<a target=\"_blank\" rel=\"noopener\" href=" | safeHTML }}</p>{{ end }}
+
+  {{- if eq $f.type "text" }}
+  <input class="pp-input" type="text" id="pp-{{ $id }}" name="{{ $id }}" placeholder="{{ $f.placeholder }}" autocomplete="off">
+
+  {{- else if eq $f.type "email" }}
+  <input class="pp-input" type="email" id="pp-{{ $id }}" name="{{ $id }}" placeholder="{{ $f.placeholder }}" autocomplete="email">
+
+  {{- else if eq $f.type "textarea" }}
+  <textarea class="pp-input" id="pp-{{ $id }}" name="{{ $id }}" rows="{{ if ge ($f.words | default 0) 100 }}5{{ else }}3{{ end }}" placeholder="{{ $f.placeholder }}"></textarea>
+
+  {{- else if eq $f.type "number" }}
+  <input class="pp-input pp-num" type="number" id="pp-{{ $id }}" name="{{ $id }}" min="1" step="1" inputmode="numeric" placeholder="{{ $f.placeholder }}">
+
+  {{- else if eq $f.type "cohort" }}
+  <select class="pp-input" id="pp-{{ $id }}" name="{{ $id }}">
+    <option value="">Choose your cohort</option>
+    {{- range .cohorts }}
+    <option value="{{ .id }}" data-flag="{{ .flag }}" data-country="{{ .country }}" data-deadline="{{ .deadline }}" data-deadline-label="{{ .deadlineLabel }}">{{ .flag }} {{ .name }}</option>
+    {{- end }}
+  </select>
+
+  {{- else if eq $f.type "check" }}
+  <label class="pp-check"><input type="checkbox" name="{{ $id }}" value="Confirmed"><span class="pp-check-box" aria-hidden="true"></span><span>{{ $f.label }}</span></label>
+
+  {{- else if eq $f.type "cards" }}
+  <div class="pp-cards" role="radiogroup" aria-labelledby="{{ $lab }}">
+    {{- range $f.options }}
+    <label class="pp-card">
+      <input class="pp-hide" type="radio" name="{{ $id }}" value="{{ .value }}">
+      <span class="pp-card-ico">{{ partial "icon.html" .icon }}</span>
+      <span class="pp-card-text"><span class="pp-card-t">{{ .label }}</span><span class="pp-card-d">{{ .desc }}</span></span>
+      <span class="pp-card-tick" aria-hidden="true"></span>
+    </label>
+    {{- end }}
+  </div>
+
+  {{- else if eq $f.type "chips" }}
+  <div class="pp-chips" role="group" aria-labelledby="{{ $lab }}">
+    {{- range $f.options }}
+    <label class="pp-chip"><input class="pp-hide" type="checkbox" name="{{ $id }}" value="{{ .value }}"><span>{{ .label }}</span></label>
+    {{- end }}
+    {{- if $f.other }}
+    <label class="pp-chip"><input class="pp-hide" type="checkbox" name="{{ $id }}" value="other" data-other><span>Other</span></label>
+    {{- end }}
+  </div>
+  {{- if $f.other }}
+  <input class="pp-input pp-other" type="text" name="{{ $id }}Other" placeholder="Tell us more" aria-label="{{ $f.label }}: other" hidden>
+  {{- end }}
+
+  {{- else if eq $f.type "choice" }}
+  <div class="pp-seg" role="radiogroup" aria-labelledby="{{ $lab }}">
+    {{- range $f.options }}
+    <label class="pp-chip"><input class="pp-hide" type="radio" name="{{ $id }}" value="{{ .value }}"><span>{{ .label }}</span></label>
+    {{- end }}
+  </div>
+
+  {{- else if in (slice "members" "stakeholders") $f.type }}
+  {{- $isS := eq $f.type "stakeholders" }}
+  {{- $x := `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>` }}
+  <div class="pp-repeat" data-repeat="{{ $id }}" data-min="{{ $f.min | default 0 }}" data-max="{{ $f.max | default 3 }}" data-item="{{ cond $isS "Stakeholder" "Team member" }}"></div>
+  <template data-repeat-tpl="{{ $id }}">
+    <div class="pp-member" data-item>
+      <div class="pp-member-head">
+        <p class="pp-member-t" data-item-title></p>
+        <button type="button" class="pp-member-x" data-remove>{{ $x | safeHTML }}</button>
+      </div>
+      {{- if $isS }}
+      <div class="pp-member-grid">
+        <input class="pp-input pp-span2" type="text" data-key="group" data-label="who they are" placeholder="Who are they? e.g. Pregnant women" autocomplete="off">
+        <input class="pp-input" type="text" data-key="matters" data-label="what matters to them" placeholder="What matters to them? e.g. Fast, private help" autocomplete="off">
+        <input class="pp-input" type="text" data-key="risks" data-label="risks they face" placeholder="What risks might they face? e.g. Their data being shared" autocomplete="off">
+        <input class="pp-input pp-span2" type="text" data-key="engage" data-label="how you will involve them" placeholder="How will you involve them? e.g. Short interviews at the clinic" autocomplete="off">
+      </div>
+      <div class="pp-power-row">
+        <span class="pp-power-l">Power to shape decisions</span>
+        <div class="pp-seg" role="radiogroup" data-key-group="power">
+          {{- range slice "High" "Medium" "Low" }}
+          <label class="pp-chip pp-chip-sm"><input class="pp-hide" type="radio" data-key="power" value="{{ . }}"><span>{{ . }}</span></label>
+          {{- end }}
+        </div>
+      </div>
+      {{- else }}
+      <div class="pp-member-grid">
+        <input class="pp-input" type="text" data-key="name" data-label="full name" placeholder="Full name (e.g. Dr Ada Obi)" autocomplete="off">
+        <input class="pp-input" type="email" data-key="email" data-label="email" placeholder="Email" autocomplete="off">
+        <input class="pp-input pp-span2" type="text" data-key="university" data-label="university" placeholder="University" autocomplete="off">
+      </div>
+      <div class="pp-seg" role="radiogroup" data-key-group="role">
+        <label class="pp-chip pp-chip-sm"><input class="pp-hide" type="radio" data-key="role" value="AI Champion"><span>AI Champion</span></label>
+        <label class="pp-chip pp-chip-sm"><input class="pp-hide" type="radio" data-key="role" value="Teaching Assistant"><span>Teaching Assistant</span></label>
+      </div>
+      {{- end }}
+    </div>
+  </template>
+  <button type="button" class="pp-add" data-repeat-add="{{ $id }}">
+    <span class="pp-add-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+    {{ $f.add | default "Add" }}
+  </button>
+
+  {{- else if eq $f.type "example" }}
+  <div class="pp-example">
+    <label class="pp-ex-box"><span class="pp-ex-t">Input</span><textarea class="pp-input" name="exampleIn" rows="3" placeholder="e.g. An SMS: “I have had bleeding since yesterday.”"></textarea></label>
+    <span class="pp-ex-arrow" aria-hidden="true">{{ partial "icon.html" "arrow-right" }}</span>
+    <label class="pp-ex-box"><span class="pp-ex-t">Output</span><textarea class="pp-input" name="exampleOut" rows="3" placeholder="e.g. Urgent"></textarea></label>
+  </div>
+
+  {{- else if eq $f.type "pitch" }}
+  <p class="pp-hint">Fill in the blanks. Keep it to one sentence.</p>
+  <div class="pp-pitch">
+    <span>We are building</span>
+    <input class="pp-input pp-blank" type="text" name="pitchWhat" placeholder="an SMS triage tool" aria-label="Elevator pitch: what you are building" autocomplete="off">
+    <span>for</span>
+    <input class="pp-input pp-blank" type="text" name="pitchWho" placeholder="community health workers in Kenya" aria-label="Elevator pitch: who it is for" autocomplete="off">
+    <span>so that</span>
+    <input class="pp-input pp-blank" type="text" name="pitchWhy" placeholder="urgent cases get help faster" aria-label="Elevator pitch: why it matters" autocomplete="off"><span>.</span>
+  </div>
+  {{- end }}
+
+  <div class="pp-meta"><span class="pp-error" role="alert"></span>{{ with $f.words }}<span class="pp-count" data-count aria-live="polite"></span>{{ end }}</div>
+</div>

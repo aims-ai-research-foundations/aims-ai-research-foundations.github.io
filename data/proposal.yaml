@@ -1,0 +1,177 @@
+# Capstone technical proposal form (/capstone-hackathon/proposal/, layout "proposal").
+# Edit wording, word limits and options here; the page and the Word document follow.
+#
+# Field types:
+#   cohort      dropdown of cohorts (data/cohorts.yaml, minus the pilot)
+#   text        one line              textarea   a few lines
+#   number      number box            check      a single tick box
+#   cards       pick one (big cards)  chips      pick one or more (small chips)
+#   email       an email address      choice     pick one (small chips)
+#   members     an add button; each click adds name, email, university, role
+#   stakeholders an add button; each click adds group, what matters, risks, power, how to involve them
+#               (both take: add = button text, min = cards shown at the start, max = most cards allowed)
+#   example     one input -> output pair
+#   pitch       "We are building ___ for ___ so that ___."
+# Other keys:
+#   words       word limit (shown as a counter; Next is blocked when over)
+#   required    must be answered before moving on
+#   other       adds an "Other" option that opens a short text box
+#   showIf      { field, values } show only when that field has one of the values
+#   hint        short helper line under the label ([text](https://...) makes a link)
+
+# Where answers are saved. Leave empty until the Google Apps Script web app is
+# deployed (see scripts/proposal-apps-script.gs); until then answers stay in the
+# browser and the Word download still works.
+endpoint: "https://script.google.com/macros/s/AKfycbwJHO_mDpO6u2txtssIaZGHUAiCv_LegfJNVBdqatBkVbWXQDjqIcEsKtEd8KKOSbDC/exec"
+
+# Address used in the private edit links (emailed to teams and shown after submitting).
+editLinkBase: "https://airf.aims.ac.za/capstone-hackathon/proposal/"
+
+minutes: "10 to 15"
+
+# true: required questions and word limits must be met before moving on.
+# false: every question can be skipped (handy while testing the form).
+requireAnswers: true
+
+title: "Create Your Capstone Project Proposal"
+subtitle: "Plan the AI solution for your capstone project, from the problem to the dataset, model, and responsible innovation. Takes about 10 to 15 minutes."
+
+intro:
+  title: "Before you start"
+  # Paragraphs. [Course 08] links to course08URL in data/capstone.yaml.
+  body:
+    - "You will answer a few short questions about your capstone project. This helps you prepare your proposal document following the Responsible Innovation Roadmap in [Course 08] on Google Skills."
+    - "At the end, you can download your proposal as a Word document. You can also come back and edit it until your cohort's proposal deadline."
+  notes:
+    - { icon: "users", text: "This should only be filled in by one team member." }
+    - { icon: "lightbulb", text: "You only need a rough idea of the problem you want to solve to complete this form." }
+
+steps:
+  - id: team
+    title: "Your details"
+    art: team
+    lead: "Who is submitting this proposal?"
+    fields:
+      - { id: name, type: text, label: "Full name", placeholder: "e.g. Dr Ada Obi", required: true }
+      - { id: email, type: email, label: "Email", placeholder: "e.g. ada.obi@university.edu", required: true }
+      - { id: university, type: text, label: "University", placeholder: "e.g. University of Lagos", required: true }
+      - id: role
+        type: choice
+        label: "Role"
+        required: true
+        options:
+          - { value: "AI Champion", label: "AI Champion" }
+          - { value: "Teaching Assistant", label: "Teaching Assistant" }
+      - { id: cohort, type: cohort, label: "Cohort", required: true }
+      - { id: teamName, type: text, label: "Team name", placeholder: "e.g. Simba NLP", words: 6 }
+      - { id: members, type: members, label: "Team members", hint: "Add the details of anyone else on your team.", add: "Add team member details", min: 0, max: 3 }
+
+  - id: problem
+    title: "The problem"
+    art: problem
+    lead: "Start with the problem, not the dataset."
+    fields:
+      - { id: title, type: text, label: "Project title", placeholder: "e.g. Urgent SMS triage for community health workers", required: true, words: 12 }
+      - { id: problem, type: textarea, label: "What problem are you solving, and for whom?", placeholder: "e.g. Community health workers in rural Kenya receive many SMS messages a day from pregnant women and can miss the urgent ones.", required: true, words: 150 }
+      - { id: why, type: textarea, label: "Why does it matter in your context?", placeholder: "e.g. A delayed reply to an urgent message can put a mother's life at risk.", required: true, words: 150 }
+      - { id: scope, type: textarea, label: "What is out of scope?", placeholder: "e.g. We will not give medical advice; we only flag urgency.", words: 80 }
+
+  - id: path
+    title: "Your path"
+    art: path
+    lead: "Which pathway fits what your model will do?"
+    fields:
+      - id: path
+        type: cards
+        label: "Pathway"
+        required: true
+        options:
+          - { value: classification, label: "Classification", desc: "Sort each input into a category", icon: "focus" }
+          - { value: summarisation, label: "Summarisation", desc: "Make long text short, keeping the meaning", icon: "presentation" }
+          - { value: conversation, label: "Conversational assistant", desc: "Answer questions or hold a conversation", icon: "message-circle" }
+          - { value: combined, label: "Combine two", desc: "Bring two pathways together", icon: "network" }
+          - { value: own, label: "Your own path", desc: "Something else, such as translation or extraction", icon: "lightbulb" }
+      - { id: combined, type: text, label: "Which two pathways?", placeholder: "e.g. Classification and conversational assistant", required: true, words: 20, showIf: { field: path, values: [combined] } }
+      - { id: ownPath, type: text, label: "What will your model take in and give back?", placeholder: "e.g. Takes a Yoruba sentence and returns it in English", required: true, words: 50, showIf: { field: path, values: [own] } }
+      - { id: example, type: example, label: "Show us one example", hint: "What goes in, and what should come out?", required: true }
+
+  - id: data
+    title: "Your data"
+    art: data
+    lead: "What will your model learn from?"
+    fields:
+      - id: dataType
+        type: chips
+        label: "Type of data"
+        required: true
+        other: true
+        options:
+          - { value: text, label: "Text" }
+          - { value: audio, label: "Audio / speech" }
+          - { value: images, label: "Images" }
+          - { value: tabular, label: "Tabular (spreadsheets, numbers)" }
+          - { value: video, label: "Video" }
+      - id: source
+        type: chips
+        label: "Where will it come from?"
+        required: true
+        other: true
+        options:
+          - { value: existing, label: "An existing dataset" }
+          - { value: collect, label: "We will collect it ourselves" }
+          - { value: synthetic, label: "We will generate synthetic data" }
+      - { id: sourceLink, type: text, label: "Dataset name or link", placeholder: "e.g. https://capstone.aims.ac.za/ or a Hugging Face link", hint: "Browse the capstone datasets at [capstone.aims.ac.za](https://capstone.aims.ac.za/)." }
+      - { id: languages, type: text, label: "Language(s)", placeholder: "e.g. Swahili and English", required: true, words: 20, showIf: { field: dataType, values: [text, audio, video] } }
+      - { id: size, type: number, label: "How many examples will you aim for?", placeholder: "e.g. 500", hint: "Aim for 50+ per class for classification, 200+ pairs for summarisation, 100+ pairs for conversation.", required: true }
+      - { id: missing, type: textarea, label: "Who might be missing or under-represented?", placeholder: "e.g. Older women and speakers of Sheng.", required: true, words: 100 }
+      - { id: consent, type: check, label: "We have checked the licence, and we have consent for any data we collect.", required: true }
+
+  - id: model
+    title: "Your model"
+    art: model
+    lead: "What will you build or fine-tune?"
+    fields:
+      - { id: model, type: textarea, label: "What kind of model will you use?", hint: "Describe the kind of model you plan to use and why it suits your problem and data. For example, a language model you will fine-tune, or a CNN for images.", placeholder: "e.g. Fine-tune Gemma 3 1B with LoRA. Or: a CNN such as ResNet for the images.", required: true, words: 150 }
+
+  - id: evaluation
+    title: "Evaluation"
+    art: evaluation
+    lead: "How will you know it works?"
+    fields:
+      - { id: measure, type: textarea, label: "How will you measure it?", placeholder: "e.g. Accuracy and F1 on a held-out test set, plus spot checks by two health workers.", required: true, words: 150 }
+      - { id: success, type: textarea, label: "What does success look like?", placeholder: "e.g. 8 in 10 urgent messages are flagged correctly.", required: true, words: 80 }
+
+  - id: impact
+    title: "Impact & stakeholders"
+    art: impact
+    lead: "Who benefits, who bears the cost, and who has a say?"
+    fields:
+      - { id: benefit, type: textarea, label: "Main benefit", placeholder: "e.g. Health workers reach urgent cases faster.", required: true, words: 150 }
+      - { id: risk, type: textarea, label: "Main risk", placeholder: "e.g. An urgent message is wrongly marked as routine.", required: true, words: 150 }
+      - { id: stakeholders, type: stakeholders, label: "Stakeholders", hint: "Who is affected by your project, or has a say in it? Add 3 or 4 groups if you can.", add: "Add stakeholder", min: 2, max: 6, required: true }
+
+  - id: governance
+    title: "Governance & sustainability"
+    art: governance
+    lead: "How will you keep your project safe, fair and accountable?"
+    fields:
+      - { id: mitigation, type: textarea, label: "How will you reduce your main risk?", placeholder: "e.g. A health worker reviews every message the model is unsure about.", required: true, words: 150 }
+      - id: governance
+        type: chips
+        label: "Which governance approaches will you use?"
+        required: true
+        other: true
+        options:
+          - { value: laws, label: "Follow existing laws (e.g. data protection)" }
+          - { value: rules, label: "Set clear rules on uses that are not allowed" }
+          - { value: safeguards, label: "Test, monitor and add safeguards" }
+      - { id: governancePlan, type: textarea, label: "Describe your governance plan", hint: "Which laws apply, what your model must never be used for, and how you will monitor it and handle problems.", placeholder: "e.g. We follow Kenya's Data Protection Act and store no names. The model must never give medical advice. Each week, a health worker reviews a sample of flagged messages.", required: true, words: 150 }
+      - { id: accountability, type: textarea, label: "Who is responsible if something goes wrong?", placeholder: "e.g. Our team and the clinic's lead nurse, who can switch the tool off.", required: true, words: 80 }
+      - { id: environment, type: textarea, label: "How will you reduce environmental impact?", placeholder: "e.g. Use the smallest Gemma model and limit training runs.", required: true, words: 100 }
+
+  - id: review
+    title: "Review & submit"
+    art: review
+    lead: "Sum it up in one sentence, then check your answers."
+    fields:
+      - { id: pitch, type: pitch, label: "Elevator pitch", required: true }
