@@ -149,11 +149,6 @@
     return { id: o.value, name: o.textContent.trim(), flag: o.dataset.flag, country: o.dataset.country,
       deadline: o.dataset.deadline, deadlineLabel: o.dataset.deadlineLabel };
   }
-  function deadlinePassed() {
-    var c = cohortInfo();
-    if (!c || !c.deadline) return false;
-    return Date.now() > new Date(c.deadline + "T23:59:59").getTime();
-  }
   function notice(html, kind) {
     var n = $("[data-notice]");
     if (!html) { n.hidden = true; n.innerHTML = ""; return; }
@@ -341,11 +336,6 @@
     for (var i = 0; i < steps.length; i++) {
       if (!validate(i, false)) { show(i); validate(i, true); return; }
     }
-    var c = cohortInfo();
-    if (deadlinePassed()) {
-      notice("The proposal deadline for your cohort (" + (c.deadlineLabel || c.deadline) + ") has passed, so it can no longer be submitted. You can still download it as a Word document from the review below.", "warn");
-      return;
-    }
     var btn = $("[data-submit]");
     var d = collect();
     if (!endpoint) { state.submittedAt = new Date().toISOString(); store(); finish(false); return; }
@@ -389,7 +379,7 @@
     $("[data-done-project]").textContent = (d.title ? "“" + d.title + "”" : "") + (d.teamName ? " by " + d.teamName : "");
     var note = $("[data-done-note]"), copy = $("[data-copy]"), out = $("[data-link-out]");
     if (saved) {
-      note.textContent = "Your proposal is saved. Use your private edit link to make changes until " + (c.deadlineLabel || "your deadline") + "." + (state.emailed ? " We've also emailed it to you." : "");
+      note.textContent = "Your proposal is saved. Use your private edit link if you need to make changes." + (state.emailed ? " We've also emailed it to you." : "");
       copy.hidden = false;
       out.textContent = editLink();
     } else {
@@ -617,9 +607,7 @@
         state.id = parts[0]; state.token = parts[1]; state.submittedAt = res.updated || state.submittedAt;
         fill(res.data);
         state.max = last; show(last);
-        notice(deadlinePassed()
-          ? "The proposal deadline for your cohort has passed, so it can no longer be changed. You can still download it as a Word document below."
-          : "You're editing your submitted proposal. Make your changes, then submit again to save them.", deadlinePassed() ? "warn" : "info");
+        notice("You're editing your submitted proposal. Make your changes, then submit again to save them.", "info");
       })
       .catch(function () { notice("We couldn't open that edit link. Please check you copied all of it, or contact the team.", "error"); });
   }

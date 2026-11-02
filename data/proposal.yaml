@@ -41,7 +41,7 @@ intro:
   # Paragraphs. [Course 08] links to course08URL in data/capstone.yaml.
   body:
     - "You will answer a few short questions about your capstone project. This helps you prepare your proposal document following the Responsible Innovation Roadmap in [Course 08] on Google Skills."
-    - "At the end, you can download your proposal as a Word document. You can also come back and edit it until your cohort's proposal deadline."
+    - "At the end, you can download your proposal as a Word document. You can also come back and edit it later using your private edit link."
   notes:
     - { icon: "users", text: "This should only be filled in by one team member." }
     - { icon: "lightbulb", text: "You only need a rough idea of the problem you want to solve to complete this form." }
