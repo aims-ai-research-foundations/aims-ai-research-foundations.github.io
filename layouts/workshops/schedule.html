@@ -8,6 +8,7 @@
     <p class="hero-eyebrow"><a href="{{ $w.RelPermalink }}">{{ $w.Title }}</a> &nbsp;/&nbsp; Schedule</p>
     <h1>Schedule</h1>
     {{- with $w.Params.scheduleNote }}<p class="hero-sub">{{ . }}</p>{{ end }}
+    {{- if $w.Params.map }}<p class="hero-venue-link"><a class="btn btn-primary" href="#venue">{{ partial "icon.html" "map-pin" }} Venue and directions</a></p>{{ end }}
   </div>
 </section>
 
@@ -84,4 +85,13 @@
     {{- end }}
   </div>
 </section>
+
+{{- if $w.Params.map }}
+<section id="venue"{{ if not $embed }} class="alt"{{ end }}>
+  <div class="container">
+    {{ partial "section-eyebrow.html" (dict "eyebrow" "Venue" "title" "Finding the venue") }}
+    {{ partial "venue-map.html" (dict "page" $w "photos" true) }}
+  </div>
+</section>
+{{- end }}
 {{ end }}

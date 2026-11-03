@@ -184,8 +184,9 @@
       <div class="cal-milestone fade-in">
         <div class="cal-info">
           <h3>Workshop week</h3>
-          <p>The in-person workshop week{{ with $w.Params.city }}{{ if ne . "To be confirmed" }} in {{ . }}{{ end }}{{ end }}.</p>
+          <p>The in-person workshop week{{ with $w.Params.city }}{{ if ne . "To be confirmed" }} in {{ . }}{{ end }}{{ end }}{{ if $w.Params.map }}, at the {{ $w.Params.venue }}{{ end }}.</p>
           {{- if $hasCohorts }}<p class="cal-when">{{ $workshopDate }}</p>{{ else }}<span class="wip-badge">Dates to be confirmed</span>{{ end }}
+          {{- if $w.Params.map }}<a class="step-link" href="{{ $w.RelPermalink }}#venue">Venue and directions {{ partial "icon.html" "arrow-right" }}</a>{{ end }}
         </div>
       </div>
     </div>

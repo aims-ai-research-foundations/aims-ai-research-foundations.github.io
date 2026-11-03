@@ -5,7 +5,10 @@
 {{- $onboard := .GetPage "onboarding" }}
 {{- $sched := .GetPage "schedule" }}
 
-<section class="workshop-hero" {{ with .Params.heroImage }}style="--hero-img:url('{{ . | relURL }}')"{{ end }}>
+{{- /* heroImage can be a static path (img/...) or a processed gallery photo in assets (gallery/<cohort>/NN.webp). */}}
+{{- $heroSrc := "" }}
+{{- with .Params.heroImage }}{{ $heroSrc = . | relURL }}{{ with resources.Get . }}{{ $heroSrc = (.Resize "1600x webp q70").RelPermalink }}{{ end }}{{ end }}
+<section class="workshop-hero" {{ with $heroSrc }}style="--hero-img:url('{{ . }}')"{{ end }}>
   <div class="container">
     {{ partial "status-pill.html" (partial "workshop-status.html" .) }}
     <h1>{{ .Title }}</h1>
@@ -44,7 +47,7 @@
       {{- /* aboutImage can be a static path (img/...) or a processed gallery photo in assets (gallery/<cohort>/NN.webp). */}}
       {{- $aboutSrc := $aboutImg | relURL }}
       {{- with resources.Get $aboutImg }}{{ $aboutSrc = (.Fill "1200x800 Center webp q80").RelPermalink }}{{ end }}
-      <div class="ws-split-media"><img src="{{ $aboutSrc }}" alt="{{ .Title }} in session" loading="lazy"></div>
+      <div class="ws-split-media"><img src="{{ $aboutSrc }}" alt="{{ .Params.aboutAlt | default (printf "%s in session" .Title) }}" loading="lazy"></div>
     </div>
     {{- else }}
     <div class="prose">{{ .Content }}</div>
@@ -52,7 +55,30 @@
   </div>
 </section>
 
+{{- with .Params.hostInfo }}
 <section class="alt">
+  <div class="container">
+    <div class="ws-split ws-host">
+      {{- with $.Params.venuePhotos }}
+      <div class="ws-split-media ws-host-photos">
+        {{- range . }}
+        <figure><img src="{{ .src | relURL }}" alt="{{ .alt }}" loading="lazy" decoding="async"><figcaption>{{ .caption }}</figcaption></figure>
+        {{- end }}
+      </div>
+      {{- end }}
+      <div class="ws-split-body">
+        {{ partial "section-eyebrow.html" (dict "eyebrow" "Our host" "title" .title) }}
+        <div class="prose">{{ range .body }}<p>{{ . }}</p>{{ end }}</div>
+        {{- if $.Params.map }}
+        <a class="btn btn-primary" href="#venue">{{ partial "icon.html" "map-pin" }} Venue and directions</a>
+        {{- end }}
+      </div>
+    </div>
+  </div>
+</section>
+{{- end }}
+
+<section{{ if not .Params.hostInfo }} class="alt"{{ end }}>
   <div class="container">
     <div class="ws-split ws-programme">
       <div class="ws-split-media ws-split-media-poster"><img src="{{ "img/others/ai-research-foundations-for-higher-education-programme.jpeg" | relURL }}" alt="AI Research Foundations, a Google DeepMind curriculum available on Google Skills" loading="lazy"></div>
@@ -153,6 +179,7 @@
           {{- $loc := .Params.address }}
           {{- if and (not $loc) (ne .Params.city "To be confirmed") }}{{ $loc = .Params.city }}{{ end }}
           <div class="value">{{ if .Params.venue }}{{ .Params.venue }}{{ with $loc }}<br>{{ . }}{{ end }}{{ else }}{{ with $loc }}{{ . }}{{ else }}To be confirmed{{ end }}{{ end }}</div>
+          {{- if .Params.map }}<a class="info-link" href="#venue">See the map {{ partial "icon.html" "arrow-right" }}</a>{{ end }}
         </div>
       </div>
       <div class="info-card">
@@ -176,6 +203,15 @@
     </div>
   </div>
 </section>
+
+{{- if .Params.map }}
+<section id="venue">
+  <div class="container">
+    {{ partial "section-eyebrow.html" (dict "eyebrow" "Venue" "title" "Finding the venue") }}
+    {{ partial "venue-map.html" (dict "page" .) }}
+  </div>
+</section>
+{{- end }}
 
 <section class="alt">
   <div class="container">

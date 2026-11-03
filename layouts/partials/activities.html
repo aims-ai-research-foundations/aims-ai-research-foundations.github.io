@@ -1,11 +1,23 @@
-<div class="ascroll-list">
-  {{- range $i, $a := hugo.Data.programme.activities }}
-  <article class="ascroll-card fade-in" style="--i:{{ $i }}">
-    <span class="ascroll-ico">{{ partial "icon.html" $a.icon }}</span>
-    <div class="ascroll-text">
-      <h3>{{ $a.title }}</h3>
-      <p>{{ $a.body }}</p>
-    </div>
-  </article>
-  {{- end }}
+{{- /* Workshop activity cards (data/programme.yaml activities): photo, icon badge, title, text.
+       The grid sizes itself to its container (workshop page or the narrower Workshops list column). */ -}}
+<div class="act-wrap">
+  <div class="act-grid">
+    {{- $acts := hugo.Data.programme.activities }}
+    {{- range $i, $a := $acts }}
+    <article class="act-card fade-in" style="--i:{{ $i }}">
+      {{- $img := "" }}{{ $big := "" }}
+      {{- with $a.image }}{{ with resources.Get . }}{{ $img = .Fill "720x480 Center webp q78" }}{{ $big = .Fill "1200x800 Center webp q76" }}{{ end }}{{ end }}
+      {{- /* The last card can run full width with the photo at half the row, so it may show larger. */}}
+      {{- $sizes := cond (eq (add $i 1) (len $acts)) "(min-width: 600px) 540px, 100vw" "(min-width: 880px) 340px, (min-width: 600px) 50vw, 100vw" }}
+      <div class="act-media{{ if not $img }} act-media-empty{{ end }}">
+        {{- with $img }}<img src="{{ .RelPermalink }}" srcset="{{ .RelPermalink }} 720w, {{ $big.RelPermalink }} 1200w" sizes="{{ $sizes }}" width="{{ .Width }}" height="{{ .Height }}" alt="{{ $a.alt }}" loading="lazy" decoding="async">{{ end }}
+        <span class="act-ico">{{ partial "icon.html" $a.icon }}</span>
+      </div>
+      <div class="act-body">
+        <h3>{{ $a.title }}</h3>
+        <p>{{ $a.body }}</p>
+      </div>
+    </article>
+    {{- end }}
+  </div>
 </div>

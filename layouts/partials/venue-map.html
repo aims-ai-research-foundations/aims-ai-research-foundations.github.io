@@ -1,0 +1,36 @@
+{{- /* Venue card with directions buttons and an embedded Google Map.
+       Input: dict "page" (the workshop page, needs .Params.map) and "photos" (true adds the
+       venuePhotos under the map, for pages without the host section). */ -}}
+{{- $w := .page -}}
+{{- $m := $w.Params.map -}}
+{{- $q := $m.query -}}{{/* escaped by the template where it is used in a URL */}}
+<div class="venue">
+  <div class="venue-card">
+    <div class="venue-head">
+      <span class="venue-pin">{{ partial "icon.html" "map-pin" }}</span>
+      <div>
+        <h3>{{ $m.name }}</h3>
+        <p class="venue-addr">{{ delimit $m.lines "<br>" | safeHTML }}</p>
+      </div>
+    </div>
+    {{- with $m.notes }}
+    <ul class="venue-notes">
+      {{- range . }}<li>{{ . }}</li>{{ end }}
+    </ul>
+    {{- end }}
+    <div class="venue-cta">
+      <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&destination={{ $q }}" target="_blank" rel="noopener">{{ partial "icon.html" "navigation" }} Get directions</a>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query={{ $q }}" target="_blank" rel="noopener">Open in Google Maps {{ partial "icon.html" "external-link" }}</a>
+    </div>
+  </div>
+  <div class="venue-map">
+    <iframe src="https://maps.google.com/maps?q={{ $q }}&z={{ $m.zoom | default 16 }}&output=embed" title="Map showing the {{ $m.name }}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+  </div>
+</div>
+{{- if .photos }}{{ with $w.Params.venuePhotos }}
+<div class="venue-photos">
+  {{- range . }}
+  <figure><img src="{{ .src | relURL }}" alt="{{ .alt }}" loading="lazy" decoding="async"><figcaption>{{ .caption }}</figcaption></figure>
+  {{- end }}
+</div>
+{{- end }}{{ end }}

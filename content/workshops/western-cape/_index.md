@@ -5,17 +5,19 @@ layout: "workshop"
 status: upcoming
 country: "South Africa"
 city: "Cape Town"
-venue: "Biomedical Research Institute (BMRI), University of Stellenbosch"
-address: "Tygerberg campus, University of Stellenbosch, Cape Town"
-host: "FATE Foundation"
+venue: "Biomedical Research Institute (BMRI), Stellenbosch University"
+address: "Tygerberg campus"
+host: "the Centre for Epidemic Response and Innovation (CERI)"
 audience: "Lecturers and teaching assistants"
-summary: "A Train-the-Trainer workshop hosted at the Biomedical Research Institute, University of Stellenbosch (Tygerberg campus)."
+summary: "The South Africa launch and a week-long Train-the-Trainer workshop, hosted by the Centre for Epidemic Response and Innovation (CERI) at the Biomedical Research Institute, Stellenbosch University."
 weight: 7
-heroImage: "img/workshops/nigeria-cohort-1/gallery/03.jpg"
-thumb: "img/workshops/nigeria-cohort-1/gallery/10.jpg"
+heroImage: "gallery/pretoria-cohort/05.webp"
+thumb: "gallery/pretoria-cohort/01.webp"
+aboutImage: "gallery/pretoria-cohort/01.webp"
+aboutAlt: "AI Champions at the Pretoria workshop"
 universities:
   - "University of Venda"
-  - "University of Stellenbosch"
+  - "Stellenbosch University"
   - "University of the Western Cape"
 cohorts:
   - label: "Workshop week"
@@ -30,9 +32,32 @@ links:
   pilotSite: "https://aims-ai-research-foundations.github.io/pilot-workshop/"
 facilitators: ["ulrich", "michael", "yassir", "ayman", "maharavo", "similoluwa", "toky"]
 hasGallery: false
+# Venue photos: shown in the "Our host" section on the workshop page and under the map on the schedule page.
+venuePhotos:
+  - { src: "img/workshops/western-cape/bmri-aerial.webp", caption: "The BMRI from above", alt: "Aerial view of the Biomedical Research Institute on Stellenbosch University's Tygerberg campus" }
+  - { src: "img/workshops/western-cape/bmri.webp", caption: "The entrance", alt: "The entrance of the Biomedical Research Institute, with the Stellenbosch University sign above it" }
+# "Our host" section on the workshop page.
+hostInfo:
+  title: "Hosted by CERI at the BMRI"
+  body:
+    - "The South Africa launch and the Western Cape Workshop are hosted by the Centre for Epidemic Response and Innovation (CERI) at the Biomedical Research Institute (BMRI), Stellenbosch University."
+    - "CERI is a research centre at Stellenbosch University, led by Prof. Tulio de Oliveira. It is best known for its genomic surveillance work, including identifying and tracking COVID-19 variants, and it has trained hundreds of scientists from across Africa. Today, CERI brings together genomics, data science, artificial intelligence and epidemic modelling, and it runs a large AI research programme."
+    - "The BMRI is a modern research building on Stellenbosch University's Tygerberg campus and the home of CERI."
+# Venue card and map (workshop and schedule pages). query is what Google Maps searches for;
+# check the pin lands on the building if you change it.
+map:
+  name: "Biomedical Research Institute (BMRI)"
+  lines: ["Stellenbosch University, Tygerberg campus", "Francie van Zijl Drive, Tygerberg", "Cape Town 7505, South Africa"]
+  query: "BMRI Stellenbosch University Tygerberg"
+  zoom: 16
+  notes:
+    - "The Tygerberg campus is next to Tygerberg Hospital."
+    - "Look for the glass building with the Stellenbosch University and Biomedical Research Institute sign above the entrance."
+    - "Sessions start at 08:30 each day."
 calendarEmbed: "https://calendar.google.com/calendar/embed?src=c_d0e8c66ddfd21b4d51007d54724348857c926427afda9c753b9d2d861987ce5f%40group.calendar.google.com&ctz=Africa%2FJohannesburg"
 calendarAdd: "https://calendar.google.com/calendar/u/0/r?cid=c_d0e8c66ddfd21b4d51007d54724348857c926427afda9c753b9d2d861987ce5f@group.calendar.google.com"
 scheduleTimezone: "Africa/Johannesburg"
+scheduleNote: "9 to 13 November 2026 at the Biomedical Research Institute (BMRI), Stellenbosch University, Tygerberg campus. Hosted by the Centre for Epidemic Response and Innovation (CERI)."
 scheduleLegend:
   - { cat: "lecture", label: "Technical Content" }
   - { cat: "collab", label: "Pedagogy and Teaching" }
@@ -105,6 +130,6 @@ schedule:
 faqs: []
 ---
 
-The Western Cape Workshop is a fully funded, week-long, in-person training for nominated lecturers and teaching assistants from the University of Venda, the University of Stellenbosch, and the University of the Western Cape.
+The Western Cape Workshop is a fully funded, week-long, in-person training for nominated lecturers and teaching assistants from the University of Venda, Stellenbosch University, and the University of the Western Cape.
 
-It runs from 9 to 13 November 2026 at the [Biomedical Research Institute (BMRI)](https://www.su.ac.za/en/faculties/medicine/research/biomedical-research-institute/biomedical-research-institute) on the University of Stellenbosch's Tygerberg campus. By the end of the week, participants are ready to adapt and confidently deliver the AI Research Foundations curriculum to their own students.
+It runs from 9 to 13 November 2026 and opens with the programme's South Africa launch on Monday 9 November. The launch and the workshop are hosted by the Centre for Epidemic Response and Innovation (CERI) at the [Biomedical Research Institute (BMRI)](https://www.su.ac.za/en/faculties/medicine/research/biomedical-research-institute/biomedical-research-institute) on Stellenbosch University's Tygerberg campus. By the end of the week, participants are ready to adapt and confidently deliver the AI Research Foundations curriculum to their own students.
