@@ -155,6 +155,10 @@
     n.className = "pp-notice" + (kind ? " is-" + kind : "");
     n.innerHTML = html;
     n.hidden = false;
+    if (kind === "error" || kind === "warn") {
+      var r = n.getBoundingClientRect();
+      if (r.top < 0 || r.bottom > window.innerHeight) n.scrollIntoView({ block: "center", behavior: reduce ? "auto" : "smooth" });
+    }
   }
 
   /* ---------- Live updates: conditional questions, "Other" boxes, selected styles, word counts ---------- */
@@ -339,20 +343,58 @@
     var btn = $("[data-submit]");
     var d = collect();
     if (!endpoint) { state.submittedAt = new Date().toISOString(); store(); finish(false); return; }
+    var label = btn.innerHTML;
     btn.disabled = true; btn.classList.add("is-busy");
-    fetch(endpoint, { method: "POST", body: JSON.stringify({ action: "save", id: state.id, token: state.token, data: d,
-      sheet: sheetRows(d), editBase: editBase }) })
-      .then(function (r) { return r.json(); })
-      .then(function (res) {
-        if (!res || !res.ok) throw new Error((res && res.error) || "Save failed");
-        state.id = res.id; state.token = res.token; state.emailed = !!res.emailed;
-        state.submittedAt = new Date().toISOString();
-        store(); finish(true);
+    btn.innerHTML = '<span class="pp-spin" aria-hidden="true"></span> Submitting…';
+    notice("");
+    submitMsg("Saving your proposal. This can take up to a minute, so please keep this page open.");
+    var payload = JSON.stringify({ action: "save", id: state.id, token: state.token, data: d, sheet: sheetRows(d), editBase: editBase });
+    var tries = 0;
+    function attempt() {
+      tries++;
+      var ctrl = window.AbortController ? new AbortController() : null;
+      var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 90000);
+      return fetch(endpoint, { method: "POST", body: payload, signal: ctrl ? ctrl.signal : undefined })
+        .then(function (r) { return r.text(); })
+        .then(function (text) {
+          clearTimeout(timer);
+          var res = null;
+          try { res = JSON.parse(text); } catch (e) { /* Google sent an error page: it was too busy and saved nothing */ }
+          if (!res) {
+            if (tries < 4) {
+              submitMsg("The server is busy right now. Trying again in a few seconds…");
+              return new Promise(function (ok) { setTimeout(ok, tries * 4000); }).then(attempt);
+            }
+            throw new Error("busy");
+          }
+          if (!res.ok) throw new Error("server:" + (res.error || "Save failed"));
+          state.id = res.id; state.token = res.token; state.emailed = !!res.emailed;
+          state.submittedAt = new Date().toISOString();
+          submitMsg("");
+          store(); finish(true);
+        }, function (err) { clearTimeout(timer); throw err; });
+    }
+    attempt()
+      .catch(function (err) {
+        var m = String((err && err.message) || "");
+        var msg = err && err.name === "AbortError"
+          ? "The server took too long to answer, so we can't confirm your proposal was saved. Your answers are safe on this device. Please wait a minute and click Submit again."
+          : m === "busy"
+            ? "The server is very busy right now, so your proposal wasn't submitted yet. Your answers are safe on this device. Please wait a minute and click Submit again."
+            : m.indexOf("server:") === 0
+              ? "Your proposal wasn't submitted: " + m.slice(7) + " Your answers are safe on this device."
+              : "We couldn't reach the server, so your proposal wasn't submitted yet. Your answers are safe on this device. Please check your internet connection and click Submit again.";
+        submitMsg(msg, "error");
+        notice(msg, "error");
       })
-      .catch(function () {
-        notice("We couldn't reach the server, so your proposal wasn't submitted yet. Your answers are safe on this device. Please check your connection and try again.", "error");
-      })
-      .then(function () { btn.disabled = false; btn.classList.remove("is-busy"); });
+      .then(function () { btn.disabled = false; btn.classList.remove("is-busy"); btn.innerHTML = label; });
+  }
+  function submitMsg(text, kind) {
+    var el = $("[data-submit-msg]");
+    if (!el) return;
+    el.textContent = text || "";
+    el.hidden = !text;
+    el.className = "pp-submit-msg" + (kind ? " is-" + kind : "");
   }
   /* One readable column per question for the Google Sheet: heading = the question, value = the answer as shown in the review. */
   var WIDE = ["textarea", "members", "stakeholders", "example", "pitch"];
