@@ -17,7 +17,9 @@ aboutImage: "gallery/pretoria-cohort/01.webp"
 aboutAlt: "AI Champions at the Pretoria workshop"
 universities:
   - "University of Venda"
+  - "University of the Free State"
   - "Stellenbosch University"
+  - "University of Mpumalanga"
   - "University of the Western Cape"
 cohorts:
   - label: "Workshop week"
@@ -130,6 +132,6 @@ schedule:
 faqs: []
 ---
 
-The Western Cape Workshop is a fully funded, week-long, in-person training for nominated lecturers and teaching assistants from the University of Venda, Stellenbosch University, and the University of the Western Cape.
+The Western Cape Workshop is a fully funded, week-long, in-person training for nominated lecturers and teaching assistants from the University of Venda, University of the Free State, Stellenbosch University, University of Mpumalanga and the University of the Western Cape.
 
 It runs from 9 to 13 November 2026 and opens with the programme's South Africa launch on Monday 9 November. The launch and the workshop are hosted by the Centre for Epidemic Response and Innovation (CERI) at the [Biomedical Research Institute (BMRI)](https://www.su.ac.za/en/faculties/medicine/research/biomedical-research-institute/biomedical-research-institute) on Stellenbosch University's Tygerberg campus. By the end of the week, participants are ready to adapt and confidently deliver the AI Research Foundations curriculum to their own students.
