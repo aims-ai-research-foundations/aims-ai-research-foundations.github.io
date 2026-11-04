@@ -17,6 +17,8 @@ disableKinds = ["taxonomy", "term"]
   pilotSiteURL = "https://aims-ai-research-foundations.github.io/pilot-workshop/"
   codeOfConductURL = "https://aims-ai-research-foundations.github.io/pilot-workshop/code-of-conduct/"
   aimsURL = "https://aims.ac.za"
+  # Live session quizzes: self-paced pages live under /live-sessions/; live quizzes run on this Cloudflare Worker
+  liveQuizURL = "https://airf-live-quiz.similoluwa.workers.dev"
 
 [[params.partners]]
   name = "AIMS South Africa"

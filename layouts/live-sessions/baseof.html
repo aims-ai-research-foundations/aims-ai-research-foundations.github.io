@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang | default "en" }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+{{- $pageTitle := printf "%s · AI Research Foundations" .Title }}
+<title>{{ $pageTitle }}</title>
+<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+<meta name="theme-color" content="#361A54">
+<meta property="og:title" content="{{ $pageTitle }}">
+<meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+<meta property="og:type" content="website">
+<meta property="og:image" content="{{ "live-sessions/img/live-session-4.jpg" | absURL }}">
+<link rel="icon" href="{{ "img/logos/logo.svg" | relURL }}" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@600;700&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+{{- range slice "live-sessions/style.css" "live-sessions/sessions/live-session-1.css" "live-sessions/sessions/live-session-2.css" "live-sessions/sessions/live-session-3.css" }}
+{{- $css := resources.Get . | fingerprint }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}">
+{{- end }}
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#app" style="position:absolute;left:-9999px">Skip to content</a>
+<header class="lq-top">
+  <div class="inner">
+    <a class="logo" href="{{ .Site.Home.RelPermalink }}" aria-label="AI Research Foundations for Higher Education, home"><img src="{{ "img/logos/logo-white.svg" | relURL }}" alt="AI Research Foundations for Higher Education" height="40"></a>
+    <nav aria-label="Primary">
+      <a href="{{ "live-sessions/" | relURL }}"{{ if eq .Params.view "cohorts" }} aria-current="page"{{ end }}>Live sessions</a>
+      <a href="{{ "workshops/" | relURL }}">Workshops</a>
+      <a href="{{ .Site.Params.googleSkillsURL }}" target="_blank" rel="noopener">Google Skills</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+  {{- block "main" . }}{{- end }}
+</main>
+<footer class="lq-foot">
+  <span>© {{ now.Year }} AIMS South Africa · AI Research Foundations for Higher Education</span>
+  <a href="{{ .Site.Home.RelPermalink }}">airf.aims.ac.za</a>
+  <a href="mailto:{{ .Site.Params.contactEmail }}">{{ .Site.Params.contactEmail }}</a>
+</footer>
+{{- /* The self-paced quizzes are plain pages here; live quizzes run on the Cloudflare Worker (liveQuizURL). */}}
+{{- $cfg := dict "mode" "static" "home" ("live-sessions/" | relURL) "assets" ("live-sessions/" | relURL) "publicSite" ("live-sessions/" | absURL) "liveOrigin" .Site.Params.liveQuizURL "view" (.Params.view | default "cohort") }}
+{{- with .Params.cohort }}{{ $cfg = merge $cfg (dict "cohort" . "base" (printf "live-sessions/cohort/%s/" . | relURL)) }}{{ end }}
+<script>window.LQ_CONFIG = {{ $cfg | jsonify | safeJS }};</script>
+{{- range slice "live-sessions/content.js" "live-sessions/sessions/live-session-1.js" "live-sessions/sessions/live-session-2.js" "live-sessions/sessions/live-session-3.js" "live-sessions/cohort.js" "live-sessions/app.js" }}
+{{- $js := resources.Get . | fingerprint }}
+<script src="{{ $js.RelPermalink }}"></script>
+{{- end }}
+</body>
+</html>
