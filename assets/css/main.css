@@ -2126,6 +2126,7 @@ section.alt { background: var(--surface-1); }
 .faq-item[open] .faq-marker::after { transform: translateX(-50%) scaleY(0); }
 .faq-answer { padding: 0 1.3rem 1.2rem; }
 .faq-answer p { margin: 0; color: var(--text-soft); }
+.faq-answer p + p { margin-top: 0.75em; }
 
 /* Onboarding sub-nav */
 /* Sticky header height (logo 66px + 0.75rem*2 padding = 90px; logo is 54px
