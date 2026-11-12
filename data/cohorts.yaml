@@ -51,6 +51,11 @@ cohorts:
     flag: "🇿🇦"
     workshop: western-cape
 
+  - id: eastern-cape-cohort
+    name: "Eastern Cape Cohort"
+    flag: "🇿🇦"
+    workshop: eastern-cape
+
   - id: nigeria-cohort-3
     name: "Nigeria Cohort 3"
     flag: "🇳🇬"

@@ -94,6 +94,7 @@ deadlines:
   - { ids: [kenya-cohort-1, pretoria-cohort], cohort: "Kenya Cohort 1, Pretoria Cohort", flags: "🇰🇪 🇿🇦", period: "19 Oct to 29 Nov 2026", proposal: "15 Nov 2026", proposalISO: "2026-11-15", code: "29 Nov 2026", codeISO: "2026-11-29" }
   - { ids: [kenya-cohort-2], cohort: "Kenya Cohort 2", flags: "🇰🇪", period: "26 Oct to 6 Dec 2026", proposal: "22 Nov 2026", proposalISO: "2026-11-22", code: "6 Dec 2026", codeISO: "2026-12-06" }
   - { ids: [western-cape-cohort], cohort: "Western Cape Cohort", flags: "🇿🇦", period: "16 Nov to 27 Dec 2026", proposal: "13 Dec 2026", proposalISO: "2026-12-13", code: "27 Dec 2026", codeISO: "2026-12-27" }
+  - { ids: [eastern-cape-cohort], cohort: "Eastern Cape Cohort", flags: "🇿🇦", period: "To be confirmed", proposal: "To be confirmed", proposalISO: "", code: "To be confirmed", codeISO: "" }
   - { ids: [nigeria-cohort-3, nigeria-cohort-4], cohort: "Nigeria Cohorts 3 and 4", flags: "🇳🇬", period: "To be confirmed", proposal: "To be confirmed", proposalISO: "", code: "To be confirmed", codeISO: "" }
 
 categories:
