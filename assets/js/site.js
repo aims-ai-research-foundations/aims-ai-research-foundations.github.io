@@ -1,3 +1,17 @@
+/* ---------- Open the FAQ named in the URL (#faq-...) ---------- */
+(function () {
+  "use strict";
+  function openFromHash() {
+    var id = decodeURIComponent(location.hash.slice(1));
+    var item = id && document.getElementById(id);
+    if (!item || !item.classList.contains("faq-item")) return;
+    item.open = true;
+    item.scrollIntoView();
+  }
+  openFromHash();
+  window.addEventListener("hashchange", openFromHash);
+})();
+
 /* ---------- Invite-only Discord access ---------- */
 (function () {
   "use strict";

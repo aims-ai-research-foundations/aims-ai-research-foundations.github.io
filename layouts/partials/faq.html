@@ -1,12 +1,19 @@
-{{- /* Input: a slice of dicts with .q and .a */ -}}
+{{- /* Input: a slice of dicts with .q and .a, plus optional .steps (a numbered list after .a)
+       and .after (a paragraph after the steps). All fields may contain HTML;
+       wrap key phrases in <mark> to highlight them. Each question gets an id (faq-<question>),
+       so a link to #faq-... opens it (site.js). */ -}}
 <div class="faq">
   {{- range . }}
-  <details class="faq-item">
+  <details class="faq-item" id="faq-{{ .q | anchorize }}">
     <summary>
       <span class="faq-q">{{ .q }}</span>
       <span class="faq-marker" aria-hidden="true"></span>
     </summary>
-    <div class="faq-answer"><p>{{ .a | safeHTML }}</p></div>
+    <div class="faq-answer">
+      <p{{ if .steps }} class="faq-lead"{{ end }}>{{ .a | safeHTML }}</p>
+      {{- with .steps }}<ol class="faq-steps">{{ range . }}<li>{{ . | safeHTML }}</li>{{ end }}</ol>{{ end }}
+      {{- with .after }}<p>{{ . | safeHTML }}</p>{{ end }}
+    </div>
   </details>
   {{- end }}
 </div>

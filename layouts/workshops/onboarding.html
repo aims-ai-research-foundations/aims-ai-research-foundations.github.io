@@ -213,7 +213,10 @@
   <div class="container">
     <h2>Questions for the team?</h2>
     <p>Whatever you need, we are here to support you before, during, and after the workshop. If anything in this guide is unclear, reach out any time.</p>
-    <a class="btn btn-gold" href="mailto:{{ .Site.Params.contactEmail }}">{{ partial "icon.html" "mail" }} {{ .Site.Params.contactEmail }}</a>
+    <div class="cta-band-actions">
+      <a class="btn btn-gold" href="mailto:{{ .Site.Params.contactEmail }}">{{ partial "icon.html" "mail" }} {{ .Site.Params.contactEmail }}</a>
+      <a class="btn btn-ghost-light" href="{{ $w.RelPermalink }}#faqs">Read the FAQs {{ partial "icon.html" "arrow-right" }}</a>
+    </div>
   </div>
 </section>
 {{ end }}

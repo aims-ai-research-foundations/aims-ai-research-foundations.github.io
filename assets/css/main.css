@@ -2011,6 +2011,7 @@ section.alt { background: var(--surface-1); }
 .cta-band { background: linear-gradient(135deg, var(--indigo-dark), var(--indigo-soft)); color: #fff; text-align: center; }
 .cta-band h2 { color: #fff; }
 .cta-band p { color: rgba(255,255,255,0.85); max-width: 52ch; margin: 0 auto 1.5rem; }
+.cta-band-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; }
 
 /* Threads */
 .threads { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
@@ -2124,9 +2125,17 @@ section.alt { background: var(--surface-1); }
 .faq-marker::before { top: 50%; left: 0; right: 0; height: 2px; transform: translateY(-50%); }
 .faq-marker::after { left: 50%; top: 0; bottom: 0; width: 2px; transform: translateX(-50%); }
 .faq-item[open] .faq-marker::after { transform: translateX(-50%) scaleY(0); }
+#faqs, .faq-item { scroll-margin-top: calc(var(--header-h) + 16px); }
 .faq-answer { padding: 0 1.3rem 1.2rem; }
 .faq-answer p { margin: 0; color: var(--text-soft); }
 .faq-answer p + p { margin-top: 0.75em; }
+.faq-steps { margin: 0.6em 0 0; padding-left: 1.3em; color: var(--text-soft); }
+.faq-steps li + li { margin-top: 0.4em; }
+.faq-steps li::marker { font-weight: 700; color: var(--accent); }
+.faq-answer .faq-lead { font-weight: 700; color: var(--accent); }
+.faq-answer mark { background: rgba(253, 214, 51, 0.38); color: inherit; padding: 0.05em 0.12em; border-radius: 4px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.faq-answer .chan { font-weight: 700; color: var(--accent); background: var(--accent-soft); padding: 0.05em 0.35em; border-radius: 5px; white-space: nowrap; }
+.faq-steps + p { margin-top: 0.75em; }
 
 /* Onboarding sub-nav */
 /* Sticky header height (logo 66px + 0.75rem*2 padding = 90px; logo is 54px
