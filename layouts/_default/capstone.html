@@ -127,16 +127,9 @@
       <div class="gain-card"><span class="gain-ico">{{ partial "icon.html" .icon }}</span><h3>{{ .title }}</h3><p>{{ .body }}</p></div>
       {{- end }}
     </div>
-    <div class="cap-team-split fade-in">
-      <div class="cap-tips">
-        <h3>Tips for a strong team</h3>
-        <ul>{{ range $c.teams.tips }}<li>{{ . }}</li>{{ end }}</ul>
-      </div>
-      <div class="cap-register">
-        <h3>Register your team</h3>
-        <p>Once you have a partner, register your team so we know who is working together.</p>
-        {{- with $c.pairFormURL }}<a class="btn cap-btn-gold" href="{{ . }}" target="_blank" rel="noopener">Register your team {{ partial "icon.html" "external-link" }}</a>{{ else }}{{ $soon | safeHTML }}{{ end }}
-      </div>
+    <div class="cap-tips fade-in">
+      <h3>Tips for a strong team</h3>
+      <ul>{{ range $c.teams.tips }}<li>{{ . }}</li>{{ end }}</ul>
     </div>
   </div>
 </section>

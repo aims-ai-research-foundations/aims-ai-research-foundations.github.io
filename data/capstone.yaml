@@ -13,7 +13,6 @@ buildFor:
   - { flag: "🇰🇪", name: "Kenya" }
   - { flag: "🇿🇦", name: "South Africa" }
   - { flag: "🌍", name: "Africa" }
-pairFormURL: ""        # FATE Foundation's form for registering pairs
 proposalURL: "capstone-hackathon/proposal/"   # the proposal planner on this site (or a full https:// link)
 submissionURL: ""      # where pairs submit their GitHub repository or Google Drive folder
 
@@ -39,7 +38,7 @@ overview:
 
 workflow:
   - title: "Form your pair"
-    body: "Team up with another AI Champion or TA from your cohort and register your team."
+    body: "Team up with another AI Champion or TA from your cohort. You add your team members when you create your capstone project proposal."
     tag: ""
   - title: "Choose your idea"
     body: "Pick a project category and a real-world problem that matters in your context."
