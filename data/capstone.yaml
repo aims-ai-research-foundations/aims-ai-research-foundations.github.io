@@ -39,7 +39,7 @@ overview:
 
 workflow:
   - title: "Form your pair"
-    body: "Team up with another AI Champion or TA from your cohort and register your pair."
+    body: "Team up with another AI Champion or TA from your cohort and register your team."
     tag: ""
   - title: "Choose your idea"
     body: "Pick a project category and a real-world problem that matters in your context."
@@ -78,6 +78,7 @@ teams:
     - { icon: "school", title: "Study buddies too", body: "Your partner is also your study buddy: keep each other on track to complete all the available courses before your deadline." }
   tips:
     - "Choose a partner whose skills complement yours, for example one stronger in coding and one in the problem domain."
+    - "AI Champions can work with their selected TAs to distribute the workload effectively."
     - "Agree early on when and how you will meet, and share the eight roadmap steps between you."
     - "Pick a problem you both care about and can find or create data for."
 

@@ -129,13 +129,13 @@
     </div>
     <div class="cap-team-split fade-in">
       <div class="cap-tips">
-        <h3>Tips for a strong pair</h3>
+        <h3>Tips for a strong team</h3>
         <ul>{{ range $c.teams.tips }}<li>{{ . }}</li>{{ end }}</ul>
       </div>
       <div class="cap-register">
-        <h3>Register your pair</h3>
-        <p>Once you have a partner, register your pair so the team knows who is working together.</p>
-        {{- with $c.pairFormURL }}<a class="btn cap-btn-gold" href="{{ . }}" target="_blank" rel="noopener">Register your pair {{ partial "icon.html" "external-link" }}</a>{{ else }}{{ $soon | safeHTML }}{{ end }}
+        <h3>Register your team</h3>
+        <p>Once you have a partner, register your team so we know who is working together.</p>
+        {{- with $c.pairFormURL }}<a class="btn cap-btn-gold" href="{{ . }}" target="_blank" rel="noopener">Register your team {{ partial "icon.html" "external-link" }}</a>{{ else }}{{ $soon | safeHTML }}{{ end }}
       </div>
     </div>
   </div>
