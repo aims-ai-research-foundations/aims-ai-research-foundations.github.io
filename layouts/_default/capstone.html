@@ -1,44 +1,39 @@
 {{ define "main" }}
 {{- $c := hugo.Data.capstone }}
-{{- $soon := `<span class="cap-soon">Link coming soon</span>` }}
+{{- $proposal := "" }}{{ with $c.proposalURL }}{{ $proposal = cond (hasPrefix . "http") . (. | relURL) }}{{ end }}
+{{- /* Hand-drawn accents: a squiggle under a key phrase, and an arrow pointing at the first journey step. */}}
+{{- $squiggle := `<svg class="cap-squiggle" viewBox="0 0 220 18" preserveAspectRatio="none" aria-hidden="true"><path d="M3 12c26-7 52-9 78-5s49 8 74 4 41-8 62-6" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></svg>` }}
+{{- $arrow := `<svg viewBox="0 0 60 48" aria-hidden="true"><path d="M56 6C40 4 18 12 12 37" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M8.8 29.6 12 38l6.8-5.9" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>` }}
 
 <section class="cap-hero">
-  <div class="container cap-hero-inner">
-    <div class="cap-hero-text">
-      <p class="hero-eyebrow">AI Research Foundations · Post-workshop period</p>
-      <h1>Capstone Project <span>Hackathon</span></h1>
+  <div class="container cap-hero-grid">
+    <div class="cap-hero-copy">
+      <p class="cap-pill">{{ $c.title }}</p>
+      <h1 class="cap-title">{{ $c.hero.headline }}</h1>
       {{- with $c.buildFor }}
       {{- $names := slice }}{{ range . }}{{ $names = $names | append .name }}{{ end }}
       <p class="cap-buildfor">
-        <span class="sr-only">Build for {{ delimit $names ", " " and " }}</span>
-        <span class="cap-buildfor-line" aria-hidden="true">Build for
+        <span class="sr-only">Build for {{ delimit $names ", " " and " }}.</span>
+        <span class="cap-buildfor-line" aria-hidden="true"><span class="cap-buildfor-label">Build for</span>
           <span class="cap-rotate" data-rotate>
             {{- range $i, $b := . }}<span class="cap-rotate-item{{ if eq $i 0 }} is-active{{ end }}"><span class="cap-rotate-flag">{{ $b.flag }}</span> {{ $b.name }}</span>{{ end -}}
           </span>
         </span>
       </p>
       {{- end }}
-      <p class="hero-sub">{{ $c.subline }}</p>
-      {{- $proposal := "" }}{{ with $c.proposalURL }}{{ $proposal = cond (hasPrefix . "http") . (. | relURL) }}{{ end }}
+      <p class="cap-hero-sub">{{ $c.hero.sub }}</p>
       <div class="cap-cta">
         {{- with $proposal }}<a class="btn cap-btn-gold" href="{{ . }}">Create your proposal {{ partial "icon.html" "arrow-right" }}</a>{{ end }}
-        <a class="btn {{ if $proposal }}cap-btn-outline{{ else }}cap-btn-gold{{ end }}" href="#deadlines">See your deadlines {{ partial "icon.html" "arrow-right" }}</a>
-        <a class="btn cap-btn-outline" href="{{ $c.course08URL }}" target="_blank" rel="noopener">Open Course 08 {{ partial "icon.html" "external-link" }}</a>
+        <a class="btn cap-btn-outline" href="#deadlines">See your deadlines</a>
       </div>
-      {{- with $proposal }}<p class="cap-cta-note">The proposal form takes about 10 to 15 minutes, and you can download your proposal as a Word document.</p>{{ end }}
+      <a class="cap-next" href="#deadlines" data-next-deadline hidden><span class="cap-next-dot" aria-hidden="true"></span><span data-next-text></span></a>
     </div>
-    <aside class="cap-dates" aria-label="Key dates">
-      <p class="cap-dates-title">{{ partial "icon.html" "calendar" }} Key dates</p>
-      {{- range $c.deadlines }}{{ if .codeISO }}
-      <div class="cap-date-row" data-proposal="{{ .proposalISO }}" data-code="{{ .codeISO }}">
-        <span class="cap-date-text">
-          <span class="cap-date-cohort"><span class="cap-flags">{{ .flags }}</span> {{ .cohort }}</span>
-          <span class="cap-date-next" data-next>Proposal {{ .proposal }} · Implementation {{ .code }}</span>
-        </span>
-        <span class="cap-days" data-days></span>
-      </div>
-      {{- end }}{{ end }}
-    </aside>
+    <div class="cap-hero-art">
+      {{- with resources.Get "img/capstone/hero.webp" }}
+      {{- $s := .Resize "760x webp q82" }}{{ $l := .Resize "1300x webp q80" }}
+      <img src="{{ $l.RelPermalink }}" srcset="{{ $s.RelPermalink }} 760w, {{ $l.RelPermalink }} 1300w" sizes="(min-width: 980px) 640px, 94vw" width="{{ $l.Width }}" height="{{ $l.Height }}" alt="" fetchpriority="high" decoding="async">
+      {{- end }}
+    </div>
   </div>
 </section>
 
@@ -46,191 +41,179 @@
   <div class="container">{{ range $c.tabs }}<a href="#{{ .id }}">{{ .label }}</a>{{ end }}</div>
 </nav>
 
+{{- /* The challenge */}}
 <section id="overview" class="ob-section cap-sec">
-  <div class="container">
-    {{ partial "section-eyebrow.html" (dict "eyebrow" "Overview" "title" "Build your AI solution for real-world impact") }}
-    <p class="prose-lead fade-in">{{ $c.overview.lead }}</p>
-    <div class="cap-glance fade-in-stagger">
-      {{- range $c.overview.glance }}
-      <div class="cap-tile">
-        <span class="gain-ico">{{ partial "icon.html" .icon }}</span>
-        <div><h3>{{ .title }}</h3><p>{{ .body }}</p></div>
-      </div>
+  <div class="container cap-split">
+    <header class="cap-split-head">
+      <p class="section-eyebrow">The challenge</p>
+      <h2 class="cap-h2">Turn your learning into <span class="cap-mark">impact{{ $squiggle | safeHTML }}</span></h2>
+    </header>
+    <div class="cap-split-body">
+      <p class="cap-lead">{{ $c.challenge.lead }}</p>
+      {{- range $c.challenge.body }}
+      <p>{{ . | safeHTML }}</p>
       {{- end }}
     </div>
-    <div class="cap-roadmap-feature fade-in">
-      <div class="cap-roadmap-text">
+  </div>
+</section>
+
+{{- /* Journey: five steps, with the two deadlines */}}
+<section id="journey" class="ob-section cap-sec cap-band">
+  <div class="container">
+    <header class="cap-head-row">
+      <div>
+        <p class="section-eyebrow">From idea to impact</p>
+        <h2 class="cap-h2">Your hackathon journey</h2>
+      </div>
+    </header>
+    <ol class="cap-journey">
+      {{- range $i, $s := $c.journey }}
+      <li class="cap-jstep">
+        {{- if eq $i 0 }}<span class="cap-start" aria-hidden="true">{{ $arrow | safeHTML }}<span>Start here</span></span>{{ end }}
+        <span class="cap-jnum">{{ add $i 1 }}</span>
+        <h3>{{ $s.title }}</h3>
+        <p>{{ $s.body }}</p>
+        {{- with $s.due }}<p class="cap-due">{{ partial "icon.html" "calendar" }}<span><strong>Due</strong> {{ . }}</span></p>{{ end }}
+        {{- if and $s.proposalLink $proposal }}<a class="cap-jlink" href="{{ $proposal }}">Create your proposal {{ partial "icon.html" "arrow-right" }}</a>{{ end }}
+        {{- if $s.submitLink }}{{ with $c.submissionURL }}<a class="cap-jlink" href="{{ . }}" target="_blank" rel="noopener">Submit your implementation {{ partial "icon.html" "external-link" }}</a>{{ end }}{{ end }}
+      </li>
+      {{- end }}
+    </ol>
+  </div>
+</section>
+
+{{- /* Project paths */}}
+{{- $paths := where $c.categories "example" "!=" "" }}
+{{- $own := where $c.categories "example" "" }}
+<section id="ideas" class="ob-section cap-sec">
+  <div class="container cap-split">
+    <header class="cap-split-head">
+      <p class="section-eyebrow">Project ideas</p>
+      <h2 class="cap-h2">Choose your path</h2>
+      <p class="cap-side-note">Pick one path, combine two, or bring your own idea.</p>
+    </header>
+    <div class="cap-split-body">
+      <ul class="cap-paths">
+        {{- range $paths }}
+        <li class="cap-path">
+          <span class="cap-ico">{{ partial "icon.html" .icon }}</span>
+          <div>
+            <h3>{{ .title }}</h3>
+            <p>{{ .body }}</p>
+            <p class="cap-eg"><span>For example</span>{{ .example }}</p>
+          </div>
+        </li>
+        {{- end }}
+        {{- range $own }}
+        <li class="cap-path cap-path-own">
+          <span class="cap-ico">{{ partial "icon.html" .icon }}</span>
+          <div><h3>{{ .title }}</h3><p>{{ .body }}</p></div>
+        </li>
+        {{- end }}
+      </ul>
+      <p class="cap-label">More ideas to spark yours</p>
+      <ul class="cap-ideas">{{ range $c.moreIdeas }}<li>{{ . }}</li>{{ end }}</ul>
+    </div>
+  </div>
+</section>
+
+{{- /* Course 08: the Responsible Innovation Roadmap */}}
+<section id="roadmap" class="ob-section cap-sec cap-band">
+  <div class="container">
+    <div class="cap-roadmap">
+      <div class="cap-roadmap-head">
         <p class="section-eyebrow">Course 08</p>
-        <h3>The Responsible Innovation Roadmap</h3>
-        <p>Every pair follows the same eight steps, from the problem you want to solve to a full plan you can share. Course 08 on Google Skills walks you through each one.</p>
+        <h2 class="cap-h2">The Responsible Innovation Roadmap</h2>
+      </div>
+      <div class="cap-roadmap-text">
+        <p>{{ $c.roadmapIntro }}</p>
+        <p>{{ $c.proposalContents }}</p>
         <a class="btn btn-primary" href="{{ $c.course08URL }}" target="_blank" rel="noopener">Open Course 08 on Google Skills {{ partial "icon.html" "external-link" }}</a>
       </div>
-      <figure class="cap-roadmap-figure">
-        <img src="{{ "img/capstone/roadmap.gif" | relURL }}" alt="The Responsible Innovation Roadmap: eight steps from defining your problem statement to reviewing your full plan" loading="lazy" decoding="async">
-      </figure>
     </div>
-    <div class="callout callout-gold cap-prereq fade-in">
-      <h3>Your way into the Community of Practice</h3>
-      <p>Completing all the available courses and your capstone project during the post-workshop period is a prerequisite for joining the Community of Practice.</p>
-    </div>
-  </div>
-</section>
-
-<section id="roadmap" class="ob-section cap-sec alt">
-  <div class="container">
-    {{ partial "section-eyebrow.html" (dict "eyebrow" "Capstone Project Roadmap" "title" "Your capstone, step by step") }}
-    <ol class="cap-flow">
-      {{- range $i, $w := $c.workflow }}
-      <li class="cap-flow-step fade-in">
-        <span class="cap-flow-num">{{ add $i 1 }}</span>
-        <div class="cap-flow-body">
-          <h3>{{ $w.title }}</h3>
-          <p>{{ $w.body }}</p>
-          {{- if or $w.tag (and $w.proposalLink $c.proposalURL) }}
-          <div class="cap-flow-foot">
-            {{- with $w.tag }}<span class="cap-flow-tag">Deadline: {{ . }}</span>{{ end }}
-            {{- if and $w.proposalLink $c.proposalURL }}<a class="cap-flow-link" href="{{ if hasPrefix $c.proposalURL "http" }}{{ $c.proposalURL }}{{ else }}{{ $c.proposalURL | relURL }}{{ end }}">Create your proposal {{ partial "icon.html" "arrow-right" }}</a>{{ end }}
-          </div>
-          {{- end }}
-        </div>
-      </li>
-      {{- end }}
-    </ol>
-
-    <h3 class="cap-subhead fade-in">The eight roadmap steps</h3>
-    <div class="cap-steps8 fade-in-stagger">
+    <ol class="cap-steps8">
       {{- range $i, $r := $c.roadmap }}
-      <div class="cap-step8"><span>{{ add $i 1 }}</span><h4>{{ $r.title }}</h4><p>{{ $r.body }}</p></div>
-      {{- end }}
-    </div>
-
-    <div class="cap-submit fade-in">
-      <div class="cap-submit-card">
-        <h3>Submit your proposal</h3>
-        <p>Due no later than two weeks before your cohort's post-workshop period ends. Planning it takes 10 to 15 minutes.</p>
-        {{- with $c.proposalURL }}{{ if hasPrefix . "http" }}<a class="btn btn-primary" href="{{ . }}" target="_blank" rel="noopener">Submit proposal {{ partial "icon.html" "external-link" }}</a>{{ else }}<a class="btn btn-primary" href="{{ . | relURL }}">Create your proposal {{ partial "icon.html" "arrow-right" }}</a>{{ end }}{{ else }}{{ $soon | safeHTML }}{{ end }}
-      </div>
-      <div class="cap-submit-card">
-        <h3>Submit your implementation</h3>
-        <p>Due by the end of your cohort's post-workshop period.</p>
-        {{- with $c.submissionURL }}<a class="btn btn-primary" href="{{ . }}" target="_blank" rel="noopener">Submit implementation {{ partial "icon.html" "external-link" }}</a>{{ else }}{{ $soon | safeHTML }}{{ end }}
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="teams" class="ob-section cap-sec">
-  <div class="container">
-    {{ partial "section-eyebrow.html" (dict "eyebrow" "Team formation" "title" "Find your partner") }}
-    <div class="cap-cards3 fade-in-stagger">
-      {{- range $c.teams.rules }}
-      <div class="gain-card"><span class="gain-ico">{{ partial "icon.html" .icon }}</span><h3>{{ .title }}</h3><p>{{ .body }}</p></div>
-      {{- end }}
-    </div>
-    <div class="cap-tips fade-in">
-      <h3>Tips for a strong team</h3>
-      <ul>{{ range $c.teams.tips }}<li>{{ . }}</li>{{ end }}</ul>
-    </div>
-  </div>
-</section>
-
-<section id="judging" class="ob-section cap-sec alt">
-  <div class="container">
-    {{ partial "section-eyebrow.html" (dict "eyebrow" "Judging criteria" "title" "How projects are judged" "lead" "The AIMS South Africa team judges submitted projects and selects the top three in each cohort, considering:") }}
-    <ol class="cap-criteria fade-in-stagger">
-      {{- range $i, $j := $c.judging }}
-      <li class="cap-criterion">
-        <span class="cap-criterion-num">{{ printf "%02d" (add $i 1) }}</span>
-        <span class="gain-ico">{{ partial "icon.html" $j.icon }}</span>
-        <h3>{{ $j.title }}</h3>
-        <p>{{ $j.body }}</p>
+      <li class="cap-step">
+        <div class="cap-step-top"><span class="cap-step-n">{{ printf "%02d" (add $i 1) }}</span>{{ with $r.icon }}<span class="cap-ico">{{ partial "icon.html" . }}</span>{{ end }}</div>
+        <h3>{{ $r.title }}</h3>
+        <p>{{ $r.body }}</p>
       </li>
       {{- end }}
     </ol>
-    <div class="cap-award fade-in">
-      <span class="cap-award-ico" aria-hidden="true">🏆</span>
-      <div><h3>Recognition</h3><p>The top three projects in each cohort will be recognised by FATE Foundation, and outstanding projects will be spotlighted in the Community of Practice.</p></div>
+  </div>
+</section>
+
+{{- /* Teams */}}
+<section id="teams" class="ob-section cap-sec">
+  <div class="container cap-split">
+    <header class="cap-split-head">
+      <p class="section-eyebrow">Team formation</p>
+      <h2 class="cap-h2">Build better, together</h2>
+      {{- with $c.teams.note }}<p class="cap-side-note">{{ . }}</p>{{ end }}
+    </header>
+    <div class="cap-split-body">
+      <ul class="cap-rules">
+        {{- range $c.teams.rules }}
+        <li><span class="cap-ico">{{ partial "icon.html" .icon }}</span><div><h3>{{ .title }}</h3><p>{{ .body }}</p></div></li>
+        {{- end }}
+      </ul>
+      <p class="cap-label">Tips for a strong team</p>
+      <ul class="cap-checks">{{ range $c.teams.tips }}<li>{{ partial "icon.html" "check" }}<span>{{ . }}</span></li>{{ end }}</ul>
     </div>
   </div>
 </section>
 
-<section id="deadlines" class="ob-section cap-sec">
+{{- /* Resources: dark band */}}
+<section id="resources" class="ob-section cap-sec cap-dark">
   <div class="container">
-    {{ partial "section-eyebrow.html" (dict "eyebrow" "Deadlines" "title" "Submission deadlines by cohort" "lead" "Proposals are due two weeks before your post-workshop period ends; implementations are due on its last day.") }}
-    <div class="table-scroll fade-in">
-      <table class="course-table cap-table">
-        <thead><tr><th>Cohort</th><th>Post-workshop period</th><th>Capstone proposal</th><th>Implementation</th></tr></thead>
-        <tbody>
-          {{- range $c.deadlines }}
-          <tr><td class="course-name"><span class="cap-flags">{{ .flags }}</span> {{ .cohort }}</td><td data-label="Post-workshop period">{{ .period }}</td><td data-label="Capstone proposal" data-date="{{ .proposalISO }}">{{ .proposal }}</td><td data-label="Implementation" data-date="{{ .codeISO }}">{{ .code }}</td></tr>
-          {{- end }}
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
-
-<section id="ideas" class="ob-section cap-sec alt">
-  <div class="container">
-    {{ partial "section-eyebrow.html" (dict "eyebrow" "Project ideas" "title" "Choose your path") }}
-    {{- $paths := where $c.categories "example" "!=" "" }}
-    {{- $own := where $c.categories "example" "" }}
-    <div class="cap-paths fade-in-stagger">
-      {{- range $paths }}
-      <div class="cap-path">
-        <div class="cap-path-head">
-          <span class="gain-ico">{{ partial "icon.html" .icon }}</span>
-          <div><h3>{{ .title }}</h3><p>{{ .body }}</p></div>
-        </div>
-        <p class="cap-example"><span>Example</span> {{ .example }}</p>
+    <header class="cap-head-row">
+      <div>
+        <p class="section-eyebrow">Resources</p>
+        <h2 class="cap-h2">You don't have to start from scratch</h2>
       </div>
-      {{- end }}
-    </div>
-    {{- range $own }}
-    <div class="cap-path-own fade-in">
-      <span class="gain-ico">{{ partial "icon.html" .icon }}</span>
-      <div><h3>{{ .title }}</h3><p>{{ .body }}</p></div>
-    </div>
-    {{- end }}
-    <h3 class="cap-subhead fade-in">More ideas to spark yours</h3>
-    <div class="cap-ideas fade-in-stagger">{{ range $c.moreIdeas }}<span>{{ . }}</span>{{ end }}</div>
-    <h3 class="cap-subhead fade-in">Start from a recipe</h3>
-    <p class="cap-note fade-in">Each recipe is a complete, working project you can run in Google Colab, then adapt to your own problem, language and data.</p>
-    <div class="cap-recipes fade-in-stagger">
-      {{- range $c.recipes }}
-      <a class="cap-recipe" href="{{ $c.recipesURL }}/tree/main/projects/{{ .path }}" target="_blank" rel="noopener">
-        <span class="cap-recipe-tag">{{ .tag }}</span>
-        <span class="cap-recipe-title">{{ .title }}</span>
-        <span class="cap-recipe-go">Open recipe {{ partial "icon.html" "external-link" }}</span>
-      </a>
-      {{- end }}
-    </div>
-  </div>
-</section>
-
-<section id="resources" class="ob-section cap-sec">
-  <div class="container">
-    {{ partial "section-eyebrow.html" (dict "eyebrow" "Resources" "title" "You don't have to start from scratch") }}
-    <div class="cap-cards4 fade-in-stagger">
+    </header>
+    <ul class="cap-res">
       {{- range $r := $c.resources }}
-      <div class="gain-card">
-        <span class="gain-ico">{{ partial "icon.html" $r.icon }}</span>
-        <h3>{{ $r.title }}</h3>
-        <p>{{ $r.body | safeHTML }}</p>
-        {{- with $r.link }}<a class="cap-link" href="{{ . }}" target="_blank" rel="noopener">{{ $r.linkText }} {{ partial "icon.html" "external-link" }}</a>{{ end }}
-      </div>
+      <li>
+        <span class="cap-ico">{{ partial "icon.html" $r.icon }}</span>
+        <div>
+          <h3>{{ $r.title }}</h3>
+          <p>{{ $r.body | safeHTML }}</p>
+          {{- with $r.link }}<a class="cap-res-link" href="{{ . }}" target="_blank" rel="noopener">{{ $r.linkText }} {{ partial "icon.html" "external-link" }}</a>{{ end }}
+          {{- with $r.dialog }}<button type="button" class="cap-res-link" data-dialog-open="{{ . }}">{{ $r.linkText }} {{ partial "icon.html" "arrow-right" }}</button>{{ end }}
+        </div>
+      </li>
       {{- end }}
-    </div>
-    <h3 class="cap-subhead fade-in">How to create your dataset?</h3>
+    </ul>
+    <dialog class="cap-modal" id="recipes" aria-labelledby="recipes-title">
+      <div class="cap-modal-box">
+        <header class="cap-modal-head">
+          <div>
+            <p class="cap-guide-kicker">Capstone code recipes</p>
+            <h2 id="recipes-title">Start from a recipe</h2>
+            <p>Each recipe is a complete, working project you can run in Google Colab, then adapt to your own problem, language and data.</p>
+          </div>
+          <button type="button" class="cap-modal-close" data-dialog-close aria-label="Close">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </header>
+        <ul class="cap-recipes">
+          {{- range $c.recipes }}
+          <li><a href="{{ $c.recipesURL }}/tree/main/projects/{{ .path }}" target="_blank" rel="noopener"><span class="cap-recipe-tag">{{ .tag }}</span><span class="cap-recipe-title">{{ .title }}</span>{{ partial "icon.html" "external-link" }}</a></li>
+          {{- end }}
+        </ul>
+        <a class="cap-modal-foot" href="{{ $c.recipesURL }}" target="_blank" rel="noopener">See all the recipes on GitHub {{ partial "icon.html" "external-link" }}</a>
+      </div>
+    </dialog>
     {{- with $c.datasetGuide }}
-    <div class="cap-guide fade-in">
+    <div class="cap-guide">
       <span class="cap-guide-emoji" aria-hidden="true">{{ .emoji }}</span>
       <div class="cap-guide-text">
         <p class="cap-guide-kicker">{{ .subtitle }}</p>
         <h3>{{ .title }}</h3>
         <p>{{ .intro }}</p>
       </div>
-      <button type="button" class="btn btn-primary cap-guide-btn" data-dialog-open="dataset-guide">View the {{ len .steps }} steps {{ partial "icon.html" "arrow-right" }}</button>
+      <button type="button" class="btn cap-guide-btn" data-dialog-open="dataset-guide">View the {{ len .steps }} steps {{ partial "icon.html" "arrow-right" }}</button>
     </div>
     <dialog class="cap-modal" id="dataset-guide" aria-labelledby="dataset-guide-title">
       <div class="cap-modal-box">
@@ -258,11 +241,79 @@
   </div>
 </section>
 
-<section id="faq" class="ob-section cap-sec alt">
+{{- /* Judging */}}
+<section id="judging" class="ob-section cap-sec">
+  <div class="container cap-split">
+    <header class="cap-split-head">
+      <p class="section-eyebrow">Judging criteria</p>
+      <h2 class="cap-h2">What makes a great capstone project?</h2>
+      <p class="cap-side-note">The AIMS South Africa team judges the submitted projects and selects the top three in each cohort.</p>
+    </header>
+    <div class="cap-split-body">
+      <table class="cap-criteria">
+        <thead><tr><th scope="col">Criterion</th><th scope="col">What we look for</th></tr></thead>
+        <tbody>
+          {{- range $c.judging }}
+          <tr><th scope="row"><span class="cap-crit">{{ partial "icon.html" .icon }}{{ .title }}</span></th><td>{{ .body }}</td></tr>
+          {{- end }}
+        </tbody>
+      </table>
+      <p class="cap-award"><span class="cap-award-ico">{{ partial "icon.html" "award" }}</span><span><strong>Recognition.</strong> The top three projects in each cohort will be recognised by FATE Foundation, and outstanding projects will be spotlighted in the Community of Practice.</span></p>
+    </div>
+  </div>
+</section>
+
+{{- /* Deadlines */}}
+<section id="deadlines" class="ob-section cap-sec cap-band">
   <div class="container">
-    {{ partial "section-eyebrow.html" (dict "eyebrow" "FAQ" "title" "Frequently asked questions") }}
-    {{ partial "faq.html" $c.faqs }}
-    <p class="cap-contact">Anything else? Email <a href="mailto:{{ site.Params.contactEmail }}">{{ site.Params.contactEmail }}</a>.</p>
+    <header class="cap-head-row">
+      <div>
+        <p class="section-eyebrow">Key dates</p>
+        <h2 class="cap-h2">Cohort deadlines</h2>
+        <p class="cap-head-sub">Proposals are due two weeks before your post-workshop period ends. Implementations are due on its last day.</p>
+      </div>
+    </header>
+    <div class="table-scroll">
+      <table class="course-table cap-table">
+        <thead><tr><th>Cohort</th><th>Post-workshop period</th><th>Capstone proposal</th><th>Implementation</th></tr></thead>
+        <tbody>
+          {{- range $c.deadlines }}
+          <tr data-cohort="{{ .cohort }}" data-proposal="{{ .proposalISO }}" data-code="{{ .codeISO }}"><td class="course-name"><span class="cap-flags">{{ .flags }}</span> {{ .cohort }}</td><td data-label="Post-workshop period">{{ .period }}</td><td data-label="Capstone proposal" data-kind="proposal">{{ .proposal }}</td><td data-label="Implementation" data-kind="code">{{ .code }}</td></tr>
+          {{- end }}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+{{- /* FAQ */}}
+<section id="faq" class="ob-section cap-sec">
+  <div class="container cap-split">
+    <header class="cap-split-head">
+      <p class="section-eyebrow">FAQ</p>
+      <h2 class="cap-h2">Frequently Asked Questions</h2>
+      <p class="cap-side-note">Anything else? Email <a href="mailto:{{ site.Params.contactEmail }}">{{ site.Params.contactEmail }}</a>.</p>
+    </header>
+    <div class="cap-split-body">
+      {{ partial "faq.html" $c.faqs }}
+    </div>
+  </div>
+</section>
+
+<section class="cap-final">
+  <div class="container">
+    <div class="cap-final-panel">
+      <span class="cap-rays" aria-hidden="true"></span>
+      <div class="cap-final-copy">
+        <p class="section-eyebrow">Ready to build?</p>
+        <h2>Start with your <span class="cap-mark">proposal.{{ $squiggle | safeHTML }}</span></h2>
+        <p>It takes about 10 to 15 minutes, and you can download it as a Word document.</p>
+      </div>
+      <div class="cap-cta">
+        {{- with $proposal }}<a class="btn cap-btn-gold" href="{{ . }}">Create your proposal {{ partial "icon.html" "arrow-right" }}</a>{{ end }}
+        <a class="btn cap-btn-outline" href="{{ $c.course08URL }}" target="_blank" rel="noopener">Open Course 08 {{ partial "icon.html" "external-link" }}</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -272,45 +323,53 @@
   var day = function (iso) { return iso ? new Date(iso + "T00:00:00") : null; };
   var fmt = function (d) { return d.toLocaleDateString("en-GB", { day: "numeric", month: "short" }); };
   var left = function (n) { return n === 0 ? "today" : n === 1 ? "tomorrow" : "in " + n + " days"; };
-  document.querySelectorAll(".cap-date-row").forEach(function (row) {
-    var out = row.querySelector("[data-next]");
-    var steps = [["Proposal", day(row.dataset.proposal)], ["Implementation", day(row.dataset.code)]];
-    for (var i = 0; i < steps.length; i++) {
-      var d = steps[i][1]; if (!d) continue;
-      var n = Math.round((d - today) / 864e5);
-      if (n >= 0) {
-        out.innerHTML = "<strong>" + steps[i][0] + "</strong> due " + fmt(d);
-        row.querySelector("[data-days]").textContent = left(n);
-        row.dataset.left = n;
-        return;
-      }
-    }
-    out.textContent = "Submissions closed"; row.classList.add("is-past");
-  });
-  var rows = Array.prototype.slice.call(document.querySelectorAll(".cap-date-row[data-left]"));
-  rows.sort(function (a, b) { return a.dataset.left - b.dataset.left; });
-  if (rows[0]) rows[0].classList.add("is-next");
 
-  // Hero "Build for ..." rotator. Each word slides up and the box eases to its new width.
+  // Deadlines: strike out past dates, highlight the cohort with the next deadline,
+  // and name that deadline under the hero buttons.
+  var next = null;
+  document.querySelectorAll(".cap-table tr[data-cohort]").forEach(function (tr) {
+    [["proposal", "Proposal"], ["code", "Implementation"]].forEach(function (k) {
+      var d = day(tr.dataset[k[0]]);
+      if (!d) return;
+      var n = Math.round((d - today) / 864e5);
+      var cell = tr.querySelector('[data-kind="' + k[0] + '"]');
+      if (n < 0) { if (cell) cell.classList.add("is-past"); return; }
+      if (!next || n < next.n) next = { n: n, tr: tr, what: k[1], d: d };
+    });
+  });
+  if (next) {
+    next.tr.classList.add("is-next");
+    var link = document.querySelector("[data-next-deadline]");
+    if (link) {
+      var out = link.querySelector("[data-next-text]");
+      var label = document.createElement("strong");
+      label.textContent = "Next deadline";
+      out.appendChild(label);
+      out.appendChild(document.createTextNode(" " + next.tr.dataset.cohort + " · " + next.what.toLowerCase() + " due " + fmt(next.d) + ", " + left(next.n)));
+      link.hidden = false;
+    }
+  }
+
+  // Hero "Build for ..." rotator. Each place slides up and the box eases to its new width.
   document.querySelectorAll("[data-rotate]").forEach(function (box) {
     var items = Array.prototype.slice.call(box.children);
     if (items.length < 2) return;
     var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    var show = function (from, to) {
-      box.style.width = items[from].offsetWidth + "px";
-      void box.offsetWidth; // lock in the current width so the change below animates
-      items[from].classList.remove("is-active");
-      if (!reduce) items[from].classList.add("is-leaving");
-      items[to].classList.add("is-active");
-      box.style.width = items[to].offsetWidth + "px";
-      setTimeout(function () { items[from].classList.remove("is-leaving"); }, 600);
-    };
     if (reduce) {
       // No animation: show the last place and let the box size itself.
       items[0].classList.remove("is-active");
       items[items.length - 1].classList.add("is-active");
       return;
     }
+    var show = function (from, to) {
+      box.style.width = items[from].offsetWidth + "px";
+      void box.offsetWidth; // lock in the current width so the change below animates
+      items[from].classList.remove("is-active");
+      items[from].classList.add("is-leaving");
+      items[to].classList.add("is-active");
+      box.style.width = items[to].offsetWidth + "px";
+      setTimeout(function () { items[from].classList.remove("is-leaving"); }, 600);
+    };
     var i = 0;
     // Re-measure once the heading font has loaded, so the box never clips the word.
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () {
@@ -318,8 +377,8 @@
     });
     setInterval(function () {
       if (document.hidden) return;
-      var next = (i + 1) % items.length;
-      show(i, next); i = next;
+      var to = (i + 1) % items.length;
+      show(i, to); i = to;
     }, 2400);
   });
 
@@ -329,9 +388,6 @@
     if (!dlg || typeof dlg.showModal !== "function") return;
     btn.addEventListener("click", function () { dlg.showModal(); });
     dlg.addEventListener("click", function (e) { if (e.target === dlg || e.target.closest("[data-dialog-close]")) dlg.close(); });
-  });
-  document.querySelectorAll(".cap-table td[data-date]").forEach(function (td) {
-    var d = day(td.dataset.date); if (d && d < today) td.classList.add("is-past");
   });
 })();
 </script>

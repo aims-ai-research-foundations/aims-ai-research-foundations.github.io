@@ -3,10 +3,9 @@
 # Links left empty ("") show as "coming soon" on the page until they are filled in.
 
 title: "Capstone Project Hackathon"
-subline: "Work in pairs to build a machine learning solution to a real-world problem in your own context, following the Responsible Innovation Roadmap in Course 08."
 course08URL: "https://www.skills.google/paths/3135/course_templates/1557"
-# Hero line "Build for <flag> <place>", rotating through these. The last one is
-# also what people who turn off animations see.
+# Hero headline: "Solve a real problem with AI." then "Build for <flag> <place>", rotating
+# through these. The last one is also what people who turn off animations see.
 buildFor:
   - { flag: "🇳🇬", name: "Nigeria" }
   - { flag: "🇬🇭", name: "Ghana" }
@@ -14,72 +13,62 @@ buildFor:
   - { flag: "🇿🇦", name: "South Africa" }
   - { flag: "🌍", name: "Africa" }
 proposalURL: "capstone-hackathon/proposal/"   # the proposal planner on this site (or a full https:// link)
-submissionURL: ""      # where pairs submit their GitHub repository or Google Drive folder
+submissionURL: ""      # where teams submit their GitHub repository or Google Drive folder
+
+hero:
+  headline: "Solve a real problem with AI."
+  sub: "Form a team from your cohort and build a responsible AI solution, from problem to prototype."
 
 tabs:
   - { id: "overview", label: "Overview" }
-  - { id: "roadmap", label: "Project roadmap" }
-  - { id: "teams", label: "Team formation" }
-  - { id: "judging", label: "Judging criteria" }
-  - { id: "deadlines", label: "Deadlines" }
+  - { id: "journey", label: "Journey" }
   - { id: "ideas", label: "Project ideas" }
+  - { id: "roadmap", label: "Roadmap" }
+  - { id: "teams", label: "Teams" }
   - { id: "resources", label: "Resources" }
+  - { id: "judging", label: "Judging" }
+  - { id: "deadlines", label: "Deadlines" }
   - { id: "faq", label: "FAQ" }
 
-overview:
-  lead: "During the post-workshop period, you and a partner from your cohort build a machine learning solution to a real-world problem in your own context. You apply responsible innovation practices from problem definition through to implementation, following the roadmap you walked through during the workshop."
-  glance:
-    - { icon: "users", title: "Who takes part", body: "All AI Champions and TAs in each cohort." }
-    - { icon: "groups", title: "Teams", body: "Pairs within the same cohort." }
-    - { icon: "focus", title: "Categories", body: "Classification, summarisation, conversational assistant, a combination of two, or your own path." }
-    - { icon: "presentation", title: "Deliverables", body: "A capstone project proposal, and a GitHub repository or Google Drive folder with your implementation." }
-    - { icon: "smile", title: "Recognition", body: "The top three projects in each cohort are recognised." }
-    - { icon: "lightbulb", title: "Support", body: "Contextualised datasets, code recipes, and technical support on Discord." }
+# The challenge: a bold lead, then paragraphs (HTML allowed).
+challenge:
+  lead: "Done with the courses? Now it's time to build."
+  body:
+    - "The Capstone Project Hackathon is your chance to team up and build a real-world machine learning solution to a problem in your own context, applying what you've learnt in the courses."
+    - "You will apply responsible innovation practices from problem definition to implementation, following the Responsible Innovation Roadmap in <a href=\"https://www.skills.google/paths/3135/course_templates/1557\" target=\"_blank\" rel=\"noopener\">Course 08</a>."
 
-workflow:
-  - title: "Form your pair"
-    body: "Team up with another AI Champion or TA from your cohort. You add your team members when you create your capstone project proposal."
-    tag: ""
-  - title: "Choose your idea"
-    body: "Pick a project category and a real-world problem that matters in your context."
-    tag: ""
-  - title: "Follow the Responsible Innovation Roadmap"
-    body: "Work through the eight steps in Course 08, from your problem statement to your full plan."
-    tag: ""
-  - title: "Submit your capstone project proposal"
-    body: "A document covering your problem statement, data collection plan, impact statement, stakeholder analysis, governance blueprint, sustainability plan and a one-sentence elevator pitch."
-    tag: "Two weeks before your post-workshop period ends"
-    proposalLink: true   # shows a "Create your proposal" link to the proposal form
-  - title: "Build and submit your implementation"
-    body: "A GitHub repository or Google Drive folder with your code, Colab notebooks, data card, model card and any other documentation. GitHub is highly recommended, but Google Drive is also accepted."
-    tag: "The end of your post-workshop period"
-  - title: "Judging and recognition"
-    body: "The AIMS South Africa team judges the projects and selects the top three in each cohort. FATE Foundation organises the recognition."
-    tag: ""
-  - title: "Join the Community of Practice"
-    body: "Completing all the available courses and your capstone project unlocks your place in the Community of Practice."
-    tag: ""
+# "Your hackathon journey": five steps. due: shown under the step; proposalLink / submitLink add a link.
+journey:
+  - { title: "Form a team", body: "Team up with AI Champions and TAs from your cohort." }
+  - { title: "Pick a problem", body: "Every great AI project starts with a problem that affects real people, not a solution. Find one that matters where you are, then pick your path." }
+  - { title: "Plan and propose", body: "Work through the roadmap in Course 08, then submit your proposal.", due: "Two weeks before your post-workshop period ends", proposalLink: true }
+  - { title: "Build and submit", body: "Share your code, notebooks, data card and model card on GitHub or Google Drive.", due: "The last day of your post-workshop period", submitLink: true }
+  - { title: "Get recognised", body: "The top three in each cohort are recognised, and finishing unlocks the Community of Practice." }
 
+roadmapIntro: "Every team follows the same eight steps, from the problem you want to solve to a full plan you can share. Course 08 on Google Skills walks you through each one."
+proposalContents: "Your proposal brings it together: a problem statement, data collection plan, impact statement, stakeholder analysis, governance blueprint and sustainability plan."
+# The eight Course 08 steps; icon is shown on each step.
 roadmap:
-  - { title: "Define your problem statement", body: "The problem, who it affects and why it matters in your context." }
-  - { title: "Create your data card", body: "Where your data comes from, what it contains and its limitations." }
-  - { title: "Develop your impact statement", body: "The change your solution should make and how you will measure it." }
-  - { title: "Conduct a stakeholder analysis", body: "Who is affected by or has influence over your solution." }
-  - { title: "Draft your governance blueprint", body: "How risks, privacy and accountability will be managed." }
-  - { title: "Build your sustainability plan", body: "How the solution can be maintained and grow after the hackathon." }
-  - { title: "Share your work", body: "Present your plan and solution to others." }
-  - { title: "Review your full plan", body: "Check that every part is complete and consistent before you submit." }
+  - { icon: "focus", title: "Define your problem statement", body: "The problem, who it affects and why it matters in your context." }
+  - { icon: "database", title: "Create your data card", body: "Where your data comes from, what it contains and its limitations." }
+  - { icon: "globe", title: "Develop your impact statement", body: "The change your solution should make and how you will measure it." }
+  - { icon: "users", title: "Conduct a stakeholder analysis", body: "Who is affected by or has influence over your solution." }
+  - { icon: "shield-check", title: "Draft your governance blueprint", body: "How risks, privacy and accountability will be managed." }
+  - { icon: "leaf", title: "Build your sustainability plan", body: "How the solution can be maintained and grow after the hackathon." }
+  - { icon: "presentation", title: "Share your work", body: "Present your plan and solution to others." }
+  - { icon: "check", title: "Review your full plan", body: "Check that every part is complete and consistent before you submit." }
 
 teams:
   rules:
-    - { icon: "groups", title: "Work in pairs", body: "Every capstone project is built by two people: AI Champions, TAs, or one of each." }
-    - { icon: "users", title: "Stay in your cohort", body: "Both partners come from the same cohort. Your partner can be from your own university or another university in your cohort." }
-    - { icon: "school", title: "Study buddies too", body: "Your partner is also your study buddy: keep each other on track to complete all the available courses before your deadline." }
+    - { icon: "users", title: "Form a team", body: "Every capstone project is built by a team of AI Champions, TAs, or both." }
+    - { icon: "network", title: "Stay in your cohort", body: "Everyone in your team comes from the same cohort. Teammates can be from your own university or another university in your cohort." }
+    - { icon: "book-open", title: "Study buddies too", body: "Your teammates are also your study buddies: keep each other on track to complete all the available courses before your deadline." }
+  note: "You add your team members when you create your capstone proposal."
   tips:
-    - "Choose a partner whose skills complement yours, for example one stronger in coding and one in the problem domain."
+    - "Choose teammates whose skills complement each other, for example someone stronger in coding and someone who knows the problem domain."
     - "AI Champions can work with their selected TAs to distribute the workload effectively."
     - "Agree early on when and how you will meet, and share the eight roadmap steps between you."
-    - "Pick a problem you both care about and can find or create data for."
+    - "Pick a problem you all care about and can find or create data for."
 
 judging:
   - { icon: "globe", title: "Impact", body: "The potential impact of the proposed solution on its target users and their local context." }
@@ -114,7 +103,7 @@ categories:
     title: "Combine two paths"
     body: "Bring two categories together in one solution."
     example: "A customer support bot for ABSA 🇿🇦 that classifies the intent and urgency of a request in Zulu, then sends a solution"
-  - icon: "lightbulb"
+  - icon: "sparkles"
     title: "Your own path"
     body: "Build any other project that solves a real-world problem in your context, using a machine learning model and responsible innovation practices."
     example: ""
@@ -137,7 +126,7 @@ recipes:
   - { title: "Build a Synthetic Dataset for an African Language", path: "african-language-synthetic-data", tag: "Data" }
 
 resources:
-  - icon: "school"
+  - icon: "book-open"
     title: "Course 08 on Google Skills"
     body: "The capstone course: it walks you through every step of the Responsible Innovation Roadmap and how to develop each part of your proposal."
     link: "https://www.skills.google/paths/3135/course_templates/1557"
@@ -145,8 +134,9 @@ resources:
   - icon: "code"
     title: "Capstone code recipes"
     body: "End-to-end recipes from the AIMS South Africa team. Each one runs in a single Google Colab notebook on a free GPU, with a completed run to compare against."
-    link: "https://github.com/aims-ai-research-foundations/airf-capstone-projects-recipes"
-    linkText: "Open the recipes on GitHub"
+    link: ""
+    dialog: "recipes"   # opens the recipes pop-up
+    linkText: "Browse the recipes"
   - icon: "database"
     title: "Capstone datasets"
     body: "Ready-to-use, contextualised datasets in English and African languages, so you don't have to start from scratch."
@@ -159,10 +149,12 @@ resources:
     linkText: ""
 
 faqs:
+  - q: "Do I need to complete all the courses before I start the hackathon?"
+    a: "No. You can start right away: form your team, choose a problem and begin shaping your idea while you finish the remaining courses.</p><p>But don't stop there. Make it your goal to work through the courses up to <strong>Course 08</strong> as early as you can. Courses 05 to 07 teach you to fine-tune, align and accelerate a model: the skills that turn an idea into a solution that actually works. Course 08 then walks you through the Responsible Innovation Roadmap step by step, and every section of your proposal follows a step of that roadmap. Finish it first, and your proposal practically writes itself.</p><p>Completing all the available courses is also part of what earns you a place in the Community of Practice, so every course you finish now moves you closer."
   - q: "Can I work on my own?"
-    a: "No. Capstone projects are built in pairs, with both people from the same cohort. Your partner also doubles as a study buddy for the remaining courses."
-  - q: "Can my partner be from another university?"
-    a: "Yes, as long as you are both in the same cohort."
+    a: "No. Capstone projects are built in teams, with everyone from the same cohort. Your teammates also double as study buddies for the remaining courses."
+  - q: "Can my teammates be from another university?"
+    a: "Yes, as long as you are all in the same cohort."
   - q: "When are our deadlines?"
     a: "Your proposal is due no later than two weeks before your cohort's post-workshop period ends, and your implementation by the end of it. See <a href=\"#deadlines\">Deadlines</a> for your cohort's dates."
   - q: "Which dataset can we use?"
