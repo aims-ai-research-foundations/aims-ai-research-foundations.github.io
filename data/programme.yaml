@@ -323,6 +323,13 @@ workshopFaqs:
     after: "If you have already been working on the courses, nothing is lost: your badges appear as soon as you accept the invitation."
   - q: "I haven't received my Google Skills invitation. What should I do?"
     a: "First, make sure you signed up on Google Skills with the email address you submitted to us, as that is where the invitation is sent. Then check your Spam, Junk or Promotions folder for an email titled “Your invitation to join Google Cloud Career Launchpad - EMEA”, or sign in to Google Skills and go to Settings → Programs.</p><p>If you signed up with a different email address, send it to <a href=\"mailto:ai-research-foundations@aims.ac.za\">ai-research-foundations@aims.ac.za</a> and we will send the invitation there instead. If your university email address does not work with Google Skills, you can sign up with a personal Gmail address and send us that. Your course progress stays with the Google Skills account you earned it on, so keep using the account you started with."
+  - q: "I am stuck on the Challenge Lab. What should I do?"
+    a: "These tips will help:"
+    steps:
+      - "Follow the <a href=\"https://drive.google.com/file/d/1r-UYtN_lhby5dnrwNCBmQvCWvNAuVc8b/view\" target=\"_blank\" rel=\"noopener\">video walkthrough</a> from our team, which shows how to set up the lab and get through Task 1."
+      - "Launch the lab from inside the course on the <a href=\"https://skills.google/paths/3135\" target=\"_blank\" rel=\"noopener\">AI Research Foundations path</a>. As a member of your cohort, you have free access, so you don't need credits or tokens. If the lab asks for credits or payment, it was opened from the general catalogue or the search bar instead. Never enter card details: nothing in the programme requires payment."
+      - "If the 90-minute timer runs out, simply start the lab again. The timer starts fresh on every launch, and your course badges are not affected."
+    after: "Don't worry: the Challenge Lab is designed to be challenging, so it's fine if you don't pass on the first try.</p><p>Still stuck? Ask in <span class=\"chan\">#help-desk</span> on your cohort's Discord server, or post a screenshot in <span class=\"chan\">#report-an-issue</span>."
   - q: "What technical background do participants need?"
     a: "The curriculum starts from the fundamentals, so no prior AI experience is required. However, a working knowledge of Python will help you get the most from the programme."
   - q: "Is the workshop fully funded?"

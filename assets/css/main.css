@@ -2136,6 +2136,30 @@ section.alt { background: var(--surface-1); }
 .faq-answer mark { background: rgba(253, 214, 51, 0.38); color: inherit; padding: 0.05em 0.12em; border-radius: 4px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
 .faq-answer .chan { font-weight: 700; color: var(--accent); background: var(--accent-soft); padding: 0.05em 0.35em; border-radius: 5px; white-space: nowrap; }
 .faq-steps + p { margin-top: 0.75em; }
+/* Links in FAQ answers: always underlined so they read as clickable; links that
+   open in a new tab get an external-link icon. */
+.faq-answer a {
+  color: var(--accent-bright);
+  font-weight: 600;
+  border-bottom: 0;
+  text-decoration: underline;
+  text-decoration-color: rgba(77, 38, 112, 0.4);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.15s, color 0.15s;
+}
+.faq-answer a:hover { color: var(--accent); text-decoration-color: currentColor; }
+.faq-answer a[target="_blank"]::after {
+  content: "";
+  display: inline-block;
+  width: 0.78em;
+  height: 0.78em;
+  margin-left: 0.25em;
+  vertical-align: -0.04em;
+  background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15 3h6v6'/%3E%3Cpath d='M10 14 21 3'/%3E%3Cpath d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'/%3E%3C/svg%3E") no-repeat center / contain;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15 3h6v6'/%3E%3Cpath d='M10 14 21 3'/%3E%3Cpath d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'/%3E%3C/svg%3E") no-repeat center / contain;
+}
 
 /* Onboarding sub-nav */
 /* Sticky header height (logo 66px + 0.75rem*2 padding = 90px; logo is 54px
