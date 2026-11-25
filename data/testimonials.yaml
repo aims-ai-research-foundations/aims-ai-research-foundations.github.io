@@ -13,8 +13,8 @@
 #   featured: true  -> shown first as the cohort's lead story
 #   pull            -> short line from the quote, shown large on the lead story
 #
-# Titles (Prof., Dr, Engr, Mr, Mrs, Miss) and roles follow the participant
-# roster in private/participant-details.md, not the testimonial form.
+# Titles (Prof., Dr, Engr, Mr, Mrs, Miss) are the ones participants wrote on the
+# form; the roster (private/participant-details.md) fills a missing title and gives roles.
 
 nigeria-cohort-1:
   - name: "Prof. Chika Yinka-Banjo"
@@ -310,3 +310,97 @@ aims-pilot:
     institution: "AIMS South Africa"
     quote: |-
       The AI Research Foundations pilot workshop was a great experience. I particularly enjoyed the presentations, which were clear, engaging, and very insightful. The workshop gave me a better understanding of AI research and its growing importance in higher education across Africa.
+
+pretoria-cohort:
+  - name: "Hawa Ibrahim"
+    role: "Teaching Assistant"
+    institution: "University of Pretoria"
+    featured: true
+    pull: "The workshop always brought things full circle by challenging us to think of how we can utilise what we are learning to support local issues here in Africa."
+    quote: |-
+      The workshop's mode of teaching was what stood out to me the most: engaging throughout and never dull. Although I have had modules on LLMs, I never had a deep dive like this workshop. It filled in gaps in my knowledge about LLMs and how they operate that I never knew existed.
+
+      Challenging us to teach back the content to one another during the sessions was both amazing and helpful, as it really confirmed whether the knowledge stuck or not. The final thing I enjoyed was how the workshop always brought things full circle by challenging us to think of how we can utilise what we are learning to support local issues here in Africa.
+
+kenya-cohort-1:
+  - name: "Miss Mary Wairimu Ndirangu"
+    role: "Teaching Assistant"
+    institution: "Kenyatta University"
+    featured: true
+    pull: "I came away with a better understanding of responsible AI and the importance of thinking beyond what AI can do to what it should do."
+    quote: |-
+      The AI Research Foundations Train-the-Trainer workshop was such a refreshing and valuable learning experience. I particularly enjoyed the interactive activities, especially “Explain It Back”, which challenged us to take what we had learned and explain it in our own words. It was a simple but powerful way of showing how much we understand something when we can communicate it to others.
+
+      I also came away with a better understanding of responsible AI and the importance of thinking beyond what AI can do to what it should do. The discussions around ethics, human judgement and the limitations of AI really stood out to me.
+
+      As an educator and postgraduate student, the workshop has encouraged me to be more intentional about how I use AI in teaching, learning and research. I want to focus not just on using these tools, but on using them thoughtfully, critically and responsibly. I also appreciated meeting and learning from people with different experiences and perspectives. Overall, I left feeling inspired, more informed and excited to share what I learned with others.
+
+  - name: "Dr Vincent Mbandu"
+    role: "AI Champion"
+    institution: "Strathmore University"
+    quote: |-
+      The AI Research Foundations Kenya Cohort 1 Workshop was an insightful and engaging experience. I particularly appreciated the practical sessions, interactive discussions, and emphasis on responsible AI use. The workshop strengthened my understanding of how to integrate AI into teaching and research. Moving forward, I plan to incorporate more hands-on activities, real-world applications, and ethical considerations to make AI learning more practical, inclusive, and impactful.
+
+  - name: "Miss Aicha Zindamoyen"
+    role: "Teaching Assistant"
+    institution: "Strathmore University"
+    quote: |-
+      The workshop was highly interactive and hands-on. I particularly appreciated the group sessions that followed the teaching segments, where we had the opportunity to share and reinforce our learning by teaching one another what we had understood. The facilitator also made the sessions engaging and enjoyable by posing thought-provoking questions after each concept, encouraging us to reflect more deeply on what we had learned. Overall, it was a very enriching and enjoyable experience!
+
+  - name: "Miss Serena Cheres"
+    role: "Teaching Assistant"
+    institution: "Strathmore University"
+    quote: |-
+      We use these LLMs daily, so the workshop helped me understand how exactly these LLMs work.
+
+      What stood out to me was the pedagogy aspect of it. How the trainers were able to simplify the learning process through the “Explain It Back” sessions made such a great impact!
+
+      What I will do differently moving forward is my mode of delivery to my students, especially for group work. I will also embed ethics in AI and responsible innovation in my teaching.
+
+  - name: "Prof. Collins Oduor"
+    role: "AI Champion"
+    institution: "United States International University-Africa"
+    quote: "I learnt new skills in AI, tokenization, agentic AI and its applications."
+
+kenya-cohort-2:
+  - name: "Mr Maurice Wanyonyi"
+    role: "AI Champion"
+    institution: "University of Embu"
+    featured: true
+    pull: "In just one week, I moved from viewing AI as abstract and intimidating to understanding its core concepts."
+    quote: |-
+      Participating in the AI Research Foundations Train-the-Trainer workshop in Nairobi was a truly transformative experience. In just one week, I moved from viewing AI as abstract and intimidating to understanding its core concepts, including large language models, transformer architectures, tokenization, fine-tuning and the role of GPUs.
+
+      What stood out most was the approach to learning. The “Explain It Back” and “Lecture It Back” sessions challenged me to move beyond passive listening and take ownership of the concepts by explaining and teaching them myself. Hands-on activities and group discussions also made complex technical ideas accessible and engaging.
+
+      Equally valuable was the emphasis on Responsible Innovation. Exploring AI alongside questions of ethics, fairness and African data sovereignty reinforced the importance of developing technologies that reflect our contexts, priorities and values.
+
+      I leave with new knowledge, practical teaching strategies and greater confidence to integrate AI responsibly into my teaching and research. I look forward to sharing these insights with my students and preparing them for an AI-enabled future.
+
+      Thank you to AIMS, FATE Foundation, UCL, Google.org and Google DeepMind for investing in Africa’s AI capacity. Asanteni sana! 💜
+
+  - name: "Dr Martha Konje"
+    role: "AI Champion"
+    institution: "Kibabii University"
+    quote: |-
+      As one of the AI Champions, taking part in the AI Research Foundations Train-the-Trainer workshop in Nairobi was a rewarding experience, both professionally and personally. What I valued most was the focus on responsible AI. The group discussions on whether a given use of AI was responsible, not responsible or uncertain pushed all of us to think carefully about context, fairness and the communities affected, rather than treating AI as a purely technical subject.
+
+      As a research scientist working on climate change and biodiversity conservation research, I got a clearer picture of how AI can support our research and how to teach it with integrity. I am already bringing these activities into my classes at Kibabii University and into our faculty’s work on integrating AI into STEM curricula. Meeting fellow AI Champions and TAs from across the region was a real highlight and a reminder that we are building this capacity in Africa together.
+
+  - name: "Dr Fortine Mwihaki Mata"
+    role: "AI Champion"
+    institution: "University of Embu"
+    quote: |-
+      One of my greatest takeaways was learning how Transformers and attention mechanisms work and how they can be applied beyond traditional AI applications.
+
+      As a cybersecurity researcher and penetration tester, this knowledge has opened exciting possibilities for using AI to analyse network traffic, detect suspicious patterns, identify potential vulnerabilities, and enhance threat intelligence. I now see how Transformer-based models can complement conventional penetration-testing techniques, making security assessments more intelligent and proactive.
+
+      Most importantly, the programme equipped me to integrate these emerging technologies into my teaching, research, and cybersecurity practice while inspiring the next generation of AI innovators.
+
+      I joined to learn AI, but I gained a new perspective on the future of cybersecurity!
+
+  - name: "Dr Nicholas Muriuki Muriithi"
+    role: "AI Champion"
+    institution: "Zetech University"
+    quote: |-
+      I have gained valuable knowledge and practical skills in working with algorithms, particularly in understanding how Artificial Neural Networks (ANNs) are designed and implemented. I have also learned how Artificial Intelligence (AI) is transforming people's day-to-day activities by improving efficiency, saving time, and simplifying tasks. Additionally, I have developed an understanding of how to create capstone projects and apply algorithms to solve real-world problems. This learning experience has strengthened my technical skills, improved my problem-solving abilities, and helped me appreciate the practical applications of AI in different fields.
