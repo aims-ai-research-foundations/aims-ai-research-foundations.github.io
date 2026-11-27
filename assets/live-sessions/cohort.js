@@ -15,4 +15,12 @@ const COHORTS = {
       "live-session-4": { held: "Held live on Wednesday 4 November 2026", cover: "/img/live-session-4.jpg" },
     },
   },
+  "eastern-cape": {
+    name: "Eastern Cape cohort",
+    flag: "🇿🇦",
+    blurb: "Live sessions on the Google Skills courses, starting with Course 01. Each quiz stays here so you can revisit it at your own pace.",
+    sessions: {
+      "live-session-1": { held: "Held live on Friday 27 November 2026", cover: "/img/eastern-cape/live-session-1.jpg" },
+    },
+  },
 };

@@ -462,9 +462,9 @@ function cohortIndex() {
     <h1>Live sessions</h1>
     <p class="lede">${SLUG && !CO ? "We couldn’t find that cohort. " : ""}Before each workshop, cohorts join live online sessions on the Google Skills courses, with a live quiz in every session. Open your cohort to go through the quizzes at your own pace, with illustrated explanations.</p>
     <p class="sect">Cohorts</p><div class="cards">${list.map(([slug, c]) => `<article class="qcard">
-      <a class="cvr cohortcover" href="${HOME}cohort/${slug}/" tabindex="-1" aria-hidden="true"><span class="cflag">${c.flag || ""}</span><span class="cname">${esc(c.name)}</span><span class="csub">${n(c)} live sessions</span></a>
+      <a class="cvr cohortcover" href="${HOME}cohort/${slug}/" tabindex="-1" aria-hidden="true"><span class="cflag">${c.flag || ""}</span><span class="cname">${esc(c.name)}</span><span class="csub">${n(c)} live session${n(c) === 1 ? "" : "s"}</span></a>
       <div class="cb"><div class="kick"><span class="pill done">✓ ${n(c)} completed</span></div><h3>${esc(c.name)}</h3>
-      <p class="meta">${esc(c.blurb || `${n(c)} live session quizzes to revisit at your own pace.`)}</p>
+      <p class="meta">${esc(c.blurb || `${n(c)} live session quiz${n(c) === 1 ? "" : "zes"} to revisit at your own pace.`)}</p>
       <div class="acts"><a class="btn" href="${HOME}cohort/${slug}/">Open <span class="arr">→</span></a></div></div></article>`).join("")}</div></div>`;
 }
 
